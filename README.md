@@ -21,7 +21,7 @@ This project builds a modern, user-friendly, and responsive real estate website 
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://your-github-repository-url.git
+   git clone https://github.com/brightfuturesoft/Sea-properties-ltd-client.git
    ```
 2. **Install Dependencies:**
    ```bash
@@ -36,15 +36,23 @@ This project builds a modern, user-friendly, and responsive real estate website 
 
 **Technology Stack:**
 
-* Vite.js (development server, bundler)
-* Your chosen UI library (React, Vue, or Svelte)
-* Other dependencies as needed (routing, state management, etc.)
+* React: JavaScript library for building user interfaces.
+* Tailwind CSS: Utility-first CSS framework for rapid styling.
+* **Additional Frontend Tools (if applicable):**
+  * List any other libraries or frameworks used on the frontend, such as:4
+     * Routing library (e.g., React Router)
+
 
 **Branching Strategy:**
 
-* `master`: Production-ready code
-* `develop`: Feature development and integration
-* `feature/*`: Individual feature branches
+* **`main`:** Protected branch for stable, deployed code (Project Manager access only)
+* **`develop`:** Active development branch, regularly tested and ready for deployment, after code review by your team lead
+* **`feature/*`:** Individual branches for features, merged into `develop` after thorough testing
+* **(Optional)`release/*`:** Temporary branches for formal releases, merged into `main` after final testing and approval
+* **(Optional)`hotfix/*`:** Temporary branches for urgent fixes, merged directly into `main` and `develop` after verification
+
+
+
 
 **Contribution Guidelines:**
 
