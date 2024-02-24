@@ -84,11 +84,11 @@ const Navbar = () => {
 
 
     return (
-        <nav className="bg-[#000000e4] fixed  flex items-center justify-between w-full top-0 text-white md:h-[70px] h-[60px] z-[1000]">
+        <nav className="bg-[#000000b5] fixed  flex items-center justify-between w-full top-0 text-white md:h-[70px] h-[60px] z-[1000]">
             <div className="relative w-full ">
                 <div className="container flex items-center justify-between py-2 ">
                     <Link to="/" className="text-2xl font-bold ">
-                        <img src={logo} alt="" className="w-20 " />
+                        <img src={logo} alt="" className="w-[116px] " />
                     </Link>
                     <div className="flex items-center gap-4">
                         <ul className="md:flex hidden items-center gap-8">
@@ -121,7 +121,7 @@ const Navbar = () => {
                         <button className="bg-red-600 text-white md:px-8 px-4 py-1 md:text-md text-sm md:py-2 rounded">
                             Login
                         </button>
-                        <button onClick={() => setOpen(!open)} className=" p-1 text-2xl">
+                        <button onClick={() => setOpen(!open)} className=" p-1 md:hidden block text-2xl">
                             <MdOutlineMenu />
                         </button>
                     </div>
