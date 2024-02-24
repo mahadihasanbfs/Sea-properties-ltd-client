@@ -84,50 +84,56 @@ const Navbar = () => {
 
 
     return (
-        <nav className="bg-[#000000d0] flex items-center justify-between relative text-white md:h-[70px] h-[60px]">
-            <div className="container flex items-center justify-between py-2 ">
-                <Link to="/" className="text-2xl font-bold ml-5">
-                    <img src={logo} alt="" className="w-20 " />
-                </Link>
-                <div className="flex items-center gap-4">
-                    <ul className="md:flex hidden items-center gap-8">
+        <nav className="bg-[#000000e4] fixed  flex items-center justify-between w-full top-0 text-white md:h-[70px] h-[60px] z-[1000]">
+            <div className="relative w-full ">
+                <div className="container flex items-center justify-between py-2 ">
+                    <Link to="/" className="text-2xl font-bold ">
+                        <img src={logo} alt="" className="w-20 " />
+                    </Link>
+                    <div className="flex items-center gap-4">
+                        <ul className="md:flex hidden items-center gap-8">
 
-                        {
-                            links.map(itm => <li key={itm.id} className=" flex items-center">
-                                {
-                                    !itm?.isDropdown ? <NavLink exact to={itm?.path} className={({ isActive }) =>
-                                        isActive ? "border-t-4 border-red-600" : ""} activeClassName="bg-yellow-500"  >{itm?.name}</NavLink>
-                                        :
-                                        <button className="flex items-center  gap-2 h-[60px] relative group">
-                                            {itm?.name} <FaAngleDown className="mt-2" />
-                                            <ul className="absolute top-[60px] left-0 bg-[#000000e4] w-40 text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                {itm?.dropdownItems.map(item =>
-                                                    <li key={item.id}>
-                                                        <NavLink to={item?.path} className="block py-2 px-3 hover:bg-gray-800">
-                                                            {item?.name}
-                                                        </NavLink>
-                                                    </li>
-                                                )}
-                                            </ul>
-                                        </button>
+                            {
+                                links.map(itm => <li key={itm.id} className=" flex items-center">
+                                    {
+                                        !itm?.isDropdown ? <NavLink exact to={itm?.path} className={({ isActive }) =>
+                                            isActive ? "border-t-4 border-red-600" : ""} activeClassName="bg-yellow-500"  >{itm?.name}</NavLink>
+                                            :
+                                            <button className="flex items-center  gap-2 h-[60px] relative group">
+                                                {itm?.name} <FaAngleDown className="mt-2" />
+                                                <ul className="absolute top-[60px] left-0 bg-[#000000e4] w-40 text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                    {itm?.dropdownItems.map(item =>
+                                                        <li key={item.id}>
+                                                            <NavLink to={item?.path} className="block py-2 px-3 hover:bg-gray-800">
+                                                                {item?.name}
+                                                            </NavLink>
+                                                        </li>
+                                                    )}
+                                                </ul>
+                                            </button>
 
 
-                                }
-                            </li>)
-                        }
+                                    }
+                                </li>)
+                            }
 
-                    </ul>
-                    <button className="bg-red-600 text-white md:px-8 px-4 py-1 md:text-md text-sm md:py-2 rounded">
-                        Login
-                    </button>
-                    <button onClick={() => setOpen(!open)} className=" p-1 text-2xl">
-                        <MdOutlineMenu />
-                    </button>
+                        </ul>
+                        <button className="bg-red-600 text-white md:px-8 px-4 py-1 md:text-md text-sm md:py-2 rounded">
+                            Login
+                        </button>
+                        <button onClick={() => setOpen(!open)} className=" p-1 text-2xl">
+                            <MdOutlineMenu />
+                        </button>
+                    </div>
+                    {/* small side nav */}
                 </div>
-                {/* small side nav */}
-            </div>
+
                 <div className={` md:hidden block`}>
-                    <div className={`absolute bg-white top-0 duration-200 ${open ? 'left-[-120%]' : 'left-0'} right-0 w-full h-screen   md:hidden z-[1000] ring`}>
+                    <div
+                        style={{
+                            zIndex: '6000'
+                        }}
+                        className={`absolute bg-white top-0 duration-200 ${!open ? 'left-[-120%]' : 'left-0'} right-0 w-full h-screen   md:hidden ring  `}>
                         <div className="flex container items-center mt-3 bg justify-between w-full">
                             <Link to="/" className="text-2xl font-bold ml-5">
                                 <img src={logo} alt="" className="w-20 " />
@@ -177,6 +183,8 @@ const Navbar = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+
         </nav>
     );
 };

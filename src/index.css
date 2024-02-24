@@ -7,30 +7,173 @@
   margin-right: auto;
   margin-left: auto;
   padding-right: 8px;
-  padding-left: 0px;
+  padding-left: 8px;
   /* background-color: aquamarine; */
 }
 
+@media (min-width: 300px) {
+  .container {
+    max-width: 94%;
+  }
+
+  @keyframes animatedBox-2 {
+  from {
+    transition: all 0.8s ease-in-out;
+   width: 0px;
+   height : 0px
+  }
+  to {
+    transition: all 0.8s ease-in-out;
+    width: 260px;
+   height : 260px
+  }
+}
+
+
+}
+@media (min-width: 320px) {
+  .container {
+    max-width: 95%;
+  }
+
+  @keyframes animatedBox-2 {
+  from {
+    transition: all 0.8s ease-in-out;
+   width: 0px;
+   height : 0px
+  }
+  to {
+    transition: all 0.8s ease-in-out;
+    width: 260px;
+   height : 260px
+  }
+}
+
+
+}
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
   }
+
+   @keyframes animatedBox-2 {
+  from {
+    transition: all 0.8s ease-in-out;
+   width: 0px;
+   height : 0px
+  }
+  to {
+    transition: all 0.8s ease-in-out;
+    width: 340px;
+   height : 340px
+  }
+}
 }
 
 @media (min-width: 768px) {
   .container {
     max-width: 720px;
   }
+
+   @keyframes animatedBox-2 {
+  from {
+    transition: all 0.8s ease-in-out;
+   width: 0px;
+   height : 0px
+  }
+  to {
+    transition: all 0.8s ease-in-out;
+    width: 340px;
+   height : 340px
+  }
+}
 }
 
 @media (min-width: 992px) {
   .container {
     max-width: 960px;
   }
+
+   @keyframes animatedBox-2 {
+  from {
+    transition: all 0.8s ease-in-out;
+   width: 0px;
+   height : 0px
+  }
+  to {
+    transition: all 0.8s ease-in-out;
+    width: 340px;
+   height : 340px
+  }
+}
 }
 
 @media (min-width: 1200px) {
   .container {
     max-width: 1400px;
   }
+
+   @keyframes animatedBox-2 {
+  from {
+    transition: all 0.8s ease-in-out;
+   width: 0px;
+   height : 0px
+  }
+  to {
+    transition: all 0.8s ease-in-out;
+    width: 340px;
+   height : 340px
+  }
+}
+}
+
+
+/* circle animation */
+
+@keyframes rotate90 {
+  0% {
+    transform: rotate(0deg); /* Starting rotation */
+  }
+  50% {
+    transform: rotate(90deg); 
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(90deg); 
+    opacity: 0;
+  }
+}
+
+.main-box:hover .box-1 {
+  animation: rotate90 1s forwards;  
+  transform: rotate(90deg);  
+}
+
+.main-box:hover .content-box {
+  animation: none!important; /* Disable animation for .content-box */
+}
+
+
+/* 
+@keyframes animatedBox-2 {
+  from {
+    transition: all 0.8s ease-in-out;
+   width: 0px;
+   height : 0px
+  }
+  to {
+    transition: all 0.8s ease-in-out;
+    width: 400px;
+   height : 400px
+  }
+} */
+
+.main-box:hover .box-2 {
+    transition: all 0.8s ease-in-out;
+  animation: animatedBox-2 1s forwards;  
+  transform: rotate(90deg);  
+}
+
+.main-box:hover .content-box {
+  animation: none!important; /* Disable animation for .content-box */
 }

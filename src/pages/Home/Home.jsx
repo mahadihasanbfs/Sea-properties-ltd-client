@@ -1,8 +1,10 @@
- 
+import HeroSection from "./HeroSection/HeroSection";
+
+
 const Home = () => {
     return (
-        <div>
-            home......
+        <div className="">
+            <HeroSection />
         </div>
     );
 };
