@@ -17,26 +17,44 @@ const Navbar = () => {
         },
         {
             id: 2,
-            name: 'About',
+            name: 'About us',
             path: '/about',
             isDropdown: true,
             dropdownItems: [
                 {
                     id: 1,
-                    name: 'About item 1',
-                    path: '/about-item-1',
+                    name: 'Our Story',
+                    path: '/our-story',
 
                 },
                 {
                     id: 2,
-                    name: 'About item 2',
-                    path: '/about-item-2',
+                    name: 'Vision, Mission & Values',
+                    path: '/vision-mision-values',
 
                 },
                 {
                     id: 3,
-                    name: 'About item 3',
-                    path: '/about-item-3',
+                    name: 'Board of Directors',
+                    path: '/board-of-directors',
+
+                },
+                {
+                    id: 4,
+                    name: 'Companies',
+                    path: '/companies',
+
+                },
+                {
+                    id: 5,
+                    name: 'Our clients',
+                    path: '/our-clients',
+
+                },
+                {
+                    id: 6,
+                    name: 'CSR',
+                    path: '/csr',
 
                 },
             ],
@@ -101,7 +119,7 @@ const Navbar = () => {
                                             :
                                             <button className="flex items-center  gap-2 h-[60px] relative group">
                                                 {itm?.name} <FaAngleDown className="mt-2" />
-                                                <ul className="absolute top-[60px] left-0 bg-[#000000e4] w-40 text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                <ul className="absolute top-[60px] left-0 bg-[#000000e4] w-40 text-white text-left rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                                     {itm?.dropdownItems.map(item =>
                                                         <li key={item.id}>
                                                             <NavLink to={item?.path} className="block py-2 px-3 hover:bg-gray-800">
