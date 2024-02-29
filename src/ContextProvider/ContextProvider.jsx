@@ -12,6 +12,15 @@ const ContextProvider = ({ children }) => {
         img5: 'https://i.ibb.co/3dWP8zH/Group-86.png'
     }
 
+    // About us > board_of_directors images.
+    const AboutUs_BoardOfDirectorImg = {
+        img1: 'https://i.ibb.co/tZBLv7H/bfdd3c9bd06566b8c597396e70f5ed37.jpg',
+        img2: 'https://i.ibb.co/ZB6D06V/4114245ce484d8e390e7fdd04ca882b8.jpg',
+        img3: 'https://i.ibb.co/PYzV7PJ/75ab26b917cabe4f1c1b472b0ca3e229.jpg',
+        img4: 'https://i.ibb.co/qsm9mkm/b1014863ecacb5a7c008a7510b802bf4.jpg',
+        img5: 'https://i.ibb.co/LCwmxMg/4f41a86246da7cf2be71a5290e851f8a.jpg'
+    }
+
     /** this function is used to make long text into chunk 
     * first parameter take the text and second parameter take the length of each chunk
     * NOTE: every chunk ends with a period '.' , so every chunk will not get same length. But it will be closer to the give length or grater.
@@ -47,6 +56,7 @@ const ContextProvider = ({ children }) => {
 
     const data = {
         AboutUs_OurStoryImg,
+        AboutUs_BoardOfDirectorImg,
         user,
         setUser,
         spilitTextIntoChunks

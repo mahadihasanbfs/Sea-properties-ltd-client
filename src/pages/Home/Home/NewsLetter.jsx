@@ -1,4 +1,4 @@
-import Title from "../../components/sharedComponent/Title";
+import Title from "../../../components/sharedComponent/Title";
 
 const NewsLetter = () => {
     return (

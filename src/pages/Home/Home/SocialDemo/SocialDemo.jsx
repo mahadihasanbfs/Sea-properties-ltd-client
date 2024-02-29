@@ -1,5 +1,5 @@
 import { useState } from "react";
- import ShowContent from "../../../components/common/ShoContent";
+ import ShowContent from "../../../../components/common/ShoContent";
 import YouTubeDemo from "./YouTubeDemo";
 import DemoItem from "./DemoItem";
 

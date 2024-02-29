@@ -1,9 +1,9 @@
 import Slider from "react-slick/lib/slider";
-import Title from "../../../components/sharedComponent/Title";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TestimonialItem from "./TestimonialItem";
 import { useEffect } from "react";
+import Title from "../../../../components/sharedComponent/Title";
 
 
 

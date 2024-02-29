@@ -1,4 +1,4 @@
-import Title from "../../../components/sharedComponent/Title";
+import Title from "../../../../components/sharedComponent/Title";
 import { IoSearchOutline } from "react-icons/io5";
 
 const Actions = () => {

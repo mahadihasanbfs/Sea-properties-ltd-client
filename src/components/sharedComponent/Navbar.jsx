@@ -136,9 +136,11 @@ const Navbar = () => {
                             }
 
                         </ul>
-                        <button className="bg-red-600 text-white md:px-8 px-4 py-1 md:text-md text-sm md:py-2 rounded">
-                            Login
-                        </button>
+                        <Link to={'/sign-in'}>
+                            <button className="bg-red-600 text-white md:px-8 px-4 py-1 md:text-md text-sm md:py-2 rounded">
+                                Login
+                            </button>
+                        </Link>
                         <button onClick={() => setOpen(!open)} className=" p-1 md:hidden block text-2xl">
                             <MdOutlineMenu />
                         </button>
@@ -194,11 +196,13 @@ const Navbar = () => {
                                 </li>
                             ))}
                         </ul>
-                        <div className="flex justify-center">
-                            <button className="bg-red-600 mt-3  w-[93%] text-white md:px-8 px-4  md:text-md text-sm  py-2 rounded">
-                                Login
-                            </button>
-                        </div>
+                        <Link to={'/sign-in'}>
+                            <div className="flex justify-center">
+                                <button className="bg-red-600 mt-3  w-[93%] text-white md:px-8 px-4  md:text-md text-sm  py-2 rounded">
+                                    Login
+                                </button>
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>

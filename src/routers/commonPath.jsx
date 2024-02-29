@@ -1,8 +1,9 @@
 import SignIn from "../components/Authentication/SignIn";
 import SignUp from "../components/Authentication/SignUp";
+import BoardOfDirector from "../pages/Home/About_us/Board_of_Director/BoardOfDirector";
 import OurStory from "../pages/Home/About_us/Our_Story/OurStory";
 import VisionMision from "../pages/Home/About_us/Vision_Mision/VisionMision";
-import Home from "../pages/Home/Home";
+import Home from "../pages/Home/Home/Home";
 
 const commonPath = [
     {
@@ -16,6 +17,10 @@ const commonPath = [
     {
         path: 'vision-mision-values',
         element: <VisionMision />
+    },
+    {
+        path: 'board-of-directors',
+        element: <BoardOfDirector />
     },
     {
         path: 'sign-up',

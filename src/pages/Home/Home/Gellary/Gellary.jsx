@@ -1,4 +1,4 @@
-import bg from '../../../assets/gellaryBg.png';
+import bg from '../../../../assets/gellaryBg.png';
 import GellaryItem from './GellaryItem';
 const Gellary = () => {
 

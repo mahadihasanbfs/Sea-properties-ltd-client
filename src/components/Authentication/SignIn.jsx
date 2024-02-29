@@ -79,7 +79,7 @@ const SignIn = () => {
                                 type="email"
                                 name='email'
                                 required
-                                className="w-full font-mono rounded-lg border  bg-gray-200 px-6 py-4 text-body-color outline-none duration-300 placeholder:text-gray-500 focus:border-[#0B64B4] text-gray-900 focus-visible:shadow-none border-white border-opacity-10 bg-white/5 focus:border-white/50"
+                                className="w-full font-mono rounded-lg border  bg-[#0000001A] px-6 py-4 text-body-color outline-none duration-300 placeholder:text-gray-500 focus:border-[#0B64B4] text-gray-900 focus-visible:shadow-none border-white border-opacity-10 bg-white/5 focus:border-white/50"
                             />
                         </div>
                         <div>
@@ -90,7 +90,7 @@ const SignIn = () => {
                                     required
                                     name='password'
                                     placeholder='Type your password'
-                                    className="w-full rounded-lg border bg-gray-200 px-6 py-4 text-body-color font-mono outline-none duration-300 placeholder:text-gray-500 focus:border-[#0B64B4] text-gray-900 focus-visible:shadow-none border-white border-opacity-10 bg-white/5 focus:border-white/50"
+                                    className="w-full rounded-lg border bg-[#0000001A] px-6 py-4 text-body-color font-mono outline-none duration-300 placeholder:text-gray-500 focus:border-[#0B64B4] text-gray-900 focus-visible:shadow-none border-white border-opacity-10 bg-white/5 focus:border-white/50"
                                 />
                                 <button
                                     type="button"
