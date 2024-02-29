@@ -12,15 +12,47 @@ const ContextProvider = ({ children }) => {
         img5: 'https://i.ibb.co/3dWP8zH/Group-86.png'
     }
 
+    /** this function is used to make long text into chunk 
+    * first parameter take the text and second parameter take the length of each chunk
+    * NOTE: every chunk ends with a period '.' , so every chunk will not get same length. But it will be closer to the give length or grater.
+    */
+    const spilitTextIntoChunks = (text, chunkLength) => {
+        const chunks = [];
+        let startIndex = 0;
+
+        while (startIndex < text.length) {
+            let chunk = text.substr(startIndex, chunkLength);
+
+            if (!(chunk.endsWith('.'))) {
+                let lastIndexOfDot = chunk.lastIndexOf('.');
+                if (lastIndexOfDot === -1) {
+                    chunk = text.slice(startIndex, text.indexOf('.', startIndex) + 1);
+                    chunks.push(chunk);
+                    startIndex += (chunk.length + 1);
+                } else {
+                    chunk = text.substr(startIndex, lastIndexOfDot + 1);
+                    chunks.push(chunk);
+                    startIndex += (lastIndexOfDot + 1);
+                }
+            } else {
+                chunks.push(chunk);
+                startIndex += (chunk.lastIndexOf('.') + 1);
+            }
+        }
+
+        return chunks;
+    }
+
     const [user, setUser] = useState(null);
 
     const data = {
         AboutUs_OurStoryImg,
         user,
-        setUser
+        setUser,
+        spilitTextIntoChunks
     }
 
-    
+
     return (
         <ContextApi.Provider value={data}>
             {children}
