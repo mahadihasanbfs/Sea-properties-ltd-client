@@ -3,10 +3,12 @@ import logo from '../../assets/logo.png';
 import { MdClose, MdOutlineMenu } from "react-icons/md";
 import { FaAngleDown } from "react-icons/fa6";
 import { useState } from "react";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
     const [openDropdownId, setOpenDropdownId] = useState(null);
+    const { logOut, user } = useAuth();
     const links = [
         {
             id: 1,
@@ -41,18 +43,23 @@ const Navbar = () => {
                 },
                 {
                     id: 4,
+                    name: 'Management Team',
+                    path: 'management-team'
+                },
+                {
+                    id: 5,
                     name: 'Companies',
                     path: '/companies',
 
                 },
                 {
-                    id: 5,
+                    id: 6,
                     name: 'Our clients',
                     path: '/our-clients',
 
                 },
                 {
-                    id: 6,
+                    id: 7,
                     name: 'CSR',
                     path: '/csr',
 
@@ -136,11 +143,18 @@ const Navbar = () => {
                             }
 
                         </ul>
-                        <Link to={'/sign-in'}>
-                            <button className="bg-red-600 text-white md:px-8 px-4 py-1 md:text-md text-sm md:py-2 rounded">
-                                Login
-                            </button>
-                        </Link>
+                        {
+                            user ?                                
+                                <button onClick={logOut} className="bg-red-600 text-white md:px-7 px-4 py-1 md:text-md text-sm md:py-2 rounded">
+                                    Logout
+                                </button>                                
+                                :
+                                <Link to={'/sign-in'}>
+                                    <button className="bg-red-600 text-white md:px-8 px-4 py-1 md:text-md text-sm md:py-2 rounded">
+                                        Login
+                                    </button>
+                                </Link>
+                        }
                         <button onClick={() => setOpen(!open)} className=" p-1 md:hidden block text-2xl">
                             <MdOutlineMenu />
                         </button>

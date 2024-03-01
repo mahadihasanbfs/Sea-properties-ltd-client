@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ContextApi } from "../ContextProvider/ContextProvider";
+import { ContextApi } from "../Provider/ContextProvider";
 
 
 const useContextApi = () => {

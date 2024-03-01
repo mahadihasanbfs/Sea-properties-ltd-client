@@ -6,17 +6,23 @@ import { FaEye } from 'react-icons/fa';
 import { TbEyeOff } from 'react-icons/tb';
 import BrightAlert from 'bright-alert'
 import { Link, useNavigate } from 'react-router-dom';
-import useContextApi from '../../hooks/useContextApi';
 import { AiFillGoogleCircle } from 'react-icons/ai';
+import useAuth from '../../hooks/useAuth';
 
 const SignUp = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const [password, setPassword] = useState('');
+    const { createUser, updateUser, googleSignIn } = useAuth();
+    const navigate = useNavigate();
 
-    const navigate = useNavigate()
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(() => {                
+                navigate('/')
+            })
+    }
 
-    const { setUser } = useContextApi();
 
     const checkPasswordStrength = (password) => {
 
@@ -65,7 +71,7 @@ const SignUp = () => {
 
     const passwordStrength = checkPasswordStrength(password);
 
-    const SubmitData = (e) => {
+    const SubmitData = async (e) => {
         setLoading(true)
         e.preventDefault();
         const name = e.target.name.value
@@ -75,28 +81,38 @@ const SignUp = () => {
             email,
             password
         }
-        fetch('https://brightcomponent-backend-v1.vercel.app/api/v1/auth/sign-up', {
-            method: "PATCH",
-            headers: {
-                'Content-Type': 'application/json'
-            },
+        await createUser(email, password)
+            .then(() => {
+                updateUser(name)
+                    .then(() => {    
+                        setLoading(false)
+                        navigate('/')
+                    })
+            })
 
-            body: JSON.stringify({ data })
-        }).then((res) => res.json()).then((data) => {
-            setLoading(false)
-            if (data.error) {
-                BrightAlert(`${data.message}`, '', 'warning');
-            }
-            else {
-                BrightAlert(`${data.message}`, '', 'success');
-                navigate('/sign-in')
-            }
-        })
+
+        // fetch('https://brightcomponent-backend-v1.vercel.app/api/v1/auth/sign-up', {
+        //     method: "PATCH",
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+
+        //     body: JSON.stringify({ data })
+        // }).then((res) => res.json()).then((data) => {
+        //     setLoading(false)
+        //     if (data.error) {
+        //         BrightAlert(`${data.message}`, '', 'warning');
+        //     }
+        //     else {
+        //         BrightAlert(`${data.message}`, '', 'success');
+        //         navigate('/sign-in')
+        //     }
+        // })
     }
 
     return (
         <div>
-            <main className="w-full h-screen  flex bg-white flex-col items-center justify-center px-4">
+            <main className="w-full h-fit my-28 flex bg-white flex-col items-center justify-center px-4">
 
                 <div className="max-w-xl rounded-xl p-14  w-full text-gray-600 bg-white border shadow-xl  ">
 
@@ -118,19 +134,19 @@ const SignUp = () => {
                                 placeholder='Type your name'
                                 name='name'
                                 required
-                                className="w-full rounded-lg border  bg-[#0000001A] px-6 py-4 text-body-color outline-none duration-300 placeholder:text-gray-500 focus:border-[#0B64B4] text-gray-900 focus-visible:shadow-none border-white border-opacity-10 font-mono bg-white/5 focus:border-white/50"
+                                className="w-full rounded-lg border  bg-gray-200 px-6 py-4 text-body-color outline-none duration-300 placeholder:text-gray-500 focus:border-[#0B64B4] text-gray-900 focus-visible:shadow-none border-white border-opacity-10 font-mono focus:border-white/50"
                             />
                         </div>
                         <div>
                             <p className="mb-2 font-semibold text-black ">
-                                Email
+                                Email / Phone
                             </p>
                             <input
-                                placeholder='Type your email'
+                                placeholder='Type your email / phone'
                                 type="email"
                                 name='email'
                                 required
-                                className="w-full font-mono rounded-lg border  bg-[#0000001A] px-6 py-4 text-body-color outline-none duration-300 placeholder:text-gray-500 focus:border-[#0B64B4] text-gray-900 focus-visible:shadow-none border-white border-opacity-10 bg-white/5 focus:border-white/50"
+                                className="w-full font-mono rounded-lg border  bg-gray-200 px-6 py-4 text-body-color outline-none duration-300 placeholder:text-gray-500 focus:border-[#0B64B4] text-gray-900 focus-visible:shadow-none border-white border-opacity-10 focus:border-white/50"
                             />
                         </div>
                         <div>
@@ -142,7 +158,7 @@ const SignUp = () => {
                                     placeholder='Type your password'
                                     value={password}
                                     onChange={(e) => handlePasswordChange(e.target.value)}
-                                    className="w-full rounded-lg border bg-[#0000001A] px-6 py-4 text-body-color font-mono outline-none duration-300 placeholder:text-gray-500 focus:border-[#0B64B4] text-gray-900 focus-visible:shadow-none border-white border-opacity-10 bg-white/5 focus:border-white/50"
+                                    className="w-full rounded-lg border bg-gray-200 px-6 py-4 text-body-color font-mono outline-none duration-300 placeholder:text-gray-500 focus:border-[#0B64B4] text-gray-900 focus-visible:shadow-none border-white border-opacity-10 focus:border-white/50"
                                 />
                                 <button
                                     type="button"
@@ -185,7 +201,7 @@ const SignUp = () => {
                             <p className='text-lg'>Facebook</p>
                         </div>
 
-                        <div className='w-[220px] h-[50px] rounded-lg text-white bg-[#0F7AC7] flex justify-center items-center gap-3 hover:cursor-pointer'>
+                        <div onClick={handleGoogleSignIn} className='w-[220px] h-[50px] rounded-lg text-white bg-[#0F7AC7] flex justify-center items-center gap-3 hover:cursor-pointer'>
                             <AiFillGoogleCircle className='w-6 h-6' />
                             <p className='text-lg'>Google</p>
                         </div>

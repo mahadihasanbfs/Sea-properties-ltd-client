@@ -21,6 +21,18 @@ const ContextProvider = ({ children }) => {
         img5: 'https://i.ibb.co/LCwmxMg/4f41a86246da7cf2be71a5290e851f8a.jpg'
     }
 
+    //About us > management_team images.
+    const AboutUs_ManagementTeamImg = {
+        bannerImg: 'https://i.ibb.co/NFP8Wtw/e3c0bfef15616d1d15d0db075a923ce3.jpg',
+        CeoImg: 'https://i.ibb.co/djgvZz5/3822bc60faf2f513ee994b619efe16e8.jpg',
+        SeniorManagerImg: {
+            img1: 'https://i.ibb.co/cYGkG68/cf20898a3150ceff0e49865a70aeacb8.jpg',
+            img2: 'https://i.ibb.co/r050pq9/25de5588c3b066d8c4a9eadaf8b476b6.jpg',
+            img3: 'https://i.ibb.co/KD74gZz/5548ef866e20da11c483c897c71aa491.jpg'
+        },
+        teamImg:'https://i.ibb.co/HtqPqBv/ba77c73c88b36368cff4c3193651f0c2.jpg'
+    }
+
     /** this function is used to make long text into chunk 
     * first parameter take the text and second parameter take the length of each chunk
     * NOTE: every chunk ends with a period '.' , so every chunk will not get same length. But it will be closer to the give length or grater.
@@ -57,6 +69,7 @@ const ContextProvider = ({ children }) => {
     const data = {
         AboutUs_OurStoryImg,
         AboutUs_BoardOfDirectorImg,
+        AboutUs_ManagementTeamImg,
         user,
         setUser,
         spilitTextIntoChunks

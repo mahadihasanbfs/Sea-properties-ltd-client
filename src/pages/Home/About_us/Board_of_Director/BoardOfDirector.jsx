@@ -39,7 +39,7 @@ const BoardOfDirector = () => {
                 }}
                 className="h-[400px] md:h-[500px] lg:h-[768px] bg-cover bg-center object-cover uppercase text-white text-center flex flex-col justify-center gap-[20px] font-normal">
                 <p className="leading-4 text-[15px]">About us</p>
-                <h3 className="text-[24px] md:text-[46px] md:leading-[55px]">Vision Mission & Values</h3>
+                <h3 className="text-[24px] md:text-[46px] md:leading-[55px]">Board of Directors</h3>
             </div>
 
             {/* board of director Section 2  */}
