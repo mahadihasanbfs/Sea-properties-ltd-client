@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext} from "react";
 
 export const ContextApi = createContext(null);
 
@@ -33,9 +33,14 @@ const ContextProvider = ({ children }) => {
         teamImg:'https://i.ibb.co/HtqPqBv/ba77c73c88b36368cff4c3193651f0c2.jpg'
     }
 
+    //About us > management_team images.
+    const AboutUs_CompaniesImg = {
+        bannerImg: 'https://i.ibb.co/fxFPQJQ/0a33a890b0b1e6309ed3f558374420ec.jpg'
+    }
+
     /** this function is used to make long text into chunk 
     * first parameter take the text and second parameter take the length of each chunk
-    * NOTE: every chunk ends with a period '.' , so every chunk will not get same length. But it will be closer to the give length or grater.
+    * NOTE: every chunk ends with a period '.' , every chunk will not get same length. But it will be closer to the give length or grater.
     */
     const spilitTextIntoChunks = (text, chunkLength) => {
         const chunks = [];
@@ -64,14 +69,11 @@ const ContextProvider = ({ children }) => {
         return chunks;
     }
 
-    const [user, setUser] = useState(null);
-
     const data = {
         AboutUs_OurStoryImg,
         AboutUs_BoardOfDirectorImg,
         AboutUs_ManagementTeamImg,
-        user,
-        setUser,
+        AboutUs_CompaniesImg,
         spilitTextIntoChunks
     }
 

@@ -1,6 +1,7 @@
 import SignIn from "../components/Authentication/SignIn";
 import SignUp from "../components/Authentication/SignUp";
 import BoardOfDirector from "../pages/Home/About_us/Board_of_Director/BoardOfDirector";
+import Companies from "../pages/Home/About_us/Companies/Companies";
 import ManagementTeam from "../pages/Home/About_us/Management_Team/ManagementTeam";
 import OurStory from "../pages/Home/About_us/Our_Story/OurStory";
 import VisionMision from "../pages/Home/About_us/Vision_Mision/VisionMision";
@@ -26,6 +27,10 @@ const commonPath = [
     {
         path: 'management-team',
         element: <ManagementTeam />
+    },
+    {
+        path: 'companies',
+        element: <Companies />
     },
     {
         path: 'sign-up',

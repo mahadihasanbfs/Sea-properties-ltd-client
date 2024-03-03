@@ -143,7 +143,7 @@ const SignUp = () => {
                             </p>
                             <input
                                 placeholder='Type your email / phone'
-                                type="email"
+                                type="text"
                                 name='email'
                                 required
                                 className="w-full font-mono rounded-lg border  bg-gray-200 px-6 py-4 text-body-color outline-none duration-300 placeholder:text-gray-500 focus:border-[#0B64B4] text-gray-900 focus-visible:shadow-none border-white border-opacity-10 focus:border-white/50"

@@ -19,6 +19,10 @@
   /* padding: 0 8px; */
 }
 
+a{
+  text-decoration: none;
+}
+
 @media (min-width: 300px) {
 #sld > div > button {
   top: 350px!important;
