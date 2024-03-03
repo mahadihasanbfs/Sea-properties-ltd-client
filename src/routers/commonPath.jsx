@@ -1,6 +1,7 @@
 import SignIn from "../components/Authentication/SignIn";
 import SignUp from "../components/Authentication/SignUp";
 import BoardOfDirector from "../pages/Home/About_us/Board_of_Director/BoardOfDirector";
+import CSR from "../pages/Home/About_us/CSR/CSR";
 import Companies from "../pages/Home/About_us/Companies/Companies";
 import ManagementTeam from "../pages/Home/About_us/Management_Team/ManagementTeam";
 import OurClient from "../pages/Home/About_us/Our_Client/OurClient";
@@ -36,6 +37,10 @@ const commonPath = [
     {
         path: 'our-clients',
         element: <OurClient />
+    },
+    {
+        path: 'csr',
+        element: <CSR />
     },
     {
         path: 'sign-up',

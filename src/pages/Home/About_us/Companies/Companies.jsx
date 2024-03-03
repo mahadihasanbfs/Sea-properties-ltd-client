@@ -1,4 +1,4 @@
-import Banner from "../../../../components/common/Banner";
+import PrimaryBanner from "../../../../components/common/PrimaryBanner";
 import useContextApi from "../../../../hooks/useContextApi";
 import CompanyInfo from "./CompanyInfo";
 
@@ -40,12 +40,12 @@ const Companies = () => {
     return (
         <div className="bg-[#E0F2F1]">
             {/* AboutUs_Companies banner section */}
-            <Banner
+            <PrimaryBanner
                 title={'Companies'}
                 subTitle={'About us'}
                 bannerImg={bannerImg}
                 opacity={30}
-            ></Banner>
+            ></PrimaryBanner>
 
             <div className="max-w-[1366px] mx-auto px-6 lg:px-[60px] py-[90px] grid md:grid-cols-2 gap-9 md:gap-6">
                 <div className="flex flex-col gap-6">

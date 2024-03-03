@@ -1,6 +1,6 @@
 
 
-const Banner = ({bannerImg, opacity, title, subTitle}) => {
+const PrimaryBanner = ({bannerImg, opacity, title, subTitle}) => {
     return (
         <div
             style={{
@@ -13,4 +13,4 @@ const Banner = ({bannerImg, opacity, title, subTitle}) => {
     );
 };
 
-export default Banner;
+export default PrimaryBanner;
