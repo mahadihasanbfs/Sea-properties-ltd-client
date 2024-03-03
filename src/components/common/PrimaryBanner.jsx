@@ -8,7 +8,7 @@ const PrimaryBanner = ({bannerImg, opacity, title, subTitle}) => {
             }}
             className="h-[400px] md:h-[500px] lg:h-[768px] bg-cover bg-center uppercase text-white text-center flex flex-col justify-center gap-[20px] font-normal">
             <p className="leading-4 text-[15px]">{ subTitle }</p>
-            <h3 className="text-[24px] md:text-[46px] md:leading-[55px]">{ title }</h3>
+            <h3 className="text-[24px] md:text-[46px] md:leading-[55px] w-[90%] mx-auto">{ title }</h3>
         </div>
     );
 };

@@ -8,6 +8,8 @@ import OurClient from "../pages/Home/About_us/Our_Client/OurClient";
 import OurStory from "../pages/Home/About_us/Our_Story/OurStory";
 import VisionMision from "../pages/Home/About_us/Vision_Mision/VisionMision";
 import Home from "../pages/Home/Home/Home";
+import NewsEvent from "../pages/Home/News_Event/NewsEvent";
+import NewsEventReadMore from "../pages/Home/News_Event/NewsEventReadMore";
 
 const commonPath = [
     {
@@ -41,6 +43,14 @@ const commonPath = [
     {
         path: 'csr',
         element: <CSR />
+    },
+    {
+        path: 'news-and-events',
+        element: <NewsEvent />
+    },
+    {
+        path: 'news_events/:id',
+        element: <NewsEventReadMore />
     },
     {
         path: 'sign-up',

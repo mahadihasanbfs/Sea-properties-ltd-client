@@ -74,6 +74,11 @@ const ContextProvider = ({ children }) => {
         ]
     }
 
+    //About us > CSR images.
+    const newsEventsImg= {
+        bannerImg: 'https://i.ibb.co/Hq8TFQx/ce7c5c73f58b27683398d6d3f2ff0948.jpg'
+    }
+
     /** this function is used to make long text into chunk 
     * first parameter take the text and second parameter take the length of each chunk
     * NOTE: every chunk ends with a period '.' , every chunk will not get same length. But it will be closer to the give length or grater.
@@ -82,7 +87,7 @@ const ContextProvider = ({ children }) => {
         const chunks = [];
         let startIndex = 0;
 
-        while (startIndex < text.length) {
+        while (startIndex < text?.length) {
             let chunk = text.substr(startIndex, chunkLength);
 
             if (!(chunk.endsWith('.'))) {
@@ -112,6 +117,7 @@ const ContextProvider = ({ children }) => {
         AboutUs_CompaniesImg,
         AboutUs_OurClientImg,
         AboutUs_CSR,
+        newsEventsImg,
         spilitTextIntoChunks
     }
 

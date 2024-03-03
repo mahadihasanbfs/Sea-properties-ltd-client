@@ -94,7 +94,7 @@ const Navbar = () => {
         {
             id: 4,
             name: 'News&Events',
-            path: '/event',
+            path: '/news-and-events',
             isDropdown: false,
             dropdownItems: [],
         },
