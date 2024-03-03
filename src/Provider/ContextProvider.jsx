@@ -1,4 +1,4 @@
-import { createContext} from "react";
+import { createContext } from "react";
 
 export const ContextApi = createContext(null);
 
@@ -30,12 +30,28 @@ const ContextProvider = ({ children }) => {
             img2: 'https://i.ibb.co/r050pq9/25de5588c3b066d8c4a9eadaf8b476b6.jpg',
             img3: 'https://i.ibb.co/KD74gZz/5548ef866e20da11c483c897c71aa491.jpg'
         },
-        teamImg:'https://i.ibb.co/HtqPqBv/ba77c73c88b36368cff4c3193651f0c2.jpg'
+        teamImg: 'https://i.ibb.co/HtqPqBv/ba77c73c88b36368cff4c3193651f0c2.jpg'
     }
 
     //About us > management_team images.
     const AboutUs_CompaniesImg = {
         bannerImg: 'https://i.ibb.co/fxFPQJQ/0a33a890b0b1e6309ed3f558374420ec.jpg'
+    }
+
+    //About us > management_team images.
+    const AboutUs_OurClientImg = {
+        bannerImg: 'https://i.ibb.co/tZBLv7H/bfdd3c9bd06566b8c597396e70f5ed37.jpg',
+        clientComapnyLogo: [
+            'https://i.ibb.co/3fbJbmJ/9e190068a7c60c6a30dc000bf3a5c2e0.png',
+            ' https://i.ibb.co/xCLFCKD/Apple-Logo-500x281-min-1-1.png',
+            'https://i.ibb.co/Q9rTHQ1/Apple-Logo-500x281-min-1.png',
+            'https://i.ibb.co/9hHjx2n/b7060252aaebfd0c763e3abf2041ff6d.png',
+            'https://i.ibb.co/Q9rTHQ1/Apple-Logo-500x281-min-1.png',
+            'https://i.ibb.co/3fbJbmJ/9e190068a7c60c6a30dc000bf3a5c2e0.png',
+            'https://i.ibb.co/9hHjx2n/b7060252aaebfd0c763e3abf2041ff6d.png',
+            ' https://i.ibb.co/xCLFCKD/Apple-Logo-500x281-min-1-1.png',
+
+        ]
     }
 
     /** this function is used to make long text into chunk 
@@ -74,6 +90,7 @@ const ContextProvider = ({ children }) => {
         AboutUs_BoardOfDirectorImg,
         AboutUs_ManagementTeamImg,
         AboutUs_CompaniesImg,
+        AboutUs_OurClientImg,
         spilitTextIntoChunks
     }
 
