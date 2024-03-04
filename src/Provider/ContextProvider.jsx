@@ -65,7 +65,7 @@ const ContextProvider = ({ children }) => {
             'https://i.ibb.co/BP4XRDv/c2625babcc1b3ac504981a5e96da037a.jpg',
             'https://i.ibb.co/3h4BNF9/d5b6f7fd8ef18c12bf78d4110e8037fe.jpg',
             'https://i.ibb.co/mTsyzMk/316d4ada742f78925b2d491f1c10ef60.jpg',
-            'https://i.ibb.co/VmqNQGx/995a0e31b4a162f7bfbcf6e5ec65ec9a.jpg',            
+            'https://i.ibb.co/VmqNQGx/995a0e31b4a162f7bfbcf6e5ec65ec9a.jpg',
             'https://i.ibb.co/YfVVPS6/a839ed2cb5c54c9ed8172c04b631e80d.jpg',
             'https://i.ibb.co/fdxXx80/1a12bd28404f210edb9381881e5db514.jpg',
             'https://i.ibb.co/z5hCCqH/43738167396762a8b69d090c5f188f43.jpg',
@@ -75,9 +75,17 @@ const ContextProvider = ({ children }) => {
     }
 
     //About us > CSR images.
-    const newsEventsImg= {
+    const newsEventsImg = {
         bannerImg: 'https://i.ibb.co/Hq8TFQx/ce7c5c73f58b27683398d6d3f2ff0948.jpg'
     }
+
+
+    //About us > CSR images.
+    const ContactPageImg = {
+        bannerImg: 'https://i.ibb.co/6XGbmhk/ee5e153c845c64d72d37110d52055899.jpg',
+        contactImg: 'https://i.ibb.co/37FgM17/26f915c6ea4e23f3e3f84a55b2cae2ab.jpg'
+    }
+
 
     /** this function is used to make long text into chunk 
     * first parameter take the text and second parameter take the length of each chunk
@@ -118,6 +126,7 @@ const ContextProvider = ({ children }) => {
         AboutUs_OurClientImg,
         AboutUs_CSR,
         newsEventsImg,
+        ContactPageImg,
         spilitTextIntoChunks
     }
 

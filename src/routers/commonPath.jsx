@@ -7,6 +7,7 @@ import ManagementTeam from "../pages/Home/About_us/Management_Team/ManagementTea
 import OurClient from "../pages/Home/About_us/Our_Client/OurClient";
 import OurStory from "../pages/Home/About_us/Our_Story/OurStory";
 import VisionMision from "../pages/Home/About_us/Vision_Mision/VisionMision";
+import Contact from "../pages/Home/Contact/Contact";
 import Home from "../pages/Home/Home/Home";
 import NewsEvent from "../pages/Home/News_Event/NewsEvent";
 import NewsEventReadMore from "../pages/Home/News_Event/NewsEventReadMore";
@@ -39,6 +40,10 @@ const commonPath = [
     {
         path: 'our-clients',
         element: <OurClient />
+    },
+    {
+        path: 'contact',
+        element: <Contact />
     },
     {
         path: 'csr',
