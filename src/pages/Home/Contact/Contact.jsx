@@ -1,6 +1,5 @@
 import PrimaryBanner from "../../../components/common/PrimaryBanner";
 import SecondaryTitle from "../../../components/common/SecondaryTitle";
-import P from "../../../components/sharedComponent/P";
 import useContextApi from "../../../hooks/useContextApi";
 
 const Contact = () => {
@@ -23,6 +22,24 @@ const Contact = () => {
     }
 
     const { title, companyName, address, phone } = contactInfo;
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const phone = form.phone.value;
+        const message = form.message.value;
+
+        const data = {
+            name,
+            email,
+            phone,
+            message
+        }
+        console.log(data);
+        form.reset()
+    }
     return (
         <div>
             {/* Contact banner section */}
@@ -56,6 +73,54 @@ const Contact = () => {
                             phone?.map((item, index) => <p key={index}>{item}</p>)
                         }
                     </div>
+                </div>
+            </div>
+
+            {/* Contact form */}
+            <div className="bg-[#78909C] py-[105px]">
+                <div className="max-w-[1366px] mx-auto px-[260px] text-white">
+                    <h2 className="text-[37px] uppercase">Book A Free Appointment</h2>
+                    <form onSubmit={handleSubmit} className="space-y-4 mt-10">
+                        <div>
+                            <p>Name*</p>
+                            <input
+                                type="text" name="name"
+                                required
+                                autoComplete="off"
+                                className="w-[330px] bg-[#78909C] focus:outline-none pt-3 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                            />
+                        </div>
+                        <div>
+                            <p>Enter your Email</p>
+                            <input
+                                type="text" name="email"
+                                autoComplete="off"
+                                className="w-[330px] bg-[#78909C] focus:outline-none pt-3 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                            />
+                        </div>
+                        <div>
+                            <p>Phone Number*</p>
+                            <input
+                                type="text" name="phone"
+                                required
+                                autoComplete="off"
+                                className="w-[330px] bg-[#78909C] focus:outline-none pt-3 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                            />
+                        </div>
+                        <div>
+                            <p>Message</p>
+                            <input
+                                type="text" name="message"
+                                required
+                                autoComplete="off"
+                                className="w-[330px] bg-[#78909C] focus:outline-none pt-10 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                            />
+                        </div>
+
+                        <div className="pt-6">
+                            <input type="submit" value="Submit" className="py-[9px] px-[28px] border-[3px] border-white hover:cursor-pointer" />
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
