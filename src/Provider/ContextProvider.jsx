@@ -43,7 +43,7 @@ const ContextProvider = ({ children }) => {
         bannerImg: 'https://i.ibb.co/tZBLv7H/bfdd3c9bd06566b8c597396e70f5ed37.jpg',
         clientComapnyLogo: [
             'https://i.ibb.co/3fbJbmJ/9e190068a7c60c6a30dc000bf3a5c2e0.png',
-            ' https://i.ibb.co/xCLFCKD/Apple-Logo-500x281-min-1-1.png',
+            'https://i.ibb.co/xCLFCKD/Apple-Logo-500x281-min-1-1.png',
             'https://i.ibb.co/Q9rTHQ1/Apple-Logo-500x281-min-1.png',
             'https://i.ibb.co/9hHjx2n/b7060252aaebfd0c763e3abf2041ff6d.png',
             'https://i.ibb.co/Q9rTHQ1/Apple-Logo-500x281-min-1.png',

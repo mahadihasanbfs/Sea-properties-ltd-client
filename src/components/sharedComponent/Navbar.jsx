@@ -74,20 +74,9 @@ const Navbar = () => {
             dropdownItems: [
                 {
                     id: 1,
-                    name: 'Project item 1',
-                    path: '/project-item-1',
+                    name: 'On Going',
+                    path: '/on-going',
 
-                },
-                {
-                    id: 2,
-                    name: 'Project item 2',
-                    path: '/project-item-2',
-
-                },
-                {
-                    id: 3,
-                    name: 'Project item 3',
-                    path: '/project-item-3',
                 }
             ],
         },

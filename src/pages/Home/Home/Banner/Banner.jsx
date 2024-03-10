@@ -3,10 +3,18 @@ import Title from "../../../../components/sharedComponent/Title";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import BannerCart from "./BannerCart";
+import { useEffect, useState } from "react";
 
 
 
 const Banner = () => {
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        fetch('/src/pages/Home/ProjectDetails/projectInfo.json')
+            .then(res => res.json())
+            .then(data => setData(data))
+    }, [])
+
     let settings = {
         dots: false,
         infinite: false,
@@ -41,57 +49,57 @@ const Banner = () => {
             }
         ]
     };
-    const data = [
-        {
-            id: 0,
-            name: 'Aura',
-            address: "Road 83, Gulshan",
-            type: "Residential",
-            img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-        },
-        {
-            id: 1,
-            name: 'Aura',
-            address: "Road 83, Gulshan",
-            type: "Residential",
-            img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-        },
-        {
-            id: 2,
-            name: 'Aura',
-            address: "Road 83, Gulshan",
-            type: "Residential",
-            img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-        },
-        {
-            id: 3,
-            name: 'Aura',
-            address: "Road 83, Gulshan",
-            type: "Residential",
-            img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-        },
-        {
-            id: 4,
-            name: 'Aura',
-            address: "Road 83, Gulshan",
-            type: "Residential",
-            img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-        },
-        {
-            id: 5,
-            name: 'Aura',
-            address: "Road 83, Gulshan",
-            type: "Residential",
-            img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-        },
-        {
-            id: 6,
-            name: 'Aura',
-            address: "Road 83, Gulshan",
-            type: "Residential",
-            img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-        },
-    ]
+    // const data = [
+    //     {
+    //         id: 0,
+    //         name: 'Aura',
+    //         address: "Road 83, Gulshan",
+    //         type: "Residential",
+    //         img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+    //     },
+    //     {
+    //         id: 1,
+    //         name: 'Aura',
+    //         address: "Road 83, Gulshan",
+    //         type: "Residential",
+    //         img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+    //     },
+    //     {
+    //         id: 2,
+    //         name: 'Aura',
+    //         address: "Road 83, Gulshan",
+    //         type: "Residential",
+    //         img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+    //     },
+    //     {
+    //         id: 3,
+    //         name: 'Aura',
+    //         address: "Road 83, Gulshan",
+    //         type: "Residential",
+    //         img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+    //     },
+    //     {
+    //         id: 4,
+    //         name: 'Aura',
+    //         address: "Road 83, Gulshan",
+    //         type: "Residential",
+    //         img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+    //     },
+    //     {
+    //         id: 5,
+    //         name: 'Aura',
+    //         address: "Road 83, Gulshan",
+    //         type: "Residential",
+    //         img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+    //     },
+    //     {
+    //         id: 6,
+    //         name: 'Aura',
+    //         address: "Road 83, Gulshan",
+    //         type: "Residential",
+    //         img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+    //     },
+    // ]
     return (
         <div>
             <div className="container py-12 mt-4 ">
@@ -103,7 +111,7 @@ const Banner = () => {
                 <div className="slider-container mt-12 md:px-6 px-6  w-full">
                     <Slider  {...settings}>
                         {
-                            data?.map(itm => <BannerCart key={itm?.id} itm={itm} />)
+                            data?.map(itm => <BannerCart key={itm?._id} itm={itm} />)
                         }
                     </Slider>
                 </div>

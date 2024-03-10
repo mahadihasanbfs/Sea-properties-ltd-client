@@ -17,7 +17,6 @@ const Home = () => {
             <Testimonials />
             <Location />
             <SocialDemo />
-            <ShowCase />
             <NewsLetter />
         </div>
     );
