@@ -100,7 +100,7 @@ const Navbar = () => {
     return (
         <nav className="bg-[#000000b5] fixed  flex items-center justify-between w-full top-0 text-white md:h-[70px] h-[60px] z-[1000] md:px-10">
             <div className="relative w-full ">
-                <div className="container flex items-center justify-between py-2 mr-[2px!important]">
+                <div className="container flex items-center justify-between py-2 mr-[2px!important] md:mr-[211px!important]">
                     <Link to="/" className="text-2xl font-bold ">
                         <img src={logo} alt="" className="w-[80px] md:w-[100px] " />
                     </Link>
