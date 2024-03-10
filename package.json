@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "bright-alert": "^0.2.3",
+    "firebase": "^10.8.1",
     "framer-motion": "^11.0.6",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",

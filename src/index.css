@@ -11,6 +11,17 @@
   /* background-color: aquamarine; */
 }
 
+.primary-container{
+  max-width: 1980px;
+  width: 100%;
+  margin: 0 auto;
+  /* padding: 0 8px; */
+}
+
+a{
+  text-decoration: none;
+}
+
 @media (min-width: 300px) {
 #sld > div > button {
   top: 350px!important;

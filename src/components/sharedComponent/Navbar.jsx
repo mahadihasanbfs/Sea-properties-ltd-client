@@ -3,10 +3,12 @@ import logo from '../../assets/logo.png';
 import { MdClose, MdOutlineMenu } from "react-icons/md";
 import { FaAngleDown } from "react-icons/fa6";
 import { useState } from "react";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
     const [openDropdownId, setOpenDropdownId] = useState(null);
+    const { logOut, user } = useAuth();
     const links = [
         {
             id: 1,
@@ -17,26 +19,49 @@ const Navbar = () => {
         },
         {
             id: 2,
-            name: 'About',
+            name: 'About us',
             path: '/about',
             isDropdown: true,
             dropdownItems: [
                 {
                     id: 1,
-                    name: 'About item 1',
-                    path: '/about-item-1',
+                    name: 'Our Story',
+                    path: '/our-story',
 
                 },
                 {
                     id: 2,
-                    name: 'About item 2',
-                    path: '/about-item-2',
+                    name: 'Vision, Mission & Values',
+                    path: '/vision-mision-values',
 
                 },
                 {
                     id: 3,
-                    name: 'About item 3',
-                    path: '/about-item-3',
+                    name: 'Board of Directors',
+                    path: '/board-of-directors',
+
+                },
+                {
+                    id: 4,
+                    name: 'Management Team',
+                    path: 'management-team'
+                },
+                {
+                    id: 5,
+                    name: 'Companies',
+                    path: '/companies',
+
+                },
+                {
+                    id: 6,
+                    name: 'Our clients',
+                    path: '/our-clients',
+
+                },
+                {
+                    id: 7,
+                    name: 'CSR',
+                    path: '/csr',
 
                 },
             ],
@@ -49,27 +74,16 @@ const Navbar = () => {
             dropdownItems: [
                 {
                     id: 1,
-                    name: 'Project item 1',
-                    path: '/project-item-1',
+                    name: 'On Going',
+                    path: '/on-going',
 
-                },
-                {
-                    id: 2,
-                    name: 'Project item 2',
-                    path: '/project-item-2',
-
-                },
-                {
-                    id: 3,
-                    name: 'Project item 3',
-                    path: '/project-item-3',
                 }
             ],
         },
         {
             id: 4,
             name: 'News&Events',
-            path: '/event',
+            path: '/news-and-events',
             isDropdown: false,
             dropdownItems: [],
         },
@@ -84,14 +98,14 @@ const Navbar = () => {
 
 
     return (
-        <nav className="bg-[#000000b5] fixed  flex items-center justify-between w-full top-0 text-white md:h-[70px] h-[60px] z-[1000]">
+        <nav className="bg-[#000000b5] fixed  flex items-center justify-between w-full top-0 text-white md:h-[70px] h-[60px] z-[1000] md:px-10">
             <div className="relative w-full ">
-                <div className="container flex items-center justify-between py-2 ">
+                <div className="container flex items-center justify-between py-2 mr-[2px!important] md:mr-[211px!important]">
                     <Link to="/" className="text-2xl font-bold ">
-                        <img src={logo} alt="" className="w-[116px] " />
+                        <img src={logo} alt="" className="w-[80px] md:w-[100px] " />
                     </Link>
                     <div className="flex items-center gap-4">
-                        <ul className="md:flex hidden items-center gap-8">
+                        <ul className="md:flex hidden items-center gap-4 lg:gap-8">
 
                             {
                                 links.map(itm => <li key={itm.id} className=" flex items-center">
@@ -101,7 +115,7 @@ const Navbar = () => {
                                             :
                                             <button className="flex items-center  gap-2 h-[60px] relative group">
                                                 {itm?.name} <FaAngleDown className="mt-2" />
-                                                <ul className="absolute top-[60px] left-0 bg-[#000000e4] w-40 text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                <ul className="absolute top-[60px] left-0 bg-[#000000e4] w-40 text-white text-left rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                                     {itm?.dropdownItems.map(item =>
                                                         <li key={item.id}>
                                                             <NavLink to={item?.path} className="block py-2 px-3 hover:bg-gray-800">
@@ -118,9 +132,18 @@ const Navbar = () => {
                             }
 
                         </ul>
-                        <button className="bg-red-600 text-white md:px-8 px-4 py-1 md:text-md text-sm md:py-2 rounded">
-                            Login
-                        </button>
+                        {
+                            user ?                                
+                                <button onClick={logOut} className="bg-red-600 text-white md:px-7 px-4 py-1 md:text-md text-sm md:py-2 rounded">
+                                    Logout
+                                </button>                                
+                                :
+                                <Link to={'/sign-in'}>
+                                    <button className="bg-red-600 text-white md:px-8 px-4 py-1 md:text-md text-sm md:py-2 rounded">
+                                        Login
+                                    </button>
+                                </Link>
+                        }
                         <button onClick={() => setOpen(!open)} className=" p-1 md:hidden block text-2xl">
                             <MdOutlineMenu />
                         </button>
@@ -158,6 +181,7 @@ const Navbar = () => {
                                                 <div className="mx-auto p-3 rounded-b ring-1 ring-gray-300 bg-gray-100">
                                                     {itm?.dropdownItems?.map(item => (
                                                         <NavLink
+                                                            onClick={() => setOpen(!open)}
                                                             key={item?.id}
                                                             to={item?.path}
                                                             className="block py-2 px-3 hover:text-white rounded hover:bg-gray-800"
@@ -169,18 +193,20 @@ const Navbar = () => {
                                             )}
                                         </div>
                                     ) : (
-                                        <NavLink to="/" className="block py-3 px-3 hover:bg-gray-800 hover:text-white duration-150 border-b">
+                                        <NavLink to="/" onClick={() => setOpen(!open)} className="block py-3 px-3 hover:bg-gray-800 hover:text-white duration-150 border-b">
                                             {itm?.name}
                                         </NavLink>
                                     )}
                                 </li>
                             ))}
                         </ul>
-                        <div className="flex justify-center">
-                            <button className="bg-red-600 mt-3  w-[93%] text-white md:px-8 px-4  md:text-md text-sm  py-2 rounded">
-                                Login
-                            </button>
-                        </div>
+                        <Link to={'/sign-in'}>
+                            <div className="flex justify-center">
+                                <button className="bg-red-600 mt-3  w-[93%] text-white md:px-8 px-4  md:text-md text-sm  py-2 rounded">
+                                    Login
+                                </button>
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>

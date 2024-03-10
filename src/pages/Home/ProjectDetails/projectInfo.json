@@ -1,0 +1,338 @@
+[
+    {
+        "_id": "1" ,
+        "title": "Aura",
+        "address": "Plot 03, Road 83, North Gulshan",
+        "img": "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+        "bannerImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+        "type":"Residential",
+        "projectInfoImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+        "projectFeatureImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg", 
+        "contactPageImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg", 
+        "projectInfo": {
+             "landArea": "35 Kathas",
+             "architectName": "Ar. Nahas Ahmed Khalil",
+             "orientationOfLand": "north",
+             "floorsNumber": 10,
+             "frontRoad": "52 feet wide",
+             "numberOfApartment": 10,
+             "unitsSize": "3,350 to 7,100 sft (approx.)",
+             "numberOfBasements": "text",
+             "numberOfCarParking": "text"
+        },
+        "projectFeatures":[
+            "Grand Double-height Entry",
+            "Elegant Reception and Waiting Lounge",
+            "Fully Equipped state-of-the-art Gym",
+            "Elegantly Furnished Party Room",
+            "Professional Landscaping and Lighting",
+            "Children's Play Area",
+            "Double Glazed Window System",
+            "Infinity Heated Swimming Pool at Rooftop"
+        ],
+        "galleryImages":[
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg" 
+        ],
+        "projectVideo":{
+            "videoThumbnail": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "videoUrl": "https://www.youtube.com/embed/HRNSJsirdxg?si=GTgsjkm-sbSUnR3K"
+        },
+        "mapLink": "https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4%B0zmir+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed"
+    },
+    {
+        "_id": "2" ,
+        "title": "Aura",
+        "address": "Plot 03, Road 83, North Gulshan",
+        "img": "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+        "bannerImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+        "type":"Residential",
+        "projectInfoImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+        "projectFeatureImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg", 
+        "contactPageImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg", 
+        "projectInfo": {
+             "landArea": "35 Kathas",
+             "architectName": "Ar. Nahas Ahmed Khalil",
+             "orientationOfLand": "north",
+             "floorsNumber": 10,
+             "frontRoad": "52 feet wide",
+             "numberOfApartment": 10,
+             "unitsSize": "3,350 to 7,100 sft (approx.)",
+             "numberOfBasements": "text",
+             "numberOfCarParking": "text"
+        },
+        "projectFeatures":[
+            "Grand Double-height Entry",
+            "Elegant Reception and Waiting Lounge",
+            "Fully Equipped state-of-the-art Gym",
+            "Elegantly Furnished Party Room",
+            "Professional Landscaping and Lighting",
+            "Children's Play Area",
+            "Double Glazed Window System",
+            "Infinity Heated Swimming Pool at Rooftop"
+        ],
+        "galleryImages":[
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg" 
+        ],
+        "projectVideo":{
+            "videoThumbnail": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "videoUrl": "https://www.youtube.com/embed/HRNSJsirdxg?si=GTgsjkm-sbSUnR3K"
+        },
+        "mapLink": "https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4%B0zmir+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed"
+    },
+    {
+        "_id": "3" ,
+        "title": "Aura",
+        "address": "Plot 03, Road 83, North Gulshan",
+        "img": "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+        "bannerImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+        "type":"Residential",
+        "projectInfoImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+        "projectFeatureImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg", 
+        "contactPageImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg", 
+        "projectInfo": {
+             "landArea": "35 Kathas",
+             "architectName": "Ar. Nahas Ahmed Khalil",
+             "orientationOfLand": "north",
+             "floorsNumber": 10,
+             "frontRoad": "52 feet wide",
+             "numberOfApartment": 10,
+             "unitsSize": "3,350 to 7,100 sft (approx.)",
+             "numberOfBasements": "text",
+             "numberOfCarParking": "text"
+        },
+        "projectFeatures":[
+            "Grand Double-height Entry",
+            "Elegant Reception and Waiting Lounge",
+            "Fully Equipped state-of-the-art Gym",
+            "Elegantly Furnished Party Room",
+            "Professional Landscaping and Lighting",
+            "Children's Play Area",
+            "Double Glazed Window System",
+            "Infinity Heated Swimming Pool at Rooftop"
+        ],
+        "galleryImages":[
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg" 
+        ],
+        "projectVideo":{
+            "videoThumbnail": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "videoUrl": "https://www.youtube.com/embed/HRNSJsirdxg?si=GTgsjkm-sbSUnR3K"
+        },
+        "mapLink": "https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4%B0zmir+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed"
+    },
+    {
+        "_id": "4" ,
+        "title": "Aura",
+        "address": "Plot 03, Road 83, North Gulshan",
+        "img": "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+        "bannerImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+        "type":"Residential",
+        "projectInfoImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+        "projectFeatureImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg", 
+        "contactPageImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg", 
+        "projectInfo": {
+             "landArea": "35 Kathas",
+             "architectName": "Ar. Nahas Ahmed Khalil",
+             "orientationOfLand": "north",
+             "floorsNumber": 10,
+             "frontRoad": "52 feet wide",
+             "numberOfApartment": 10,
+             "unitsSize": "3,350 to 7,100 sft (approx.)",
+             "numberOfBasements": "text",
+             "numberOfCarParking": "text"
+        },
+        "projectFeatures":[
+            "Grand Double-height Entry",
+            "Elegant Reception and Waiting Lounge",
+            "Fully Equipped state-of-the-art Gym",
+            "Elegantly Furnished Party Room",
+            "Professional Landscaping and Lighting",
+            "Children's Play Area",
+            "Double Glazed Window System",
+            "Infinity Heated Swimming Pool at Rooftop"
+        ],
+        "galleryImages":[
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg" 
+        ],
+        "projectVideo":{
+            "videoThumbnail": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "videoUrl": "https://www.youtube.com/embed/HRNSJsirdxg?si=GTgsjkm-sbSUnR3K"
+        },
+        "mapLink": "https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4%B0zmir+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed"
+    },
+    {
+        "_id": "5" ,
+        "title": "Aura",
+        "address": "Plot 03, Road 83, North Gulshan",
+        "img": "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+        "bannerImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+        "type":"Commercial",
+        "projectInfoImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+        "projectFeatureImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg", 
+        "contactPageImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg", 
+        "projectInfo": {
+             "landArea": "35 Kathas",
+             "architectName": "Ar. Nahas Ahmed Khalil",
+             "orientationOfLand": "north",
+             "floorsNumber": 10,
+             "frontRoad": "52 feet wide",
+             "numberOfApartment": 10,
+             "unitsSize": "3,350 to 7,100 sft (approx.)",
+             "numberOfBasements": "text",
+             "numberOfCarParking": "text"
+        },
+        "projectFeatures":[
+            "Grand Double-height Entry",
+            "Elegant Reception and Waiting Lounge",
+            "Fully Equipped state-of-the-art Gym",
+            "Elegantly Furnished Party Room",
+            "Professional Landscaping and Lighting",
+            "Children's Play Area",
+            "Double Glazed Window System",
+            "Infinity Heated Swimming Pool at Rooftop"
+        ],
+        "galleryImages":[
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg" 
+        ],
+        "projectVideo":{
+            "videoThumbnail": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "videoUrl": "https://www.youtube.com/embed/HRNSJsirdxg?si=GTgsjkm-sbSUnR3K"
+        },
+        "mapLink": "https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4%B0zmir+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed"
+    },
+    {
+        "_id": "6",
+        "title": "Aura",
+        "address": "Plot 03, Road 83, North Gulshan",
+        "img": "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+        "bannerImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+        "type":"Commercial",
+        "projectInfoImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+        "projectFeatureImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg", 
+        "contactPageImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg", 
+        "projectInfo": {
+             "landArea": "35 Kathas",
+             "architectName": "Ar. Nahas Ahmed Khalil",
+             "orientationOfLand": "north",
+             "floorsNumber": 10,
+             "frontRoad": "52 feet wide",
+             "numberOfApartment": 10,
+             "unitsSize": "3,350 to 7,100 sft (approx.)",
+             "numberOfBasements": "text",
+             "numberOfCarParking": "text"
+        },
+        "projectFeatures":[
+            "Grand Double-height Entry",
+            "Elegant Reception and Waiting Lounge",
+            "Fully Equipped state-of-the-art Gym",
+            "Elegantly Furnished Party Room",
+            "Professional Landscaping and Lighting",
+            "Children's Play Area",
+            "Double Glazed Window System",
+            "Infinity Heated Swimming Pool at Rooftop"
+        ],
+        "galleryImages":[
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg" 
+        ],
+        "projectVideo":{
+            "videoThumbnail": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "videoUrl": "https://www.youtube.com/embed/HRNSJsirdxg?si=GTgsjkm-sbSUnR3K"
+        },
+        "mapLink": "https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4%B0zmir+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed"
+    },
+    {
+        "_id": "7" ,
+        "title": "Aura",
+        "address": "Plot 03, Road 83, North Gulshan",
+        "img": "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+        "bannerImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+        "type":"Commercial",
+        "projectInfoImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+        "projectFeatureImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg", 
+        "contactPageImg": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg", 
+        "projectInfo": {
+             "landArea": "35 Kathas",
+             "architectName": "Ar. Nahas Ahmed Khalil",
+             "orientationOfLand": "north",
+             "floorsNumber": 10,
+             "frontRoad": "52 feet wide",
+             "numberOfApartment": 10,
+             "unitsSize": "3,350 to 7,100 sft (approx.)",
+             "numberOfBasements": "text",
+             "numberOfCarParking": "text"
+        },
+        "projectFeatures":[
+            "Grand Double-height Entry",
+            "Elegant Reception and Waiting Lounge",
+            "Fully Equipped state-of-the-art Gym",
+            "Elegantly Furnished Party Room",
+            "Professional Landscaping and Lighting",
+            "Children's Play Area",
+            "Double Glazed Window System",
+            "Infinity Heated Swimming Pool at Rooftop"
+        ],
+        "galleryImages":[
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg" 
+        ],
+        "projectVideo":{
+            "videoThumbnail": "https://i.ibb.co/56SNQm7/5bcb89238798f28195420c944d8417bd.jpg",
+            "videoUrl": "https://www.youtube.com/embed/HRNSJsirdxg?si=GTgsjkm-sbSUnR3K"
+        },
+        "mapLink": "https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4%B0zmir+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed"
+    }
+]
