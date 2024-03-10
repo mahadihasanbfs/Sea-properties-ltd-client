@@ -12,7 +12,7 @@ const BannerCart = ({ itm }) => {
                 <h1 className="font-bold text-xl mt-3">{itm?.name}</h1>
                 <p className="text-gray-600">{itm?.address}</p>
                 <Link to={`/project-details/${itm?._id}`}>
-                    <button className="bg-gray-800 text-white px-6 py-2 rounded mt-3">Residential</button>
+                    <button className="bg-gray-800 text-white px-6 py-2 rounded mt-3">{itm?.type}</button>
                 </Link>
             </div>
         </div>

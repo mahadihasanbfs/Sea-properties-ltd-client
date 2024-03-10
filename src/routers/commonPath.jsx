@@ -12,6 +12,7 @@ import Home from "../pages/Home/Home/Home";
 import NewsEvent from "../pages/Home/News_Event/NewsEvent";
 import NewsEventReadMore from "../pages/Home/News_Event/NewsEventReadMore";
 import ProjectDetails from "../pages/Home/ProjectDetails/ProjectDetails";
+import OnGoing from "../pages/Home/Projects/OnGoingPage/OnGoing";
 
 const commonPath = [
     {
@@ -61,6 +62,10 @@ const commonPath = [
     {
         path: 'project-details/:id',
         element: <ProjectDetails /> 
+    },
+    {
+        path: 'on-going',
+        element: <OnGoing />
     },
     {
         path: 'sign-up',
