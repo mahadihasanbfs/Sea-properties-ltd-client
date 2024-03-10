@@ -77,7 +77,7 @@ const DemoItem = () => {
                                 style={{
                                     backgroundImage: `url(${itm.img})`
                                 }}
-                                className="py-4 slider-content md:h-[340px] bg-cover object-cover h-[250px] mx-6">
+                                className="py-4 slider-content md:h-[240px] bg-cover bg-center object-cover h-[250px] mx-6">
                                 <h3>1</h3>
                             </div>
                         </div>)

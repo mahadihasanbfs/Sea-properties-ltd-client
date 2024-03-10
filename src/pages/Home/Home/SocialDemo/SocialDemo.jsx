@@ -9,7 +9,8 @@ const SocialDemo = () => {
         <div className="bg-[#E0F2F1] py-12">
             <div className="container grid md:grid-cols-2 gap-4">
                <YouTubeDemo setOpen={setOpen}/>
-            <div className="overflow-hidden">
+               <YouTubeDemo setOpen={setOpen}/>
+            <div className="overflow-hidden col-span-2">
                 <DemoItem />
             </div>
             </div>

@@ -9,6 +9,7 @@ import OurStory from "../pages/Home/About_us/Our_Story/OurStory";
 import VisionMision from "../pages/Home/About_us/Vision_Mision/VisionMision";
 import Contact from "../pages/Home/Contact/Contact";
 import Home from "../pages/Home/Home/Home";
+import LandRegistrationForm from "../pages/Home/LandRegistrationForm/LandRegistrationForm";
 import NewsEvent from "../pages/Home/News_Event/NewsEvent";
 import NewsEventReadMore from "../pages/Home/News_Event/NewsEventReadMore";
 import ProjectDetails from "../pages/Home/ProjectDetails/ProjectDetails";
@@ -66,6 +67,10 @@ const commonPath = [
     {
         path: 'on-going',
         element: <OnGoing />
+    },
+    {
+        path: 'land-registration-form',
+        element: <LandRegistrationForm />
     },
     {
         path: 'sign-up',

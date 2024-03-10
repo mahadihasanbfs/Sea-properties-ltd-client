@@ -1,9 +1,9 @@
 import Slider from "react-slick/lib/slider";
-import Title from "../../../../components/sharedComponent/Title";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import BannerCart from "./BannerCart";
 import { useEffect, useState } from "react";
+import Actions from "../Location/Actions";
 
 
 
@@ -103,11 +103,7 @@ const Banner = () => {
     return (
         <div>
             <div className="container py-12 mt-4 ">
-                <Title text="Banner Section" position="start" />
-                <p
-                    className="">
-                    Partner with the best Artisan, to transform your land into a milestone of aesthetic marvel and superior value.
-                </p>
+                <Actions />
                 <div className="slider-container mt-12 md:px-6 px-6  w-full">
                     <Slider  {...settings}>
                         {
