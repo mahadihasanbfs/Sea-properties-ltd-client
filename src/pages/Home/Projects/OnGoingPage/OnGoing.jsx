@@ -26,7 +26,7 @@ const OnGoing = () => {
     return (
         <div className="">
             {/* banner */}
-            <div className="max-w-[1366px] mx-auto flex justify-between items-center pt-[200px] pb-[150px] px-[60px] bg-white">
+            <div className="max-w-[1366px] mx-auto flex flex-col md:flex-row justify-between items-center gap-10 md:gap-0 pt-[200px] pb-[100px] xl:pb-[150px] px-[60px] bg-white">
                 <div className="text-[#AAB0B2]">
                     <p className="text-[14px] uppercase">ongoing</p>
                     <h3 className="text-[37px] uppercase">Projects in progress</h3>
@@ -43,7 +43,8 @@ const OnGoing = () => {
                     <button className={`${type === "Residential" && 'text-[#ACA100]'}`} onClick={() => setType('Residential')}>Residential</button>
                     <button className={`${type === "Commercial" && 'text-[#ACA100]'}`} onClick={() => setType('Commercial')}>Commercial</button>
                 </div>
-                <div className="max-w-[1366px] mx-auto px-[50px] grid grid-cols-3 pb-20">
+                <div className="max-w-[1366px] mx-auto px-6 xl:px-[50px] grid gap-10 md:gap-0
+                 md:grid-cols-3 pb-20">
                     {
                         data?.map((item, index) => <OnGoingCard
                             key={index}

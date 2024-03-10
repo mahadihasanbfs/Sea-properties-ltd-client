@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import P from "../../../../components/sharedComponent/P";
 import useContextApi from "../../../../hooks/useContextApi";
+import PrimaryBanner from "../../../../components/common/PrimaryBanner";
 
 
 
@@ -32,14 +33,12 @@ const OurStory = () => {
     return (
         <div>
             {/* our story Section 1  */}
-            <div
-                style={{
-                    backgroundImage: `linear-gradient(to right, rgb(0 0 0 / 20%), rgb(0 0 0 / 20%)), url(${img1})`
-                }}
-                className="h-[768px] bg-cover object-cover uppercase text-white text-center flex flex-col justify-center gap-[20px] font-normal">
-                <p className="leading-4 text-[15px]">About us</p>
-                <h3 className="text-[46px] leading-[55px]">OUR STORY</h3>
-            </div>
+            <PrimaryBanner
+                bannerImg={img1}
+                opacity={20}
+                title="OUR STORY"
+                subTitle="About us"
+            />
 
             {/* our story section 2 */}
             <div className="max-w-[1366px] md:h-[722px] mx-auto px-[20px] xl:px-[80px] xl:grid grid-cols-2 flex flex-col  md:flex-row items-center gap-6 md:gap-0  mt-8 md:mt-[60px]">

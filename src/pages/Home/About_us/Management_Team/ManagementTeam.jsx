@@ -3,6 +3,7 @@ import P from "../../../../components/sharedComponent/P";
 import useContextApi from "../../../../hooks/useContextApi";
 import SeniorManagerCard from "./SeniorManagerCard";
 import SecondaryTitle from "../../../../components/common/SecondaryTitle";
+import PrimaryBanner from "../../../../components/common/PrimaryBanner";
 
 
 const ManagementTeam = () => {
@@ -62,14 +63,12 @@ const ManagementTeam = () => {
     return (
         <div className="pb-28">
             {/* management team Section 1 */}
-            <div
-                style={{
-                    backgroundImage: `linear-gradient(to right, rgb(0 0 0 / 30%), rgb(0 0 0 / 30%)), url(${bannerImg}})`
-                }}
-                className="h-[400px] md:h-[600px] lg:h-[768px] bg-cover bg-center object-cover uppercase text-white text-center flex flex-col justify-center gap-[20px] font-normal">
-                <p className="leading-4 text-[15px]">About us</p>
-                <h3 className="text-[24px] md:text-[46px] md:leading-[55px]">Manegement Team</h3>
-            </div>
+            <PrimaryBanner
+                bannerImg={bannerImg}
+                opacity={30}
+                title="Manegement Team"
+                subTitle="About us"
+            />
 
             <div className="max-w-[1366px] mx-auto mt-[35px] lg:mt-[100px] xl:mt-[120px] px-6 lg:px-[40px] xl:px-[60px]">
                 {/* management team Section 2 */}

@@ -98,14 +98,14 @@ const Navbar = () => {
 
 
     return (
-        <nav className="bg-[#000000b5] fixed  flex items-center justify-between w-full top-0 text-white md:h-[70px] h-[60px] z-[1000]">
+        <nav className="bg-[#000000b5] fixed  flex items-center justify-between w-full top-0 text-white md:h-[70px] h-[60px] z-[1000] md:px-10">
             <div className="relative w-full ">
-                <div className="container flex items-center justify-between py-2 ">
+                <div className="container flex items-center justify-between py-2 mr-[2px!important]">
                     <Link to="/" className="text-2xl font-bold ">
-                        <img src={logo} alt="" className="w-[116px] " />
+                        <img src={logo} alt="" className="w-[80px] md:w-[100px] " />
                     </Link>
                     <div className="flex items-center gap-4">
-                        <ul className="md:flex hidden items-center gap-8">
+                        <ul className="md:flex hidden items-center gap-4 lg:gap-8">
 
                             {
                                 links.map(itm => <li key={itm.id} className=" flex items-center">
@@ -181,6 +181,7 @@ const Navbar = () => {
                                                 <div className="mx-auto p-3 rounded-b ring-1 ring-gray-300 bg-gray-100">
                                                     {itm?.dropdownItems?.map(item => (
                                                         <NavLink
+                                                            onClick={() => setOpen(!open)}
                                                             key={item?.id}
                                                             to={item?.path}
                                                             className="block py-2 px-3 hover:text-white rounded hover:bg-gray-800"
@@ -192,7 +193,7 @@ const Navbar = () => {
                                             )}
                                         </div>
                                     ) : (
-                                        <NavLink to="/" className="block py-3 px-3 hover:bg-gray-800 hover:text-white duration-150 border-b">
+                                        <NavLink to="/" onClick={() => setOpen(!open)} className="block py-3 px-3 hover:bg-gray-800 hover:text-white duration-150 border-b">
                                             {itm?.name}
                                         </NavLink>
                                     )}

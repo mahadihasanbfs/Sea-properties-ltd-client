@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useContextApi from "../../../../hooks/useContextApi";
 import P from "../../../../components/sharedComponent/P";
+import PrimaryBanner from "../../../../components/common/PrimaryBanner";
 
 
 const VisionMision = () => {
@@ -24,14 +25,12 @@ const VisionMision = () => {
     return (
         <div>
             {/* vision mision Section 1  */}
-            <div
-                style={{
-                    backgroundImage: `linear-gradient(to right, rgb(0 0 0 / 20%), rgb(0 0 0 / 20%)), url(https://i.ibb.co/ydY8vSf/bannerimg.png})`
-                }}
-                className="h-[700px] bg-cover object-cover uppercase text-white text-center flex flex-col justify-center gap-[20px] font-normal">
-                <p className="leading-4 text-[15px]">About us</p>
-                <h3 className="text-[46px] leading-[55px]">Vision Mission & Values</h3>
-            </div>
+            <PrimaryBanner
+                bannerImg="https://i.ibb.co/ydY8vSf/bannerimg.png"
+                opacity={20}
+                title="Vision Mission & Values"
+                subTitle="About us"
+            />
 
             {/* vision mision section 2 */}
             <div className="bg-[#B0BEC5]">

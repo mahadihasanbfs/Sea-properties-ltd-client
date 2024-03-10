@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useContextApi from "../../../../hooks/useContextApi";
 import P from "../../../../components/sharedComponent/P";
+import PrimaryBanner from "../../../../components/common/PrimaryBanner";
 
 
 const BoardOfDirector = () => {
@@ -33,14 +34,12 @@ const BoardOfDirector = () => {
     return (
         <div className="pb-[70px]">
             {/* board of director Section 1  */}
-            <div
-                style={{
-                    backgroundImage: `linear-gradient(to right, rgb(0 0 0 / 20%), rgb(0 0 0 / 20%)), url(${img1}})`
-                }}
-                className="h-[400px] md:h-[500px] lg:h-[768px] bg-cover bg-center object-cover uppercase text-white text-center flex flex-col justify-center gap-[20px] font-normal">
-                <p className="leading-4 text-[15px]">About us</p>
-                <h3 className="text-[24px] md:text-[46px] md:leading-[55px]">Board of Directors</h3>
-            </div>
+            <PrimaryBanner
+                bannerImg={img1}
+                opacity={20}
+                title="Board of Directors"
+                subTitle="About us"
+            />
 
             {/* board of director Section 2  */}
             <div className="max-w-[1366px] mx-auto mt-[80px] lg:mt-[100px] xl:mt-[120px] px-[40px] xl:px-[60px] md:grid grid-cols-2 flex flex-col gap-6 md:gap-0">
