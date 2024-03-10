@@ -43,10 +43,10 @@ const OurStory = () => {
             {/* our story section 2 */}
             <div className="max-w-[1366px] md:h-[722px] mx-auto px-[20px] xl:px-[80px] xl:grid grid-cols-2 flex flex-col  md:flex-row items-center gap-6 md:gap-0  mt-8 md:mt-[60px]">
                 <div className="basis-[40%]">
-                    <img className="w-[588px] h-[722px] object-cover" src={`${img2}`} alt="" />
+                    <img className="w-[588px] md:h-[722px] object-cover" src={`${img2}`} alt="" />
                 </div>
                 <div className={`flex flex-col justify-between md:ml-10 xl:ml-20 text-justify basis-[60%] h-full`}>
-                    <h3 className="text-[#AAB0B2] text-3xl lg:text-4xl uppercase">Background</h3>
+                    <h3 className="text-[#AAB0B2] text-3xl lg:text-4xl uppercase mb-6 md:mb-0">Background</h3>
                     {
                         text1.map((txt, index) => <P key={index} text={txt} size={'text-sm lg:text-[16px]'} lineHeight={'lg:leading-[22px]'}></P>)
 
@@ -59,7 +59,7 @@ const OurStory = () => {
                 <div className="max-w-[1366px] mx-auto h-full px-6 xl:px-[80px] py-10 lg:py-[75px] lg:grid grid-cols-2 flex flex-col  md:flex-row items-center gap-6 lg:gap-0">
                     <div className="flex flex-col justify-start gap-8 basis-[40%]">
                         <h3 className="text-white text-3xl lg:text-4xl uppercase">Who We Are</h3>
-                        <img className="w-[404px] h-[456px] object-cover" src={`${img3}`} alt="" />
+                        <img className="w-[404px] md:h-[456px] object-cover" src={`${img3}`} alt="" />
                     </div>
                     <div className="flex flex-col justify-center gap-[47px] text-justify basis-[60%]">
                         {
@@ -72,7 +72,7 @@ const OurStory = () => {
 
             {/* our story section 4 */}
             <div style={{ backgroundImage: `linear-gradient(to right, rgb(0 0 0 / 80%), rgb(0 0 0 / 80%)), url(${img4})` }}
-                className="h-[740px] bg-cover flex items-center">
+                className="md:h-[740px] bg-cover flex items-center py-20 md:py-0">
                 <div className="max-w-[720px] mx-auto text-white flex flex-col gap-6 text-center lg:text-left">
                     <h3 className="uppercase text-3xl lg:text-4xl mb-">Our Approach</h3>
                     <p className="text-sm lg:text-[16px] leading-[22px] px-4 md:px-0">

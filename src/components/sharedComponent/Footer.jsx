@@ -4,8 +4,8 @@ import { FaFacebookF, FaYoutube, FaLinkedinIn, FaTwitter } from "react-icons/fa"
 
 const Footer = () => {
     return (
-        <div className="bg-white  py-12 overflow-hidden">
-            <div className="container px-12 grid md:grid-cols-2 grid-cols-1 gap-2">
+        <div className="bg-white  py-12 overflow-hidden lg:px-6">
+            <div className="container px-12 grid md:grid-cols-2 grid-cols-1 lg:gap-2">
                 <div>
                     <img src={logo} className='w-20' alt="" />
                     <p className="text-gray-800 mt-4 md:w-[260px]">
