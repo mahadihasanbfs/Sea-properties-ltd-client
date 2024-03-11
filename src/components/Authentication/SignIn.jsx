@@ -8,6 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import BrightAlert from 'bright-alert';
 import { AiFillGoogleCircle } from "react-icons/ai";
 import useAuth from '../../hooks/useAuth';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -75,6 +76,11 @@ const SignIn = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>
+                    Sign In | Sea Properties ltd
+                </title>
+            </Helmet>
             <main className="w-full h-fit my-28 flex bg-white flex-col items-center justify-center px-4">
 
                 <div className="max-w-xl rounded-xl p-14  w-full text-gray-600 bg-white shadow-xl  ">

@@ -24,7 +24,7 @@ const Gellary = () => {
     ]
     return (
         <div
-            className='bg-cover object-cover py-24 flex items-center '
+            className='bg-cover object-cover py-24 flex items-center px-4'
             style={{
                 backgroundImage: `linear-gradient(#0000001a, #0000001c), url(${bg})`
             }}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useContextApi from "../../../../hooks/useContextApi";
 import P from "../../../../components/sharedComponent/P";
 import PrimaryBanner from "../../../../components/common/PrimaryBanner";
+import { Helmet } from "react-helmet";
 
 
 const VisionMision = () => {
@@ -24,6 +25,11 @@ const VisionMision = () => {
     }, [])
     return (
         <div>
+            <Helmet>
+                <title>
+                    Vision, Mission and Values | Sea Properties ltd
+                </title>
+            </Helmet>
             {/* vision mision Section 1  */}
             <PrimaryBanner
                 bannerImg="https://i.ibb.co/ydY8vSf/bannerimg.png"

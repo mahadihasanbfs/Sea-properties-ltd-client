@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import PrimaryBanner from "../../../components/common/PrimaryBanner";
 import useContextApi from "../../../hooks/useContextApi";
 import NewsEventCard from "./NewsEventCard";
+import { Helmet } from "react-helmet";
 
 const NewsEvent = () => {
     const [events, setEvents] = useState([]);
@@ -16,6 +17,11 @@ const NewsEvent = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>
+                    News and Events | Sea Properties ltd
+                </title>
+            </Helmet>
             {/* News and events banner section */}
             <PrimaryBanner
                 title={'Stay updated with us'}

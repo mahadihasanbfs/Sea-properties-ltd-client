@@ -194,6 +194,7 @@ a{
 @media (min-width: 1200px) {
    #sld > div > button {
   top: 200px!important;
+  margin-left: 35px;
   }
   .container {
     max-width: 1400px;

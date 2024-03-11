@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useContextApi from "../../../../hooks/useContextApi";
 import P from "../../../../components/sharedComponent/P";
 import PrimaryBanner from "../../../../components/common/PrimaryBanner";
+import { Helmet } from "react-helmet";
 
 
 const BoardOfDirector = () => {
@@ -33,6 +34,11 @@ const BoardOfDirector = () => {
     }, [])
     return (
         <div className="pb-[70px]">
+            <Helmet>
+                <title>
+                    Board of Directors | Sea Properties ltd
+                </title>
+            </Helmet>
             {/* board of director Section 1  */}
             <PrimaryBanner
                 bannerImg={img1}

@@ -8,6 +8,7 @@ import BrightAlert from 'bright-alert'
 import { Link, useNavigate } from 'react-router-dom';
 import { AiFillGoogleCircle } from 'react-icons/ai';
 import useAuth from '../../hooks/useAuth';
+import { Helmet } from 'react-helmet';
 
 const SignUp = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -119,6 +120,11 @@ const SignUp = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>
+                    Sign Up | Sea Properties ltd
+                </title>
+            </Helmet>
             <main className="w-full h-fit my-28 flex bg-white flex-col items-center justify-center px-4">
 
                 <div className="max-w-xl rounded-xl p-14  w-full text-gray-600 bg-white border shadow-xl  ">

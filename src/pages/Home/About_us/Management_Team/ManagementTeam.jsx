@@ -4,6 +4,7 @@ import useContextApi from "../../../../hooks/useContextApi";
 import SeniorManagerCard from "./SeniorManagerCard";
 import SecondaryTitle from "../../../../components/common/SecondaryTitle";
 import PrimaryBanner from "../../../../components/common/PrimaryBanner";
+import { Helmet } from "react-helmet";
 
 
 const ManagementTeam = () => {
@@ -62,6 +63,11 @@ const ManagementTeam = () => {
     }, [])
     return (
         <div className="pb-28">
+            <Helmet>
+                <title>
+                    Management Team | Sea Properties ltd
+                </title>
+            </Helmet>
             {/* management team Section 1 */}
             <PrimaryBanner
                 bannerImg={bannerImg}

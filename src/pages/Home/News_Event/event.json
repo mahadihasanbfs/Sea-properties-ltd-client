@@ -1,6 +1,7 @@
 [
     {
         "_id": "6039a0eb0baf1d1ae83c5b42",
+        "type": "events",
         "eventTitle": "Embracing the festive spirit as we welcome the New Year of 2024",
         "eventThumbmail": "https://i.ibb.co/YZhQTtM/641e15385a930b2586741713a21358f6.jpg",
         "eventInfo": "Embracing the festive spirit as we welcome the New Year of 2024. Cheers to a prosperous and joy-filled year ahead!",
@@ -15,6 +16,7 @@
     },
     {
         "_id": "6039a0eb0baf1d1ae83c5b43",
+        "type": "events",
         "eventTitle": "Embracing the festive spirit as we welcome the New Year of 2024",
         "eventThumbmail": "https://i.ibb.co/YZhQTtM/641e15385a930b2586741713a21358f6.jpg",
         "eventInfo": "Embracing the festive spirit as we welcome the New Year of 2024. Cheers to a prosperous and joy-filled year ahead!",
@@ -26,6 +28,7 @@
     },
     {
         "_id": "6039a0eb0baf1d1ae83c5b44",
+        "type": "events",
         "eventTitle": "Embracing the festive spirit as we welcome the New Year of 2024",
         "eventThumbmail": "https://i.ibb.co/YZhQTtM/641e15385a930b2586741713a21358f6.jpg",
         "eventInfo": "Embracing the festive spirit as we welcome the New Year of 2024. Cheers to a prosperous and joy-filled year ahead!",
@@ -37,6 +40,7 @@
     },
     {
         "_id": "6039a0eb0baf1d1ae83c5b45",
+        "type": "news",
         "eventTitle": "Embracing the festive spirit as we welcome the New Year of 2024",
         "eventThumbmail": "https://i.ibb.co/YZhQTtM/641e15385a930b2586741713a21358f6.jpg",
         "eventInfo": "Embracing the festive spirit as we welcome the New Year of 2024. Cheers to a prosperous and joy-filled year ahead!",
@@ -48,6 +52,7 @@
     },
     {
         "_id": "6039a0eb0baf1d1ae83c5b46",
+        "type": "news",
         "eventTitle": "Embracing the festive spirit as we welcome the New Year of 2024",
         "eventThumbmail": "https://i.ibb.co/YZhQTtM/641e15385a930b2586741713a21358f6.jpg",
         "eventInfo": "Embracing the festive spirit as we welcome the New Year of 2024. Cheers to a prosperous and joy-filled year ahead!",
@@ -59,6 +64,7 @@
     },
     {
         "_id": "6039a0eb0baf1d1ae83c5b47",
+        "type": "news",
         "eventTitle": "Embracing the festive spirit as we welcome the New Year of 2024",
         "eventThumbmail": "https://i.ibb.co/YZhQTtM/641e15385a930b2586741713a21358f6.jpg",
         "eventInfo": "Embracing the festive spirit as we welcome the New Year of 2024. Cheers to a prosperous and joy-filled year ahead!",

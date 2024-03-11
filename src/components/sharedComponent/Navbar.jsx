@@ -76,7 +76,16 @@ const Navbar = () => {
                     id: 1,
                     name: 'On Going',
                     path: '/on-going',
-
+                },
+                {
+                    id: 2,
+                    name: 'Up Coming',
+                    path: '/up-coming',
+                },
+                {
+                    id: 3,
+                    name: 'Completed',
+                    path: '/up-coming',
                 }
             ],
         },
