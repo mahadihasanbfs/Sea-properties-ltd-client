@@ -76,7 +76,16 @@ const Navbar = () => {
                     id: 1,
                     name: 'On Going',
                     path: '/on-going',
-
+                },
+                {
+                    id: 2,
+                    name: 'Up Coming',
+                    path: '/up-coming',
+                },
+                {
+                    id: 3,
+                    name: 'Completed',
+                    path: '/up-coming',
                 }
             ],
         },
@@ -98,57 +107,59 @@ const Navbar = () => {
 
 
     return (
-        <nav className="bg-[#000000b5] fixed  flex items-center justify-between w-full top-0 text-white md:h-[70px] h-[60px] z-[1000] md:px-10">
+        <nav className="bg-[#000000b5] fixed  flex items-center justify-between w-full top-0 text-white md:h-[70px] h-[60px] z-[1000]">
             <div className="relative w-full ">
-                <div className="container flex items-center justify-between py-2 mr-[2px!important] md:mr-[211px!important]">
-                    <Link to="/" className="text-2xl font-bold ">
-                        <img src={logo} alt="" className="w-[80px] md:w-[100px] " />
-                    </Link>
-                    <div className="flex items-center gap-4">
-                        <ul className="md:flex hidden items-center gap-4 lg:gap-8">
+                <div className="max-w-[1366px] mx-auto pl-5 pr-2 md:px-10">
+                    <div className="flex items-center justify-between">
+                        <Link to="/" className="text-2xl font-bold hid">
+                            <img src={logo} alt="" className="w-[80px] md:w-[100px] " />
+                        </Link>
+                        <div className="flex items-center gap-4">
+                            <ul className="md:flex hidden items-center gap-4 lg:gap-8">
 
+                                {
+                                    links.map(itm => <li key={itm.id} className=" flex items-center">
+                                        {
+                                            !itm?.isDropdown ? <NavLink exact to={itm?.path} className={({ isActive }) =>
+                                                isActive ? "border-t-4 border-red-600" : ""} activeClassName="bg-yellow-500"  >{itm?.name}</NavLink>
+                                                :
+                                                <button className="flex items-center  gap-2 h-[60px] relative group">
+                                                    {itm?.name} <FaAngleDown className="mt-2" />
+                                                    <ul className="absolute top-[60px] left-0 bg-[#000000e4] w-40 text-white text-left rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                        {itm?.dropdownItems.map(item =>
+                                                            <li key={item.id}>
+                                                                <NavLink to={item?.path} className="block py-2 px-3 hover:bg-gray-800">
+                                                                    {item?.name}
+                                                                </NavLink>
+                                                            </li>
+                                                        )}
+                                                    </ul>
+                                                </button>
+
+
+                                        }
+                                    </li>)
+                                }
+
+                            </ul>
                             {
-                                links.map(itm => <li key={itm.id} className=" flex items-center">
-                                    {
-                                        !itm?.isDropdown ? <NavLink exact to={itm?.path} className={({ isActive }) =>
-                                            isActive ? "border-t-4 border-red-600" : ""} activeClassName="bg-yellow-500"  >{itm?.name}</NavLink>
-                                            :
-                                            <button className="flex items-center  gap-2 h-[60px] relative group">
-                                                {itm?.name} <FaAngleDown className="mt-2" />
-                                                <ul className="absolute top-[60px] left-0 bg-[#000000e4] w-40 text-white text-left rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                    {itm?.dropdownItems.map(item =>
-                                                        <li key={item.id}>
-                                                            <NavLink to={item?.path} className="block py-2 px-3 hover:bg-gray-800">
-                                                                {item?.name}
-                                                            </NavLink>
-                                                        </li>
-                                                    )}
-                                                </ul>
-                                            </button>
-
-
-                                    }
-                                </li>)
-                            }
-
-                        </ul>
-                        {
-                            user ?                                
-                                <button onClick={logOut} className="bg-red-600 text-white md:px-7 px-4 py-1 md:text-md text-sm md:py-2 rounded">
-                                    Logout
-                                </button>                                
-                                :
-                                <Link to={'/sign-in'}>
-                                    <button className="bg-red-600 text-white md:px-8 px-4 py-1 md:text-md text-sm md:py-2 rounded">
-                                        Login
+                                user ?
+                                    <button onClick={logOut} className="bg-red-600 text-white md:px-7 px-4 py-1 md:text-md text-sm md:py-2 rounded">
+                                        Logout
                                     </button>
-                                </Link>
-                        }
-                        <button onClick={() => setOpen(!open)} className=" p-1 md:hidden block text-2xl">
-                            <MdOutlineMenu />
-                        </button>
+                                    :
+                                    <Link to={'/sign-in'}>
+                                        <button className="bg-red-600 text-white md:px-8 px-4 py-1 md:text-md text-sm md:py-2 rounded">
+                                            Login
+                                        </button>
+                                    </Link>
+                            }
+                            <button onClick={() => setOpen(!open)} className=" p-1 md:hidden block text-2xl">
+                                <MdOutlineMenu />
+                            </button>
+                        </div>
+                        {/* small side nav */}
                     </div>
-                    {/* small side nav */}
                 </div>
 
                 <div className={` md:hidden block`}>

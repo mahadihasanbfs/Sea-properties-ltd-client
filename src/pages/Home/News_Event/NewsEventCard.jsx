@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const NewsEventCard = ({ data }) => {
     console.log(data);
-    const { _id, eventTitle, eventThumbmail, eventInfo } = data;
+    const { _id, type, eventTitle, eventThumbmail, eventInfo } = data;
     const[title, setTitle] = useState(eventTitle);
     const [info, setInfo] = useState(eventInfo);
 
@@ -28,7 +28,7 @@ const NewsEventCard = ({ data }) => {
             
             <div className="p-7 space-y-4 xl:space-y-8">
                 <h2 className="text-[19px] font-medium ">{ title }</h2>
-                <p className="w-[50px] rounded-[10px] bg-[#777777] text-white text-[12px] text-center">Events</p>
+                <p className="w-[50px] rounded-[10px] bg-[#777777] text-white text-[12px] text-center capitalize">{type}</p>
                 <p className="text-[15px] font-roboto">{ info }</p>
             </div>
 

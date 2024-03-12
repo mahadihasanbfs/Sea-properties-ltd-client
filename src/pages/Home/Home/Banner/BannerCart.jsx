@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const BannerCart = ({ itm }) => {
     return (
         <div>
-            <div className="px-2 md:mx-[40px]">
+            <div className="px-2 xl:mx-[40px]">
                 <img src={itm?.img}
                     className="object-cover md:h-[400px] h-[300px] w-full" alt="" />
 

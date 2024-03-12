@@ -3,6 +3,7 @@ import PrimaryBanner from "../../../../components/common/PrimaryBanner";
 import SecondaryTitle from "../../../../components/common/SecondaryTitle";
 import useContextApi from "../../../../hooks/useContextApi";
 import P from "../../../../components/sharedComponent/P";
+import { Helmet } from "react-helmet";
 
 
 
@@ -24,6 +25,11 @@ const CSR = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>
+                    CSR | Sea Properties ltd
+                </title>
+            </Helmet>
             {/* AboutUs_CSR_ banner section */}
             <PrimaryBanner
                 title={'csr'}

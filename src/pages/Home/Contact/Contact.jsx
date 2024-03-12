@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import PrimaryBanner from "../../../components/common/PrimaryBanner";
 import SecondaryTitle from "../../../components/common/SecondaryTitle";
 import useContextApi from "../../../hooks/useContextApi";
@@ -43,6 +44,11 @@ const Contact = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>
+                    Contact | Sea Properties ltd
+                </title>
+            </Helmet>
             {/* Contact banner section */}
             <PrimaryBanner
                 title={'Get in touch'}

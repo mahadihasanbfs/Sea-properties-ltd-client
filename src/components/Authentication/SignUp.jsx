@@ -8,17 +8,25 @@ import BrightAlert from 'bright-alert'
 import { Link, useNavigate } from 'react-router-dom';
 import { AiFillGoogleCircle } from 'react-icons/ai';
 import useAuth from '../../hooks/useAuth';
+import { Helmet } from 'react-helmet';
 
 const SignUp = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const [password, setPassword] = useState('');
-    const { createUser, updateUser, googleSignIn } = useAuth();
+    const { createUser, updateUser, googleSignIn, facebookSignIn } = useAuth();
     const navigate = useNavigate();
 
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(() => {                
+                navigate('/')
+            })
+    }
+
+    const handleFacebookSignIn = () => {
+        facebookSignIn()
+            .then(() => {
                 navigate('/')
             })
     }
@@ -112,6 +120,11 @@ const SignUp = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>
+                    Sign Up | Sea Properties ltd
+                </title>
+            </Helmet>
             <main className="w-full h-fit my-28 flex bg-white flex-col items-center justify-center px-4">
 
                 <div className="max-w-xl rounded-xl p-14  w-full text-gray-600 bg-white border shadow-xl  ">
@@ -196,12 +209,12 @@ const SignUp = () => {
                     </form>
 
                     <div className='flex  justify-center gap-4 mt-4'>
-                        <div className='w-[220px] h-[50px] rounded-lg text-white bg-[#0F7AC7] flex justify-center items-center gap-3 hover:cursor-pointer'>
+                        <div onClick={handleFacebookSignIn} className='w-[220px] h-[50px] rounded-lg text-white bg-[#A20E27] flex justify-center items-center gap-3 hover:cursor-pointer'>
                             <img src="https://i.ibb.co/kHFtPDR/Vector.png" alt="" />
                             <p className='text-lg'>Facebook</p>
                         </div>
 
-                        <div onClick={handleGoogleSignIn} className='w-[220px] h-[50px] rounded-lg text-white bg-[#0F7AC7] flex justify-center items-center gap-3 hover:cursor-pointer'>
+                        <div onClick={handleGoogleSignIn} className='w-[220px] h-[50px] rounded-lg text-white bg-[#A20E27] flex justify-center items-center gap-3 hover:cursor-pointer'>
                             <AiFillGoogleCircle className='w-6 h-6' />
                             <p className='text-lg'>Google</p>
                         </div>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import P from "../../../../components/sharedComponent/P";
 import useContextApi from "../../../../hooks/useContextApi";
 import PrimaryBanner from "../../../../components/common/PrimaryBanner";
+import { Helmet } from "react-helmet";
 
 
 
@@ -32,6 +33,11 @@ const OurStory = () => {
     }, [])
     return (
         <div>
+            <Helmet>
+                <title>
+                    Our Story | Sea Properties ltd
+                </title>
+            </Helmet>
             {/* our story Section 1  */}
             <PrimaryBanner
                 bannerImg={img1}

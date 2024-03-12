@@ -24,7 +24,7 @@ const Gellary = () => {
     ]
     return (
         <div
-            className='bg-cover object-cover py-24 flex items-center '
+            className='bg-cover object-cover py-24 flex items-center px-4'
             style={{
                 backgroundImage: `linear-gradient(#0000001a, #0000001c), url(${bg})`
             }}
@@ -41,7 +41,7 @@ const Gellary = () => {
                         Explore
                     </button>
                 </div>
-                <div className="p-2 col-span-2 grid md:grid-cols-3 gap-6">
+                <div className="p-2 col-span-2 grid md:grid-cols-3 gap-3 lg:gap-6">
                     {
                         data?.map(itm => <GellaryItem key={itm?.name} itm={itm} />)
                     }

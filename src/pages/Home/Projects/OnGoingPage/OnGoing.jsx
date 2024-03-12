@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import OnGoingCard from "./OnGoingCard";
+import { Helmet } from "react-helmet";
 
 const OnGoing = () => {
     const [type, setType] = useState('all');
@@ -25,6 +26,11 @@ const OnGoing = () => {
 
     return (
         <div className="">
+            <Helmet>
+                <title>
+                    On Going Project | Sea Properties ltd
+                </title>
+            </Helmet>
             {/* banner */}
             <div className="max-w-[1366px] mx-auto flex flex-col md:flex-row justify-between items-center gap-10 md:gap-0 pt-[200px] pb-[100px] xl:pb-[150px] px-[60px] bg-white">
                 <div className="text-[#AAB0B2]">

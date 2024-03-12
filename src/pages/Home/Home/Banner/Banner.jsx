@@ -21,15 +21,15 @@ const Banner = () => {
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 3,
-        initialSlide: 0,
+        initialSlide: 1,
         responsive: [
             {
                 breakpoint: 1024,
                 settings: {
                     slidesToShow: 3,
                     slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
+                    initialSlide: 1,
+                    
                 }
             },
             {
@@ -37,14 +37,17 @@ const Banner = () => {
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
-                    initialSlide: 2
+                    initialSlide: 1,
+                    
                 }
             },
             {
                 breakpoint: 480,
                 settings: {
                     slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToScroll: 1,
+                    initialSlide: 1,
+                    
                 }
             }
         ]
@@ -104,8 +107,8 @@ const Banner = () => {
         <div>
             <div className="container py-12 mt-4 ">
                 <Actions />
-                <div className="slider-container mt-12 md:px-6 px-6  w-full">
-                    <Slider  {...settings}>
+                <div className="slider-container mt-12 px-6 mr-5 w-[98%] mx-auto">
+                    <Slider  {...settings} className="pl-4">
                         {
                             data?.map(itm => <BannerCart key={itm?._id} itm={itm} />)
                         }

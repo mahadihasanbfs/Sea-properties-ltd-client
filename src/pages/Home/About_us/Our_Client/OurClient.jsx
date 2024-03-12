@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import PrimaryBanner from "../../../../components/common/PrimaryBanner";
 import SecondaryTitle from "../../../../components/common/SecondaryTitle";
 import useContextApi from "../../../../hooks/useContextApi";
@@ -7,6 +8,11 @@ const OurClient = () => {
     const { bannerImg, clientComapnyLogo } = AboutUs_OurClientImg;
     return (
         <div>
+            <Helmet>
+                <title>
+                    Our Clients | Sea Properties ltd
+                </title>
+            </Helmet>
             {/* AboutUs_Our_Client banner section */}
             <PrimaryBanner
                 title={'Our Client'}

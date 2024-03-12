@@ -3,7 +3,7 @@ import { IoSearchOutline } from "react-icons/io5";
 
 const Actions = () => {
     return (
-        <div className="flex md:flex-row flex-col md:justify-between justify-center items-center">
+        <div className="flex md:flex-row flex-col md:justify-between justify-center items-center lg:px-6">
             <Title text="OUR PROJECTS " />
 
             <div className="flex md:flex-row flex-col md:justify-between justify-center items-center gap-3">

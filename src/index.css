@@ -58,7 +58,8 @@ a{
 }
 @media (min-width: 320px) {
  #sld > div > button {
-  top: 350px!important;
+  top: 280px!important;
+  margin-left: 35px;
   }
   .container {
     max-width: 95%;
@@ -91,7 +92,8 @@ a{
 }
 @media (min-width: 576px) {
   #sld > div > button {
-  top: 350px!important;
+  top: 320px!important;
+  margin-left: 35px;
   }
   .container {
     max-width: 540px;
@@ -125,7 +127,8 @@ a{
 
 @media (min-width: 768px) {
  #sld > div > button {
-  top: 200px!important;
+  top: 360px!important;
+  margin-left: 35px;
   }
   .container {
     max-width: 720px;
@@ -159,7 +162,8 @@ a{
 
 @media (min-width: 992px) {
   #sld > div > button {
-  top: 200px!important;
+  top: 220px!important;
+  margin-left: 35px;
   }
   .container {
     max-width: 960px;
@@ -194,6 +198,7 @@ a{
 @media (min-width: 1200px) {
    #sld > div > button {
   top: 200px!important;
+  margin-left: 35px;
   }
   .container {
     max-width: 1400px;

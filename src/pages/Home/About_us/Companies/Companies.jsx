@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import PrimaryBanner from "../../../../components/common/PrimaryBanner";
 import useContextApi from "../../../../hooks/useContextApi";
 import CompanyInfo from "./CompanyInfo";
@@ -39,6 +40,11 @@ const Companies = () => {
 
     return (
         <div className="bg-[#E0F2F1]">
+            <Helmet>
+                <title>
+                    Companies | Sea Properties ltd
+                </title>
+            </Helmet>
             {/* AboutUs_Companies banner section */}
             <PrimaryBanner
                 title={'Companies'}
