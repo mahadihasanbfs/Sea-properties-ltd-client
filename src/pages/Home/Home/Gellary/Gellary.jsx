@@ -41,7 +41,7 @@ const Gellary = () => {
                         Explore
                     </button>
                 </div>
-                <div className="p-2 col-span-2 grid md:grid-cols-3 gap-6">
+                <div className="p-2 col-span-2 grid md:grid-cols-3 gap-3 lg:gap-6">
                     {
                         data?.map(itm => <GellaryItem key={itm?.name} itm={itm} />)
                     }
