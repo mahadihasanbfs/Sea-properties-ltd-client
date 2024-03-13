@@ -125,7 +125,7 @@ const Navbar = () => {
                                                 :
                                                 <button className="flex items-center  gap-2 h-[60px] relative group">
                                                     {itm?.name} <FaAngleDown className="mt-2" />
-                                                    <ul className="absolute top-[60px] left-0 bg-[#000000e4] w-40 text-white text-left rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                    <ul className="absolute top-[60px] left-0 bg-[#000000e4] w-40 text-white text-left rounded-md shadow-lg fade-in hidden group-hover:block transition-opacity duration-300">
                                                         {itm?.dropdownItems.map(item =>
                                                             <li key={item.id}>
                                                                 <NavLink to={item?.path} className="block py-2 px-3 hover:bg-gray-800">
@@ -163,7 +163,7 @@ const Navbar = () => {
                 </div>
 
                 <div className={` md:hidden block`}>
-                    <div
+                    <div 
                         style={{
                             zIndex: '6000'
                         }}

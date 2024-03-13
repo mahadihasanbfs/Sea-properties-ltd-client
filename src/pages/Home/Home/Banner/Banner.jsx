@@ -1,4 +1,4 @@
-import Slider from "react-slick/lib/slider";
+import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import BannerCart from "./BannerCart";
@@ -33,7 +33,7 @@ const Banner = () => {
                 }
             },
             {
-                breakpoint: 600,
+                breakpoint: 768,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
