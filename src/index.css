@@ -300,6 +300,10 @@ a{
   animation: fadeIn 0.5s ease-in-out;
 }
 
+.fade-in-secondary{
+  animation: fadeIn 0.15s ease-in-out;
+}
+
 
 @keyframes fadeOut {
   from {
@@ -313,4 +317,8 @@ a{
 
 .fade-out {
   animation: fadeOut 0.5s ease-in-out;
+}
+
+.fade-out-secondary {
+  animation: fadeOut 0.15s ease-in-out;
 }
