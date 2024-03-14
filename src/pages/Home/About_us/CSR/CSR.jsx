@@ -4,6 +4,7 @@ import SecondaryTitle from "../../../../components/common/SecondaryTitle";
 import useContextApi from "../../../../hooks/useContextApi";
 import P from "../../../../components/sharedComponent/P";
 import { Helmet } from "react-helmet";
+import Slider from "../../../../components/common/Slider";
 
 
 
@@ -22,6 +23,18 @@ const CSR = () => {
         const chunk = handleSpilitTextIntoChunks(text, 600);
         setCsrInfo(chunk);
     }, [])
+
+    // this section is used for slider functionality
+    const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+
+    const openSlider = (index) => {
+        setSelectedImageIndex(index);
+    };
+
+    const closeSlider = () => {
+        setSelectedImageIndex(null);
+    };
+
 
     return (
         <div>
@@ -60,10 +73,22 @@ const CSR = () => {
                 {/* AboutUs_CSR_ gallery section  */}
                 <div className="max-w-[1366px] mx-auto md:px-5 xl:px-20 grid grid-cols-2 md:grid-cols-3">
                     {
-                        csrImages.map((img, index) => <img key={index} src={img} className="w-full h-[215px] lg:w-[403px] lg:h-[403px] object-cover" />)
+                        csrImages.map((img, index) => <img
+                            key={index}
+                            src={img}
+                            onClick={() => openSlider(index)}
+                            className="w-full h-[215px] lg:w-[403px] lg:h-[403px] object-cover hover:cursor-pointer hover:contrast-125 transition-all duration-500" />)
                     }
                 </div>
             </div>
+            {selectedImageIndex !== null && (
+                <Slider
+                    images={csrImages}
+                    selectedIndex={selectedImageIndex}
+                    setSelectedImageIndex={setSelectedImageIndex}
+                    onClose={closeSlider}
+                />
+            )}
         </div>
     );
 };
