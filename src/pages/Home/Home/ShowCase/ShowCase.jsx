@@ -30,9 +30,9 @@ const ShowCase = () => {
     return (
         <div
             style={{
-                backgroundImage: `linear-gradient(#00000078, #0000008f),url("https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load")`
+                backgroundImage: `linear-gradient(#00000078, #0000008f),url("https://i.ibb.co/V3k6Vzf/d101dfd42cb27e0797efbf976a31dd53.jpg")`
             }}
-            className="md:h-[600px] h-auto py-8 bg-cover object-cover flex items-center">
+            className="md:h-[600px] h-auto py-8 bg-cover bg-center bg-fixed object-cover flex items-center">
             <div className="container grid md:grid-cols-3 grid-cols-1  gap-6 md:gap-20">
                 {
                     data?.map(itm => <ShowCaseItem key={itm?.id} itm={itm} />)

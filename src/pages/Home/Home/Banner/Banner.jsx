@@ -105,7 +105,7 @@ const Banner = () => {
     // ]
     return (
         <div>
-            <div className="container py-12 mt-4 ">
+            <div className="max-w-[1366px] mx-auto py-12 mt-4 px-6 xl:px-4">
                 <Actions />
                 <div className="slider-container mt-12 px-6 mr-5 w-[98%] mx-auto">
                     <Slider  {...settings} className="pl-4">

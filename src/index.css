@@ -322,3 +322,7 @@ a{
 .fade-out-secondary {
   animation: fadeOut 0.15s ease-in-out;
 }
+
+.fade-out-fast {
+  animation: fadeOut 0.15s ease-in-out;
+}

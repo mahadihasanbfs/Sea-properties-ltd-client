@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import bg from '../../../../assets/gellaryBg.png';
 import GellaryItem from './GellaryItem';
 const Gellary = () => {
@@ -37,23 +37,47 @@ const Gellary = () => {
     ]
 
     const [showModal, setShowModal] = useState(null);
-    const [item, setItem] = useState(null);
     const [close, setClose] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
     const handleModalClose = () => {
         setClose(true)
         setTimeout(() => {
+            setIsHovered(false)
             setShowModal(null)
             setClose(false)
         }, 120);
     }
+
+    const [divHeight, setDivHeight] = useState(0);
+    const [divWidth, setDivWidth] = useState(0);
+
+    const updateDivHeight = () => {
+        const cardDiv = document.getElementById('cardDiv')
+        if (cardDiv) {
+            const height = cardDiv.clientHeight;
+            const width = cardDiv.clientWidth;
+            setDivHeight(height);
+            setDivWidth(width);
+        }
+    };
+
+    useEffect(() => {
+        updateDivHeight();
+        window.addEventListener('resize', updateDivHeight);
+
+        return () => {
+            window.removeEventListener('resize', updateDivHeight);
+        };
+    }, []);
+
     return (
         <div
-            className='bg-cover object-cover py-24 flex items-center px-4 bg-fixed'
+            className='bg-cover object-cover py-24 flex items-center px-4 md:px-6 lg:px-10 bg-fixed'
             style={{
                 backgroundImage: `linear-gradient(#0000001a, #0000001c), url(${bg})`
             }}
         >
-            <div className="container grid md:grid-cols-2 grid-cols-1 text-white gap-12">
+            <div className="max-w-[1366px] mx-auto grid md:grid-cols-2 grid-cols-1 text-white gap-12">
                 <div className=' h-full flex flex-col justify-center items-start'>
                     <h1 className="text-[40px] font-bold">
                         Project Gallery
@@ -65,35 +89,20 @@ const Gellary = () => {
                         Explore
                     </button>
                 </div>
-                <div className="relative grid md:grid-cols-3 gap-3 lg:gap-6">
+                <div id='cardDiv' className="relative grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {
                         data?.map(itm => <GellaryItem
                             key={itm?.id}
                             itm={itm}
-                            setShowModal={setShowModal}
                             showModal={showModal}
-                            setItem={setItem}
+                            setShowModal={setShowModal}
                             close={close}
+                            handleModalClose={handleModalClose}
+                            divHeight={divHeight}
+                            divWidth={divWidth}
+                            isHovered={isHovered}
+                            setIsHovered={setIsHovered}
                         />)
-                    }
-
-                    {/* card modal */}
-                    {
-                        showModal === item?.id &&
-                        <div key={item?.id} className={`absolute top-0 bg-white w-[500px] h-full z-[1000] fade-in-secondary ${close && 'fade-out-secondary'} py-10 px-[30px]
-                        ${(item?.id === 1 || item?.id === 4) && 'right-[103%]'} 
-                        ${(item?.id === 2 || item?.id === 5) && 'right-[69%]'} 
-                        ${(item?.id === 3 || item?.id === 6) && 'right-[34%]'}
-                    `}>
-                            <h3 className='text-[18px] text-[#231f204d] font-bold capitalize'>{item?.name}</h3>
-                            <p className='text-black mt-5'>{item?.info}</p>
-
-                            <div onClick={handleModalClose} className='text-gray-200 absolute top-4 right-4'>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-                                </svg>
-                            </div>
-                        </div>
                     }
                 </div>
             </div>
