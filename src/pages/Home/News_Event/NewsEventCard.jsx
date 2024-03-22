@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const NewsEventCard = ({ data }) => {
-    console.log(data);
     const { _id, type, eventTitle, eventThumbmail, eventInfo } = data;
     const[title, setTitle] = useState(eventTitle);
     const [info, setInfo] = useState(eventInfo);

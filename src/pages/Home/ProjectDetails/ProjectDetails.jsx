@@ -4,11 +4,13 @@ import SecondaryTitle from "../../../components/common/SecondaryTitle";
 import { IoLogoYoutube } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
 import { useParams } from "react-router-dom";
+import Slider from "../../../components/common/Slider";
 
 const ProjectDetails = () => {
     const [visible, setVisible] = useState(false);
     const [projectData, setProjectData] = useState({});
     const { id } = useParams();
+
     useEffect(() => {
         async function fetchData() {
             try {
@@ -22,6 +24,17 @@ const ProjectDetails = () => {
         }
         fetchData();
     }, [])
+
+    // this section is used for slider functionality
+    const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+
+    const openSlider = (index) => {
+        setSelectedImageIndex(index);
+    };
+
+    const closeSlider = () => {
+        setSelectedImageIndex(null);
+    };
 
     const { _id, title, address, bannerImg, projectInfoImg, projectFeatureImg, contactPageImg, projectInfo, projectFeatures, galleryImages, projectVideo, mapLink } = projectData;
 
@@ -109,10 +122,24 @@ const ProjectDetails = () => {
                 />
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-8 xl:gap-[60px] mt-7">
                     {
-                        galleryImages?.map((image, index) => <img key={index} src={image} className="md:w-[300px] md:h-[310px] lg:w-[365px] lg:h-[375px] object-cover" />)
+                        galleryImages?.map((image, index) => <img
+                            key={index}
+                            src={image}
+                            onClick={() => openSlider(index)}
+                            className="md:w-[300px] md:h-[310px] lg:w-[365px] lg:h-[375px] object-cover hover:cursor-pointer hover:contrast-125 transition-all duration-500" />)
                     }
                 </div>
             </div>
+
+            {/* gallery slider view*/}
+            {selectedImageIndex !== null && (
+                <Slider
+                    images={galleryImages}
+                    selectedIndex={selectedImageIndex}
+                    setSelectedImageIndex={setSelectedImageIndex}
+                    onClose={closeSlider}
+                />
+            )}
 
             {/* video section */}
             <div className="bg-black flex justify-center items-center py-12 md:py-20 lg:py-[100px]">

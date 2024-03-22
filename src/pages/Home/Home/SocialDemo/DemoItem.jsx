@@ -15,7 +15,7 @@ const DemoItem = () => {
 
             post: "Residential",
             message: "   Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita architecto itaque minima cumque temporibus totam et! Corporis suscipit, natus blanditiis aliquid provident, impedit rerum autem laudantium obcaecati, mollitia saepe ratione.",
-            img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+            img: "https://i.ibb.co/Hdd3VJc/5a62306062088bf15bc1d2b903c35a99.jpg"
         },
         {
             id: 1,
@@ -23,7 +23,7 @@ const DemoItem = () => {
 
             post: "Residential",
             message: "   Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita architecto itaque minima cumque temporibus totam et! Corporis suscipit, natus blanditiis aliquid provident, impedit rerum autem laudantium obcaecati, mollitia saepe ratione.",
-            img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+            img: "https://i.ibb.co/Hdd3VJc/5a62306062088bf15bc1d2b903c35a99.jpg"
         },
         {
             id: 2,
@@ -31,7 +31,7 @@ const DemoItem = () => {
 
             post: "Residential",
             message: "   Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita architecto itaque minima cumque temporibus totam et! Corporis suscipit, natus blanditiis aliquid provident, impedit rerum autem laudantium obcaecati, mollitia saepe ratione.",
-            img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+            img: "https://i.ibb.co/Hdd3VJc/5a62306062088bf15bc1d2b903c35a99.jpg"
         },
         {
             id: 3,
@@ -39,7 +39,7 @@ const DemoItem = () => {
 
             post: "Residential",
             message: "   Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita architecto itaque minima cumque temporibus totam et! Corporis suscipit, natus blanditiis aliquid provident, impedit rerum autem laudantium obcaecati, mollitia saepe ratione.",
-            img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+            img: "https://i.ibb.co/Hdd3VJc/5a62306062088bf15bc1d2b903c35a99.jpg"
         },
         {
             id: 4,
@@ -47,7 +47,7 @@ const DemoItem = () => {
 
             post: "Residential",
             message: "   Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita architecto itaque minima cumque temporibus totam et! Corporis suscipit, natus blanditiis aliquid provident, impedit rerum autem laudantium obcaecati, mollitia saepe ratione.",
-            img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+            img: "https://i.ibb.co/Hdd3VJc/5a62306062088bf15bc1d2b903c35a99.jpg"
         },
         {
             id: 5,
@@ -55,7 +55,7 @@ const DemoItem = () => {
 
             post: "Residential",
             message: "   Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita architecto itaque minima cumque temporibus totam et! Corporis suscipit, natus blanditiis aliquid provident, impedit rerum autem laudantium obcaecati, mollitia saepe ratione.",
-            img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+            img: "https://i.ibb.co/Hdd3VJc/5a62306062088bf15bc1d2b903c35a99.jpg"
         },
         {
             id: 6,
@@ -63,7 +63,7 @@ const DemoItem = () => {
 
             post: "Residential",
             message: "   Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita architecto itaque minima cumque temporibus totam et! Corporis suscipit, natus blanditiis aliquid provident, impedit rerum autem laudantium obcaecati, mollitia saepe ratione.",
-            img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+            img: "https://i.ibb.co/Hdd3VJc/5a62306062088bf15bc1d2b903c35a99.jpg"
         },
     ]
     return (

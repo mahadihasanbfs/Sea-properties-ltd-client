@@ -8,7 +8,7 @@ const TestimonialItem = ({ itm }) => {
                     {itm?.message}
                 </p>
                 <div className="flex items-center gap-3 mt-2">
-                    <img src={itm?.img} alt="n" className="w-12 h-12 rounded-full" />
+                    <img src={itm?.img} alt="n" className="w-12 h-12 rounded-full object-cover" />
 
                     <div>
                         <h4 className="font-semibold">

@@ -12,19 +12,20 @@ const Actions = () => {
                     <IoSearchOutline />
                 </div>
 
-                <div className="flex items-center gap-2 border px-3 py-1 rounded-full border-gray-500md:w-auto w-full ">
+                <div className="flex items-center gap-2 border px-3 py-1 rounded-full border-gray-500 md:w-auto w-full ">
                     <select className="outline-none w-full pb-2" name="projectStatus">
-                        <option selected>Project Status</option>
-                        <option value="project 1">project 1</option>
-                        <option value="project 2">project 2</option>
+                        <option value=''>Project Status</option>
+                        <option value="project 1">Ongoing</option>
+                        <option value="project 2">Upcoming</option>
+                        <option value="project 2">Completed</option>
                     </select>
                 </div>
 
-                <div className="flex items-center gap-2 border px-3 py-1 rounded-full border-gray-500md:w-auto w-full ">
+                <div className="flex items-center gap-2 border px-3 py-1 rounded-full border-gray-500 md:w-auto w-full ">
                     <select className="outline-none w-full pb-2" name="projectStatus">
-                        <option selected>Project Status</option>
-                        <option value="project 1">project 1</option>
-                        <option value="project 2">project 2</option>
+                        <option value=''>Project Type</option>
+                        <option value="project 1">Residential</option>
+                        <option value="project 2">Commercial</option>
                     </select>
                 </div>
 
