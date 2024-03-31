@@ -9,7 +9,7 @@ const MainLayout = () => {
         <div>
             <Navbar />
             <Outlet />
-            <ShowCase />
+            {/* <ShowCase /> */}
             <Footer />
         </div>
     );

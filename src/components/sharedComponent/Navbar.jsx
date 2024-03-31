@@ -41,29 +41,29 @@ const Navbar = () => {
                     path: '/board-of-directors',
 
                 },
-                {
-                    id: 4,
-                    name: 'Management Team',
-                    path: 'management-team'
-                },
-                {
-                    id: 5,
-                    name: 'Companies',
-                    path: '/companies',
+                // {
+                //     id: 4,
+                //     name: 'Management Team',
+                //     path: 'management-team'
+                // },
+                // {
+                //     id: 5,
+                //     name: 'Companies',
+                //     path: '/companies',
 
-                },
-                {
-                    id: 6,
-                    name: 'Our clients',
-                    path: '/our-clients',
+                // },
+                // {
+                //     id: 6,
+                //     name: 'Our clients',
+                //     path: '/our-clients',
 
-                },
-                {
-                    id: 7,
-                    name: 'CSR',
-                    path: '/csr',
+                // },
+                // {
+                //     id: 7,
+                //     name: 'CSR',
+                //     path: '/csr',
 
-                },
+                // },
             ],
         },
         {
@@ -107,7 +107,7 @@ const Navbar = () => {
 
 
     return (
-        <nav className="bg-[#000000b5] fixed  flex items-center justify-between w-full top-0 text-white md:h-[70px] h-[60px] z-[1000]">
+        <nav className="bg-[#000000b5] text-[white] fixed  flex items-center justify-between w-full top-0 text-white md:h-[70px] h-[60px] z-[1000]">
             <div className="relative w-full ">
                 <div className="max-w-[1366px] mx-auto pl-5 pr-2 md:px-10">
                     <div className="flex items-center justify-between">
@@ -163,7 +163,7 @@ const Navbar = () => {
                 </div>
 
                 <div className={` md:hidden block`}>
-                    <div 
+                    <div
                         style={{
                             zIndex: '6000'
                         }}
