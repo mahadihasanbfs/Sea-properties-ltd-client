@@ -86,13 +86,13 @@ const ManageBlog = () => {
     };
     return (
         <div className="pt-3">
-          <div className="flex item-center pb-3 justify-between">
-                <AdminTitle size={'20px'} title='Manage Project' />
+            <div className="flex item-center pb-3 justify-between">
+                <AdminTitle size={'20px'} title='Manage Blog' />
 
                 <Link to={'/admin/add-blog'}>
                     <div className="dashboard_form_btn">+Add Blog</div>
                 </Link>
-          </div>
+            </div>
 
             <div className="mt-2 shadow-sm border rounded overflow-x-auto">
                 <table className="w-full table-auto text-sm text-left">
@@ -101,7 +101,7 @@ const ManageBlog = () => {
                             <th className="py-3 px-6">Image</th>
                             <th className="py-3 px-6"> Name</th>
                             <th className="py-3 px-6">Date</th>
-                             <th className="py-3 px-6">Action</th>
+                            <th className="py-3 px-6">Action</th>
                         </tr>
                     </thead>
                     <tbody className="text-gray-600 divide-y">
