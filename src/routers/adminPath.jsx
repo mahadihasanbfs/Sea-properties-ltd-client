@@ -2,6 +2,7 @@ import Dashboard from "../Admin/Dashboard";
 import AddBlog from "../Admin/pages/AdminBlog/AddBlog";
 import ManageBlog from "../Admin/pages/AdminBlog/BlogManagement";
 import AddProject from "../Admin/pages/AdminProject/AddProject";
+import EditProject from "../Admin/pages/AdminProject/EditProject";
 import ManageProject from "../Admin/pages/AdminProject/ManageProject";
 import UserHistory from "../Admin/pages/UserHistory/UserHistory";
 
@@ -20,6 +21,10 @@ const adminPath = [
     {
         path : '/admin/add-project',
         element: <AddProject/>
+    }, 
+      {
+        path : '/admin/edit-project/:id',
+        element: <EditProject/>
     },  {
         path : '/admin/add-blog',
         element: <AddBlog/>

@@ -3,10 +3,15 @@ import AdminTitle from "../../../hooks/useAdminTitle";
 import { MdDeleteOutline } from "react-icons/md";
 import { TbEdit } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import AlertModal from "../../../hooks/useAlertModal";
+import EditProject from "./EditProject";
+import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
 
 
 const ManageProject = () => {
     const [openModal, setOpenModal] = useState(false);
+    const [on, setOn] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(10); // Number of items per page
 
@@ -65,25 +70,37 @@ const ManageProject = () => {
     const paginationNumbers = Array.from({ length: Math.ceil(projectData.length / itemsPerPage) }, (_, i) => i + 1);
 
 
-    // edit
-    const handleSave = (e) => {
-        e.preventDefault();
-        const img = e.target.img.value;
-        const totalAmount = e.target.totalAmount.value;
-        const date = new Date().getTime();
-        const due = e.target.due.value;
-        const remingBalance = e.target.remingBalance.value;
+    //get project
+    const { data: projects = [], refetch: reload } = useQuery({
+        queryKey: ["all_projects_location"],
+        queryFn: async () => {
+            const res = await fetch("https://sea-properties-server.vercel.app/api/v1");
+            const data = await res.json();
+            return data.data;
+        },
+    });
 
-        const editedItem = {
-            img,
-            totalAmount,
-            date,
-            due,
-            remingBalance
-        };
+    // delete project
+    const deleteProject = (id) => {
+        fetch(`https://sea-properties-server.vercel.app/api/v1/project/delete?project_id=${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
 
-        console.log(editedItem);
-    };
+                Swal.fire('Delete Project successful', '', 'success')
+                reload()
+
+            })
+            .catch((error) => {
+                console.error('Error deleting project:', error);
+            });
+    }
+
+
     return (
         <div className="pt-3">
             <div className="flex items-center justify-between">
@@ -117,86 +134,18 @@ const ManageProject = () => {
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <ul className="flex items-center gap-2">
                                         <li>
-                                            <button >
+                                            <button onClick={() => deleteProject(1)} >
                                                 <MdDeleteOutline className="text-2xl text-[red]" />
                                             </button>
                                         </li>
                                         <li>
-                                            <button onClick={() => setOpenModal(item)}>
+                                            <Link to={`/admin/edit-project/123`}>
                                                 <TbEdit className="text-2xl text-[green]" />
-                                            </button>
+                                            </Link>
                                         </li>
                                     </ul>
                                 </td>
-                                {/* modal */}
-                                <div>
-                                    <div onClick={() => setOpenModal(false)} className={`fixed z-[100] flex items-center justify-center ${openModal?.id == item.id ? 'visible opacity-100' : 'invisible opacity-0'} inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}>
-
-                                        <div onClick={(e_) => e_.stopPropagation()} className={`text- absolute md:w-[500px] rounded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${openModal?.id == item.id ? 'scale-1 opacity-1 duration-300' : 'scale-0 opacity-0 duration-150'} z-[100]`}>
-                                            <div className="">
-                                                <h2 className="text-xl font-bold mb-4">Edit </h2>
-                                                <form onSubmit={handleSave}>
-                                                    <div className="mb-4">
-                                                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="img">img:</label>
-                                                        <input
-                                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                                            id="img"
-                                                            type="text"
-                                                            name="img"
-                                                            defaultValue={item.img}
-                                                        />
-                                                    </div>
-                                                    <div className="mb-4">
-                                                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="totalAmount">Total Amount:</label>
-                                                        <input
-                                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                                            id="totalAmount"
-                                                            type="number"
-                                                            name="totalAmount"
-                                                            defaultValue={item.totalAmount}
-                                                        />
-                                                    </div>
-                                                    <div className="mb-4">
-                                                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="due">Due:</label>
-                                                        <input
-                                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                                            id="due"
-                                                            type="number"
-                                                            name="due"
-                                                            defaultValue={item.due}
-                                                        />
-                                                    </div>
-                                                    <div className="mb-6">
-                                                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="remainingBalance">Remaining Balance:</label>
-                                                        <input
-                                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                                            id="remainingBalance"
-                                                            type="number"
-                                                            name="remainingBalance"
-                                                            defaultValue={item.remainingBalance}
-                                                        />
-                                                    </div>
-                                                    <div className="flex items-center justify-between">
-                                                        <button
-                                                            className="bg-[blue] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                                            type="submit"
-                                                        >
-                                                            Update
-                                                        </button>
-                                                        <button
-                                                            onClick={() => setOpenModal(false)}
-                                                            className="bg-[red] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                                            type="button"
-                                                        >
-                                                            Close
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {/* end modal */}
+                              
                             </tr>
                         ))}
                     </tbody>

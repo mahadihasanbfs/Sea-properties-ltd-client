@@ -4,13 +4,14 @@ import AdminTitle from "../../Component/AdminTitle";
 import useImageUpload from "../../../hooks/useUploadImg";
 import Select from 'react-select';
 import Swal from "sweetalert2";
+import { useParams } from "react-router-dom";
 
-const AddProject = () => {
+const EditProject = () => {
     const [image, setImage] = useState(null);
     const [loading, setLoading] = useState(false);
     const [imageFile, setImageFile] = useState(null);
     const fileInputRef = useRef(null);
-
+    const id = useParams().id
     // banner img show and upload
     const handleButtonClick = () => {
         fileInputRef.current.click();
@@ -136,6 +137,16 @@ const AddProject = () => {
             // navigate('/admin/project-management');
         })
 
+        fetch(`https://sea-properties-server.vercel.app/api/v1?project_id=${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        }).then((res) => res.json()).then((data) => {
+            Swal.fire('Project Update successful', '', 'success')
+        })
+
     };
 
 
@@ -143,7 +154,7 @@ const AddProject = () => {
 
     return (
         <div>
-            <AdminTitle title='Add project' />
+            <AdminTitle title='Edit project' />
             <br />
             <div className='border border-gray-500 p-4 rounded flex flex-col gap-2'>
                 <div>
@@ -401,7 +412,7 @@ const AddProject = () => {
                         placeholder="enter map link" />
                 </div>
                 {
-                    !loading ? <button className="dashboard_form_btn" type="submit">submit</button> : <button disabled className="dashboard_form_btn" type="button">submit....</button>
+                    !loading ? <button className="dashboard_form_btn" type="submit">Update</button> : <button disabled className="dashboard_form_btn" type="button">Updating....</button>
                 }
             </form>
         </div>
@@ -409,4 +420,4 @@ const AddProject = () => {
     );
 };
 
-export default AddProject;
+export default EditProject;
