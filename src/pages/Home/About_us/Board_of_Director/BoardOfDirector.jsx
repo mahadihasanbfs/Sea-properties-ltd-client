@@ -3,8 +3,7 @@ import useContextApi from "../../../../hooks/useContextApi";
 import P from "../../../../components/sharedComponent/P";
 import PrimaryBanner from "../../../../components/common/PrimaryBanner";
 import { Helmet } from "react-helmet";
-
-
+ 
 const BoardOfDirector = () => {
     const { AboutUs_BoardOfDirectorImg, spilitTextIntoChunks } = useContextApi();
     const { img1, img2, img3, img4, img5 } = AboutUs_BoardOfDirectorImg;

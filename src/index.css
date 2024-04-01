@@ -326,3 +326,20 @@ a{
 .fade-out-fast {
   animation: fadeOut 0.15s ease-in-out;
 }
+
+/* dashboard form button */
+/* Base Button Styles */
+.dashboard_form_btn {
+  background-color: #a42315;
+  transition-duration: 200ms;
+  color: white;
+  padding: 8px 18px; /* You may need to adjust these values */
+  margin-top: 18px;
+  border-radius: 0.375rem; /* Rounded-md equivalent */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Shadow-lg equivalent */
+}
+
+/* Button Hover State */
+.dashboard_form_btn:hover {
+  background-color: #681a11;
+}

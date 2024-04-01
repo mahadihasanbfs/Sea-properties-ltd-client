@@ -2,8 +2,9 @@ import { Link, NavLink } from "react-router-dom";
 import logo from '../../assets/logo.png';
 import { MdClose, MdOutlineMenu } from "react-icons/md";
 import { FaAngleDown } from "react-icons/fa6";
-import { useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
@@ -106,6 +107,22 @@ const Navbar = () => {
     ];
 
 
+    const [on, setOn] = useState(false);
+    const dropDownRef = useRef(null);
+
+    useEffect(() => {
+        const close = (e) => {
+            if (dropDownRef.current && !dropDownRef.current.contains(e.target)) {
+                setOn(false)
+            }
+        };
+        document.addEventListener('mousedown', close);
+        return () => {
+            document.removeEventListener('mousedown', close)
+        }
+    }, []);
+
+    console.log(user, 'user');
     return (
         <nav className="bg-[#000000b5] text-[white] fixed  flex items-center justify-between w-full top-0 text-white md:h-[70px] h-[60px] z-[1000]">
             <div className="relative w-full ">
@@ -144,9 +161,28 @@ const Navbar = () => {
                             </ul>
                             {
                                 user ?
-                                    <button onClick={logOut} className="bg-red-600 text-white md:px-7 px-4 py-1 md:text-md text-sm md:py-2 rounded">
-                                        Logout
-                                    </button>
+                                    <div ref={dropDownRef} className="relative mx-auto w-fit text-black">
+                                        <button onClick={() => setOn((prev) => !prev)}>
+                                            <img width={40} height={40} className="size-10 rounded-full bg-slate-500 object-cover duration-500 hover:scale-x-[98%] hover:opacity-80" src={user?.photoURL} alt="avatar drop down navigate ui" />
+                                        </button>
+                                        <ul className={`${on ? 'visible duration-300' : 'invisible'} absolute right-0 top-12 z-50 w-[200px] rounded-sm bg-[#252c33] shadow-md `}>
+                                            <li
+                                                className={`rounded-sm px-2 py-2 ${on ? 'opacity-100 duration-300' : 'opacity-0'}   `}
+                                            >
+                                                <Link className="w-full" to={`/dashboard`}>
+                                                    <div className="duration-200 hover:bg-[#1b1d2bde] px-2 py-1 rounded w-full">
+                                                        Dashboard
+                                                    </div>
+                                                </Link>
+                                            </li>   <li
+                                                className={`rounded-sm px-2 py-2 ${on ? 'opacity-100 duration-300' : 'opacity-0'}   `}
+                                            >
+                                                <button onClick={logOut} className="duration-200 text-start hover:bg-[#1b1d2bde] px-2 py-1 rounded w-full">
+                                                    Log Out
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
                                     :
                                     <Link to={'/sign-in'}>
                                         <button className="bg-red-600 text-white md:px-8 px-4 py-1 md:text-md text-sm md:py-2 rounded">

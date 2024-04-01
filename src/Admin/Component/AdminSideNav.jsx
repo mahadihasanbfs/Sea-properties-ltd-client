@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import logo from '../../assets/logo.png';
 import { useState } from "react";
-import { FaAngleDown, FaUpDown } from 'react-icons/fa6';
+import { FaAngleDown, FaLessThanEqual, FaUpDown } from 'react-icons/fa6';
 import { Outlet } from "react-router";
 import { Link, NavLink } from 'react-router-dom';
 import { FiPieChart } from "react-icons/fi";
@@ -28,7 +28,7 @@ export default function AdminSideNav() {
             id: 0,
             name: 'Dashboard',
             icon: <FiPieChart />,
-            path: '/dashboard',
+            path: '/admin',
             role: 'admin',
             isDropdown: false,
             menu: []
@@ -68,11 +68,28 @@ export default function AdminSideNav() {
         },
         {
             id: 3,
+            name: 'Project-contact',
+            icon: <BsProjector />,
+            path: '/admin/project-contact',
+            role: 'admin',
+            isDropdown: false,
+            menu: []
+        },  {
+            id: 4,
+            name: 'contact',
+            icon: <BsProjector />,
+            path: '/admin/project-contact',
+            role: 'admin',
+            isDropdown: false,
+            menu: []
+        },
+        {
+            id: 3,
             name: 'Blog Management',
             icon: <CgFileDocument />,
-            path: '/blog-management',
+            path: '/admin/blog-management',
             role: 'admin',
-            isDropdown: true,
+            isDropdown: false,
             menu: [
                 {
                     id: 3.1,
@@ -94,9 +111,9 @@ export default function AdminSideNav() {
             id: 4,
             name: 'News Letter',
             icon: <MdOutlineUnsubscribe />,
-            path: '/news-letter',
+            path: '/admin/news-letter',
             role: 'admin',
-            isDropdown: true,
+            isDropdown: FaLessThanEqual,
             menu: [
                 {
                     id: 4.1,
@@ -118,7 +135,7 @@ export default function AdminSideNav() {
             id: 5,
             name: 'Booking Data',
             icon: <BsHouseCheck />,
-            path: '/booking-data',
+            path: '/admin/booking-data',
             role: 'admin',
             isDropdown: false,
             menu: []
@@ -127,7 +144,7 @@ export default function AdminSideNav() {
             id: 6,
             name: 'Installment Data',
             icon: <BsBuildings />,
-            path: '/installment-data',
+            path: '/admin/installment-data',
             role: 'admin',
             isDropdown: false,
             menu: []
