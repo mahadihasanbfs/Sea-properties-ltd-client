@@ -5,12 +5,12 @@ import { TbEdit } from "react-icons/tb";
 import { Link } from "react-router-dom";
 
 
-const ManageProject = () => {
+const ManageBlog = () => {
     const [openModal, setOpenModal] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(10); // Number of items per page
 
-    const projectData = [
+    const blogData = [
         {
             id: 1,
             img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -42,14 +42,14 @@ const ManageProject = () => {
     // Logic to calculate pagination
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = projectData.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = blogData.slice(indexOfFirstItem, indexOfLastItem);
 
     // Function to handle page change
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     // Function to handle next page
     const nextPage = () => {
-        if (currentPage < Math.ceil(projectData.length / itemsPerPage)) {
+        if (currentPage < Math.ceil(blogData.length / itemsPerPage)) {
             setCurrentPage(currentPage + 1);
         }
     };
@@ -62,7 +62,7 @@ const ManageProject = () => {
     };
 
     // Generate pagination numbers
-    const paginationNumbers = Array.from({ length: Math.ceil(projectData.length / itemsPerPage) }, (_, i) => i + 1);
+    const paginationNumbers = Array.from({ length: Math.ceil(blogData.length / itemsPerPage) }, (_, i) => i + 1);
 
 
     // edit
@@ -86,23 +86,22 @@ const ManageProject = () => {
     };
     return (
         <div className="pt-3">
-            <div className="flex items-center justify-between">
+          <div className="flex item-center pb-3 justify-between">
                 <AdminTitle size={'20px'} title='Manage Project' />
-                <Link to={`/admin/add-project`}>
-                    <div className="bg-secondary text-[white] py-2 px-3 rounded">
-                        + Add Project
-                    </div>
+
+                <Link to={'/admin/add-blog'}>
+                    <div className="dashboard_form_btn">+Add Blog</div>
                 </Link>
-            </div>
+          </div>
+
             <div className="mt-2 shadow-sm border rounded overflow-x-auto">
                 <table className="w-full table-auto text-sm text-left">
                     <thead className="bg-[#e4e4e4] text-[#0d1113] font-medium border-[#bab9b9] border-b">
                         <tr>
                             <th className="py-3 px-6">Image</th>
-                            <th className="py-3 px-6">Project Name</th>
+                            <th className="py-3 px-6"> Name</th>
                             <th className="py-3 px-6">Date</th>
-                            <th className="py-3 px-6">Address</th>
-                            <th className="py-3 px-6">Action</th>
+                             <th className="py-3 px-6">Action</th>
                         </tr>
                     </thead>
                     <tbody className="text-gray-600 divide-y">
@@ -112,8 +111,6 @@ const ManageProject = () => {
                                     <img src={item.img} className="w-[60px] h-[60px] rounded object-cover" alt="" />
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{new Date(item.date).toLocaleString()}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{item.address}</td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <ul className="flex items-center gap-2">
                                         <li>
@@ -211,10 +208,10 @@ const ManageProject = () => {
                         {number}
                     </button>
                 ))}
-                <button onClick={nextPage} className="mx-1 px-3 py-1 rounded bg-gray-200 text-[#d8d8d8] bg-[blue]" disabled={currentPage === Math.ceil(projectData.length / itemsPerPage)}>Next</button>
+                <button onClick={nextPage} className="mx-1 px-3 py-1 rounded bg-gray-200 text-[#d8d8d8] bg-[blue]" disabled={currentPage === Math.ceil(blogData.length / itemsPerPage)}>Next</button>
             </div>
         </div>
     );
 };
 
-export default ManageProject;
+export default ManageBlog;

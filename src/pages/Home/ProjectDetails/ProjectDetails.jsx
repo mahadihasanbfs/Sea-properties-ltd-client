@@ -5,12 +5,20 @@ import { IoLogoYoutube } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
 import { useParams } from "react-router-dom";
 import Slider from "../../../components/common/Slider";
+import { FaBath, FaBed, FaBuilding, FaLocationDot } from "react-icons/fa6";
+import { FaPencilRuler } from "react-icons/fa";
+import { BsGrid3X3GapFill } from "react-icons/bs";
+import { MdDateRange } from "react-icons/md";
+import { BiSolidCollection } from "react-icons/bi";
+import AlertModal from "../../../hooks/useAlertModal";
+import DetailShet from "./DetailShet";
 
 const ProjectDetails = () => {
     const [visible, setVisible] = useState(false);
     const [projectData, setProjectData] = useState({});
     const { id } = useParams();
-
+    const [vr, setVr] = useState(false);
+    const [on, setOn] = useState(false);
     useEffect(() => {
         async function fetchData() {
             try {
@@ -69,26 +77,74 @@ const ProjectDetails = () => {
                 <figure className="flex items-center">
                     <img className="w-[575px] h-[527px] object-cover" src={projectInfoImg} alt="" />
                 </figure>
-                <div className="md:pl-20 xl:pl-[164px]">
-                    <SecondaryTitle
-                        text='At a Glance'
-                        position="text-left"
-                    />
-                    <div className="space-y-5 mt-[60px]">
-                        <p>Land Area: {projectInfo?.landArea}</p>
-                        <p>Architect : {projectInfo?.architectName}</p>
-                        <p>Orientation of the Land: {projectInfo?.orientationOfLand}</p>
-                        <p>Number of Floors: {projectInfo?.floorsNumber}</p>
-                        <p>Front Road: {projectInfo?.frontRoad}</p>
-                        <p>Number of Apartments: {projectInfo?.numberOfApartment}</p>
-                        <p>Size of the Units: {projectInfo?.unitsSize}</p>
-                        <p>Number of Basements: {projectInfo?.numberOfBasements}</p>
-                        <p>Number of Car Parking: {projectInfo?.numberOfCarParking}</p>
-                    </div>
-                    <button className="py-[9px] px-[32px] text-[#6D6E71] border-[3px] border-[#6D6E71] mt-6">
-                        Expand
-                    </button>
-                </div>
+                <>
+                    {/* component */}
+                    <section className="container mx-auto p-6 font-mono">
+                        <div className="w-full mb-8 border border-[#c9c9c9] overflow-hidden  shadow-lg">
+                            <div className="w-full overflow-x-auto">
+                                <table className="w-full   ">
+                                    {/* <thead>
+                                                <tr className="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100  uppercase  border-gray-600">
+                                                    <th className="px-4 border-r py-3">Address</th>
+                                                     <th className="px-4 py-3">Date</th>
+                                                </tr>
+                                            </thead> */}
+                                    <tbody className="bg-white">
+                                        <tr className="text-gray-700">
+                                            <td className="px-4 flex gap-2 items-center py-3 text-ms font-semibold "><FaLocationDot className="text-xl" /> Address</td>
+                                            <td className="px-4 py-3 text-sm  border-l">{projectInfo?.address ? projectInfo?.address : 'No Address'}</td>
+                                        </tr>
+                                        <tr className="text-gray-700 border-t border-[#c9c9c9]">
+                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><FaPencilRuler className="text-lg" /> Land Area</td>
+                                            <td className="px-4 py-3 text-sm  border-l">{projectInfo?.landArea ? projectInfo?.landArea : 'No land area'}</td>
+                                        </tr>
+                                        <tr className="text-gray-700 border-t border-[#c9c9c9]">
+                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><FaBuilding className="text-lg" />  No of Floors</td>
+                                            <td className="px-4 py-3 text-sm  border-l">
+                                                {projectInfo?.no_of_floor ? projectInfo?.no_of_floor : '0'}
+                                            </td>
+                                        </tr>
+                                        <tr className="text-gray-700 border-t border-[#c9c9c9]">
+                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><BsGrid3X3GapFill className="text-lg" /> Apartment/Floors</td>
+                                            <td className="px-4 py-3 text-sm  border-l">
+                                                {projectInfo?.apartmentFloor ? projectInfo?.apartmentFloor : '0'}
+                                            </td>
+                                        </tr>
+
+                                        <tr className="text-gray-700 border-t border-[#c9c9c9]">
+                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><BsGrid3X3GapFill className="text-lg" /> Apartment Size</td>
+                                            <td className="px-4 py-3 text-sm  border-l">
+                                                {projectInfo?.apartmentSize ? projectInfo?.apartmentSize : '0'}
+                                            </td>
+                                        </tr>
+                                        <tr className="text-gray-700 border-t border-[#c9c9c9]">
+                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><FaBed className="text-lg" /> Bedroom</td>
+                                            <td className="px-4 py-3 text-sm  border-l">{projectInfo?.bedroom ? projectInfo?.bedroom : '0'}</td>
+                                        </tr>
+                                        <tr className="text-gray-700 border-t border-[#c9c9c9]">
+                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><FaBath className="text-lg" /> Bathroom</td>
+                                            <td className="px-4 py-3 text-sm  border-l">{projectInfo?.date ? projectInfo?.date : 'N/A'}</td>
+                                        </tr>
+                                        <tr className="text-gray-700 border-t border-[#c9c9c9]">
+                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><MdDateRange className="text-lg" /> Launch Date</td>
+                                            <td className="px-4 py-3 text-sm  border-l">{projectInfo?.date ? projectInfo?.date : 'N/A'}</td>
+                                        </tr>
+                                        <tr className="text-gray-700 border-t border-[#c9c9c9]">
+                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><BiSolidCollection className="text-lg" /> Collection</td>
+                                            <td className="px-4 py-3 text-sm  border-l">{projectInfo?.collection ? projectInfo?.collection : 'No Collections'}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+
+                        <button onClick={() => setOn(!on)} className="px-3 py-2 border ">Emplane</button>
+                        <AlertModal title='Contraction Status' on={on} setOn={setOn}>
+                            <DetailShet />
+                        </AlertModal>
+                    </section>
+                </>
             </div>
 
             {/* project features */}
@@ -144,12 +200,18 @@ const ProjectDetails = () => {
             {/* video section */}
             <div className="bg-black flex justify-center items-center py-12 md:py-20 lg:py-[100px]">
                 <div className="space-y-8 w-[80%] md:w-fit">
-                    <h3 className="text-[35px] text-white uppercase">Video Tour</h3>
+                    <div className="flex items-center justify-between">
+                        <h3 className="text-[35px] text-white uppercase">Video Tour</h3>
+
+                    <div className="flex items-center gap-2">
+<a href="" ></a>
+                    </div>
+                    </div>
                     <figure
                         style={{
                             backgroundImage: `linear-gradient(to right, rgb(0 0 0 / 30%), rgb(0 0 0 / 30%)), url(${projectVideo?.videoThumbnail}})`
                         }}
-                        className="h-[300px] md:w-[650px] md:h-[400px] lg:w-[934px] lg:h-[480px] border-4 border-[#FCF4F4] rounded-[10px] bg-cover flex justify-center items-center hover:cursor-pointer"
+                        className="h-[300px] md:w-[650px] md:h-[400px] lg:w-[934px] lg:h-[480px] border-4 border-[#FCF4F4] rounded-[10px] bg-cover flex justify-center items-center hover:cursor-pointer "
                         onClick={() => setVisible(true)}
                     >
                         <IoLogoYoutube className="text-6xl text-red-600" />
@@ -160,7 +222,7 @@ const ProjectDetails = () => {
             {/* video modal */}
             {
                 visible &&
-                <div className={`fixed top-0 w-screen h-screen bg-black flex justify-center items-center z-[1000]`}>
+                <div className={`fixed top-0 w-screen h-screen bg-black flex justify-center items-center z-[8000]`}>
                     <div className="w-[935px] h-[480px]">
                         <iframe
                             width="100%"
@@ -172,7 +234,7 @@ const ProjectDetails = () => {
                             allowfullscreen
                         />
                     </div>
-                    <button onClick={() => setVisible(false)} className="text-gray-400 absolute top-6 right-8">
+                    <button onClick={() => setVisible(false)} className="text-gray-400 absolute top-[70px] right-8">
                         <IoMdClose className="text-3xl" />
                     </button>
                 </div>
