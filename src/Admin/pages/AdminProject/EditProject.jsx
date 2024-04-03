@@ -1,16 +1,18 @@
 /* eslint-disable no-unused-vars */
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AdminTitle from "../../Component/AdminTitle";
 import useImageUpload from "../../../hooks/useUploadImg";
 import Select from 'react-select';
 import Swal from "sweetalert2";
+import { useParams } from "react-router-dom";
 
-const AddProject = () => {
+const EditProject = () => {
+    const [allProjects, setAllProjects] = useState([])
     const [image, setImage] = useState(null);
     const [loading, setLoading] = useState(false);
     const [imageFile, setImageFile] = useState(null);
     const fileInputRef = useRef(null);
-
+    const id = useParams().id;
     // banner img show and upload
     const handleButtonClick = () => {
         fileInputRef.current.click();
@@ -45,12 +47,22 @@ const AddProject = () => {
 
     // form submit
 
+    //get project
+    useEffect(() => {
+        fetch(`https://sea-properties-server.vercel.app/api/v1/admin/project/get-project?project_id=${id}`)
+            .then(response => response.json())
+            .then(data => setAllProjects(data?.data))
+    }, [])
+
+
+    console.log(allProjects, '+++++');
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
         const form = e.target;
-//
+
         // Get values from the form fields
         const name = form.name.value;
         const project_type = form.project_type.value;
@@ -93,12 +105,12 @@ const AddProject = () => {
 
         // Construct data object
         const data = {
-            project_photo,
-            banner_img: uploadedBannerImg,
+            project_photo: project_photo ? project_photo : allProjects?.project_photo,
+            banner_img: uploadedBannerImg ? uploadedBannerImg : allProjects?.banner_img,
             name,
-            project_type,
+            project_type: allProjects?.project_type ? allProjects?.project_type : project_type,
             details: {
-                detail_img: detailImgUpload,
+                detail_img: detailImgUpload ? detailImgUpload : allProjects?.details?.detail_img,
                 info: {
                     address,
                     land_area,
@@ -113,29 +125,27 @@ const AddProject = () => {
                     project_progress
                 }
             },
-            gallery_img: galleryImageUrls,
+            gallery_img: galleryImageUrls ? galleryImageUrls : allProjects?.details?.info?.gallery_img,
             featureInfo: {
                 features: selectedOption,
-                features_img: featureImgUpload
+                features_img: featureImgUpload ? featureImgUpload : allProjects?.details?.info?.features_img
             },
             vr_url,
             vr_status,
-            videoThumbnailImgUpload: videoThumbnailImgUpload,
+            videoThumbnailImgUpload: videoThumbnailImgUpload ? videoThumbnailImgUpload : allProjects?.video_thumbnail,
             video_url,
             map_link
         };
 
 
-        fetch('https://sea-properties-server.vercel.app/api/v1/admin/project/add', {
-            method: 'POST',
+        fetch(`https://sea-properties-server.vercel.app/api/v1/admin//project/update?project_id=${id}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
         }).then((res) => res.json()).then((data) => {
-            setLoading(false)
-            Swal.fire('Project successfully added', '', 'success');
-            // navigate('/admin/project-management');
+            Swal.fire('Project Update successful', '', 'success')
         })
 
     };
@@ -145,13 +155,13 @@ const AddProject = () => {
 
     return (
         <div>
-            <AdminTitle title='Add project' />
+            <AdminTitle title='Edit project' />
             <br />
             <div className='border border-gray-500 p-4 rounded flex flex-col gap-2'>
                 <div>
                     <input
                         required
-
+                        defaultValue={allProjects?.project_photo}
                         type="file"
                         accept="image/jpeg, image/png, image/gif, image/bmp, image/webp, image/heic"
                         ref={fileInputRef}
@@ -191,6 +201,7 @@ const AddProject = () => {
                     <div className="mt-3 w-full">
                         <label   >Project Name</label><br />
                         <input
+                            defaultValue={allProjects?.name}
                             name="name"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                             type="text"
@@ -199,6 +210,7 @@ const AddProject = () => {
                     <div className="mt-3 w-full">
                         <label    >Banner image</label><br />
                         <input
+                            defaultValue={allProjects?.banner_img}
                             name="banner_img"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                             type="file"
@@ -212,13 +224,12 @@ const AddProject = () => {
                         className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                         type="text"
                         placeholder="enter project name">
-                            <option value="onGoing">ON Going</option>
-                            <option value="upComing">Up Coming</option>
-                            <option value="completed">Completed</option>
-                        </select>
+                        <option value="onGoing">ON Going</option>
+                        <option value="upComing">Up Coming</option>
+                        <option value="completed">Completed</option>
+                    </select>
                 </div>
-                
-                 <br />
+                <br />
 
                 {/* details */}
                 <div className="border border-[#dbdbdb] mt-6 p-6">
@@ -227,6 +238,7 @@ const AddProject = () => {
                     <div className="">
                         <label   >Detail Image</label><br />
                         <input
+                            defaultValue={allProjects?.details?.detail_img}
                             type="file"
                             name="detail_img"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
@@ -238,6 +250,7 @@ const AddProject = () => {
                         <div className="mt-3 w-full">
                             <label   >Address</label><br />
                             <input
+                                defaultValue={allProjects?.details?.info?.address}
                                 name="address"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -245,7 +258,7 @@ const AddProject = () => {
                         </div>
                         <div className="mt-3 w-full">
                             <label   >Land Area</label><br />
-                            <input
+                            <input defaultValue={allProjects?.details?.info?.land_area}
                                 name="land_area"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -254,6 +267,7 @@ const AddProject = () => {
                         <div className="mt-3 w-full">
                             <label   >No of floors</label><br />
                             <input
+                                defaultValue={allProjects?.details?.info?.no_of_floors}
                                 name="no_of_floors"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -262,6 +276,7 @@ const AddProject = () => {
                         <div className="mt-3 w-full">
                             <label   >Apartment/Floors</label><br />
                             <input
+                                defaultValue={allProjects?.details?.info?.apartment_floors}
                                 name="apartment_floors"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -270,6 +285,7 @@ const AddProject = () => {
                         <div className="mt-3 w-full">
                             <label   >Apartment Size</label><br />
                             <input
+                                defaultValue={allProjects?.details?.info?.apartment_size}
                                 name="apartment_size"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -278,6 +294,7 @@ const AddProject = () => {
                         <div className="mt-3 w-full">
                             <label   >Bedroom</label><br />
                             <input
+                                defaultValue={allProjects?.details?.info?.bedroom}
                                 name="bedroom"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -286,6 +303,7 @@ const AddProject = () => {
                         <div className="mt-3 w-full">
                             <label   >Bathroom</label><br />
                             <input
+                                defaultValue={allProjects?.details?.info?.bathroom}
                                 name="bathroom"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -295,6 +313,7 @@ const AddProject = () => {
                         <div className="mt-3 w-full">
                             <label   >Collections</label><br />
                             <input
+                                defaultValue={allProjects?.details?.info?.collections}
                                 name="collections"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -303,6 +322,7 @@ const AddProject = () => {
                         <div className="mt-3 w-full">
                             <label   >Name Of Works</label><br />
                             <input
+                                defaultValue={allProjects?.details?.info?.name_of_works}
                                 name="name_of_works"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -312,6 +332,7 @@ const AddProject = () => {
                         <div className="mt-3 w-full">
                             <label   >Project Progress</label><br />
                             <input
+                                defaultValue={allProjects?.details?.info?.project_progress}
                                 name="project_progress"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -328,6 +349,7 @@ const AddProject = () => {
                     <div className="">
                         <label   >Gallery Image</label><br />
                         <input
+                            defaultValue={allProjects?.details?.info?.gallery_img}
                             type="file"
                             multiple
                             name="gallery_img"
@@ -354,6 +376,7 @@ const AddProject = () => {
                     <div className="">
                         <label   >Features Img</label><br />
                         <input
+                            defaultValue={allProjects?.details?.info?.features_img}
                             type="file"
                             name="features_img"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
@@ -368,6 +391,7 @@ const AddProject = () => {
                     <div className="">
                         <label   >URL</label><br />
                         <input
+                            defaultValue={allProjects?.video_url}
                             type="url"
                             name="video_url"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
@@ -376,6 +400,7 @@ const AddProject = () => {
                     <div className="">
                         <label   >Thumbnail</label><br />
                         <input
+                            defaultValue={allProjects?.video_thumbnail}
                             type="file"
                             multiple
                             name="video_thumbnail"
@@ -385,6 +410,7 @@ const AddProject = () => {
                     <div className="">
                         <label   >VR Status</label><br />
                         <input
+                            defaultValue={allProjects?.vr_status}
                             type="text"
                             name="vr_status"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
@@ -393,6 +419,7 @@ const AddProject = () => {
                     <div className="">
                         <label   >VR URL</label><br />
                         <input
+                            defaultValue={allProjects?.vr_url}
                             type="url"
                             multiple
                             name="vr_url"
@@ -405,13 +432,14 @@ const AddProject = () => {
                 <div className="">
                     <label   >Map Link</label><br />
                     <input
+                        defaultValue={allProjects?.map_link}
                         type="text"
                         name="map_link"
                         className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                         placeholder="enter map link" />
                 </div>
                 {
-                    !loading ? <button className="dashboard_form_btn" type="submit">submit</button> : <button disabled className="dashboard_form_btn" type="button">submit....</button>
+                    !loading ? <button className="dashboard_form_btn" type="submit">Update</button> : <button disabled className="dashboard_form_btn" type="button">Updating....</button>
                 }
             </form>
         </div>
@@ -419,4 +447,4 @@ const AddProject = () => {
     );
 };
 
-export default AddProject;
+export default EditProject;
