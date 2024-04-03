@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AdminTitle from "../../Component/AdminTitle";
 import useImageUpload from "../../../hooks/useUploadImg";
 import Select from 'react-select';
@@ -7,11 +7,12 @@ import Swal from "sweetalert2";
 import { useParams } from "react-router-dom";
 
 const EditProject = () => {
+    const [allProjects, setAllProjects] = useState([])
     const [image, setImage] = useState(null);
     const [loading, setLoading] = useState(false);
     const [imageFile, setImageFile] = useState(null);
     const fileInputRef = useRef(null);
-    const id = useParams().id
+    const id = useParams().id;
     // banner img show and upload
     const handleButtonClick = () => {
         fileInputRef.current.click();
@@ -46,6 +47,16 @@ const EditProject = () => {
 
     // form submit
 
+    //get project
+    useEffect(() => {
+        fetch(`https://sea-properties-server.vercel.app/api/v1/admin/project/get-project?project_id=${id}`)
+            .then(response => response.json())
+            .then(data => setAllProjects(data?.data))
+    }, [])
+
+
+    console.log(allProjects, '+++++');
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -54,6 +65,7 @@ const EditProject = () => {
 
         // Get values from the form fields
         const name = form.name.value;
+        const project_type = form.project_type.value;
         const address = form.address.value;
         const land_area = form.land_area.value;
         const no_of_floors = form.no_of_floors.value;
@@ -61,7 +73,7 @@ const EditProject = () => {
         const apartment_size = form.apartment_size.value;
         const bedroom = form.bedroom.value;
         const bathroom = form.bathroom.value;
-        const launch_date = form.launch_date.value;
+        const launch_date = new Date().getTime();
         const collections = form.collections.value;
         const name_of_works = form.name_of_works.value;
         const project_progress = form.project_progress.value;
@@ -93,11 +105,12 @@ const EditProject = () => {
 
         // Construct data object
         const data = {
-            project_photo,
-            banner_img: uploadedBannerImg,
+            project_photo: project_photo ? project_photo : allProjects?.project_photo,
+            banner_img: uploadedBannerImg ? uploadedBannerImg : allProjects?.banner_img,
             name,
+            project_type: allProjects?.project_type ? allProjects?.project_type : project_type,
             details: {
-                detail_img: detailImgUpload,
+                detail_img: detailImgUpload ? detailImgUpload : allProjects?.details?.detail_img,
                 info: {
                     address,
                     land_area,
@@ -112,32 +125,20 @@ const EditProject = () => {
                     project_progress
                 }
             },
-            gallery_img: galleryImageUrls,
+            gallery_img: galleryImageUrls ? galleryImageUrls : allProjects?.details?.info?.gallery_img,
             featureInfo: {
                 features: selectedOption,
-                features_img: featureImgUpload
+                features_img: featureImgUpload ? featureImgUpload : allProjects?.details?.info?.features_img
             },
             vr_url,
             vr_status,
-            videoThumbnailImgUpload: videoThumbnailImgUpload,
+            videoThumbnailImgUpload: videoThumbnailImgUpload ? videoThumbnailImgUpload : allProjects?.video_thumbnail,
             video_url,
             map_link
         };
 
 
-        fetch('https://sea-properties-server.vercel.app/api/v1/project/add', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        }).then((res) => res.json()).then((data) => {
-            setLoading(false)
-            Swal.fire('Project successfully added', '', 'success');
-            // navigate('/admin/project-management');
-        })
-
-        fetch(`https://sea-properties-server.vercel.app/api/v1?project_id=${id}`, {
+        fetch(`https://sea-properties-server.vercel.app/api/v1/admin//project/update?project_id=${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -160,7 +161,7 @@ const EditProject = () => {
                 <div>
                     <input
                         required
-
+                        defaultValue={allProjects?.project_photo}
                         type="file"
                         accept="image/jpeg, image/png, image/gif, image/bmp, image/webp, image/heic"
                         ref={fileInputRef}
@@ -200,6 +201,7 @@ const EditProject = () => {
                     <div className="mt-3 w-full">
                         <label   >Project Name</label><br />
                         <input
+                            defaultValue={allProjects?.name}
                             name="name"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                             type="text"
@@ -208,12 +210,26 @@ const EditProject = () => {
                     <div className="mt-3 w-full">
                         <label    >Banner image</label><br />
                         <input
+                            defaultValue={allProjects?.banner_img}
                             name="banner_img"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                             type="file"
                             placeholder="enter project name" />
                     </div>
-                </div> <br />
+                </div>
+                <div className="mt-3 w-full">
+                    <label   >Project Type</label><br />
+                    <select
+                        name="project_type"
+                        className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
+                        type="text"
+                        placeholder="enter project name">
+                        <option value="onGoing">ON Going</option>
+                        <option value="upComing">Up Coming</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+                <br />
 
                 {/* details */}
                 <div className="border border-[#dbdbdb] mt-6 p-6">
@@ -222,6 +238,7 @@ const EditProject = () => {
                     <div className="">
                         <label   >Detail Image</label><br />
                         <input
+                            defaultValue={allProjects?.details?.detail_img}
                             type="file"
                             name="detail_img"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
@@ -233,6 +250,7 @@ const EditProject = () => {
                         <div className="mt-3 w-full">
                             <label   >Address</label><br />
                             <input
+                                defaultValue={allProjects?.details?.info?.address}
                                 name="address"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -240,7 +258,7 @@ const EditProject = () => {
                         </div>
                         <div className="mt-3 w-full">
                             <label   >Land Area</label><br />
-                            <input
+                            <input defaultValue={allProjects?.details?.info?.land_area}
                                 name="land_area"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -249,6 +267,7 @@ const EditProject = () => {
                         <div className="mt-3 w-full">
                             <label   >No of floors</label><br />
                             <input
+                                defaultValue={allProjects?.details?.info?.no_of_floors}
                                 name="no_of_floors"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -257,6 +276,7 @@ const EditProject = () => {
                         <div className="mt-3 w-full">
                             <label   >Apartment/Floors</label><br />
                             <input
+                                defaultValue={allProjects?.details?.info?.apartment_floors}
                                 name="apartment_floors"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -265,6 +285,7 @@ const EditProject = () => {
                         <div className="mt-3 w-full">
                             <label   >Apartment Size</label><br />
                             <input
+                                defaultValue={allProjects?.details?.info?.apartment_size}
                                 name="apartment_size"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -273,6 +294,7 @@ const EditProject = () => {
                         <div className="mt-3 w-full">
                             <label   >Bedroom</label><br />
                             <input
+                                defaultValue={allProjects?.details?.info?.bedroom}
                                 name="bedroom"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -281,21 +303,17 @@ const EditProject = () => {
                         <div className="mt-3 w-full">
                             <label   >Bathroom</label><br />
                             <input
+                                defaultValue={allProjects?.details?.info?.bathroom}
                                 name="bathroom"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
                                 placeholder="Enter total bathroom " />
                         </div>
-                        <div className="mt-3 w-full">
-                            <label   >Launch Date</label><br />
-                            <input
-                                name="launch_date"
-                                className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
-                                type="date" />
-                        </div>
+
                         <div className="mt-3 w-full">
                             <label   >Collections</label><br />
                             <input
+                                defaultValue={allProjects?.details?.info?.collections}
                                 name="collections"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -304,6 +322,7 @@ const EditProject = () => {
                         <div className="mt-3 w-full">
                             <label   >Name Of Works</label><br />
                             <input
+                                defaultValue={allProjects?.details?.info?.name_of_works}
                                 name="name_of_works"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -313,6 +332,7 @@ const EditProject = () => {
                         <div className="mt-3 w-full">
                             <label   >Project Progress</label><br />
                             <input
+                                defaultValue={allProjects?.details?.info?.project_progress}
                                 name="project_progress"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -329,6 +349,7 @@ const EditProject = () => {
                     <div className="">
                         <label   >Gallery Image</label><br />
                         <input
+                            defaultValue={allProjects?.details?.info?.gallery_img}
                             type="file"
                             multiple
                             name="gallery_img"
@@ -355,6 +376,7 @@ const EditProject = () => {
                     <div className="">
                         <label   >Features Img</label><br />
                         <input
+                            defaultValue={allProjects?.details?.info?.features_img}
                             type="file"
                             name="features_img"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
@@ -369,6 +391,7 @@ const EditProject = () => {
                     <div className="">
                         <label   >URL</label><br />
                         <input
+                            defaultValue={allProjects?.video_url}
                             type="url"
                             name="video_url"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
@@ -377,6 +400,7 @@ const EditProject = () => {
                     <div className="">
                         <label   >Thumbnail</label><br />
                         <input
+                            defaultValue={allProjects?.video_thumbnail}
                             type="file"
                             multiple
                             name="video_thumbnail"
@@ -386,6 +410,7 @@ const EditProject = () => {
                     <div className="">
                         <label   >VR Status</label><br />
                         <input
+                            defaultValue={allProjects?.vr_status}
                             type="text"
                             name="vr_status"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
@@ -394,6 +419,7 @@ const EditProject = () => {
                     <div className="">
                         <label   >VR URL</label><br />
                         <input
+                            defaultValue={allProjects?.vr_url}
                             type="url"
                             multiple
                             name="vr_url"
@@ -406,6 +432,7 @@ const EditProject = () => {
                 <div className="">
                     <label   >Map Link</label><br />
                     <input
+                        defaultValue={allProjects?.map_link}
                         type="text"
                         name="map_link"
                         className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
