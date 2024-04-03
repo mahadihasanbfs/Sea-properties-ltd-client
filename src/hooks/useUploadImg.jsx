@@ -14,7 +14,7 @@ const useImageUpload = () => {
             const formData = new FormData();
             formData.append('image', file);
 
-            const url = `https://hikmah-holdings-backend.vercel.app/api/v1/image/upload-image`;
+            const url = `http://localhost:6001/api/v1/image/upload-image`;
             const response = await fetch(url, {
                 method: "POST",
                 body: formData,

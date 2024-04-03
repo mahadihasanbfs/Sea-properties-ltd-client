@@ -163,13 +163,16 @@ const Navbar = () => {
                                 user ?
                                     <div ref={dropDownRef} className="relative mx-auto w-fit text-black">
                                         <button onClick={() => setOn((prev) => !prev)}>
-                                            <img width={40} height={40} className="size-10 rounded-full bg-slate-500 object-cover duration-500 hover:scale-x-[98%] hover:opacity-80" src={user?.photoURL} alt="avatar drop down navigate ui" />
+                                            <p>
+                                                {user.displayName.slice(0, 1)}
+                                            </p>
+                                            {/* <img width={40} height={40} className="size-10 rounded-full bg-slate-500 object-cover duration-500 hover:scale-x-[98%] hover:opacity-80" src={user?.photoURL} alt="avatar drop down navigate ui" /> */}
                                         </button>
                                         <ul className={`${on ? 'visible duration-300' : 'invisible'} absolute right-0 top-12 z-50 w-[200px] rounded-sm bg-[#252c33] shadow-md `}>
                                             <li
                                                 className={`rounded-sm px-2 py-2 ${on ? 'opacity-100 duration-300' : 'opacity-0'}   `}
                                             >
-                                                <Link className="w-full" to={`/dashboard`}>
+                                                <Link className="w-full" to={`/user`}>
                                                     <div className="duration-200 hover:bg-[#1b1d2bde] px-2 py-1 rounded w-full">
                                                         Dashboard
                                                     </div>
