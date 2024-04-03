@@ -50,9 +50,10 @@ const AddProject = () => {
         e.preventDefault();
         setLoading(true);
         const form = e.target;
-
+//
         // Get values from the form fields
         const name = form.name.value;
+        const project_type = form.project_type.value;
         const address = form.address.value;
         const land_area = form.land_area.value;
         const no_of_floors = form.no_of_floors.value;
@@ -60,7 +61,7 @@ const AddProject = () => {
         const apartment_size = form.apartment_size.value;
         const bedroom = form.bedroom.value;
         const bathroom = form.bathroom.value;
-        const launch_date = form.launch_date.value;
+        const launch_date = new Date().getTime();
         const collections = form.collections.value;
         const name_of_works = form.name_of_works.value;
         const project_progress = form.project_progress.value;
@@ -95,6 +96,7 @@ const AddProject = () => {
             project_photo,
             banner_img: uploadedBannerImg,
             name,
+            project_type,
             details: {
                 detail_img: detailImgUpload,
                 info: {
@@ -124,7 +126,7 @@ const AddProject = () => {
         };
 
 
-        fetch('https://sea-properties-server.vercel.app/api/v1/project/add', {
+        fetch('https://sea-properties-server.vercel.app/api/v1/admin/project/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -202,7 +204,21 @@ const AddProject = () => {
                             type="file"
                             placeholder="enter project name" />
                     </div>
-                </div> <br />
+                </div>
+                <div className="mt-3 w-full">
+                    <label   >Project Type</label><br />
+                    <select
+                        name="project_type"
+                        className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
+                        type="text"
+                        placeholder="enter project name">
+                            <option value="onGoing">ON Going</option>
+                            <option value="upComing">Up Coming</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                </div>
+                
+                 <br />
 
                 {/* details */}
                 <div className="border border-[#dbdbdb] mt-6 p-6">
@@ -275,13 +291,7 @@ const AddProject = () => {
                                 type="text"
                                 placeholder="Enter total bathroom " />
                         </div>
-                        <div className="mt-3 w-full">
-                            <label   >Launch Date</label><br />
-                            <input
-                                name="launch_date"
-                                className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
-                                type="date" />
-                        </div>
+
                         <div className="mt-3 w-full">
                             <label   >Collections</label><br />
                             <input

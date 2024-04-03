@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AdminTitle from "../../../hooks/useAdminTitle";
 import { MdDeleteOutline } from "react-icons/md";
 import { TbEdit } from "react-icons/tb";
@@ -14,7 +14,7 @@ const ManageProject = () => {
     const [on, setOn] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(10); // Number of items per page
-
+    const [allProject, setAllProjects] = useState([])
     const projectData = [
         {
             id: 1,
@@ -71,18 +71,15 @@ const ManageProject = () => {
 
 
     //get project
-    const { data: projects = [], refetch: reload } = useQuery({
-        queryKey: ["all_projects_location"],
-        queryFn: async () => {
-            const res = await fetch("https://sea-properties-server.vercel.app/api/v1");
-            const data = await res.json();
-            return data.data;
-        },
-    });
+    useEffect(() => {
+        fetch('https://sea-properties-server.vercel.app/api/v1/admin/project/projects')
+            .then(response => response.json())
+            .then(data => setAllProjects(data?.data))
+    }, [])
 
     // delete project
     const deleteProject = (id) => {
-        fetch(`https://sea-properties-server.vercel.app/api/v1/project/delete?project_id=${id}`, {
+        fetch(`https://sea-properties-server.vercel.app/api/v1/admin/project/delete?project_id=${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -92,7 +89,7 @@ const ManageProject = () => {
             .then((data) => {
 
                 Swal.fire('Delete Project successful', '', 'success')
-                reload()
+                // reload()
 
             })
             .catch((error) => {
@@ -101,6 +98,7 @@ const ManageProject = () => {
     }
 
 
+    console.log(allProject, '+++++++');
     return (
         <div className="pt-3">
             <div className="flex items-center justify-between">
@@ -123,29 +121,35 @@ const ManageProject = () => {
                         </tr>
                     </thead>
                     <tbody className="text-gray-600 divide-y">
-                        {currentItems.map((item, idx) => (
+                        {allProject.map((item, idx) => (
                             <tr key={idx}>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    <img src={item.img} className="w-[60px] h-[60px] rounded object-cover" alt="" />
+                                    <img src={item?.project_photo} className="w-[60px] h-[60px] rounded object-cover" alt="" />
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{new Date(item.date).toLocaleString()}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{item.address}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{item?.name}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">
+                                    {
+                                        item?.details?.info?.launch_date ?  new Date().toLocaleString(item?.details?.info?.launch_date) : 'N/A'
+                                    }
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap">
+                                    {item?.details?.info?.address}
+                                </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <ul className="flex items-center gap-2">
                                         <li>
-                                            <button onClick={() => deleteProject(1)} >
+                                            <button onClick={() => deleteProject(item?._id)} >
                                                 <MdDeleteOutline className="text-2xl text-[red]" />
                                             </button>
                                         </li>
                                         <li>
-                                            <Link to={`/admin/edit-project/123`}>
+                                            <Link to={`/admin/edit-project/${item?._id}`}>
                                                 <TbEdit className="text-2xl text-[green]" />
                                             </Link>
                                         </li>
                                     </ul>
                                 </td>
-                              
+
                             </tr>
                         ))}
                     </tbody>

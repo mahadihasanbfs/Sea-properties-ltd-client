@@ -10,9 +10,9 @@ import Actions from "../Location/Actions";
 const Banner = () => {
     const [data, setData] = useState([]);
     useEffect(() => {
-        fetch('/src/pages/Home/ProjectDetails/projectInfo.json')
+        fetch('https://sea-properties-server.vercel.app/api/v1/admin/project/projects')
             .then(res => res.json())
-            .then(data => setData(data))
+            .then(data => setData(data?.data))
     }, [])
 
     let settings = {
@@ -103,6 +103,9 @@ const Banner = () => {
     //         img: "https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
     //     },
     // ]
+
+
+     
     return (
         <div>
             <div className="max-w-[1366px] mx-auto py-12 mt-4 px-6 xl:px-4">
