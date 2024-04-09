@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import AlertModal from "../../../hooks/useAlertModal";
 import EditProject from "./EditProject";
 import Swal from "sweetalert2";
-import { useQuery } from "@tanstack/react-query";
 
 
 const ManageProject = () => {
@@ -98,7 +97,6 @@ const ManageProject = () => {
     }
 
 
-    console.log(allProject, '+++++++');
     return (
         <div className="pt-3">
             <div className="flex items-center justify-between">
@@ -129,7 +127,7 @@ const ManageProject = () => {
                                 <td className="px-6 py-4 whitespace-nowrap">{item?.name}</td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     {
-                                        item?.details?.info?.launch_date ?  new Date().toLocaleString(item?.details?.info?.launch_date) : 'N/A'
+                                        item?.details?.info?.launch_date ? new Date().toLocaleString(item?.details?.info?.launch_date) : 'N/A'
                                     }
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">

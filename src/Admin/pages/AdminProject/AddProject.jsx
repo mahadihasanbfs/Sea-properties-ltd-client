@@ -50,10 +50,11 @@ const AddProject = () => {
         e.preventDefault();
         setLoading(true);
         const form = e.target;
-//
+        //
         // Get values from the form fields
         const name = form.name.value;
         const project_type = form.project_type.value;
+        const project_status = form.project_status.value;
         const address = form.address.value;
         const land_area = form.land_area.value;
         const no_of_floors = form.no_of_floors.value;
@@ -97,6 +98,7 @@ const AddProject = () => {
             banner_img: uploadedBannerImg,
             name,
             project_type,
+            project_status,
             details: {
                 detail_img: detailImgUpload,
                 info: {
@@ -125,6 +127,7 @@ const AddProject = () => {
             map_link
         };
 
+        console.log(project_type, data);
 
         fetch('https://sea-properties-server.vercel.app/api/v1/admin/project/add', {
             method: 'POST',
@@ -205,20 +208,34 @@ const AddProject = () => {
                             placeholder="enter project name" />
                     </div>
                 </div>
-                <div className="mt-3 w-full">
-                    <label   >Project Type</label><br />
-                    <select
-                        name="project_type"
-                        className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
-                        type="text"
-                        placeholder="enter project name">
+                <div className="md:flex items-center gap-6">
+                    <div className="mt-3 w-full">
+                        <label   >Project Type</label><br />
+                        <select
+                            name="project_type"
+                            className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
+                            type="text"
+                            placeholder="enter project name">
+                            <option value="projectType">Project Type</option>
+                            <option value="residential">Residential</option>
+                            <option value="commercial">Commercial</option>
+                        </select>
+                    </div>
+                    <div className="mt-3 w-full">
+                        <label>Project Status</label><br />
+                        <select
+                            name="project_status"
+                            className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
+                            type="text"
+                            placeholder="enter project name">
                             <option value="onGoing">ON Going</option>
                             <option value="upComing">Up Coming</option>
                             <option value="completed">Completed</option>
                         </select>
+                    </div>
                 </div>
-                
-                 <br />
+
+                <br />
 
                 {/* details */}
                 <div className="border border-[#dbdbdb] mt-6 p-6">

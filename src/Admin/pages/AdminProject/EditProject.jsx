@@ -66,6 +66,7 @@ const EditProject = () => {
         // Get values from the form fields
         const name = form.name.value;
         const project_type = form.project_type.value;
+        const project_status = form.project_status.value;
         const address = form.address.value;
         const land_area = form.land_area.value;
         const no_of_floors = form.no_of_floors.value;
@@ -109,6 +110,8 @@ const EditProject = () => {
             banner_img: uploadedBannerImg ? uploadedBannerImg : allProjects?.banner_img,
             name,
             project_type: allProjects?.project_type ? allProjects?.project_type : project_type,
+            project_status: project_status?.project_status ? allProjects?.project_status : project_status,
+
             details: {
                 detail_img: detailImgUpload ? detailImgUpload : allProjects?.details?.detail_img,
                 info: {
@@ -217,17 +220,31 @@ const EditProject = () => {
                             placeholder="enter project name" />
                     </div>
                 </div>
-                <div className="mt-3 w-full">
-                    <label   >Project Type</label><br />
-                    <select
-                        name="project_type"
-                        className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
-                        type="text"
-                        placeholder="enter project name">
-                        <option value="onGoing">ON Going</option>
-                        <option value="upComing">Up Coming</option>
-                        <option value="completed">Completed</option>
-                    </select>
+                <div className="md:flex items-center gap-6">
+                    <div className="mt-3 w-full">
+                        <label   >Project Type</label><br />
+                        <select
+                            name="project_type"
+                            className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
+                            type="text"
+                            placeholder="enter project name">
+                            <option value="projectType">Project Type</option>
+                            <option value="residential">Residential</option>
+                            <option value="commercial">Commercial</option>
+                        </select>
+                    </div>
+                    <div className="mt-3 w-full">
+                        <label>Project Status</label><br />
+                        <select
+                            name="project_status"
+                            className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
+                            type="text"
+                            placeholder="enter project name">
+                            <option value="onGoing">ON Going</option>
+                            <option value="upComing">Up Coming</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
                 </div>
                 <br />
 

@@ -74,7 +74,7 @@ export default function AdminSideNav() {
             role: 'admin',
             isDropdown: false,
             menu: []
-        },  {
+        }, {
             id: 4,
             name: 'contact',
             icon: <BsProjector />,
@@ -135,7 +135,7 @@ export default function AdminSideNav() {
             id: 5,
             name: 'Booking Data',
             icon: <BsHouseCheck />,
-            path: '/admin/booking-data',
+            path: '/admin/booking-management',
             role: 'admin',
             isDropdown: false,
             menu: []

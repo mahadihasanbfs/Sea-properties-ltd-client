@@ -96,9 +96,15 @@ const Navbar = () => {
             path: '/news-and-events',
             isDropdown: false,
             dropdownItems: [],
+        }, {
+            id: 5,
+            name: 'Blogs',
+            path: '/blogs',
+            isDropdown: false,
+            dropdownItems: [],
         },
         {
-            id: 5,
+            id: 6,
             name: 'Contact',
             path: '/contact',
             isDropdown: false,
