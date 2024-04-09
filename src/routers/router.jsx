@@ -6,6 +6,8 @@ import AdminLayout from "../layouts/AdminLayout";
 import UserDashboardLayout from "../layouts/UserDashboardLayout";
 import userPath from "./userPath";
 import adminPath from "./adminPath";
+import IsAdmin from "./IsAdmin";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -17,26 +19,26 @@ const router = createBrowserRouter([
             </>,
         children: commonPath
     },
-      {
+    {
         path: '/admin',
         element:
-            <>
+            <IsAdmin>
                 <ScrollToTop />
                 <AdminLayout />
-            </>,
+            </IsAdmin>,
         children: adminPath
     },
-      {
+    {
         path: '/user',
         element:
-            <>
+            <PrivateRoute>
                 <ScrollToTop />
                 <UserDashboardLayout />
-            </>,
+            </PrivateRoute>,
         children: userPath
     },
 
-    
+
 ]);
 
 export default router;

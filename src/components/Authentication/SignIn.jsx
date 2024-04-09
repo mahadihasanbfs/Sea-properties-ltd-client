@@ -49,7 +49,13 @@ const SignIn = () => {
         signIn(email, password)
             .then(() => {
                 setLoading(false)
-                navigate('/user')
+                if (email === 'admin@admin.com') {
+                    localStorage.setItem('role', 'admin')
+                    navigate('/admin')
+                } else {
+                    localStorage.setItem('role', 'user')
+                    navigate('/user')
+                }
             })
         // fetch('https://brightcomponent-backend-v1.vercel.app/api/v1/auth/sign-in', {
         //     method: "POST",

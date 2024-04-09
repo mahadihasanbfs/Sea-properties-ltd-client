@@ -13,6 +13,7 @@ import { BiSolidCollection } from "react-icons/bi";
 import AlertModal from "../../../hooks/useAlertModal";
 import DetailShet from "./DetailShet";
 import Swal from "sweetalert2";
+import ReactPlayer from 'react-player'
 
 const ProjectDetails = () => {
     const [visible, setVisible] = useState(false);
@@ -163,7 +164,7 @@ const ProjectDetails = () => {
 
                         <button onClick={() => setOn(!on)} className="px-3 py-2 border ">Emplane</button>
                         <AlertModal title='Contraction Status' on={on} setOn={setOn}>
-                            <DetailShet />
+                            <DetailShet data={details?.info?.contractionStatus} />
                         </AlertModal>
                     </section>
                 </>
@@ -245,7 +246,8 @@ const ProjectDetails = () => {
             {
                 visible &&
                 <div className={`fixed top-0 w-screen bg-[#00000055] h-screen bg-black flex justify-center items-center z-[8000]`}>
-                    <div className="w-[935px] h-[480px] bg-[#000000]">
+
+                    <div className="w-[935px] hidden h-[480px] bg-[#000000]">
                         <video className="w-full h-full" controls>
                             <source src={video_url} type="video/mp4" />
                             <source src={video_url} type="video/ogg" />
@@ -256,6 +258,9 @@ const ProjectDetails = () => {
                             <IoMdClose className="text-3xl" />
                         </button>
                     </div>
+
+                    <ReactPlayer url={video_url} />
+
                     <button onClick={() => setVisible(false)} className="text-gray-400 absolute top-[70px] right-8">
                         <IoMdClose className="text-3xl" />
                     </button>

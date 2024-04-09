@@ -1,5 +1,7 @@
 
-const DetailShet = () => {
+const DetailShet = ({ data }) => {
+    console.log('status : ', data);
+
     return (
         <div>
             {/* <div className="bg-[#bbbabd2e]">
@@ -34,96 +36,17 @@ const DetailShet = () => {
                                 </tr>
                             </thead>
                             <tbody className="bg-white">
-                                <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                    <td className="px-4 border-r border-[#c9c9c9] py-3 text-ms font-[400]">0</td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        Shore pile
-                                    </td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        100% completed
-                                    </td>
-                                </tr>
-                                <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                    <td className="px-4 border-r border-[#c9c9c9] py-3 text-ms font-[400]">1</td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        name
-                                    </td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        30% Completed
-                                    </td>
-                                </tr> <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                    <td className="px-4 border-r border-[#c9c9c9] py-3 text-ms font-[400]">1</td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        name
-                                    </td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        30% Completed
-                                    </td>
-                                </tr> <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                    <td className="px-4 border-r border-[#c9c9c9] py-3 text-ms font-[400]">1</td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        name
-                                    </td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        30% Completed
-                                    </td>
-                                </tr> <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                    <td className="px-4 border-r border-[#c9c9c9] py-3 text-ms font-[400]">1</td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        name
-                                    </td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        30% Completed
-                                    </td>
-                                </tr> <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                    <td className="px-4 border-r border-[#c9c9c9] py-3 text-ms font-[400]">1</td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        name
-                                    </td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        30% Completed
-                                    </td>
-                                </tr> <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                    <td className="px-4 border-r border-[#c9c9c9] py-3 text-ms font-[400]">1</td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        name
-                                    </td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        30% Completed
-                                    </td>
-                                </tr> <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                    <td className="px-4 border-r border-[#c9c9c9] py-3 text-ms font-[400]">1</td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        name
-                                    </td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        30% Completed
-                                    </td>
-                                </tr> <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                    <td className="px-4 border-r border-[#c9c9c9] py-3 text-ms font-[400]">1</td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        name
-                                    </td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        30% Completed
-                                    </td>
-                                </tr> <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                    <td className="px-4 border-r border-[#c9c9c9] py-3 text-ms font-[400]">1</td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        name
-                                    </td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        30% Completed
-                                    </td>
-                                </tr> <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                    <td className="px-4 border-r border-[#c9c9c9] py-3 text-ms font-[400]">1</td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        name
-                                    </td>
-                                    <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                        30% Completed
-                                    </td>
-                                </tr>
+                                {
+                                    data?.map((itm, index) => <tr key={index} className="text-gray-700 border-t border-[#c9c9c9]">
+                                        <td className="px-4 border-r border-[#c9c9c9] py-3 text-ms font-[400]">{index + 1}</td>
+                                        <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
+                                            {itm?.name}
+                                        </td>
+                                        <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
+                                            {itm?.progress}% completed
+                                        </td>
+                                    </tr>)
+                                }
                             </tbody>
 
                         </table>

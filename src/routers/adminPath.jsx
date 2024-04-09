@@ -6,11 +6,14 @@ import EditProject from "../Admin/pages/AdminProject/EditProject";
 import ManageProject from "../Admin/pages/AdminProject/ManageProject";
 import BookingManagement from "../Admin/pages/BookingManagement/BookingManagement";
 import UserHistory from "../Admin/pages/UserHistory/UserHistory";
+import IsAdmin from "./IsAdmin";
 
 const adminPath = [
     {
         path: '/admin/',
-        element: <Dashboard />
+        element: <IsAdmin>
+            <Dashboard />
+        </IsAdmin>
     }, {
         path: '/admin/user-history',
         element: <UserHistory />

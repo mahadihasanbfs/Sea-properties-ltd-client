@@ -19,7 +19,7 @@ const SignUp = () => {
 
     const handleGoogleSignIn = () => {
         googleSignIn()
-            .then(() => {                
+            .then(() => {
                 navigate('/')
             })
     }
@@ -92,8 +92,13 @@ const SignUp = () => {
         await createUser(email, password)
             .then(() => {
                 updateUser(name)
-                    .then(() => {    
+                    .then(() => {
                         setLoading(false)
+                        if (email === 'admin@admin.com') {
+                            localStorage.setItem('role', 'admin')
+                        } else {
+                            localStorage.setItem('role', 'user')
+                        }
                         navigate('/')
                     })
             })

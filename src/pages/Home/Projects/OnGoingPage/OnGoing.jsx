@@ -1,14 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import useGetData from "../../../../hooks/useGetData";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const OnGoingProject = () => {
+    const [projectData, setProjectData] = useState([])
     const [type, setType] = useState('all');
+    const filterPath = useLocation();
+    const [projectStatus, setProjectStatus] = useState(filterPath || "project status");
 
+    useEffect(() => {
+        const text = filterPath?.hash;
+        const result = text ? text.replace('#', '').toLowerCase() : null;
+        setProjectStatus(result);
+    }, [filterPath]);
+
+
+    console.log(projectStatus, 'status++++++++++');
     const data = useGetData('api/v1/admin/project/projects');
 
-    console.log(data, '--------');
+    useEffect(() => {
+        const filteredData = data?.data?.filter(project => {
+            const projectStatusLowerCase = project?.project_status?.toLowerCase();
+            const projectTypeLowerCase = project?.project_type?.toLowerCase();
+
+            const matchesPosition = projectStatus === "project status" || (projectStatusLowerCase && projectStatusLowerCase === projectStatus);
+            const matchesType = type === "all" || (projectTypeLowerCase && projectTypeLowerCase === type);
+            return matchesPosition && matchesType;
+        });
+        setProjectData(filteredData);
+    }, [data?.data, projectStatus, type]);
+
+
+    console.log(projectData, '+++++++++++');
+
     return (
         <div className="">
             <Helmet>
@@ -37,7 +62,7 @@ const OnGoingProject = () => {
                 <div className="max-w-[1366px] mx-auto px-6 xl:px-[50px] grid gap-10 md:gap-0
                  md:grid-cols-3 pb-20">
                     {
-                        data?.data?.map((item, index) => <Link key={item?._id} to={`/project-details/${item?._id}`}>
+                        projectData?.map((item, index) => <Link key={item?._id} to={`/project-details/${item?._id}`}>
                             <div className="relative xl:w-[423px] xl:h-[423px] justify-self-center overflow-hidden hover:cursor-pointer">
                                 <img className="w-full h-full hover:scale-110 transition-transform duration-1000 ease-in-out object-cover" src={item?.project_photo} alt="" />
                                 <div className="w-full h-[70px] px-6 bg-[#00000080] absolute bottom-20">

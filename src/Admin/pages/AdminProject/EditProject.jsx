@@ -54,8 +54,32 @@ const EditProject = () => {
             .then(data => setAllProjects(data?.data))
     }, [])
 
+    const workingData = allProjects?.details?.info?.contractionStatus
 
-    console.log(allProjects, '+++++');
+    const [inputFields, setInputFields] = useState([]);
+
+    useEffect(() => {
+        // Set inputFields state after fetching data
+        setInputFields(workingData);
+    }, []);
+
+    const handleAddField = () => {
+        setInputFields([...inputFields, { name: '', progress: '' }]);
+    };
+
+    const handleValueChange = (index, e) => {
+        const { name, value } = e.target;
+        const newInputFields = [...inputFields];
+        newInputFields[index][name] = value;
+        setInputFields(newInputFields);
+    };
+
+    const handleDeleteField = (index) => {
+        const newInputFields = [...inputFields];
+        newInputFields.splice(index, 1);
+        setInputFields(newInputFields);
+    };
+
 
 
     const handleSubmit = async (e) => {
@@ -76,8 +100,7 @@ const EditProject = () => {
         const bathroom = form.bathroom.value;
         const launch_date = new Date().getTime();
         const collections = form.collections.value;
-        const name_of_works = form.name_of_works.value;
-        const project_progress = form.project_progress.value;
+
         const video_url = form.video_url.value;
         const vr_status = form.vr_status.value;
         const vr_url = form.vr_url.value;
@@ -124,8 +147,7 @@ const EditProject = () => {
                     bedroom,
                     launch_date,
                     collections,
-                    name_of_works,
-                    project_progress
+                    contractionStatus: inputFields
                 }
             },
             gallery_img: galleryImageUrls ? galleryImageUrls : allProjects?.details?.info?.gallery_img,
@@ -336,27 +358,47 @@ const EditProject = () => {
                                 type="text"
                                 placeholder="Total Collection " />
                         </div>
-                        <div className="mt-3 w-full">
-                            <label   >Name Of Works</label><br />
-                            <input
-                                defaultValue={allProjects?.details?.info?.name_of_works}
-                                name="name_of_works"
-                                className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
-                                type="text"
-                                placeholder="Enter total bathroom " />
-                        </div>
-
-                        <div className="mt-3 w-full">
-                            <label   >Project Progress</label><br />
-                            <input
-                                defaultValue={allProjects?.details?.info?.project_progress}
-                                name="project_progress"
-                                className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
-                                type="text"
-                                placeholder="Project progress percents " />
-                        </div>
-
                     </div>
+                </div>
+
+                {/* dynamic inputs */}
+                <div className="border border-[#dbdbdb] mt-6 p-6">
+                    <div className="flex items-center justify-between">
+                        <h2>Contraction Status</h2>
+                        <button className="duration-200 bg-[#e1e0e0] px-4 py-1" onClick={handleAddField}>+ Add Field</button>
+                    </div>
+                    {/* dynamic inputs */}
+                    {workingData.map((item, index) => (
+                        <div key={index} className="grid grid-cols-2 gap-4">
+                            <div className="mt-3 w-full">
+                                <label>Name Of Works</label>
+                                <br />
+                                <input
+                                    name="name"
+                                    className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
+                                    type="text"
+                                    defaultValue={item.name}
+                                    placeholder="Enter total bathroom"
+                                    onChange={(e) => handleValueChange(index, e)}
+                                />
+                            </div>
+
+                            <div className="mt-3 w-full">
+                                <label>Project Progress</label><br />
+                                <div className="flex items-center gap-2">
+                                    <input
+                                        name="progress"
+                                        className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
+                                        type="text"
+                                        defaultValue={item.progress}
+                                        placeholder="Project progress percents"
+                                        onChange={(e) => handleValueChange(index, e)}
+                                    />
+                                    <button onClick={() => handleDeleteField(index)} type="button" className="bg-[#8a1717] w-[50px] h-[40px] mt-2 flex justify-center text-xl rounded text-[white] items-center">x</button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
                 </div>
 
                 {/*gallery  */}

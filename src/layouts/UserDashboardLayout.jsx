@@ -61,7 +61,7 @@ export default function UserDashboardLayout() {
                                 {activeMenu &&
                                     <ul className="bg-whtie shadow-lg absolute top-[57px] bg-[white] ring-1 ring-[#8080805d] right-0  w-[200px] p-2">
                                         <li>
-                                            <Link to="/dashboard">
+                                            <Link to="/user">
                                                 <div className="flex w-full hover:bg-dark duration-100 hover:text-[white] text-sm px-2 py-2 items-center  gap-2">
                                                     Profile
                                                 </div>

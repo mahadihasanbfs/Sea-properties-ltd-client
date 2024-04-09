@@ -45,14 +45,14 @@ export default function AdminSideNav() {
                     id: 1.1,
                     name: 'Link 1',
                     icon: 'ICN',
-                    path: '/dashboard',
+                    path: '/admin',
                     role: 'admin',
                 },
                 {
                     id: 1.2,
                     name: 'Link 2',
                     icon: 'ICN',
-                    path: '/dashboard',
+                    path: '/admin',
                     role: 'admin',
                 },
             ]

@@ -11,6 +11,7 @@ const AddProject = () => {
     const [imageFile, setImageFile] = useState(null);
     const fileInputRef = useRef(null);
 
+
     // banner img show and upload
     const handleButtonClick = () => {
         fileInputRef.current.click();
@@ -43,9 +44,30 @@ const AddProject = () => {
     // upload image 
     const { uploadImage } = useImageUpload();
 
+    // dynamic inputs
+    const [inputFields, setInputFields] = useState([{ name: '', progress: '' }]);
+
+    // Function to handle adding new input fields
+    const handleAddField = () => {
+        setInputFields([...inputFields, { name: '', progress: '' }]);
+    };
+
+    // Function to handle input value changes
+    const handleValueChange = (index, e) => {
+        const { name, value } = e.target;
+        const newInputFields = [...inputFields];
+        newInputFields[index][name] = value;
+        setInputFields(newInputFields);
+    };
+
+    const handleDeleteField = (index) => {
+        const newInputFields = [...inputFields];
+        newInputFields.splice(index, 1);
+        setInputFields(newInputFields);
+    };
+
+
     // form submit
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -64,8 +86,6 @@ const AddProject = () => {
         const bathroom = form.bathroom.value;
         const launch_date = new Date().getTime();
         const collections = form.collections.value;
-        const name_of_works = form.name_of_works.value;
-        const project_progress = form.project_progress.value;
         const video_url = form.video_url.value;
         const vr_status = form.vr_status.value;
         const vr_url = form.vr_url.value;
@@ -111,8 +131,7 @@ const AddProject = () => {
                     bedroom,
                     launch_date,
                     collections,
-                    name_of_works,
-                    project_progress
+                    contractionStatus: inputFields
                 }
             },
             gallery_img: galleryImageUrls,
@@ -142,7 +161,6 @@ const AddProject = () => {
         })
 
     };
-
 
 
 
@@ -228,6 +246,7 @@ const AddProject = () => {
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                             type="text"
                             placeholder="enter project name">
+                            <option selected value="project status">project status</option>
                             <option value="onGoing">ON Going</option>
                             <option value="upComing">Up Coming</option>
                             <option value="completed">Completed</option>
@@ -317,27 +336,48 @@ const AddProject = () => {
                                 type="text"
                                 placeholder="Total Collection " />
                         </div>
-                        <div className="mt-3 w-full">
-                            <label   >Name Of Works</label><br />
-                            <input
-                                name="name_of_works"
-                                className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
-                                type="text"
-                                placeholder="Enter total bathroom " />
-                        </div>
-
-                        <div className="mt-3 w-full">
-                            <label   >Project Progress</label><br />
-                            <input
-                                name="project_progress"
-                                className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
-                                type="text"
-                                placeholder="Project progress percents " />
-                        </div>
 
                     </div>
                 </div>
+                {/* dynamic inputs */}
+                <div className="border border-[#dbdbdb] mt-6 p-6">
+                    <div className="flex items-center justify-between">
+                        <h2>Contraction Status</h2>
+                        <button className="duration-200 bg-[#e1e0e0] px-4 py-1" onClick={handleAddField}>+ Add Field</button>
+                    </div>
+                    {/* dynamic inputs */}
+                    {inputFields.map((item, index) => (
+                        <div key={index} className="grid grid-cols-2 gap-4">
+                            <div className="mt-3 w-full">
+                                <label>Name Of Works</label>
+                                <br />
+                                <input
+                                    name="name"
+                                    className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
+                                    type="text"
+                                    value={item.name}
+                                    placeholder="Enter total bathroom"
+                                    onChange={(e) => handleValueChange(index, e)}
+                                />
+                            </div>
 
+                            <div className="mt-3 w-full">
+                                <label>Project Progress</label><br />
+                                <div className="flex items-center gap-2">
+                                    <input
+                                        name="progress"
+                                        className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
+                                        type="text"
+                                        value={item.progress}
+                                        placeholder="Project progress percents"
+                                        onChange={(e) => handleValueChange(index, e)}
+                                    />
+                                    <button onClick={() => handleDeleteField(index)} type="button" className="bg-[#8a1717] w-[50px] h-[40px] mt-2 flex justify-center text-xl rounded text-[white] items-center">x</button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
                 {/*gallery  */}
                 <div className="border border-[#dbdbdb] mt-6 p-6">
                     <h2 className="font-bold border-b  border-[gray] pb-3">Project Gallery</h2>
@@ -428,7 +468,7 @@ const AddProject = () => {
                         placeholder="enter map link" />
                 </div>
                 {
-                    !loading ? <button className="dashboard_form_btn" type="submit">submit</button> : <button disabled className="dashboard_form_btn" type="button">submit....</button>
+                    loading ? <button className="dashboard_form_btn" type="submit">submit</button> : <button disabled className="dashboard_form_btn" type="button">submit....</button>
                 }
             </form>
         </div>
