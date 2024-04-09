@@ -68,13 +68,16 @@ const commonPath = [
     {
         path: 'blogs/blogs-details/:id',
         element: <BlogDetails />
+    }, {
+        path: 'projects/:id',
+        element: <BlogDetails />
     },
     {
         path: 'project-details/:id',
         element: <ProjectDetails />
     },
     {
-        path: 'on-going',
+        path: 'project',
         element: <OnGoing />
     },
     {

@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 
- import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const BannerCart = ({ itm }) => {
-  
+
     return (
         <Link to={`project-details/${itm?._id}`}>
-            <div className="px-2 xl:mx-[40px]">
+            <div className="px-2 xl:mx-[10px]">
                 <img src={itm?.project_photo}
                     className="object-cover md:h-[400px] h-[300px] w-full" alt="" />
 
