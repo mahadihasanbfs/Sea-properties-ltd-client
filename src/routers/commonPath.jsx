@@ -8,6 +8,8 @@ import OurClient from "../pages/Home/About_us/Our_Client/OurClient";
 import OurStory from "../pages/Home/About_us/Our_Story/OurStory";
 import VisionMision from "../pages/Home/About_us/Vision_Mision/VisionMision";
 import Contact from "../pages/Home/Contact/Contact";
+import BlogDetails from "../pages/Home/Home/Blogs/BlogDetails";
+import MyBlogs from "../pages/Home/Home/Blogs/Blogs";
 import Home from "../pages/Home/Home/Home";
 import LandRegistrationForm from "../pages/Home/LandRegistrationForm/LandRegistrationForm";
 import NewsEvent from "../pages/Home/News_Event/NewsEvent";
@@ -59,10 +61,17 @@ const commonPath = [
     {
         path: 'news_events/:id',
         element: <NewsEventReadMore />
+    }, {
+        path: 'blogs',
+        element: <MyBlogs />
+    },
+    {
+        path: 'blogs/blogs-details/:id',
+        element: <BlogDetails />
     },
     {
         path: 'project-details/:id',
-        element: <ProjectDetails /> 
+        element: <ProjectDetails />
     },
     {
         path: 'on-going',
@@ -74,7 +83,7 @@ const commonPath = [
     },
     {
         path: 'sign-up',
-        element:<SignUp />
+        element: <SignUp />
     },
     {
         path: 'sign-in',

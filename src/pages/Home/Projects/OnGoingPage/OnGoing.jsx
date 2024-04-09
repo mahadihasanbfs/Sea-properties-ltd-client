@@ -1,29 +1,14 @@
-import { useEffect, useState } from "react";
-import OnGoingCard from "./OnGoingCard";
+import { useState } from "react";
 import { Helmet } from "react-helmet";
+import useGetData from "../../../../hooks/useGetData";
+import { Link } from "react-router-dom";
 
-const OnGoing = () => {
+const OnGoingProject = () => {
     const [type, setType] = useState('all');
-    const [data, setData] = useState([]);
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await fetch('/src/pages/Home/ProjectDetails/projectInfo.json');
-                const data = await response.json();
-                if (type === 'all') {
-                    setData(data);
-                } else {
-                    const projectData = data.filter(item => item?.type === type);
-                    setData(projectData);
-                }
 
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        }
-        fetchData();
-    }, [type])
+    const data = useGetData('api/v1/admin/project/projects');
 
+    console.log(data, '--------');
     return (
         <div className="">
             <Helmet>
@@ -52,10 +37,15 @@ const OnGoing = () => {
                 <div className="max-w-[1366px] mx-auto px-6 xl:px-[50px] grid gap-10 md:gap-0
                  md:grid-cols-3 pb-20">
                     {
-                        data?.map((item, index) => <OnGoingCard
-                            key={index}
-                            item={item}
-                        ></OnGoingCard>)
+                        data?.data?.map((item, index) => <Link key={item?._id} to={`/project-details/${item?._id}`}>
+                            <div className="relative xl:w-[423px] xl:h-[423px] justify-self-center overflow-hidden hover:cursor-pointer">
+                                <img className="w-full h-full hover:scale-110 transition-transform duration-1000 ease-in-out object-cover" src={item?.project_photo} alt="" />
+                                <div className="w-full h-[70px] px-6 bg-[#00000080] absolute bottom-20">
+                                    <h3 className="text-[18px] text-[white]">{item?.name}</h3>
+                                    <p className="text-[#C7C3C3]">{item?.details?.info?.address}</p>
+                                </div>
+                            </div>
+                        </Link>)
                     }
                 </div>
             </div>
@@ -63,4 +53,4 @@ const OnGoing = () => {
     );
 };
 
-export default OnGoing;
+export default OnGoingProject;

@@ -12,6 +12,7 @@ import { MdDateRange } from "react-icons/md";
 import { BiSolidCollection } from "react-icons/bi";
 import AlertModal from "../../../hooks/useAlertModal";
 import DetailShet from "./DetailShet";
+import Swal from "sweetalert2";
 
 const ProjectDetails = () => {
     const [visible, setVisible] = useState(false);
@@ -19,22 +20,26 @@ const ProjectDetails = () => {
     const { id } = useParams();
     const [vr, setVr] = useState(false);
     const [on, setOn] = useState(false);
+
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await fetch('/src/pages/Home/ProjectDetails/projectInfo.json');
+                const response = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/project/get-project?project_id=${id}`);
                 const data = await response.json();
-                const singleData = data.filter(item => item?._id === id);
-                setProjectData(singleData[0]);
+                // const singleData = data.filter(item => item?._id === id);
+                setProjectData(data?.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         }
         fetchData();
-    }, [])
+    }, [id])
+
+    console.log(projectData, id, '------>')
 
     // this section is used for slider functionality
     const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+    const [loading, setLoading] = useState(null);
 
     const openSlider = (index) => {
         setSelectedImageIndex(index);
@@ -44,9 +49,10 @@ const ProjectDetails = () => {
         setSelectedImageIndex(null);
     };
 
-    const { _id, title, address, bannerImg, projectInfoImg, projectFeatureImg, contactPageImg, projectInfo, projectFeatures, galleryImages, projectVideo, mapLink } = projectData;
+    const { _id, title, address, banner_img, videoThumbnailImgUpload, video_url, contactPageImg, projectInfo, projectFeatures, gallery_img, projectVideo, mapLink, featureInfo, details } = projectData;
 
     const handleSubmit = (event) => {
+        setLoading(true)
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
@@ -61,13 +67,27 @@ const ProjectDetails = () => {
             phone,
             message
         }
-        console.log(data);
-        form.reset()
+
+
+        fetch('https://sea-properties-server.vercel.app/api/v1/admin/booking/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        }).then((res) => res.json()).then((data) => {
+            setLoading(false)
+            Swal.fire('Booking successfully added', '', 'success');
+            // navigate('/admin/project-management');
+            form.reset()
+        })
+
+
     }
     return (
         <div className={`${visible && 'overflow-hidden'}`}>
             <SecondaryBanner
-                bannerImg={bannerImg}
+                bannerImg={banner_img}
                 opacity={40}
                 projectName={title}
                 location={address}
@@ -75,7 +95,7 @@ const ProjectDetails = () => {
             {/*  project info  */}
             <div className="max-w-[1366px] mx-auto py-10 px-4 md:px-8 xl:px-20 grid md:grid-cols-2 gap-6 md:gap-0 bg-white ">
                 <figure className="flex items-center">
-                    <img className="w-[575px] h-[527px] object-cover" src={projectInfoImg} alt="" />
+                    <img className="w-[575px] h-[527px] object-cover" src={details?.detail_img} alt="" />
                 </figure>
                 <>
                     {/* component */}
@@ -92,16 +112,16 @@ const ProjectDetails = () => {
                                     <tbody className="bg-white">
                                         <tr className="text-gray-700">
                                             <td className="px-4 flex gap-2 items-center py-3 text-ms font-semibold "><FaLocationDot className="text-xl" /> Address</td>
-                                            <td className="px-4 py-3 text-sm  border-l">{projectInfo?.address ? projectInfo?.address : 'No Address'}</td>
+                                            <td className="px-4 py-3 text-sm  border-l">{details?.info?.address ? details?.info?.address : 'No Address'}</td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
                                             <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><FaPencilRuler className="text-lg" /> Land Area</td>
-                                            <td className="px-4 py-3 text-sm  border-l">{projectInfo?.landArea ? projectInfo?.landArea : 'No land area'}</td>
+                                            <td className="px-4 py-3 text-sm  border-l">{details?.info?.land_area ? details?.info?.land_area : 'No land area'}</td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
                                             <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><FaBuilding className="text-lg" />  No of Floors</td>
                                             <td className="px-4 py-3 text-sm  border-l">
-                                                {projectInfo?.no_of_floor ? projectInfo?.no_of_floor : '0'}
+                                                {details?.info?.address?.no_of_floors ? details?.info?.address?.no_of_floors : '0'}
                                             </td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
@@ -114,24 +134,26 @@ const ProjectDetails = () => {
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
                                             <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><BsGrid3X3GapFill className="text-lg" /> Apartment Size</td>
                                             <td className="px-4 py-3 text-sm  border-l">
-                                                {projectInfo?.apartmentSize ? projectInfo?.apartmentSize : '0'}
+                                                {details?.info?.apartment_size ? details?.info?.apartment_size : '0'}
                                             </td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
                                             <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><FaBed className="text-lg" /> Bedroom</td>
-                                            <td className="px-4 py-3 text-sm  border-l">{projectInfo?.bedroom ? projectInfo?.bedroom : '0'}</td>
+                                            <td className="px-4 py-3 text-sm  border-l">{details?.info?.bedroom ? details?.info?.bedroom : '0'}</td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
                                             <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><FaBath className="text-lg" /> Bathroom</td>
-                                            <td className="px-4 py-3 text-sm  border-l">{projectInfo?.date ? projectInfo?.date : 'N/A'}</td>
+                                            <td className="px-4 py-3 text-sm  border-l">
+                                                {details?.info?.bedroom ? new Date().toString(details?.info?.bedroom) : '0'}
+                                            </td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
                                             <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><MdDateRange className="text-lg" /> Launch Date</td>
-                                            <td className="px-4 py-3 text-sm  border-l">{projectInfo?.date ? projectInfo?.date : 'N/A'}</td>
+                                            <td className="px-4 py-3 text-sm  border-l">{details?.info?.launch_date ? new Date().toString(details?.info?.launch_date) : 'N/A'}</td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
                                             <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><BiSolidCollection className="text-lg" /> Collection</td>
-                                            <td className="px-4 py-3 text-sm  border-l">{projectInfo?.collection ? projectInfo?.collection : 'No Collections'}</td>
+                                            <td className="px-4 py-3 text-sm  border-l">{details?.info?.collections ? details?.info?.collections : 'No Collections'}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -157,7 +179,7 @@ const ProjectDetails = () => {
                         />
                         <div className="space-y-5 mt-[60px] text-white">
                             {
-                                projectFeatures?.map((feature, index) => <p key={index}>{feature}</p>)
+                                featureInfo?.features && featureInfo?.features?.map((feature, index) => <p key={index}>{feature?.label}</p>)
                             }
                         </div>
                         <button className="py-[9px] px-[32px] text-white border-[3px] border-white  mt-6">
@@ -165,7 +187,7 @@ const ProjectDetails = () => {
                         </button>
                     </div>
                     <figure className="justify-self-end flex items-center">
-                        <img className="w-[465px] h-[490px] object-cover" src={projectFeatureImg} alt="" />
+                        <img className="w-[465px] h-[490px] object-cover" src={featureInfo?.features_img} alt="" />
                     </figure>
                 </div>
             </div>
@@ -178,7 +200,7 @@ const ProjectDetails = () => {
                 />
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-8 xl:gap-[60px] mt-7">
                     {
-                        galleryImages?.map((image, index) => <img
+                        gallery_img?.map((image, index) => <img
                             key={index}
                             src={image}
                             onClick={() => openSlider(index)}
@@ -190,7 +212,7 @@ const ProjectDetails = () => {
             {/* gallery slider view*/}
             {selectedImageIndex !== null && (
                 <Slider
-                    images={galleryImages}
+                    images={gallery_img}
                     selectedIndex={selectedImageIndex}
                     setSelectedImageIndex={setSelectedImageIndex}
                     onClose={closeSlider}
@@ -203,13 +225,13 @@ const ProjectDetails = () => {
                     <div className="flex items-center justify-between">
                         <h3 className="text-[35px] text-white uppercase">Video Tour</h3>
 
-                    <div className="flex items-center gap-2">
-<a href="" ></a>
-                    </div>
+                        <div className="flex items-center gap-2">
+                            <a href="" ></a>
+                        </div>
                     </div>
                     <figure
                         style={{
-                            backgroundImage: `linear-gradient(to right, rgb(0 0 0 / 30%), rgb(0 0 0 / 30%)), url(${projectVideo?.videoThumbnail}})`
+                            backgroundImage: `linear-gradient(to right, rgb(0 0 0 / 30%), rgb(0 0 0 / 30%)), url(${videoThumbnailImgUpload}})`
                         }}
                         className="h-[300px] md:w-[650px] md:h-[400px] lg:w-[934px] lg:h-[480px] border-4 border-[#FCF4F4] rounded-[10px] bg-cover flex justify-center items-center hover:cursor-pointer "
                         onClick={() => setVisible(true)}
@@ -222,17 +244,17 @@ const ProjectDetails = () => {
             {/* video modal */}
             {
                 visible &&
-                <div className={`fixed top-0 w-screen h-screen bg-black flex justify-center items-center z-[8000]`}>
-                    <div className="w-[935px] h-[480px]">
-                        <iframe
-                            width="100%"
-                            height="100%"
-                            src={projectVideo?.videoUrl}
-                            title="YouTube video player"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen
-                        />
+                <div className={`fixed top-0 w-screen bg-[#00000055] h-screen bg-black flex justify-center items-center z-[8000]`}>
+                    <div className="w-[935px] h-[480px] bg-[#000000]">
+                        <video className="w-full h-full" controls>
+                            <source src={video_url} type="video/mp4" />
+                            <source src={video_url} type="video/ogg" />
+                            Your browser does not support HTML video.
+                        </video>
+                        {/* <video className="w-full h-[300px]" src={video_url}></video> */}
+                        <button onClick={() => setVisible(false)} className="text-gray-400 absolute top-[70px] right-8">
+                            <IoMdClose className="text-3xl" />
+                        </button>
                     </div>
                     <button onClick={() => setVisible(false)} className="text-gray-400 absolute top-[70px] right-8">
                         <IoMdClose className="text-3xl" />

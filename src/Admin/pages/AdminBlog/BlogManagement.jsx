@@ -3,87 +3,45 @@ import AdminTitle from "../../../hooks/useAdminTitle";
 import { MdDeleteOutline } from "react-icons/md";
 import { TbEdit } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import useGetData from "../../../hooks/useGetData";
+import Swal from "sweetalert2";
+import ReactQuill from "react-quill";
 
 
 const ManageBlog = () => {
     const [openModal, setOpenModal] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(10); // Number of items per page
+    const [myValue, setMyValue] = useState(openModal?.description);
 
-    const blogData = [
-        {
-            id: 1,
-            img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            name: 'project 1',
-            date: new Date().getTime(),
-            address: 'dhaka',
 
-        },
-        {
-            id: 2,
-            img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            name: 'project 1',
-            date: new Date().getTime(),
-            address: 'dhaka',
-
-        },
-        {
-            id: 3,
-            img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            name: 'project 1',
-            date: new Date().getTime(),
-            address: 'dhaka',
-
-        },
-        // Add more items as needed with unique IDs
-    ];
+    // Fetch data using custom hook
+    const blogData = useGetData('api/v1/admin/blog/blogs');
 
 
     // Logic to calculate pagination
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = blogData.slice(indexOfFirstItem, indexOfLastItem);
-
-    // Function to handle page change
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-    // Function to handle next page
-    const nextPage = () => {
-        if (currentPage < Math.ceil(blogData.length / itemsPerPage)) {
-            setCurrentPage(currentPage + 1);
-        }
-    };
-
-    // Function to handle previous page
-    const prevPage = () => {
-        if (currentPage > 1) {
-            setCurrentPage(currentPage - 1);
-        }
-    };
-
-    // Generate pagination numbers
-    const paginationNumbers = Array.from({ length: Math.ceil(blogData.length / itemsPerPage) }, (_, i) => i + 1);
+    console.log(blogData, '*-*-**', openModal?.description);
 
 
-    // edit
-    const handleSave = (e) => {
-        e.preventDefault();
-        const img = e.target.img.value;
-        const totalAmount = e.target.totalAmount.value;
-        const date = new Date().getTime();
-        const due = e.target.due.value;
-        const remingBalance = e.target.remingBalance.value;
+    // delete data using custom hook
+    const handleDelete = (id) => {
+        console.log(id, '-------->');
+        fetch(`https://sea-properties-server.vercel.app/api/v1/admin/blog/delete?blog_id=${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
 
-        const editedItem = {
-            img,
-            totalAmount,
-            date,
-            due,
-            remingBalance
-        };
+                Swal.fire('Blog deleted', '', 'success')
+                // reload()
+            })
+            .catch((error) => {
+                console.error('Error deleting project:', error);
+            });
+    }
 
-        console.log(editedItem);
-    };
+    console.log(blogData, '======');
     return (
         <div className="pt-3">
             <div className="flex item-center pb-3 justify-between">
@@ -105,16 +63,17 @@ const ManageBlog = () => {
                         </tr>
                     </thead>
                     <tbody className="text-gray-600 divide-y">
-                        {currentItems.map((item, idx) => (
+                        {blogData?.data?.map((item, idx) => (
                             <tr key={idx}>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    <img src={item.img} className="w-[60px] h-[60px] rounded object-cover" alt="" />
+                                    <img src={item?.photo} className="w-[60px] h-[60px] rounded object-cover" alt="" />
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{item?.name}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{item?.date}</td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <ul className="flex items-center gap-2">
                                         <li>
-                                            <button >
+                                            <button onClick={() => handleDelete(item?._id)}>
                                                 <MdDeleteOutline className="text-2xl text-[red]" />
                                             </button>
                                         </li>
@@ -127,66 +86,35 @@ const ManageBlog = () => {
                                 </td>
                                 {/* modal */}
                                 <div>
-                                    <div onClick={() => setOpenModal(false)} className={`fixed z-[100] flex items-center justify-center ${openModal?.id == item.id ? 'visible opacity-100' : 'invisible opacity-0'} inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}>
+                                    <div onClick={() => setOpenModal(false)} className={`fixed z-[100] flex items-center justify-center ${openModal?._id == item._id ? 'visible opacity-100' : 'invisible opacity-0'} inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}>
 
                                         <div onClick={(e_) => e_.stopPropagation()} className={`text- absolute md:w-[500px] rounded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${openModal?.id == item.id ? 'scale-1 opacity-1 duration-300' : 'scale-0 opacity-0 duration-150'} z-[100]`}>
                                             <div className="">
                                                 <h2 className="text-xl font-bold mb-4">Edit </h2>
-                                                <form onSubmit={handleSave}>
+                                                <form onSubmit={``}>
                                                     <div className="mb-4">
                                                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="img">img:</label>
                                                         <input
                                                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                                             id="img"
-                                                            type="text"
+                                                            type="file"
                                                             name="img"
-                                                            defaultValue={item.img}
                                                         />
                                                     </div>
                                                     <div className="mb-4">
                                                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="totalAmount">Total Amount:</label>
                                                         <input
                                                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                                            id="totalAmount"
-                                                            type="number"
-                                                            name="totalAmount"
-                                                            defaultValue={item.totalAmount}
+                                                            id="name"
+                                                            type="text"
+                                                            name="name"
+                                                            defaultValue={item.name}
                                                         />
                                                     </div>
                                                     <div className="mb-4">
                                                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="due">Due:</label>
-                                                        <input
-                                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                                            id="due"
-                                                            type="number"
-                                                            name="due"
-                                                            defaultValue={item.due}
-                                                        />
-                                                    </div>
-                                                    <div className="mb-6">
-                                                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="remainingBalance">Remaining Balance:</label>
-                                                        <input
-                                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                                            id="remainingBalance"
-                                                            type="number"
-                                                            name="remainingBalance"
-                                                            defaultValue={item.remainingBalance}
-                                                        />
-                                                    </div>
-                                                    <div className="flex items-center justify-between">
-                                                        <button
-                                                            className="bg-[blue] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                                            type="submit"
-                                                        >
-                                                            Update
-                                                        </button>
-                                                        <button
-                                                            onClick={() => setOpenModal(false)}
-                                                            className="bg-[red] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                                            type="button"
-                                                        >
-                                                            Close
-                                                        </button>
+
+                                                        <ReactQuill className="rounded-lg w-full border border-[#336cb6] h-[200px] overflow-hidden text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2" theme="snow" value={myValue} onChange={setMyValue} />
                                                     </div>
                                                 </form>
                                             </div>
@@ -200,16 +128,7 @@ const ManageBlog = () => {
                 </table>
             </div>
 
-            {/* Pagination */}
-            <div className="flex justify-center mt-4">
-                <button onClick={prevPage} className="mx-1  px-3 py-1 rounded bg-gray-200 text-[#d8d8d8] bg-[blue]" disabled={currentPage === 1}>Prev</button>
-                {paginationNumbers.map((number) => (
-                    <button key={number} onClick={() => paginate(number)} className={`mx-1 px-3 py-1 rounded ${currentPage === number ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}>
-                        {number}
-                    </button>
-                ))}
-                <button onClick={nextPage} className="mx-1 px-3 py-1 rounded bg-gray-200 text-[#d8d8d8] bg-[blue]" disabled={currentPage === Math.ceil(blogData.length / itemsPerPage)}>Next</button>
-            </div>
+
         </div>
     );
 };

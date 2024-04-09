@@ -20,19 +20,20 @@ const Slider = ({ images, selectedIndex, setSelectedImageIndex, onClose: close }
     }, [selectedIndex]);
 
     return (
-        <div className={`fixed top-0 w-screen h-screen bg-black flex justify-center items-center z-[2000] fade-in ${closed && 'fade-out'}`}>
+        <div className={`fixed top-0 bg-[#0000004e] w-screen h-screen bg-black flex justify-center items-center z-[2000] fade-in ${closed && 'fade-out'}`}>
             <div className="absolute top-0 left-0 py-3 px-4 w-full bg-[#000] bg-opacity-40 z-[1000] flex justify-between items-center">
                 <span className="text-white opacity-70">{`${selectedIndex + 1} / ${images.length}`}</span>
                 <button
-                    className="text-white opacity-70"
+                    className=" text-[white] top-24 right-6 rounded-full p-1 bg-[#6a2618] absolute"
                     onClick={handleClose}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
+
             <div>
-                <img src={images[selectedIndex]} key={selectedIndex} className={`w-[880px] xl:h-screen object-cover fade-in`} />
+                <img src={images[selectedIndex]} key={selectedIndex} className={`w-[880px]  object-cover fade-in`} />
             </div>
 
             {/* right arrow */}
