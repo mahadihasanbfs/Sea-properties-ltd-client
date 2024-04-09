@@ -49,7 +49,7 @@ const SignIn = () => {
         signIn(email, password)
             .then(() => {
                 setLoading(false)
-                navigate('/')
+                navigate('/user')
             })
         // fetch('https://brightcomponent-backend-v1.vercel.app/api/v1/auth/sign-in', {
         //     method: "POST",

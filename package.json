@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.28.9",
     "bright-alert": "^0.2.3",
     "firebase": "^10.8.1",
     "framer-motion": "^11.0.6",
+    "jodit-react": "^4.0.15",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
     "react": "^18.2.0",
