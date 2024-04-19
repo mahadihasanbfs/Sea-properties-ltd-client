@@ -22,11 +22,14 @@ const router = createBrowserRouter([
     {
         path: '/admin',
         element:
-            <IsAdmin>
+            <div>
                 <ScrollToTop />
                 <AdminLayout />
-            </IsAdmin>,
-        children: adminPath
+            </div>,
+        // <IsAdmin>
+
+        // </IsAdmin>,
+        children: adminPath,
     },
     {
         path: '/user',
