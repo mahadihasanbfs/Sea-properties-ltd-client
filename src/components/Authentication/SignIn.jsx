@@ -106,7 +106,7 @@ const SignIn = () => {
                                 Email
                             </p>
                             <input
-                                placeholder='Type your email / phone'
+                                placeholder='Type your email'
                                 type="email"
                                 name='email'
                                 required
