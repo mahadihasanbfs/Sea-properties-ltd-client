@@ -157,10 +157,10 @@ const SignUp = () => {
                         </div>
                         <div>
                             <p className="mb-2 font-semibold text-black ">
-                                Email / Phone
+                                email
                             </p>
                             <input
-                                placeholder='Type your email / phone'
+                                placeholder='Type your email'
                                 type="text"
                                 name='email'
                                 required

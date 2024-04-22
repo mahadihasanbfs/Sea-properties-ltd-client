@@ -39,7 +39,7 @@ const GellaryItem = ({ itm, showModal, setShowModal, close, handleModalClose, di
             {/* arrow icon */}
             {
                 showModal === itm.id &&
-                <img src={arrow} className={`absolute top-full -rotate-90 lg:rotate-0 lg:top-1/2 lg:-translate-y-1/2 lg:right-full w-8 h-8 z-10 fade-in-secondary ${close && 'fade-out-fast'} pointer-events-none`} alt="" />
+                <img src={arrow} className={`absolute z-50 top-full -rotate-90 lg:rotate-0 lg:top-1/2 lg:-translate-y-1/2 lg:right-full w-8 h-8  fade-in-secondary ${close && 'fade-out-fast'} pointer-events-none`} alt="" />
             }
 
             {/* modal div */}
@@ -49,7 +49,7 @@ const GellaryItem = ({ itm, showModal, setShowModal, close, handleModalClose, di
                     id='modal'
                     key={itm?.id || divHeight}
                     onMouseEnter={handleHover} onMouseLeave={handleHover}
-                    className={`absolute text-left bg-white z-20 fade-in-secondary ${close && 'fade-out-secondary'} py-10 px-[30px] hover:cursor-default shadow-lg
+                    className={`absolute text-left bg-white z-50 bg-light fade-in-secondary ${close && 'fade-out-secondary'} py-10 px-[30px] hover:cursor-default shadow-lg
                         ${(itm?.id === 1 || itm?.id === 2 || itm?.id === 3) && windowWidth >= 1024 && 'lg:top-0 lg:right-[calc(100%+24px)]'} 
                         ${(itm?.id === 4 || itm?.id === 5 || itm?.id === 6) && windowWidth >= 1024 && 'lg:bottom-0 lg:right-[calc(100%+24px)]'} 
                         

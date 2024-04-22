@@ -71,3 +71,12 @@ This project builds a modern, user-friendly, and responsive real estate website 
 **Developed by:** Bright Future Soft
 
 I hope this provides a comprehensive and informative README file for your project in markdown language!# Sea-properties-ltd-client
+
+**Deploy on VPS:**
+ ```
+ scp -r dist  root@64.23.208.225:/var/www/Sea-properties-ltd-client
+   ```
+
+   Pass: 
+   ```
+    mAhadi624234a
