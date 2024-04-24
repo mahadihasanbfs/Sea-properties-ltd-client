@@ -14,11 +14,13 @@ import AlertModal from "../../../hooks/useAlertModal";
 import DetailShet from "./DetailShet";
 import Swal from "sweetalert2";
 import ReactPlayer from 'react-player'
+import vrImg from '../../../assets/vr.jpg'
 
 const ProjectDetails = () => {
     const [visible, setVisible] = useState(false);
     const [projectData, setProjectData] = useState({});
     const { id } = useParams();
+    // eslint-disable-next-line no-unused-vars
     const [vr, setVr] = useState(false);
     const [on, setOn] = useState(false);
 
@@ -36,7 +38,6 @@ const ProjectDetails = () => {
         fetchData();
     }, [id])
 
-    console.log(projectData, id, '------>')
 
     // this section is used for slider functionality
     const [selectedImageIndex, setSelectedImageIndex] = useState(null);
@@ -50,7 +51,7 @@ const ProjectDetails = () => {
         setSelectedImageIndex(null);
     };
 
-    const { _id, title, address, banner_img, videoThumbnailImgUpload, video_url, contactPageImg, projectInfo, projectFeatures, gallery_img, projectVideo, mapLink, featureInfo, details } = projectData;
+    const { _id, conditionStatus, vrStatus, vr_url, title, address, banner_img, videoThumbnailImgUpload, video_url, contactPageImg, projectInfo, projectFeatures, gallery_img, projectVideo, mapLink, featureInfo, details } = projectData;
 
     const handleSubmit = (event) => {
         setLoading(true)
@@ -96,12 +97,12 @@ const ProjectDetails = () => {
             {/*  project info  */}
             <div className="max-w-[1366px] mx-auto py-10 px-4 md:px-8 xl:px-20 grid md:grid-cols-2 gap-6 md:gap-0 bg-white ">
                 <figure className="flex items-center">
-                    <img className="w-[575px] h-[527px] object-cover" src={details?.detail_img} alt="" />
+                    <img className="w-[575px] h-full object-cover" src={details?.detail_img} alt="" />
                 </figure>
                 <>
                     {/* component */}
-                    <section className="container mx-auto p-6 font-mono">
-                        <div className="w-full mb-8 border border-[#c9c9c9] overflow-hidden  shadow-lg">
+                    <section className="container mx-auto px-6 font-mono">
+                        <div className="w-full border border-[#c9c9c9] overflow-hidden  shadow-lg">
                             <div className="w-full overflow-x-auto">
                                 <table className="w-full   ">
                                     {/* <thead>
@@ -161,8 +162,9 @@ const ProjectDetails = () => {
 
                             </div>
                         </div>
-
-                        <button onClick={() => setOn(!on)} className="px-3 py-2 border ">Emplane</button>
+                        {conditionStatus &&
+                            <button onClick={() => setOn(!on)} className="px-3 py-2 border mt-3">Explant</button>
+                        }
                         <AlertModal title='Contraction Status' on={on} setOn={setOn}>
                             <DetailShet data={details?.info?.contractionStatus} />
                         </AlertModal>
@@ -183,13 +185,70 @@ const ProjectDetails = () => {
                                 featureInfo?.features && featureInfo?.features?.map((feature, index) => <p key={index}>{feature?.label}</p>)
                             }
                         </div>
-                        <button className="py-[9px] px-[32px] text-white border-[3px] border-white  mt-6">
+                        {/* <button className="py-[9px] px-[32px] text-white border-[3px] border-white  mt-6">
                             Explore
-                        </button>
+                        </button> */}
                     </div>
                     <figure className="justify-self-end flex items-center">
                         <img className="w-[465px] h-[490px] object-cover" src={featureInfo?.features_img} alt="" />
                     </figure>
+                </div>
+            </div>
+
+            {/* Contact form */}
+            <div className="bg-[#B0BEC5] py-16 lg:py-[85px]">
+                <div className="max-w-[1366px] mx-auto px-6 md:px-10 xl:px-[60px] text-white gap-4 grid md:grid-cols-2">
+                    <div className="space-y-10">
+                        <iframe
+                            width="100%"
+                            height='100%'
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7688.411418598435!2d90.37320637217408!3d23.837568124644218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c70003cb6d75%3A0x8cc76155358e2b2a!2sSEA%20Properties%20Ltd!5e0!3m2!1sen!2sbd!4v1713820075424!5m2!1sen!2sbd"
+                        />
+                    </div>
+                    <div className="flex items-center">
+                        <form onSubmit={handleSubmit} className="md:space-y-4 space-y-2 w-full">
+                            <h2 className="text-[20px] md:text-[37px] uppercase">Book Now</h2>
+                            <div>
+                                <p>Name*</p>
+                                <input
+                                    type="text" name="name"
+                                    required
+                                    autoComplete="off"
+                                    className="w-full bg-transparent focus:outline-none pt-3 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                                />
+                            </div>
+                            <div>
+                                <p>Enter your Email</p>
+                                <input
+                                    type="text" name="email"
+                                    autoComplete="off"
+                                    className="w-full bg-transparent focus:outline-none pt-3 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                                />
+                            </div>
+                            <div>
+                                <p>Contact Number*</p>
+                                <input
+                                    type="text" name="phone"
+                                    required
+                                    autoComplete="off"
+                                    className="w-full bg-transparent focus:outline-none pt-3 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                                />
+                            </div>
+                            <div>
+                                <p>Message</p>
+                                <input
+                                    type="text" name="message"
+                                    required
+                                    autoComplete="off"
+                                    className="w-full bg-transparent focus:outline-none pt-16 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                                />
+                            </div>
+
+                            <div className="pt-6">
+                                <input type="submit" value="Book Now" className="py-[9px] px-[28px] border-[3px] border-white hover:cursor-pointer" />
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
 
@@ -227,7 +286,9 @@ const ProjectDetails = () => {
                         <h3 className="text-[35px] text-white uppercase">Video Tour</h3>
 
                         <div className="flex items-center gap-2">
-                            <a href="" ></a>
+                            {vrStatus && <a href={vr_url} target="_blank" >
+                                <img src={vrImg} alt="vr" className="w-[90px] rounded" />
+                            </a>}
                         </div>
                     </div>
                     <figure
@@ -276,58 +337,7 @@ const ProjectDetails = () => {
                 />
             </div>
 
-            {/* Contact form */}
-            <div className="bg-[#B0BEC5] py-16 lg:py-[85px]">
-                <div className="max-w-[1366px] mx-auto px-6 md:px-10 xl:px-[60px] text-white grid md:grid-cols-2">
-                    <div className="space-y-10">
-                        <h2 className="text-[27px] md:text-[37px] uppercase">Book Now</h2>
-                        <img className="md:w-[300px] h-[300px] lg:w-[400px] lg:h-[400px] xl:w-[500px] xl:h-[500px] object-cover" src={contactPageImg} alt="" />
-                    </div>
-                    <div className="flex items-center">
-                        <form onSubmit={handleSubmit} className="space-y-4 mt-10 w-full">
-                            <div>
-                                <p>Name*</p>
-                                <input
-                                    type="text" name="name"
-                                    required
-                                    autoComplete="off"
-                                    className="w-full bg-transparent focus:outline-none pt-3 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
-                                />
-                            </div>
-                            <div>
-                                <p>Enter your Email</p>
-                                <input
-                                    type="text" name="email"
-                                    autoComplete="off"
-                                    className="w-full bg-transparent focus:outline-none pt-3 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
-                                />
-                            </div>
-                            <div>
-                                <p>Contact Number*</p>
-                                <input
-                                    type="text" name="phone"
-                                    required
-                                    autoComplete="off"
-                                    className="w-full bg-transparent focus:outline-none pt-3 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
-                                />
-                            </div>
-                            <div>
-                                <p>Message</p>
-                                <input
-                                    type="text" name="message"
-                                    required
-                                    autoComplete="off"
-                                    className="w-full bg-transparent focus:outline-none pt-16 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
-                                />
-                            </div>
 
-                            <div className="pt-6">
-                                <input type="submit" value="Book Now" className="py-[9px] px-[28px] border-[3px] border-white hover:cursor-pointer" />
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
     );
 };

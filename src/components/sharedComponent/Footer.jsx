@@ -42,7 +42,7 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div className=' ml-auto'>
+                    <div className=' md:ml-auto'>
                         <h2
                             className="text-gray-900 font-bold text-[24px] mb-4">Follow Us
                         </h2>
@@ -98,11 +98,12 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="border-t pt-4 mt-6 container flex items-center md:justify-between">
-                <p className="text-gray-900 text-sm">
+            <div className="border-t pt-4 mt-6 container md:flex items-center md:justify-between">
+                <p className="text-gray-900 md:text-start text-center text-sm">
                     © SEA Properties Ltd. All Rights Reserved , {new Date().getFullYear()}
                 </p>
-                <div className="flex gap-3 items-center">
+
+                <div className="flex md:justify-start justify-center md:mt-0 mt-2 gap-3 items-center">
                     <Link to={'/privacy-policy'} className='border-r pr-3 border-gray-600 text-sm hover:text-blue-600' >Privacy Policy</Link>
                     <Link className=' pr-3 border-gray-600 text-sm hover:text-blue-600' to={``}>Terms & Conditions</Link>
 

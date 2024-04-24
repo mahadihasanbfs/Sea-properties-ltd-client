@@ -169,7 +169,7 @@ const Navbar = () => {
                                 user ?
                                     <div ref={dropDownRef} className="relative mx-auto w-fit text-black">
                                         <button onClick={() => setOn((prev) => !prev)}>
-                                            <p>
+                                            <p className="border w-10 h-10 rounded-full bg-[#0a193452] flex items-center justify-center">
                                                 {user.displayName.slice(0, 1)}
                                             </p>
                                             {/* <img width={40} height={40} className="size-10 rounded-full bg-slate-500 object-cover duration-500 hover:scale-x-[98%] hover:opacity-80" src={user?.photoURL} alt="avatar drop down navigate ui" /> */}
@@ -212,7 +212,7 @@ const Navbar = () => {
                         style={{
                             zIndex: '6000'
                         }}
-                        className={`absolute bg-white top-0 duration-200 ${!open ? 'left-[-120%]' : 'left-0'} right-0 w-full h-screen   md:hidden ring  `}>
+                        className={`absolute bg-white bg-[#101522] top-0 duration-200 ${!open ? 'left-[-120%]' : 'left-0'} right-0 w-full h-screen   md:hidden ring  `}>
                         <div className="flex container items-center mt-3 bg justify-between w-full">
                             <Link to="/" className="text-2xl font-bold ml-5">
                                 <img src={logo} alt="" className="w-20 " />
@@ -258,7 +258,7 @@ const Navbar = () => {
                         </ul>
                         <Link to={'/sign-in'}>
                             <div className="flex justify-center">
-                                <button className="bg-red-600 mt-3  w-[93%] text-white md:px-8 px-4  md:text-md text-sm  py-2 rounded">
+                                <button className="bg-[#c12222] mt-3  w-[93%] text-white md:px-8 px-4  md:text-md text-sm  py-2 rounded">
                                     Login
                                 </button>
                             </div>
