@@ -10,16 +10,16 @@ const Contact = () => {
 
     const contactInfo = {
         title: 'Contact Us',
-        companyName: 'Shanta Holdings Limited',
+        companyName: 'SEA Properties Limited',
         address: [ //every address item create new address line.
-            'Forum, East Tower, Level 20 - 22',
-            '187-188/B, Bir Uttam Mir Shawkat Sarak',
-            'Tejgaon, Dhaka 1208.'
+            `
+            100 North kalshi,
+            Gate No - 01,
+            Mirpur DOHS, Dhaka, Bangladesh`
         ],
         phone: [ //every phone item create new line.
-            'Hotline: 16634',
-            'Cell:+88 01678 666444',
-            'Email: info@shantaholdings.com'
+            'Cell: 01894-440111',
+            'Email: info@seapropertiesltd.com.bd'
         ]
     }
 
@@ -70,6 +70,7 @@ const Contact = () => {
                     <p>{companyName}</p>
 
                     <div>
+                        <h1> Our Address:</h1>
                         {
                             address?.map((item, index) => <p key={index}>{item}</p>)
                         }
