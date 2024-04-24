@@ -46,14 +46,15 @@ const UserHistory = () => {
   // Logic to calculate pagination
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = userData.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems =
+    userData?.length && userData?.slice(indexOfFirstItem, indexOfLastItem);
 
   // Function to handle page change
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   // Function to handle next page
   const nextPage = () => {
-    if (currentPage < Math.ceil(userData.length / itemsPerPage)) {
+    if (currentPage < Math.ceil(userData?.length / itemsPerPage)) {
       setCurrentPage(currentPage + 1);
     }
   };
@@ -67,7 +68,7 @@ const UserHistory = () => {
 
   // Generate pagination numbers
   const paginationNumbers = Array.from(
-    { length: Math.ceil(userData.length / itemsPerPage) },
+    { length: Math.ceil(userData?.length / itemsPerPage) },
     (_, i) => i + 1
   );
 
@@ -107,85 +108,86 @@ const UserHistory = () => {
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
-            {currentItems.map((item, idx) => (
-              <tr key={idx}>
-                <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
-                {/* <td className="px-6 py-4 whitespace-nowrap">
+            {currentItems?.length &&
+              currentItems?.map((item, idx) => (
+                <tr key={idx}>
+                  <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
+                  {/* <td className="px-6 py-4 whitespace-nowrap">
                   {item.totalAmount}
                 </td> */}
-                {/* <td className="px-6 py-4 whitespace-nowrap">
+                  {/* <td className="px-6 py-4 whitespace-nowrap">
                   {new Date(item.date).toLocaleString()}
                 </td> */}
-                <td className="px-6 py-4 whitespace-nowrap">{item.email}</td>
-                {/* <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-6 py-4 whitespace-nowrap">{item.email}</td>
+                  {/* <td className="px-6 py-4 whitespace-nowrap">
                   {item.remainingBalance}
                 </td> */}
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <ul className="flex items-center gap-2">
-                    <li>
-                      <button>
-                        <MdDeleteOutline className="text-2xl text-[red]" />
-                      </button>
-                    </li>
-                    <li>
-                      <button onClick={() => setOpenModal(item)}>
-                        <TbEdit className="text-2xl text-[green]" />
-                      </button>
-                    </li>
-                  </ul>
-                </td>
-                {/* //!  Edit modal */}
-                <div>
-                  <div
-                    onClick={() => setOpenModal(false)}
-                    className={`fixed z-[100] flex items-center justify-center ${
-                      openModal?._id == item._id
-                        ? "visible opacity-100"
-                        : "invisible opacity-0"
-                    } inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}
-                  >
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <ul className="flex items-center gap-2">
+                      <li>
+                        <button>
+                          <MdDeleteOutline className="text-2xl text-[red]" />
+                        </button>
+                      </li>
+                      <li>
+                        <button onClick={() => setOpenModal(item)}>
+                          <TbEdit className="text-2xl text-[green]" />
+                        </button>
+                      </li>
+                    </ul>
+                  </td>
+                  {/* //!  Edit modal */}
+                  <div>
                     <div
-                      onClick={(e_) => e_.stopPropagation()}
-                      className={`text- absolute md:w-[500px] rounded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${
+                      onClick={() => setOpenModal(false)}
+                      className={`fixed z-[100] flex items-center justify-center ${
                         openModal?._id == item._id
-                          ? "scale-1 opacity-1 duration-300"
-                          : "scale-0 opacity-0 duration-150"
-                      } z-[100]`}
+                          ? "visible opacity-100"
+                          : "invisible opacity-0"
+                      } inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}
                     >
-                      <div className="">
-                        <h2 className="text-xl font-bold mb-4">Edit </h2>
-                        <form onSubmit={handleSave}>
-                          <div className="mb-4">
-                            <label
-                              className="block text-gray-700 text-sm font-bold mb-2"
-                              htmlFor="name"
-                            >
-                              name:
-                            </label>
-                            <input
-                              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                              id="name"
-                              type="text"
-                              name="name"
-                              defaultValue={item.name}
-                            />
-                          </div>
-                          <div className="mb-4">
-                            <label
-                              className="block text-gray-700 text-sm font-bold mb-2"
-                              htmlFor="totalAmount"
-                            >
-                              Total Amount:
-                            </label>
-                            <input
-                              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                              id="email"
-                              type="email"
-                              name="email"
-                              defaultValue={item.email}
-                            />
-                          </div>
-                          {/* <div className="mb-4">
+                      <div
+                        onClick={(e_) => e_.stopPropagation()}
+                        className={`text- absolute md:w-[500px] rounded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${
+                          openModal?._id == item._id
+                            ? "scale-1 opacity-1 duration-300"
+                            : "scale-0 opacity-0 duration-150"
+                        } z-[100]`}
+                      >
+                        <div className="">
+                          <h2 className="text-xl font-bold mb-4">Edit </h2>
+                          <form onSubmit={handleSave}>
+                            <div className="mb-4">
+                              <label
+                                className="block text-gray-700 text-sm font-bold mb-2"
+                                htmlFor="name"
+                              >
+                                name:
+                              </label>
+                              <input
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="name"
+                                type="text"
+                                name="name"
+                                defaultValue={item.name}
+                              />
+                            </div>
+                            <div className="mb-4">
+                              <label
+                                className="block text-gray-700 text-sm font-bold mb-2"
+                                htmlFor="totalAmount"
+                              >
+                                Total Amount:
+                              </label>
+                              <input
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="email"
+                                type="email"
+                                name="email"
+                                defaultValue={item.email}
+                              />
+                            </div>
+                            {/* <div className="mb-4">
                             <label
                               className="block text-gray-700 text-sm font-bold mb-2"
                               htmlFor="due"
@@ -200,7 +202,7 @@ const UserHistory = () => {
                               defaultValue={item.due}
                             />
                           </div> */}
-                          {/* <div className="mb-6">
+                            {/* <div className="mb-6">
                             <label
                               className="block text-gray-700 text-sm font-bold mb-2"
                               htmlFor="remainingBalance"
@@ -215,29 +217,29 @@ const UserHistory = () => {
                               defaultValue={item.remainingBalance}
                             />
                           </div> */}
-                          <div className="flex items-center justify-between">
-                            <button
-                              className="bg-[blue] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                              type="submit"
-                            >
-                              Update
-                            </button>
-                            <button
-                              onClick={() => setOpenModal(false)}
-                              className="bg-[red] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                              type="button"
-                            >
-                              Close
-                            </button>
-                          </div>
-                        </form>
+                            <div className="flex items-center justify-between">
+                              <button
+                                className="bg-[blue] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                type="submit"
+                              >
+                                Update
+                              </button>
+                              <button
+                                onClick={() => setOpenModal(false)}
+                                className="bg-[red] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                type="button"
+                              >
+                                Close
+                              </button>
+                            </div>
+                          </form>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                {/* end modal */}
-              </tr>
-            ))}
+                  {/* end modal */}
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

@@ -5,6 +5,8 @@ import AddProject from "../Admin/pages/AdminProject/AddProject";
 import EditProject from "../Admin/pages/AdminProject/EditProject";
 import ManageProject from "../Admin/pages/AdminProject/ManageProject";
 import BookingManagement from "../Admin/pages/BookingManagement/BookingManagement";
+import AddInstallment from "../Admin/pages/Installment/AddInstallment";
+import ManageInstallment from "../Admin/pages/Installment/ManageInstallment";
 import UserHistory from "../Admin/pages/UserHistory/UserHistory";
 import IsAdmin from "./IsAdmin";
 
@@ -44,6 +46,14 @@ const adminPath = [
   {
     path: "/admin/blog-management",
     element: <ManageBlog />,
+  },
+  {
+    path: "/admin/add-installment",
+    element: <AddInstallment />,
+  },
+  {
+    path: "/admin/manage-installment",
+    element: <ManageInstallment />,
   },
 ];
 
