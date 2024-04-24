@@ -10,7 +10,9 @@ import VisionMision from "../pages/Home/About_us/Vision_Mision/VisionMision";
 import Contact from "../pages/Home/Contact/Contact";
 import BlogDetails from "../pages/Home/Home/Blogs/BlogDetails";
 import MyBlogs from "../pages/Home/Home/Blogs/Blogs";
-import Home from "../pages/Home/Home/Home";
+import Home from "../pages/Home/Home/Home"
+import PrivacyPolicy from "./PrivacyPolicy";
+// import PrivacyPolicy from "../pages/Home/Home/PrivacyPolicy";
 import LandRegistrationForm from "../pages/Home/LandRegistrationForm/LandRegistrationForm";
 import NewsEvent from "../pages/Home/News_Event/NewsEvent";
 import NewsEventReadMore from "../pages/Home/News_Event/NewsEventReadMore";
@@ -91,7 +93,16 @@ const commonPath = [
     {
         path: 'sign-in',
         element: <SignIn />
-    }
+    },
+    {
+        path: 'privacy-policy',
+        element: <PrivacyPolicy />
+    },
+    {
+        path: '*',
+        element: <Home />
+    },
+
 ]
 
 export default commonPath;

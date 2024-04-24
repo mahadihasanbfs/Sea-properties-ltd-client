@@ -93,10 +93,14 @@ Welcome to our story, which is one of ardor, tenacity, and the promise of opport
                         <img className="w-[404px] md:h-[456px] object-cover" src={`${img3}`} alt="" />
                     </div>
                     <div className="flex flex-col justify-center gap-[47px] text-justify basis-[60%]">
-                        {
-                            text2.map((txt, index) => <P key={index} text={txt} size={'text-sm lg:text-[16px]'} lineHeight={'lg:leading-[22px]'}></P>)
+                        Our company offers a portfolio of high-end developments in Dhaka city, with a strong reputation in the Real Estate market and access to luxury apartments and commercial spaces in prime locations.
+                        <br />
+                        <br />
+                        Our focus is on developing luxury properties and providing investors and buyers with high-quality service that sets us apart from competitors. Our commitment to excellence and attention to detail has been key to our success.
+                        <br />
+                        <br />
+                        SEA Properties strives to exceed expectations and sets high standards for itself and others. Our driving philosophy is to "Setting Standards".
 
-                        }
                     </div>
                 </div>
             </div>
@@ -107,13 +111,17 @@ Welcome to our story, which is one of ardor, tenacity, and the promise of opport
                 <div className="max-w-[720px] mx-auto text-white flex flex-col gap-6 text-center lg:text-left">
                     <h3 className="uppercase text-3xl text-white lg:text-4xl mb-">Our Approach</h3>
                     <p className="text-sm lg:text-[16px] text-white leading-[22px] px-4 md:px-0">
-                        Acquiring an apartment, a home or even an office space is a person&apos;s life-long dream. This dream drives him or her to accumulate the required finance slowly and gradually, which is the start of shaping this dream into reality. This relentless pursuit of realizing such a dream can flow from generation to generation. But finally when a space is purchased, has anyone thought to what extent this “dream” is actually fulfilled?
+                        Buying a property like an apartment, home, or office is a significant life goal for many people. It requires saving money over time to make this dream come true. This pursuit of buying property can be passed down through generations. However, once the purchase is made, one may question whether the dream has truly been fulfilled.
+                        <br />
+                        <br />
+                        At SEA Properties, we understand the importance of this moment for you. Our properties, including apartments, condominiums, and commercial complexes, offer top-notch amenities such as temperature-controlled swimming pools, rooftop gardens, gymnasiums, walkways, and children's play areas. We strive to provide stylish urban living solutions for our customers.
+
                     </p>
                 </div>
             </div>
 
             {/* our story section 5 */}
-            <div className="max-w-[1366px] md:h-[586px] mx-auto px-6 lg:px-[80px] py-[52px] text-[#000] lg:grid grid-cols-2 flex flex-col  md:flex-row items-center gap-8 lg:gap-0">
+            {/* <div className="max-w-[1366px] md:h-[586px] mx-auto px-6 lg:px-[80px] py-[52px] text-[#000] lg:grid grid-cols-2 flex flex-col  md:flex-row items-center gap-8 lg:gap-0">
                 <div className="flex flex-col justify-start gap-6 basis-[40%] h-full">
                     <h3 className="uppercase text-3xl lg:text-4xl">Our Logo</h3>
                     <img className="w-[344px] lg:w-[406px] h-[304px] lg:h-[406px] object-cover" src={`${img5}`} alt="" />
@@ -124,7 +132,7 @@ Welcome to our story, which is one of ardor, tenacity, and the promise of opport
 
                     }
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

@@ -11,9 +11,5 @@ const ContactMap = () => {
 };
 
 
-scp - r dist  root @: /var/www / Sea - properties - ltd - client
-mAhadi624234a
-''
-
 export default ContactMap;
 

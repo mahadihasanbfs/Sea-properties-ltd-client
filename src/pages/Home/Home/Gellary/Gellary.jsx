@@ -79,8 +79,8 @@ const Gellary = () => {
         >
             <div className="max-w-[1366px] mx-auto grid md:grid-cols-2 grid-cols-1 text-white gap-12">
                 <div className=' h-full flex flex-col justify-center items-start'>
-                    <h1 className="text-[40px] text-light font-bold">
-                        WHY SHANTA HOLDINGS
+                    <h1 className="text-[35px] text-light font-bold">
+                        WHY SEA PROPERTIES LIMITED?
                     </h1>
                     <p className="mt-6">
                         Partner with the best Artisan, to transform your land into a milestone <br /> of aesthetic marvel and superior value.
@@ -89,7 +89,7 @@ const Gellary = () => {
                         Explore
                     </button>
                 </div>
-                <div id='cardDiv' className="relative text-dark z-50 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div id='cardDiv' className="relative text-dark  z-50 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {
                         data?.map(itm => <GellaryItem
                             key={itm?.id}

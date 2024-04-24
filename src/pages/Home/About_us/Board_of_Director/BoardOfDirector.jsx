@@ -24,7 +24,7 @@ const BoardOfDirector = () => {
         let text1 = 'Housing is one of the fundamental needs in Bangladesh. In This country, every single person desire is to build a sweet home in Dhaka. To make digital Bangladesh, we are the only ones who can buy the best land at affordable prices, so that your dream becomes a reality. Stay with SEA Properties Limited to build your dream home in the best residential area of the country at a reasonable price. We go beyond building structures to meet your needs.We recognize the importance of your home, office, or commercial space.These places are where your stories and dreams come to life.We take pride in creating environments that support your success and happiness.We appreciate your trust and faith in us, which have been key factors in our success.We are committed to maintaining our high standards and surpassing your expectations. SEA Properties Limited is dedicated to delivering excellence, value, and sustainability in order to enhance the quality of life and contribute to a more harmonious world.Thank you for being a part of our journey.Together, we will build the future.';
         let text3 = 'Momotaz Begum is the Founding Director of SEA Properties Limited. She is responsible for analyzing growth potential in various markets and making recommendations for further evaluation based on her observations. As a part of the leadership team, she also helps to shape the organizational culture, and design motivational initiatives for all employees.';
 
-        let chunk1 = handleSpilitTextIntoChunks(text1, 900);
+        let chunk1 = handleSpilitTextIntoChunks(text1, 280);
         let chunk2 = handleSpilitTextIntoChunks(text2, 500);
         let chunk3 = handleSpilitTextIntoChunks(text3, 300);
         setText1(chunk1);
@@ -58,7 +58,7 @@ const BoardOfDirector = () => {
                     </div>
                     <div className={`flex flex-col justify-between  gap-4  text-justify basis-[60%] h-full`}>
                         {
-                            text2.map((txt, index) => <P key={index} text={txt} size={'text-sm  lg:text-[16px] '} lineHeight={'lg:leading-[22px]'}></P>)
+                            text1.map((txt, index) => <P key={index} text={txt} size={'text-sm  lg:text-[16px] '} lineHeight={'lg:leading-[22px]'}></P>)
 
                         }
                     </div>
