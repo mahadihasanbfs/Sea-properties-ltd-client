@@ -2,23 +2,19 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
-    const navigate = useNavigate();
-    const isUser = localStorage.getItem('role');
+  const navigate = useNavigate();
+  const isUser = localStorage.getItem("role");
 
-    useEffect(() => {
-        if (!isUser || isUser !== 'user') { // Corrected condition
-            navigate('/sign-in');
-        }
-    }, [isUser, navigate]);
+  //   console.log(isUser);
 
-    return (
-        <div>
-            is private
-            <br />
-            {children}
+  useEffect(() => {
+    if (!isUser || isUser !== "user") {
+      // Corrected condition
+      navigate("/sign-in");
+    }
+  }, [isUser, navigate]);
 
-        </div>
-    );
+  return <div>{children}</div>;
 };
 
 export default PrivateRoute;

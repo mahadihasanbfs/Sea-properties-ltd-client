@@ -10,38 +10,39 @@ import IsAdmin from "./IsAdmin";
 import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element:
-            <>
-                <ScrollToTop />
-                <MainLayout />
-            </>,
-        children: commonPath
-    },
-    {
-        path: '/admin',
-        element:
-            <div>
-                <ScrollToTop />
-                <AdminLayout />
-            </div>,
-        // <IsAdmin>
+  {
+    path: "/",
+    element: (
+      <>
+        <ScrollToTop />
+        <MainLayout />
+      </>
+    ),
+    children: commonPath,
+  },
+  {
+    path: "/admin",
+    element: (
+      <div>
+        <ScrollToTop />
+        <AdminLayout />
+      </div>
+    ),
+    // <IsAdmin>
 
-        // </IsAdmin>,
-        children: adminPath,
-    },
-    {
-        path: '/user',
-        element:
-            <PrivateRoute>
-                <ScrollToTop />
-                <UserDashboardLayout />
-            </PrivateRoute>,
-        children: userPath
-    },
-
-
+    // </IsAdmin>,
+    children: adminPath,
+  },
+  {
+    path: "/user",
+    element: (
+      <PrivateRoute>
+        <ScrollToTop />
+        <UserDashboardLayout />
+      </PrivateRoute>
+    ),
+    children: userPath,
+  },
 ]);
 
 export default router;
