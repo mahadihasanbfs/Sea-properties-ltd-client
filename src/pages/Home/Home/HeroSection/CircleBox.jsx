@@ -24,9 +24,9 @@ const CircleBox = () => {
                     <Link to="/project#upComing" className="text-gray-900 font-bold text-xs md:tex-xl absolute right-[4px] rotate-[135deg] bottom-[24px]">up comming
                     </Link>
 
-                    <Link to="/project#completed" className="text-gray-900 font-bold text-xs md:tex-xl absolute left-2 rotate-[225deg] bottom-10">Completed</Link>
+                    <Link to="/project#completed" className="text-gray-900 font-bold text-xs md:tex-xl absolute left-2 rotate-[225deg] md:bottom-10 bottom-4">Completed</Link>
 
-                    <Link to="/contact" className="text-gray-900 font-bold text-xs md:tex-xl absolute left-2 rotate-[-40deg] top-10">Contact us</Link>
+                    <Link to="/contact" className="text-gray-900 font-bold text-xs md:tex-xl absolute md:left-2 left-3 md:rotate-[-40deg] rotate-[-41deg] md:top-10 top-4">Contact us</Link>
                 </div>
             </div>
         </div>

@@ -67,6 +67,20 @@ const AddProject = () => {
     };
 
 
+
+    const [conditionOn, setConditionOn] = useState(true);
+
+    const handleCheckboxChange = () => {
+        setConditionOn(!conditionOn); // Toggle the state
+    };
+
+
+    const [vrOn, setVrOn] = useState(true);
+
+    const handleVr = () => {
+        setVrOn(!vrOn); // Toggle the state
+    };
+
     // form submit
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -139,8 +153,10 @@ const AddProject = () => {
                 features: selectedOption,
                 features_img: featureImgUpload
             },
+            vrStatus: vrOn,
             vr_url,
             vr_status,
+            conditionStatus: conditionOn,
             videoThumbnailImgUpload: videoThumbnailImgUpload,
             video_url,
             map_link
@@ -161,6 +177,7 @@ const AddProject = () => {
         })
 
     };
+
 
 
 
@@ -339,11 +356,23 @@ const AddProject = () => {
 
                     </div>
                 </div>
+                <br />
+
                 {/* dynamic inputs */}
-                <div className="border border-[#dbdbdb] mt-6 p-6">
+                <label htmlFor="cdn" className="text-md font-semibold">
+                    <input
+                        type="checkbox"
+                        id="cdn"
+                        checked={conditionOn} // Bind the checked state to conditionOn
+                        onChange={handleCheckboxChange} // Handle the change event
+                    />
+                    Explant Status
+                </label>
+
+                {conditionOn && <div className="border border-[#dbdbdb] mt-3 p-6">
                     <div className="flex items-center justify-between">
-                        <h2>Contraction Status</h2>
-                        <button className="duration-200 bg-[#e1e0e0] px-4 py-1" onClick={handleAddField}>+ Add Field</button>
+                        <h2> Explant Status</h2>
+                        <button type="button" className="duration-200 bg-[#e1e0e0] px-4 py-1" onClick={handleAddField}>+ Add Field</button>
                     </div>
                     {/* dynamic inputs */}
                     {inputFields.map((item, index) => (
@@ -377,7 +406,7 @@ const AddProject = () => {
                             </div>
                         </div>
                     ))}
-                </div>
+                </div>}
                 {/*gallery  */}
                 <div className="border border-[#dbdbdb] mt-6 p-6">
                     <h2 className="font-bold border-b  border-[gray] pb-3">Project Gallery</h2>
@@ -447,7 +476,18 @@ const AddProject = () => {
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                             placeholder="enter vr status" />
                     </div>
-                    <div className="">
+                    <br />
+                    <label htmlFor="vr" className="text-md font-semibold">
+                        <input
+                            type="checkbox"
+                            id="vr"
+                            checked={vrOn} // Bind the checked state to conditionOn
+                            onChange={handleVr} // Handle the change event
+                        />
+                        Add VR url
+                    </label>
+
+                    {vrOn && <div className="">
                         <label   >VR URL</label><br />
                         <input
                             type="url"
@@ -455,7 +495,7 @@ const AddProject = () => {
                             name="vr_url"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                             placeholder="enter vr url" />
-                    </div>
+                    </div>}
                 </div>
                 {/* map link */}
                 <br />

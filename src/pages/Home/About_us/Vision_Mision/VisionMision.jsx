@@ -71,7 +71,7 @@ const VisionMision = () => {
                     <div className="flex flex-col py-10 md:flex-row justify-center items-center gap-16 md:gap-28">
                         <div className="w-full  md:w-[300px] lg:w-[400px] h-[300px] lg:h-[400px] bg-gradient-to-r from-blue-400 to-purple-500 text-white text-center border border-gray-300 rounded-lg shadow-lg overflow-hidden">
                             <div className="flex items-center justify-center h-full">
-                                <h1 className="text-5xl font-bold">Value</h1>
+                                <h1 className="text-5xl font-bold">Values</h1>
                             </div>
                         </div>
                         <div className="max-w-[500px] mx-auto p-4">

@@ -1,4 +1,3 @@
-import React from 'react';
 import useGetData from '../../../../hooks/useGetData';
 import { Link } from 'react-router-dom';
 
@@ -29,7 +28,7 @@ const Blogs = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="grid grid-cols-3 -mx-4">
+                    <div className="grid md:grid-cols-3 -mx-4">
 
                         {
                             data?.data?.map(itm => <Link to={`/blogs/blogs-details/${itm?._id}`} key={itm?._id}>
@@ -44,7 +43,7 @@ const Blogs = () => {
                                         </div>
                                         <div>
                                             {itm?.date && <span
-                                                className=" bg-primary rounded inline-block text-center py-1 px-4 text-xs leading-loose font-semibold text-white mb-5 "
+                                                className=" bg-primary rounded inline-block text-center pt-1 px-4 text-xs leading-loose font-semibold text-white mb-5 "
                                             >
                                                 {itm?.date}
                                             </span>}
@@ -57,6 +56,7 @@ const Blogs = () => {
                                                     {itm?.name}
                                                 </a>
                                             </h3>
+                                            <p dangerouslySetInnerHTML={{ __html: itm?.description }} />
 
                                         </div>
                                     </div>

@@ -13,7 +13,7 @@ const BlogDetails = () => {
                 <h3 className="font-bold text-3xl capitalize mt-3">{blog?.name}</h3>
                 <p className="text-gray-500">{blog?.date}</p>
 
-                <div className='mt-5 text-[#535353]' dangerouslySetInnerHTML={{ __html: blog.description }} />
+                <div className='mt-5 text-[#535353]' dangerouslySetInnerHTML={{ __html: blog?.description }} />
             </div>
         </div>
     );
