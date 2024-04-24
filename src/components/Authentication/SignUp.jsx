@@ -78,7 +78,6 @@ const SignUp = () => {
     };
 
     const passwordStrength = checkPasswordStrength(password);
-
     const SubmitData = async (e) => {
         setLoading(true)
         e.preventDefault();
