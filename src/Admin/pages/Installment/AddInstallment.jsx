@@ -6,10 +6,13 @@ import useImageUpload from "../../../hooks/useUploadImg";
 import Swal from "sweetalert2";
 import useFetchData from "../../../hooks/useFetchData";
 import { DB_URL } from "../../../const";
+import { useNavigate } from "react-router-dom";
 
 const AddInstallment = () => {
   // const [value, setValue] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate()
 
   const [data] = useFetchData(`${DB_URL}/users`);
   console.log("data", data);
@@ -66,7 +69,7 @@ const AddInstallment = () => {
         setLoading(false);
         console.log(data);
         Swal.fire("Installment successfully added", "", "success");
-        // navigate('/admin/project-management');
+        navigate("/admin/manage-installment");
       });
 
     console.log(data);

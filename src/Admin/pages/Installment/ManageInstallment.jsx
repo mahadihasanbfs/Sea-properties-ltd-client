@@ -76,8 +76,9 @@ const ManageInstallment = () => {
 
   // delete Installment
   const deleteInstallment = (id) => {
+    console.log(id);
     fetch(
-      `https://sea-properties-server.vercel.app/api/v1/admin/Installment/delete?Installment_id=${id}`,
+      `https://sea-properties-server.vercel.app/api/v1/admin/installment/delete?Installment_id=${id}`,
       {
         method: "DELETE",
         headers: {
@@ -87,6 +88,7 @@ const ManageInstallment = () => {
     )
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         Swal.fire("Delete Installment successful", "", "success");
         // reload()
       })
@@ -109,34 +111,22 @@ const ManageInstallment = () => {
         <table className="w-full table-auto text-sm text-left">
           <thead className="bg-[#e4e4e4] text-[#0d1113] font-medium border-[#bab9b9] border-b">
             <tr>
-              <th className="py-3 px-6">Image</th>
               <th className="py-3 px-6">Installment Name</th>
-              <th className="py-3 px-6">Date</th>
-              <th className="py-3 px-6">Address</th>
+              <th className="py-3 px-6">Email</th>
+              <th className="py-3 px-6">Installment Number</th>
+              <th className="py-3 px-6">Contact</th>
               <th className="py-3 px-6">Action</th>
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
             {allInstallment.map((item, idx) => (
               <tr key={idx}>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <img
-                    src={item?.Installment_photo}
-                    className="w-[60px] h-[60px] rounded object-cover"
-                    alt=""
-                  />
-                </td>
                 <td className="px-6 py-4 whitespace-nowrap">{item?.name}</td>
+                <td className="px-6 py-4 whitespace-nowrap">{item?.email}</td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  {item?.details?.info?.launch_date
-                    ? new Date().toLocaleString(
-                        item?.details?.info?.launch_date
-                      )
-                    : "N/A"}
+                  {item?.installment}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {item?.details?.info?.address}
-                </td>
+                <td className="px-6 py-4 whitespace-nowrap">{item?.contact}</td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <ul className="flex items-center gap-2">
                     <li>
@@ -145,9 +135,9 @@ const ManageInstallment = () => {
                       </button>
                     </li>
                     <li>
-                      <Link to={`/admin/edit-Installment/${item?._id}`}>
+                      <button onClick={() => setOpenModal(item)}>
                         <TbEdit className="text-2xl text-[green]" />
-                      </Link>
+                      </button>
                     </li>
                   </ul>
                 </td>
