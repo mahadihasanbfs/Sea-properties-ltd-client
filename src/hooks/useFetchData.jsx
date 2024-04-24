@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useGetData = (url) => {
+const useFetchData = (url) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -16,6 +16,7 @@ const useGetData = (url) => {
           return;
         } else {
           const getData = await res.json();
+          console.log(getData);
           setData(getData);
         }
       } catch (error) {
@@ -29,4 +30,4 @@ const useGetData = (url) => {
   return [data, loading, error];
 };
 
-export default useGetData;
+export default useFetchData;

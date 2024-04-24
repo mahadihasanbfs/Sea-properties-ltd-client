@@ -30,17 +30,21 @@ const SignIn = () => {
 
   const handleGoogleSignIn = () => {
     googleSignIn().then(async (result) => {
-      //   console.log("result", result);
+      console.log("result", result);
       console.log(result?.user?.reloadUserInfo);
-      await sendData(`${DB_URL}/users/sign-up`, "POST", {
-        name: result?.displayName,
-        email: result?.email,
-      });
+
+      const googleUserData = {
+        name: result?.user?.reloadUserInfo?.displayName,
+        email: result?.user?.reloadUserInfo?.email,
+      };
+
+      console.log(googleUserData);
+
+      await sendData(`${DB_URL}/users/sign-up`, "POST", googleUserData);
 
       localStorage.setItem("role", "user");
       Swal.success("successfully signup", "success");
       navigate("/user");
-
       //   if (success) {
       //     localStorage.setItem("role", "user");
       //     Swal.success("successfully signup", "success");
