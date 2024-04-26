@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 
-
 export default function TotalProjects() {
   const projectData = [
     {
@@ -63,7 +62,7 @@ export default function TotalProjects() {
             />
           </div>
           <div className="flex flex-row gap-1 items-center justify-between w-full py-px text-base text-gray-400">
-            <p className="flex text-nowrap">Total user</p>
+            <p className="flex text-nowrap">Total Project</p>
             <div className="bg-[#f5f4f4] overflow-hidden h-[10px] rounded-full mt-1 w-full">
               <div className="bg-[blue] rounded-full h-full w-[30%]"></div>
             </div>

@@ -2,17 +2,16 @@ import { Link } from "react-router-dom";
 import useFetchData from "../../../hooks/useFetchData";
 import { DB_URL } from "../../../const";
 
-export default function TotalOrders() {
+export default function TotalBookings() {
+  //   const data = useGetData("api/v1/admin/booking/bookings");
   const [data] = useFetchData(`${DB_URL}/admin/booking/bookings`);
-  const OrderData = data?.data;
-
-  console.log(data);
+  const bookingData = data?.data || 0;
 
   return (
     <div className="w-full rounded-lg bg-[white] p-2  ">
       <div className="flex flex-col">
         <Link
-          to={"/admin/manage-Order"}
+          to={"/admin/booking-management"}
           className="flex flex-row items-center justify-between px-4 py-4"
         >
           <div className="flex mr-4">
@@ -29,10 +28,10 @@ export default function TotalOrders() {
           </div>
           <div className="flex-1 pl-1">
             <div className="text-xl font-medium text-[black]">
-              {OrderData?.length}
+              {bookingData?.length}
             </div>
             <div className="text-sm text-gray-400 sm:text-[gray]">
-              Total Order
+              Total Booking
             </div>
           </div>
         </Link>
@@ -44,7 +43,7 @@ export default function TotalOrders() {
             />
           </div>
           <div className="flex flex-row gap-1 items-center justify-between w-full py-px text-base text-gray-400">
-            <p className="flex text-nowrap">Total user</p>
+            <p className="flex text-nowrap">Total Booking</p>
             <div className="bg-[#f5f4f4] overflow-hidden h-[10px] rounded-full mt-1 w-full">
               <div className="bg-[blue] rounded-full h-full w-[30%]"></div>
             </div>
