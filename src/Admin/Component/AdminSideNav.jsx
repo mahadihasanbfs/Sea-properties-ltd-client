@@ -76,9 +76,9 @@ export default function AdminSideNav() {
     },
     {
       id: 4,
-      name: "contact",
+      name: "Contact Management",
       icon: <BsProjector />,
-      path: "/admin/project-contact",
+      path: "/admin/contact-management",
       role: "admin",
       isDropdown: false,
       menu: [],
@@ -109,27 +109,11 @@ export default function AdminSideNav() {
     },
     {
       id: 4,
-      name: "News Letter",
+      name: "News Letter Management",
       icon: <MdOutlineUnsubscribe />,
-      path: "/admin/news-letter",
+      path: "/admin/newsLetter-management",
       role: "admin",
-      isDropdown: FaLessThanEqual,
-      menu: [
-        {
-          id: 4.1,
-          name: "Add News Letter",
-          icon: "ICN",
-          path: "/add-news-letter",
-          role: "admin",
-        },
-        {
-          id: 4.2,
-          name: "Manage News Letter",
-          icon: "ICN",
-          path: "/manage-news-letter",
-          role: "admin",
-        },
-      ],
+      isDropdown: false,
     },
     {
       id: 5,
