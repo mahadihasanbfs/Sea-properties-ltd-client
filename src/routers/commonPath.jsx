@@ -11,13 +11,12 @@ import Contact from "../pages/Home/Contact/Contact";
 import BlogDetails from "../pages/Home/Home/Blogs/BlogDetails";
 import MyBlogs from "../pages/Home/Home/Blogs/Blogs";
 import Home from "../pages/Home/Home/Home"
-import PrivacyPolicy from "./PrivacyPolicy";
-// import PrivacyPolicy from "../pages/Home/Home/PrivacyPolicy";
 import LandRegistrationForm from "../pages/Home/LandRegistrationForm/LandRegistrationForm";
 import NewsEvent from "../pages/Home/News_Event/NewsEvent";
 import NewsEventReadMore from "../pages/Home/News_Event/NewsEventReadMore";
 import ProjectDetails from "../pages/Home/ProjectDetails/ProjectDetails";
 import OnGoing from "../pages/Home/Projects/OnGoingPage/OnGoing";
+
 
 const commonPath = [
     {
@@ -94,10 +93,11 @@ const commonPath = [
         path: 'sign-in',
         element: <SignIn />
     },
-    {
-        path: 'privacy-policy',
-        element: <PrivacyPolicy />
-    },
+    // {
+    //     path: 'privacy-policy',
+    //     element: <PrivacyPolicy />
+    // },
+
     {
         path: '*',
         element: <Home />

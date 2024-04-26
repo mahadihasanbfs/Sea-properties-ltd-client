@@ -368,7 +368,7 @@ const EditProject = () => {
                         <button className="duration-200 bg-[#e1e0e0] px-4 py-1" onClick={handleAddField}>+ Add Field</button>
                     </div>
                     {/* dynamic inputs */}
-                    {workingData.map((item, index) => (
+                    {workingData?.map((item, index) => (
                         <div key={index} className="grid grid-cols-2 gap-4">
                             <div className="mt-3 w-full">
                                 <label>Name Of Works</label>

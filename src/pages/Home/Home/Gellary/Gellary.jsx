@@ -89,7 +89,7 @@ const Gellary = () => {
                         Explore
                     </button>
                 </div>
-                <div id='cardDiv' className="relative text-dark  z-50 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div id='cardDiv' className="relative text-dark  z-30 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {
                         data?.map(itm => <GellaryItem
                             key={itm?.id}

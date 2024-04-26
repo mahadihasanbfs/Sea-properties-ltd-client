@@ -9,6 +9,8 @@ import { AuthContext } from "../../Provider/AuthProvider";
 const Navbar = () => {
     const [open, setOpen] = useState(false);
     const [openDropdownId, setOpenDropdownId] = useState(null);
+    const role = localStorage.getItem('role');
+    console.log(role);
     const { logOut, user } = useAuth();
     const links = [
         {
@@ -92,7 +94,7 @@ const Navbar = () => {
         },
         {
             id: 4,
-            name: 'News&Events',
+            name: 'News & Events',
             path: '/news-and-events',
             isDropdown: false,
             dropdownItems: [],
@@ -130,8 +132,8 @@ const Navbar = () => {
 
     console.log(user, 'user');
     return (
-        <nav className="bg-[#000000b5] text-[white] fixed  flex items-center justify-between w-full top-0 text-white md:h-[70px] h-[60px] z-[1000]">
-            <div className="relative w-full ">
+        <nav className="bg-[#000000e4] text-[white] fixed z-50 flex items-center justify-between w-full top-0 text-white md:h-[70px] h-[60px]">
+            <div className="relative  w-full ">
                 <div className="max-w-[1366px] mx-auto pl-5 pr-2 md:px-10">
                     <div className="flex items-center justify-between">
                         <Link to="/" className="text-2xl font-bold hid">
@@ -144,11 +146,11 @@ const Navbar = () => {
                                     links.map(itm => <li key={itm.id} className=" flex items-center">
                                         {
                                             !itm?.isDropdown ? <NavLink exact to={itm?.path} className={({ isActive }) =>
-                                                isActive ? "border-t-4 border-red-600" : ""} activeClassName="bg-yellow-500"  >{itm?.name}</NavLink>
+                                                isActive ? "border-b-4 border-[#9b2d2d]" : ""} activeClassName="bg-yellow-500"  >{itm?.name}</NavLink>
                                                 :
                                                 <button className="flex items-center  gap-2 h-[60px] relative group">
                                                     {itm?.name} <FaAngleDown className="mt-2" />
-                                                    <ul className="absolute top-[60px] left-0 bg-[#000000e4] w-40 text-white text-left rounded-md shadow-lg fade-in hidden group-hover:block transition-opacity duration-300">
+                                                    <ul className="absolute z-[1000] top-[60px] left-0 bg-[#000000e4] w-40 text-white text-left rounded-md shadow-lg fade-in hidden group-hover:block transition-opacity duration-300">
                                                         {itm?.dropdownItems.map(item =>
                                                             <li key={item.id}>
                                                                 <NavLink to={item?.path} className="block py-2 px-3 hover:bg-gray-800">
@@ -178,7 +180,7 @@ const Navbar = () => {
                                             <li
                                                 className={`rounded-sm px-2 py-2 ${on ? 'opacity-100 duration-300' : 'opacity-0'}   `}
                                             >
-                                                <Link className="w-full" to={`/user`}>
+                                                <Link className="w-full" to={role == 'admin' ? `/admin` : `/user`}>
                                                     <div className="duration-200 hover:bg-[#1b1d2bde] px-2 py-1 rounded w-full">
                                                         Dashboard
                                                     </div>

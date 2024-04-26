@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Logo from "../../assets/logo.png";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaFacebook } from "react-icons/fa";
 import { TbEyeOff } from "react-icons/tb";
 import { Link, useNavigate } from "react-router-dom";
 // import BrightAlert from "bright-alert";
@@ -10,6 +10,7 @@ import { Helmet } from "react-helmet";
 import useSendData from "../../hooks/usePostData";
 import { DB_URL } from "../../const";
 import Swal from "sweetalert2";
+import { FaCediSign } from "react-icons/fa6";
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -43,7 +44,7 @@ const SignIn = () => {
       await sendData(`${DB_URL}/users/sign-up`, "POST", googleUserData);
 
       localStorage.setItem("role", "user");
-      Swal.success("successfully signup", "success");
+      // Swal.success("successfully signup", "success");
       navigate("/user");
       //   if (success) {
       //     localStorage.setItem("role", "user");
@@ -186,7 +187,7 @@ const SignIn = () => {
 
             <button
               disabled={loading}
-              className="w-full disabled:bg-[#a20e27ae] disabled:cursor-not-allowed cursor-pointer items-center justify-center rounded-lg bg-[#A20E27] px-8 py-4 text-lg font-semibold text-white duration-300 hover:bg-[#a20e27ca]"
+              className="w-full disabled:bg-[#a20e27ae] disabled:cursor-not-allowed cursor-pointer items-center justify-center rounded-lg bg-[#A20E27] px-8 py-4 text-lg font-semibold text-white duration-300 text-light hover:bg-[#a20e27ca]"
             >
               {!loading ? "Sign In" : "loading.."}
             </button>
@@ -197,16 +198,16 @@ const SignIn = () => {
               onClick={handleFacebookSignIn}
               className="w-[220px] h-[50px] rounded-lg text-white bg-[#A20E27] flex justify-center items-center gap-3 hover:cursor-pointer"
             >
-              <img src="https://i.ibb.co/kHFtPDR/Vector.png" alt="" />
-              <p className="text-lg">Facebook</p>
+              <FaFacebook className="w-6 text-light h-6" />
+              <p className="text-lg text-light">Facebook</p>
             </div>
 
             <div
               onClick={handleGoogleSignIn}
-              className="w-[220px] h-[50px] rounded-lg text-white bg-[#A20E27] flex justify-center items-center gap-3 hover:cursor-pointer"
+              className="w-[220px] h-[50px] rounded-lg text-white bg-[#A20E27] flex justify-center items-center gap-3  hover:cursor-pointer"
             >
-              <AiFillGoogleCircle className="w-6 h-6" />
-              <p className="text-lg">Google</p>
+              <AiFillGoogleCircle className="w-6 text-light h-6" />
+              <p className="text-lg text-light">Google</p>
             </div>
           </div>
         </div>

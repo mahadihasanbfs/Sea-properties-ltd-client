@@ -5,11 +5,10 @@ const userPath = [
   {
     path: "/user/flat-installment",
     element: (
-      <PrivateRoute>
-        <FlatInstallMentPage />
-      </PrivateRoute>
+      <FlatInstallMentPage />
     ),
   },
+
 ];
 
 export default userPath;

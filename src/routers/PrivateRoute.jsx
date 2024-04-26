@@ -1,20 +1,21 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const PrivateRoute = ({ children }) => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const isUser = localStorage.getItem("role");
 
-  //   console.log(isUser);
-
   useEffect(() => {
-    if (!isUser || isUser !== "user") {
-      // Corrected condition
+    if (!isUser || isUser !== "user" || !user) {
+
       navigate("/sign-in");
     }
-  }, [isUser, navigate]);
+  }, [isUser, navigate, user]);
 
-  return <div>{children}</div>;
+  // Render the children only if the user is authenticated
+  return user ? <div>{children}</div> : null;
 };
 
 export default PrivateRoute;
