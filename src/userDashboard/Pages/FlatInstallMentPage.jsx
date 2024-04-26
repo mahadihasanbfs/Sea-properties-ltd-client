@@ -1,16 +1,16 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
-
 import { MdDeleteOutline } from "react-icons/md";
 import { TbEdit } from "react-icons/tb";
-import { Link } from "react-router-dom";
-
 import Swal from "sweetalert2";
-import AdminTitle from "../../hooks/useAdminTitle";
 import { DB_URL } from "../../const";
+import useAuth from "../../hooks/useAuth";
+import Title from "../../components/sharedComponent/Title";
+import AdminTitle from "../../hooks/useAdminTitle";
 
 const FlatInstallMentPage = () => {
-  //   const { logOut, user } = useAuth();
-  //   console.log(user);
+  const { user } = useAuth();
+  console.log(user?.reloadUserInfo);
   const [openModal, setOpenModal] = useState(false);
   const [on, setOn] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -19,6 +19,8 @@ const FlatInstallMentPage = () => {
 
   //    const { user } = useAuth();
   //    console.log(user);
+
+  console.log(allInstallment);
 
   // Logic to calculate pagination
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -50,23 +52,22 @@ const FlatInstallMentPage = () => {
 
   //get Installment
   useEffect(() => {
-    fetch(`${DB_URL}/admin/Installment/Installments`)
+    fetch(
+      `${DB_URL}/admin/installment/get-installment-email?email=${user?.reloadUserInfo?.email}`
+    )
       .then((response) => response.json())
       .then((data) => setAllInstallments(data?.data));
-  }, [openModal]);
+  }, [user?.reloadUserInfo?.email]);
 
   // delete Installment
   const deleteInstallment = (id) => {
     console.log(id);
-    fetch(
-      `https://sea-properties-server.vercel.app/api/v1/admin/installment/delete?Installment_id=${id}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch(`${DB_URL}/api/v1/admin/installment/delete?Installment_id=${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -80,6 +81,7 @@ const FlatInstallMentPage = () => {
 
   return (
     <div className="pt-3">
+      <AdminTitle size={"20px"} title="Your Installment" />
       <div className="mt-2 shadow-sm border rounded overflow-x-auto">
         <table className="w-full table-auto text-sm text-left">
           <thead className="bg-[#e4e4e4] text-[#0d1113] font-medium border-[#bab9b9] border-b">
@@ -107,11 +109,11 @@ const FlatInstallMentPage = () => {
                         <MdDeleteOutline className="text-2xl text-[red]" />
                       </button>
                     </li>
-                    <li>
+                    {/* <li>
                       <button onClick={() => setOpenModal(item)}>
                         <TbEdit className="text-2xl text-[green]" />
                       </button>
-                    </li>
+                    </li> */}
                   </ul>
                 </td>
               </tr>
