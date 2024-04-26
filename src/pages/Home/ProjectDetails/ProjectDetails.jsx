@@ -51,7 +51,9 @@ const ProjectDetails = () => {
         setSelectedImageIndex(null);
     };
 
-    const { _id, conditionStatus, vrStatus, vr_url, title, address, banner_img, videoThumbnailImgUpload, video_url, contactPageImg, projectInfo, projectFeatures, gallery_img, projectVideo, mapLink, featureInfo, details } = projectData;
+    const { _id, conditionStatus, vrStatus, vr_url, name,  banner_img, videoThumbnailImgUpload, video_url, contactPageImg,project_status, projectInfo, projectFeatures, gallery_img, projectVideo, mapLink, featureInfo, details } = projectData;
+
+    console.log(projectData)
 
     const handleSubmit = (event) => {
         setLoading(true)
@@ -91,9 +93,12 @@ const ProjectDetails = () => {
             <SecondaryBanner
                 bannerImg={banner_img}
                 opacity={40}
-                projectName={title}
-                location={address}
+               
+                projectName={name}
+                location={details?.info?.address}
+                status={project_status}
             />
+            
             {/*  project info  */}
             <div className="max-w-[1366px] mx-auto py-10 px-4 md:px-8 xl:px-20 grid md:grid-cols-2 gap-6 md:gap-0 bg-white ">
                 <figure className="flex items-center">
