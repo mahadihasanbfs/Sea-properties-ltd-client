@@ -71,7 +71,7 @@ const AddInstallment = () => {
       .then((data) => {
         setLoading(false);
         console.log(data);
-        Swal.fire("Installment successfully added", "", "success");
+        Swal.fire("Installment  Added", "", "success");
         navigate("/admin/manage-installment");
       });
 

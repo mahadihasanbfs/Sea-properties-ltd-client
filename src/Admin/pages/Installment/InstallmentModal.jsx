@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 import { DB_URL } from "../../../const";
 import useFetchData from "../../../hooks/useFetchData";
-
+import Select from "react-select";
 export default function InstallmentModal({ item, openModal, setOpenModal }) {
   const [data] = useFetchData(`${DB_URL}/users`);
   console.log("data", data);
@@ -9,6 +9,7 @@ export default function InstallmentModal({ item, openModal, setOpenModal }) {
 
   console.log(item);
 
+  //   !! submit handler
   const updateModalHandler = (e) => {
     e.preventDefault();
     const formValue = Object.fromEntries(new FormData(e.target));
@@ -17,6 +18,8 @@ export default function InstallmentModal({ item, openModal, setOpenModal }) {
     const { _id, ...data } = formValue;
     // console.log(data);
     console.log(_id);
+
+    // return;
 
     fetch(
       `https://sea-properties-server.vercel.app/api/v1/admin/installment/update?installment_id=${formValue?._id}`,
@@ -97,7 +100,7 @@ export default function InstallmentModal({ item, openModal, setOpenModal }) {
                     className="hidden"
                     type="text"
                   />
-                  <select
+                  {/* <select
                     id="Installment"
                     value={item?.email} // Set the value attribute to the selected value
                     name="email"
@@ -114,7 +117,27 @@ export default function InstallmentModal({ item, openModal, setOpenModal }) {
                         {user.email}
                       </option>
                     ))}
-                  </select>
+                  </select> */}
+                </div>
+                <div className="">
+                  <Select
+                    id="email"
+                    name="email"
+                    // value={selectedInstallmentUser}
+                    // onChange={handleInstallmentChange}
+
+                    defaultValue={{
+                      label: item?.email,
+                      value: item?.email,
+                    }}
+                    className="rounded-lg w-full border border-[#336cb6]  bg-[white] text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
+                    options={userData
+                      ?.filter((item) => item?.role !== "admin")
+                      ?.map((user) => ({
+                        label: user.email,
+                        value: user.email,
+                      }))}
+                  />
                 </div>
                 <div className="mb-4">
                   <label htmlFor="name">Name</label>
