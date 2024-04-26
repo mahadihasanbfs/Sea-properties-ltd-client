@@ -3,10 +3,14 @@ import PrimaryBanner from "../../../components/common/PrimaryBanner";
 import SecondaryTitle from "../../../components/common/SecondaryTitle";
 import useContextApi from "../../../hooks/useContextApi";
 import ContactMap from "./ContactMap";
+import { useState } from "react";
+import Swal from "sweetalert2";
+import { DB_URL } from "../../../const";
 
 const Contact = () => {
   const { ContactPageImg } = useContextApi();
   const { bannerImg, contactImg } = ContactPageImg;
+  const [loading, setLoading] = useState(false);
 
   const contactInfo = {
     title: "Contact Us",
@@ -42,7 +46,21 @@ const Contact = () => {
       message,
     };
     console.log(data);
-    form.reset();
+
+    fetch(`${DB_URL}/user/contact/add`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setLoading(false);
+        form.reset();
+        console.log(data);
+        Swal.fire("Sent Your message", "", "success");
+      });
   };
   return (
     <div>
@@ -131,7 +149,7 @@ const Contact = () => {
             <div className="pt-6">
               <input
                 type="submit"
-                value="Submit"
+                value={loading ? "Sending" : "Submit"}
                 className="py-[9px] px-[28px] border-[3px] border-white hover:cursor-pointer"
               />
             </div>
