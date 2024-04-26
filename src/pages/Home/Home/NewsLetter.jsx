@@ -3,6 +3,7 @@ import Title from "../../../components/sharedComponent/Title";
 import useAuth from "../../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { DB_URL } from "../../../const";
 
 const NewsLetter = () => {
   const { user } = useAuth();
@@ -23,16 +24,13 @@ const NewsLetter = () => {
     console.log(data);
 
     // return;
-    fetch(
-      "https://sea-properties-server.vercel.app/api/v1/admin/news-letter/add",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    )
+    fetch(`${DB_URL}/admin/news-letter/add`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
