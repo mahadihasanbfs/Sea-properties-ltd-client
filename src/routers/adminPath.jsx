@@ -7,6 +7,7 @@ import ManageProject from "../Admin/pages/AdminProject/ManageProject";
 import BookingManagement from "../Admin/pages/BookingManagement/BookingManagement";
 import AddInstallment from "../Admin/pages/Installment/AddInstallment";
 import ManageInstallment from "../Admin/pages/Installment/ManageInstallment";
+import NewsLetterManagement from "../Admin/pages/NewsLetter/NewsLetterManagement";
 import UserHistory from "../Admin/pages/UserHistory/UserHistory";
 import IsAdmin from "./IsAdmin";
 
@@ -54,6 +55,10 @@ const adminPath = [
   {
     path: "/admin/manage-installment",
     element: <ManageInstallment />,
+  },
+  {
+    path: "/admin/newsLetter-management",
+    element: <NewsLetterManagement />,
   },
 ];
 
