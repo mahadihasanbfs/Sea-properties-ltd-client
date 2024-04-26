@@ -8,6 +8,8 @@ import BookingManagement from "../Admin/pages/BookingManagement/BookingManagemen
 import ManageContact from "../Admin/pages/ContactManagement/ContactManagement";
 import AddInstallment from "../Admin/pages/Installment/AddInstallment";
 import ManageInstallment from "../Admin/pages/Installment/ManageInstallment";
+import EditLandArea from "../Admin/pages/LandReportManagement/EditLandArea";
+import LandReportManagement from "../Admin/pages/LandReportManagement/LandReportManagement";
 import NewsLetterManagement from "../Admin/pages/NewsLetter/NewsLetterManagement";
 import UserHistory from "../Admin/pages/UserHistory/UserHistory";
 import IsAdmin from "./IsAdmin";
@@ -64,6 +66,13 @@ const adminPath = [
   {
     path: "/admin/contact-management",
     element: <ManageContact />,
+  }, {
+    path: "/admin/land-report",
+    element: <LandReportManagement />,
+  },
+  {
+    path: "/admin/edit-land-area",
+    element: <EditLandArea />,
   },
 ];
 

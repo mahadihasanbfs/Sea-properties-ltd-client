@@ -28,25 +28,59 @@ const Blogs = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="grid md:grid-cols-3 -mx-4">
+                    {data && data.length ?
 
-                        {
-                            data?.data?.map(itm => <Link to={`/blogs/blogs-details/${itm?._id}`} key={itm?._id}>
+                        <div className="md:grid text-[transparent] grid-cols-3 gap-14">
+                            <div className="p-6 rounded-md  shadow-md mx-auto  bg-[#657287] ">
+                                <div className="animate-pulse">
+                                    {/* Product Image Skeleton */}
+                                    <div className="w-[100%] lg:h-52 md:h-52 h-48 rounded-lg bg-[#9FADC2] mb-6 text-[transparent]">. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, ex facilis quibusdam libero tempora, itaque ratione atque totam animi magni illum enim, praesentium numquam temporibus doloremque. Quaerat omnis aut possimus!</div>
+                                    {/* Product Title Skeleton */}
+                                    <div className="w-[97%] h-4 rounded-lg bg-[#9FADC2] mb-4"></div>
+                                    {/* Product Heading Skeleton */}
+                                    <div className="w-[94%] h-4 rounded-lg bg-[#9FADC2] mb-4"></div>
+
+                                </div>
+                            </div>  <div className="p-6 rounded-md  shadow-md mx-auto  bg-[#657287] ">
+                                <div className="animate-pulse">
+                                    {/* Product Image Skeleton */}
+                                    <div className="w-[100%] lg:h-52 md:h-52 h-48 rounded-lg bg-[#9FADC2] mb-6 text-[transparent]">. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, ex facilis quibusdam libero tempora, itaque ratione atque totam animi magni illum enim, praesentium numquam temporibus doloremque. Quaerat omnis aut possimus!</div>
+                                    {/* Product Title Skeleton */}
+                                    <div className="w-[97%] h-4 rounded-lg bg-[#9FADC2] mb-4"></div>
+                                    {/* Product Heading Skeleton */}
+                                    <div className="w-[94%] h-4 rounded-lg bg-[#9FADC2] mb-4"></div>
+
+                                </div>
+                            </div>  <div className="p-6 rounded-md  shadow-md mx-auto  bg-[#657287] ">
+                                <div className="animate-pulse">
+                                    {/* Product Image Skeleton */}
+                                    <div className="w-[100%] lg:h-52 md:h-52 h-48 rounded-lg bg-[#9FADC2] mb-6 text-[transparent]">. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, ex facilis quibusdam libero tempora, itaque ratione atque totam animi magni illum enim, praesentium numquam temporibus doloremque. Quaerat omnis aut possimus!</div>
+                                    {/* Product Title Skeleton */}
+                                    <div className="w-[97%] h-4 rounded-lg bg-[#9FADC2] mb-4"></div>
+                                    {/* Product Heading Skeleton */}
+                                    <div className="w-[94%] h-4 rounded-lg bg-[#9FADC2] mb-4"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                        :
+                        <div className="grid md:grid-cols-3 -mx-4">
+                            {data?.data?.map(itm => <Link to={`/blogs/blogs-details/${itm?._id}`} key={itm?._id}>
                                 <div className="w-full  px-4">
-                                    <div className="max-w-[370px] mx-auto mb-10">
+                                    <div className="max-w-[370px] p-3 group rounded mx-auto mb-10">
                                         <div className="rounded overflow-hidden mb-8">
                                             <img
                                                 src={itm?.photo}
                                                 alt="image"
-                                                className="w-full h-[240px] object-cover"
+                                                className="w-full group-hover:scale-[1.2] duration-300 h-[240px] object-cover"
                                             />
                                         </div>
                                         <div>
-                                            {itm?.date && <span
+                                            {/* {itm?.date && <span
                                                 className=" bg-primary rounded inline-block text-center pt-1 px-4 text-xs leading-loose font-semibold text-white mb-5 "
                                             >
                                                 {itm?.date}
-                                            </span>}
+                                            </span>} */}
                                             <h3>
                                                 <a
                                                     href="javascript:void(0)"
@@ -56,16 +90,24 @@ const Blogs = () => {
                                                     {itm?.name}
                                                 </a>
                                             </h3>
-                                            <p dangerouslySetInnerHTML={{ __html: itm?.description }} />
+                                            <p>
+                                                {new DOMParser()
+                                                    .parseFromString(itm?.description, "text/html")
+                                                    .body.textContent.split(" ")
+                                                    .slice(0, 5)
+                                                    .join(" ")}
+                                            </p>
 
                                         </div>
                                     </div>
                                 </div>
-                            </Link>)
-                        }
+                            </Link>)}
 
 
-                    </div>
+
+                        </div>
+                    }
+
                 </div>
             </section>
 

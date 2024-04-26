@@ -2,10 +2,21 @@ import { useRef, useState } from 'react';
 import logo from '../../../assets/logo.png';
 import useImageUpload from '../../../hooks/useUploadImg';
 import Swal from 'sweetalert2';
+import { useQuery } from '@tanstack/react-query';
 
-const LandRegistrationForm = () => {
+const EditLandArea = () => {
+
+
+    const { data: areaData = [], refetch } = useQuery({
+        queryKey: ["areadata"],
+        queryFn: async () => {
+            const res = await fetch('https://sea-properties-server.vercel.app/api/v1/admin/all-land-registration');
+            const data = await res.json();
+            return data;
+        },
+    });
     // this section is used to handle banner img
-    const [image, setImage] = useState(null);
+    const [image, setImage] = useState(areaData?.img);
     const [loading, setLoading] = useState(false);
     const date = new Date();
     const fileInputRef = useRef(null);
@@ -113,6 +124,9 @@ const LandRegistrationForm = () => {
 
     }
 
+
+
+    console.log(areaData, '++++++++');
 
     return (
         <div>
@@ -436,4 +450,4 @@ const LandRegistrationForm = () => {
     );
 };
 
-export default LandRegistrationForm;
+export default EditLandArea;

@@ -16,6 +16,8 @@ import NewsEvent from "../pages/Home/News_Event/NewsEvent";
 import NewsEventReadMore from "../pages/Home/News_Event/NewsEventReadMore";
 import ProjectDetails from "../pages/Home/ProjectDetails/ProjectDetails";
 import OnGoing from "../pages/Home/Projects/OnGoingPage/OnGoing";
+import SeaDetails from "../pages/SeaDetails/SeaDetails";
+import PrivacyPolicy from "./PrivacyPolicy";
 
 
 const commonPath = [
@@ -93,11 +95,14 @@ const commonPath = [
         path: 'sign-in',
         element: <SignIn />
     },
-    // {
-    //     path: 'privacy-policy',
-    //     element: <PrivacyPolicy />
-    // },
-
+    {
+        path: 'privacy-policy',
+        element: <PrivacyPolicy />
+    },
+    {
+        path: 'our-info',
+        element: <SeaDetails />
+    },
     {
         path: '*',
         element: <Home />
