@@ -16,7 +16,8 @@ import NewsEvent from "../pages/Home/News_Event/NewsEvent";
 import NewsEventReadMore from "../pages/Home/News_Event/NewsEventReadMore";
 import ProjectDetails from "../pages/Home/ProjectDetails/ProjectDetails";
 import OnGoing from "../pages/Home/Projects/OnGoingPage/OnGoing";
-
+import PrivacyPolicy from './PrivacyPolicy'
+import TermsCondition from "./TermsCondition";
 
 const commonPath = [
     {
@@ -93,11 +94,15 @@ const commonPath = [
         path: 'sign-in',
         element: <SignIn />
     },
-    // {
-    //     path: 'privacy-policy',
-    //     element: <PrivacyPolicy />
-    // },
-
+    {
+        path: 'privacy-policy',
+        element: <PrivacyPolicy />
+    },
+    {
+        path: 'terms-condition',
+        element: <TermsCondition/>
+    }
+    ,
     {
         path: '*',
         element: <Home />

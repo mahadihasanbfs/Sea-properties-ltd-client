@@ -105,7 +105,7 @@ const Footer = () => {
 
                 <div className="flex md:justify-start justify-center md:mt-0 mt-2 gap-3 items-center">
                     <Link to={'/privacy-policy'} className='border-r pr-3 border-gray-600 text-sm hover:text-blue-600' >Privacy Policy</Link>
-                    <Link className=' pr-3 border-gray-600 text-sm hover:text-blue-600' to={``}>Terms & Conditions</Link>
+                    <Link className=' pr-3 border-gray-600 text-sm hover:text-blue-600' to={`/terms-condition`}>Terms & Conditions</Link>
 
                 </div>
             </div>
