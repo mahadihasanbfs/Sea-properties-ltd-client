@@ -22,7 +22,7 @@ const Navbar = () => {
         },
         {
             id: 2,
-            name: 'About us',
+            name: 'About Us',
             path: '/about',
             isDropdown: true,
             dropdownItems: [
@@ -149,7 +149,7 @@ const Navbar = () => {
                                                 isActive ? "border-b-4 border-[#9b2d2d]" : ""} activeClassName="bg-yellow-500"  >{itm?.name}</NavLink>
                                                 :
                                                 <button className="flex items-center  gap-2 h-[60px] relative group">
-                                                    {itm?.name} <FaAngleDown className="mt-2" />
+                                                    {itm?.name}
                                                     <ul className="absolute z-[1000] top-[60px] left-0 bg-[#000000e4] w-40 text-white text-left rounded-md shadow-lg fade-in hidden group-hover:block transition-opacity duration-300">
                                                         {itm?.dropdownItems.map(item =>
                                                             <li key={item.id}>
