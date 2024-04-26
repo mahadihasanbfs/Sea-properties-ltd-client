@@ -56,40 +56,40 @@ const LandRegistrationForm = () => {
         let gendar = '';
         if (checkboxes.checkbox1) {
             gendar = 'male'
-        } 
+        }
         else if (checkboxes.checkbox2) {
             gendar = 'female'
-        } 
+        }
         else if (checkboxes.checkbox3) {
             gendar = 'others'
         }
 
         const data = {
             img: image,
-            englishName : form.englishName.value,
-            banglaName : form.banglaName.value,
-            fatherOrHusbandsEnglishName : form.fatherOrHusbandsEnglishName.value,
-            fatherOrHusbandsBanglaName : form.fatherOrHusbandsBanglaName.value,
-            motherEnglishName : form.motherEnglishName.value,
-            motherBanglaName : form.motherBanglaName.value,
-            address : form.address.value,
-            birthDate : form.birthDate.value,
-            nidOrPassportNumber : form.nidOrPassportNumber.value,
-            nationality : form.nationality.value,           
-            projectName : form.projectName.value,
-            projectAddress : form.projectAddress.value,
-            totalSharePrice : form.totalSharePrice.value,
-            totalSharePriceInWord : form.totalSharePriceInWord.value,
-            bookingMoney : form.bookingMoney.value,
-            bookingMoneyInWord : form.bookingMoneyInWord.value,
-            dueAmount : form.dueAmount.value,
-            dueAmountInWord : form.dueAmountInWord.value,
-            authorizedSignature : form.authorizedSignature.value,
+            englishName: form.englishName.value,
+            banglaName: form.banglaName.value,
+            fatherOrHusbandsEnglishName: form.fatherOrHusbandsEnglishName.value,
+            fatherOrHusbandsBanglaName: form.fatherOrHusbandsBanglaName.value,
+            motherEnglishName: form.motherEnglishName.value,
+            motherBanglaName: form.motherBanglaName.value,
+            address: form.address.value,
+            birthDate: form.birthDate.value,
+            nidOrPassportNumber: form.nidOrPassportNumber.value,
+            nationality: form.nationality.value,
+            projectName: form.projectName.value,
+            projectAddress: form.projectAddress.value,
+            totalSharePrice: form.totalSharePrice.value,
+            totalSharePriceInWord: form.totalSharePriceInWord.value,
+            bookingMoney: form.bookingMoney.value,
+            bookingMoneyInWord: form.bookingMoneyInWord.value,
+            dueAmount: form.dueAmount.value,
+            dueAmountInWord: form.dueAmountInWord.value,
+            authorizedSignature: form.authorizedSignature.value,
             sharersSignature: form.sharersSignature.value,
             gendar: gendar,
             submitData: submitDate
         }
-       
+
         console.log(data);
     }
 
@@ -337,7 +337,7 @@ const LandRegistrationForm = () => {
                         </div>
 
                         <div className='w-[820px] py-[14px] px-4 border border-black flex'>
-                            <p>In Word </p>
+                            <p>In Word : </p>
                             <input
                                 name='totalSharePriceInWord'
                                 type="text"
@@ -357,7 +357,7 @@ const LandRegistrationForm = () => {
                         </div>
 
                         <div className='w-[820px] py-[14px] px-4 border border-black flex'>
-                            <p>In Word </p>
+                            <p>In Word : </p>
                             <input
                                 name='bookingMoneyInWord'
                                 type="text"
@@ -377,7 +377,7 @@ const LandRegistrationForm = () => {
                         </div>
 
                         <div className='w-[820px] py-[14px] px-4 border border-black flex'>
-                            <p>In Word </p>
+                            <p>In Word : </p>
                             <input
                                 name='dueAmountInWord'
                                 type="text"

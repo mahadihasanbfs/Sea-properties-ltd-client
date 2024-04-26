@@ -1,27 +1,27 @@
 import { useState } from "react";
 import AdminTitle from "../../../hooks/useAdminTitle";
 import { MdDeleteOutline } from "react-icons/md";
-import { TbEdit } from "react-icons/tb";
-import { Link } from "react-router-dom";
+// import { TbEdit } from "react-icons/tb";
+// import { Link } from "react-router-dom";
 import useGetData from "../../../hooks/useGetData";
 import Swal from "sweetalert2";
 import ReactQuill from "react-quill";
 
-const ManageBlog = () => {
+const ManageContact = () => {
   const [openModal, setOpenModal] = useState(false);
   const [myValue, setMyValue] = useState(openModal?.description);
 
   // Fetch data using custom hook
-  const blogData = useGetData("api/v1/admin/blog/blogs");
+  const contactData = useGetData("api/v1/admin/contacts");
 
   // Logic to calculate pagination
-  console.log(blogData, "*-*-**", openModal?.description);
+  console.log(contactData, "*-*-**");
 
   // delete data using custom hook
   const handleDelete = (id) => {
-    console.log(id, "-------->");
+    // console.log(id, "-------->");
     fetch(
-      `https://sea-properties-server.vercel.app/api/v1/admin/blog/delete?blog_id=${id}`,
+      `https://sea-properties-server.vercel.app/api/v1/admin/contact/delete?contact_id=${id}`,
       {
         method: "DELETE",
         headers: {
@@ -31,7 +31,8 @@ const ManageBlog = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        Swal.fire("Blog deleted", "", "success");
+        console.log(data);
+        Swal.fire("contact deleted", "", "success");
         // reload()
       })
       .catch((error) => {
@@ -39,39 +40,47 @@ const ManageBlog = () => {
       });
   };
 
-  console.log(blogData, "======");
+  console.log(contactData, "======");
   return (
     <div className="pt-3">
       <div className="flex item-center pb-3 justify-between">
-        <AdminTitle size={"20px"} title="Manage Blog" />
+        <AdminTitle size={"20px"} title="Manage contact" />
 
-        <Link to={"/admin/add-blog"}>
-          <div className="dashboard_form_btn">+Add Blog</div>
-        </Link>
+        {/* <Link to={"/admin/add-contact"}>
+          <div className="dashboard_form_btn">+Add contact</div>
+        </Link> */}
       </div>
 
       <div className="mt-2 shadow-sm border rounded overflow-x-auto">
         <table className="w-full table-auto text-sm text-left">
           <thead className="bg-[#e4e4e4] text-[#0d1113] font-medium border-[#bab9b9] border-b">
             <tr>
-              <th className="py-3 px-6">Image</th>
               <th className="py-3 px-6"> Name</th>
-              <th className="py-3 px-6">Date</th>
+              <th className="py-3 px-6"> Email</th>
+              <th className="py-3 px-6">Phone</th>
+              <th className="py-3 px-6">Time</th>
               <th className="py-3 px-6">Action</th>
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
-            {blogData?.data?.map((item, idx) => (
+            {contactData?.data?.length < 1 && (
+              <div className="text-center">loading.......</div>
+            )}
+            {contactData?.data?.map((item, idx) => (
               <tr key={idx}>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <img
-                    src={item?.photo}
-                    className="w-[60px] h-[60px] rounded object-cover"
-                    alt=""
-                  />
+                  {item?.name ?? "User Name"}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">{item?.name}</td>
-                <td className="px-6 py-4 whitespace-nowrap">{item?.date}</td>
+                <td className="px-6 py-4 whitespace-nowrap">{item?.email}</td>
+                <td className="px-6 py-4 whitespace-nowrap">{item?.phone}</td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  {new Date(item?.date || new Date()).toLocaleString("en-us", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    hour12: "numeric",
+                  })}
+                </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <ul className="flex items-center gap-2">
                     <li>
@@ -80,9 +89,9 @@ const ManageBlog = () => {
                       </button>
                     </li>
                     <li>
-                      <button onClick={() => setOpenModal(item)}>
+                      {/* <button onClick={() => setOpenModal(item)}>
                         <TbEdit className="text-2xl text-[green]" />
-                      </button>
+                      </button> */}
                     </li>
                   </ul>
                 </td>
@@ -152,22 +161,6 @@ const ManageBlog = () => {
                             />
                           </div>
                         </form>
-                        <div className="flex items-center justify-between">
-                          <button
-                            onClick={() => setOpenModal(false)}
-                            className="bg-[red] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                            type="button"
-                          >
-                            Close
-                          </button>
-                          <button
-                            onClick={() => setOpenModal(false)}
-                            className="bg-[blue] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                            type="submit"
-                          >
-                            Update
-                          </button>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -182,4 +175,4 @@ const ManageBlog = () => {
   );
 };
 
-export default ManageBlog;
+export default ManageContact;

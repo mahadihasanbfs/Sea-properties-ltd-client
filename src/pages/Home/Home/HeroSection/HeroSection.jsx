@@ -35,7 +35,7 @@ const HeroSection = () => {
                 }
 
             </Swiper>
-            <div className="absolute top-0 flex items-center justify-center left-0 right-0 bottom-0 m-auto z-[2000]">
+            <div className="absolute top-0 flex items-center justify-center left-0 right-0 bottom-0 m-auto z-30">
                 <CircleBox />
             </div>
 

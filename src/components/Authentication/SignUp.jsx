@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Logo from "../../assets/logo.png";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaFacebook } from "react-icons/fa";
 import { TbEyeOff } from "react-icons/tb";
 // import BrightAlert from "bright-alert";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,7 +9,7 @@ import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet";
 import useSendData from "../../hooks/usePostData";
 import { DB_URL } from "../../const";
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2'
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -43,7 +43,6 @@ const SignUp = () => {
       await sendData(`${DB_URL}/users/sign-up`, "POST", googleUserData);
 
       localStorage.setItem("role", "user");
-      Swal.success("successfully signup", "success");
       navigate("/user");
       //   if (success) {
       //     localStorage.setItem("role", "user");
@@ -130,42 +129,14 @@ const SignUp = () => {
 
         if (email === "admin@admin.com") {
           localStorage.setItem("role", "admin");
+          navigate("/admin");
         } else {
           localStorage.setItem("role", "user");
+          navigate("/user");
         }
-        Swal.success("successfully signup", "success");
-        navigate("/");
-        // if (success) {
-        //   if (email === "admin@admin.com") {
-        //     localStorage.setItem("role", "admin");
-        //   } else {
-        //     localStorage.setItem("role", "user");
-        //   }
-        //   Swal.success("successfully signup", "success");
-        //   navigate("/");
-        // }
-
-        // navigate("/");
       });
     });
 
-    // fetch('https://brightcomponent-backend-v1.vercel.app/api/v1/auth/sign-up', {
-    //     method: "PATCH",
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-
-    //     body: JSON.stringify({ data })
-    // }).then((res) => res.json()).then((data) => {
-    //     setLoading(false)
-    //     if (data.error) {
-    //         BrightAlert(`${data.message}`, '', 'warning');
-    //     }
-    //     else {
-    //         BrightAlert(`${data.message}`, '', 'success');
-    //         navigate('/sign-in')
-    //     }
-    // })
   };
 
   return (
@@ -239,26 +210,23 @@ const SignUp = () => {
 
             <div className="flex gap-4">
               <p
-                className={`h-2 rounded-xl w-full ${
-                  passwordStrength === "Weak" ||
+                className={`h-2 rounded-xl w-full ${passwordStrength === "Weak" ||
                   passwordStrength === "Moderate" ||
                   passwordStrength === "Strong"
-                    ? "bg-[#A20E27]"
-                    : "bg-gray-300"
-                }`}
+                  ? "bg-[#A20E27]"
+                  : "bg-gray-300"
+                  }`}
               ></p>
               <div
-                className={`h-2 rounded-xl w-full ${
-                  passwordStrength === "Moderate" ||
+                className={`h-2 rounded-xl w-full ${passwordStrength === "Moderate" ||
                   passwordStrength === "Strong"
-                    ? "bg-[#A20E27]"
-                    : "bg-gray-300"
-                }`}
+                  ? "bg-[#A20E27]"
+                  : "bg-gray-300"
+                  }`}
               ></div>
               <div
-                className={`h-2 rounded-xl w-full ${
-                  passwordStrength === "Strong" ? "bg-[#A20E27]" : "bg-gray-300"
-                }`}
+                className={`h-2 rounded-xl w-full ${passwordStrength === "Strong" ? "bg-[#A20E27]" : "bg-gray-300"
+                  }`}
               ></div>
             </div>
             <p className="">
@@ -273,18 +241,18 @@ const SignUp = () => {
 
             <button
               disabled={loading}
-              className="w-full disabled:bg-[#a20e27ae] disabled:cursor-not-allowed cursor-pointer items-center justify-center rounded-lg bg-[#A20E27] px-8 py-4 text-lg font-semibold text-white duration-300 hover:bg-[#a20e27ca]"
+              className="w-full disabled:bg-[#a20e27ae] disabled:cursor-not-allowed cursor-pointer items-center justify-center rounded-lg bg-[#A20E27] px-8 py-4 text-lg font-semibold text-white duration-300 text-light hover:bg-[#a20e27ca]"
             >
               {!loading ? "Sign Up" : "loading.."}
             </button>
           </form>
 
-          <div className="flex  justify-center gap-4 mt-4">
+          <div className="flex  justify-center text-light gap-4 mt-4">
             <div
               onClick={handleFacebookSignIn}
               className="w-[220px] h-[50px] rounded-lg text-white bg-[#A20E27] flex justify-center items-center gap-3 hover:cursor-pointer"
             >
-              <img src="https://i.ibb.co/kHFtPDR/Vector.png" alt="" />
+              <FaFacebook className="w-6 text-light h-6" />
               <p className="text-lg">Facebook</p>
             </div>
 

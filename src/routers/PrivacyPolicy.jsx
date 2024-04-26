@@ -1,11 +1,10 @@
-import React from 'react';
 
 const PrivacyPolicy = () => {
     return (
         <div className="max-w-[1366px] mx-auto mt-[80px] lg:mt-[100px] xl:mt-[120px] px-[40px] xl:px-[60px] ">
             <h1 className='text-3xl'>Privacy Policy for SEA Properties Ltd.</h1>
             {/* <hr /> */}
-<br />
+            <br />
             At SEA Properties Ltd., accessible from http://www.seapropertiesltd.com.bd/, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by SEA Properties Ltd. and how we use it.
             <br />
             <br />
