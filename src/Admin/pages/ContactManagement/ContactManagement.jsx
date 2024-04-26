@@ -1,8 +1,8 @@
 import { useState } from "react";
 import AdminTitle from "../../../hooks/useAdminTitle";
 import { MdDeleteOutline } from "react-icons/md";
-import { TbEdit } from "react-icons/tb";
-import { Link } from "react-router-dom";
+// import { TbEdit } from "react-icons/tb";
+// import { Link } from "react-router-dom";
 import useGetData from "../../../hooks/useGetData";
 import Swal from "sweetalert2";
 import ReactQuill from "react-quill";
@@ -19,7 +19,7 @@ const ManageContact = () => {
 
   // delete data using custom hook
   const handleDelete = (id) => {
-    console.log(id, "-------->");
+    // console.log(id, "-------->");
     fetch(
       `https://sea-properties-server.vercel.app/api/v1/admin/contact/delete?contact_id=${id}`,
       {
@@ -63,6 +63,9 @@ const ManageContact = () => {
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
+            {contactData?.data?.length < 1 && (
+              <div className="text-center">loading.......</div>
+            )}
             {contactData?.data?.map((item, idx) => (
               <tr key={idx}>
                 <td className="px-6 py-4 whitespace-nowrap">
