@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import Title from "../../../components/sharedComponent/Title";
 import useAuth from "../../../hooks/useAuth";
