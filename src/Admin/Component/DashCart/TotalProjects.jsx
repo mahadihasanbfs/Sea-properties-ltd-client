@@ -1,30 +1,12 @@
 import { Link } from "react-router-dom";
+import useFetchData from "../../../hooks/useFetchData";
+import { DB_URL } from "../../../const";
 
 export default function TotalProjects() {
-  const projectData = [
-    {
-      id: 1,
-      img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      name: "project 1",
-      date: new Date().getTime(),
-      address: "dhaka",
-    },
-    {
-      id: 2,
-      img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      name: "project 1",
-      date: new Date().getTime(),
-      address: "dhaka",
-    },
-    {
-      id: 3,
-      img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      name: "project 1",
-      date: new Date().getTime(),
-      address: "dhaka",
-    },
-    // Add more items as needed with unique IDs
-  ];
+  const [data] = useFetchData(`${DB_URL}/admin/project/projects`);
+  //   console.log("data", data);
+  const projectData = data?.data;
+  console.log("totalUserData", projectData);
 
   return (
     <div className="w-full rounded-lg bg-[white] p-2  ">
