@@ -10,7 +10,7 @@ import { BsProjector } from "react-icons/bs";
 import { CgFileDocument } from "react-icons/cg";
 import { MdOutlineUnsubscribe } from "react-icons/md";
 import { BsHouseCheck } from "react-icons/bs";
-import { BsBuildings } from "react-icons/bs";
+import { LuLandmark } from "react-icons/lu";
 
 export default function AdminSideNav() {
   const [toggleMenu, setToggleMenu] = useState(true);
@@ -66,10 +66,19 @@ export default function AdminSideNav() {
       menu: [],
     },
     {
+      id: 100,
+      name: "Land Report",
+      icon: <LuLandmark />,
+      path: "/admin/land-report",
+      role: "admin",
+      isDropdown: false,
+      menu: [],
+    },
+    {
       id: 3,
       name: "Project-contact",
       icon: <BsProjector />,
-      path: "/admin/project-contact",
+      path: "/admin/land-report",
       role: "admin",
       isDropdown: false,
       menu: [],
@@ -180,11 +189,10 @@ export default function AdminSideNav() {
 
               {/* body / content  */}
               <div
-                className={`grid overflow-hidden transition-all duration-300 ease-in-out   ${
-                  isOpen === idx
-                    ? "grid-rows-[1fr] opacity-100"
-                    : "grid-rows-[0fr] opacity-0"
-                }`}
+                className={`grid overflow-hidden transition-all duration-300 ease-in-out   ${isOpen === idx
+                  ? "grid-rows-[1fr] opacity-100"
+                  : "grid-rows-[0fr] opacity-0"
+                  }`}
               >
                 <div className="overflow-hidden">
                   <ol
