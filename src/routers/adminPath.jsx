@@ -5,6 +5,7 @@ import AddProject from "../Admin/pages/AdminProject/AddProject";
 import EditProject from "../Admin/pages/AdminProject/EditProject";
 import ManageProject from "../Admin/pages/AdminProject/ManageProject";
 import BookingManagement from "../Admin/pages/BookingManagement/BookingManagement";
+import ManageContact from "../Admin/pages/ContactManagement/ContactManagement";
 import AddInstallment from "../Admin/pages/Installment/AddInstallment";
 import ManageInstallment from "../Admin/pages/Installment/ManageInstallment";
 import NewsLetterManagement from "../Admin/pages/NewsLetter/NewsLetterManagement";
@@ -59,6 +60,10 @@ const adminPath = [
   {
     path: "/admin/newsLetter-management",
     element: <NewsLetterManagement />,
+  },
+  {
+    path: "/admin/contact-management",
+    element: <ManageContact />,
   },
 ];
 

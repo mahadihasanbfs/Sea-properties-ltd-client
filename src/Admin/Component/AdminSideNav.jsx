@@ -76,9 +76,9 @@ export default function AdminSideNav() {
     },
     {
       id: 4,
-      name: "contact",
+      name: "Contact Management",
       icon: <BsProjector />,
-      path: "/admin/project-contact",
+      path: "/admin/contact-management",
       role: "admin",
       isDropdown: false,
       menu: [],

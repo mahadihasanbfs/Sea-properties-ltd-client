@@ -44,6 +44,7 @@ const Contact = () => {
       email,
       phone,
       message,
+      date: new Date(),
     };
     console.log(data);
 
@@ -59,7 +60,7 @@ const Contact = () => {
         setLoading(false);
         form.reset();
         console.log(data);
-        Swal.fire("Sent Your message", "", "success");
+        Swal.fire("Sent Your Appointment", "", "success");
       });
   };
   return (
