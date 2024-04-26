@@ -46,9 +46,7 @@ const ManageInstallment = () => {
 
   //get Installment
   useEffect(() => {
-    fetch(
-      "https://sea-properties-server.vercel.app/api/v1/admin/Installment/Installments"
-    )
+    fetch(`${DB_URL}/admin/Installment/Installments`)
       .then((response) => response.json())
       .then((data) => setAllInstallments(data?.data));
   }, [openModal]);
