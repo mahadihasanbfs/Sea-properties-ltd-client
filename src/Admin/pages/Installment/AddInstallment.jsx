@@ -1,8 +1,8 @@
-import ReactQuill from "react-quill";
+// import ReactQuill from "react-quill";
 import AdminTitle from "../../Component/AdminTitle";
 import "react-quill/dist/quill.snow.css";
 import { useState } from "react";
-import useImageUpload from "../../../hooks/useUploadImg";
+// import useImageUpload from "../../../hooks/useUploadImg";
 import Swal from "sweetalert2";
 import useFetchData from "../../../hooks/useFetchData";
 import { DB_URL } from "../../../const";
@@ -12,7 +12,7 @@ const AddInstallment = () => {
   // const [value, setValue] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [data] = useFetchData(`${DB_URL}/users`);
   console.log("data", data);
