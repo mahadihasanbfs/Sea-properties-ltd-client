@@ -44,7 +44,7 @@ const NewsLetter = () => {
   };
   return (
     <div>
-      <div className="container mt-12 mb-16">
+      <div className="container mt-12 mb-7">
         <Title text="News Letter" position="center" />
         <p className=" text-center md:w-[500px] mx-auto">
           Get all the latest updates easily.
