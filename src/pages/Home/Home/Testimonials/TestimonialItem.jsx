@@ -2,7 +2,7 @@
 
 const TestimonialItem = ({ itm }) => {
     return (
-       <div className="m-3">
+        <div className="m-3">
             <div className="ring-1 ring-gray-400 rounded p-6">
                 <p className="text-sm">
                     {itm?.message}
@@ -20,7 +20,7 @@ const TestimonialItem = ({ itm }) => {
                     </div>
                 </div>
             </div>
-       </div>
+        </div>
     );
 };
 

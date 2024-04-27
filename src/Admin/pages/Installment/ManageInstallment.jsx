@@ -5,6 +5,9 @@ import { TbEdit } from "react-icons/tb";
 import { Link } from "react-router-dom";
 
 import Swal from "sweetalert2";
+import useFetchData from "../../../hooks/useFetchData";
+import { DB_URL } from "../../../const";
+import InstallmentModal from "./InstallmentModal";
 
 const ManageInstallment = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -12,42 +15,18 @@ const ManageInstallment = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10); // Number of items per page
   const [allInstallment, setAllInstallments] = useState([]);
-  const InstallmentData = [
-    {
-      id: 1,
-      img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      name: "Installment 1",
-      date: new Date().getTime(),
-      address: "dhaka",
-    },
-    {
-      id: 2,
-      img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      name: "Installment 1",
-      date: new Date().getTime(),
-      address: "dhaka",
-    },
-    {
-      id: 3,
-      img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      name: "Installment 1",
-      date: new Date().getTime(),
-      address: "dhaka",
-    },
-    // Add more items as needed with unique IDs
-  ];
 
   // Logic to calculate pagination
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = InstallmentData.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = allInstallment.slice(indexOfFirstItem, indexOfLastItem);
 
   // Function to handle page change
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   // Function to handle next page
   const nextPage = () => {
-    if (currentPage < Math.ceil(InstallmentData.length / itemsPerPage)) {
+    if (currentPage < Math.ceil(allInstallment.length / itemsPerPage)) {
       setCurrentPage(currentPage + 1);
     }
   };
@@ -61,18 +40,16 @@ const ManageInstallment = () => {
 
   // Generate pagination numbers
   const paginationNumbers = Array.from(
-    { length: Math.ceil(InstallmentData.length / itemsPerPage) },
+    { length: Math.ceil(allInstallment.length / itemsPerPage) },
     (_, i) => i + 1
   );
 
   //get Installment
   useEffect(() => {
-    fetch(
-      "https://sea-properties-server.vercel.app/api/v1/admin/Installment/Installments"
-    )
+    fetch(`${DB_URL}/admin/Installment/Installments`)
       .then((response) => response.json())
       .then((data) => setAllInstallments(data?.data));
-  }, []);
+  }, [openModal]);
 
   // delete Installment
   const deleteInstallment = (id) => {
@@ -119,7 +96,7 @@ const ManageInstallment = () => {
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
-            {allInstallment.map((item, idx) => (
+            {currentItems.map((item, idx) => (
               <tr key={idx}>
                 <td className="px-6 py-4 whitespace-nowrap">{item?.name}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{item?.email}</td>
@@ -144,6 +121,18 @@ const ManageInstallment = () => {
               </tr>
             ))}
           </tbody>
+
+          {/* modal */}
+          <div>
+            {openModal && (
+              <InstallmentModal
+                item={openModal}
+                openModal={openModal}
+                setOpenModal={setOpenModal}
+              />
+            )}
+          </div>
+          {/* end modal */}
         </table>
       </div>
 
@@ -173,7 +162,7 @@ const ManageInstallment = () => {
           onClick={nextPage}
           className="mx-1 px-3 py-1 rounded bg-gray-200 text-[#d8d8d8] bg-[blue]"
           disabled={
-            currentPage === Math.ceil(InstallmentData.length / itemsPerPage)
+            currentPage === Math.ceil(allInstallment.length / itemsPerPage)
           }
         >
           Next
