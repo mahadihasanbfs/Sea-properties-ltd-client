@@ -71,7 +71,7 @@ const adminPath = [
     element: <LandReportManagement />,
   },
   {
-    path: "/admin/edit-land-area",
+    path: "/admin/edit-land-area/:id",
     element: <EditLandArea />,
   },
 ];
