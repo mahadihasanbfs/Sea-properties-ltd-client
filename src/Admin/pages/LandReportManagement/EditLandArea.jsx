@@ -3,10 +3,11 @@ import logo from '../../../assets/logo.png';
 import useImageUpload from '../../../hooks/useUploadImg';
 import Swal from 'sweetalert2';
 import { useQuery } from '@tanstack/react-query';
+import { useParams } from 'react-router-dom';
 
 const EditLandArea = () => {
 
-
+    const id = useParams().id
     const { data: areaData = [], refetch } = useQuery({
         queryKey: ["areadata"],
         queryFn: async () => {
@@ -15,6 +16,8 @@ const EditLandArea = () => {
             return data;
         },
     });
+    const editItm = areaData?.data?.find(itm => itm?._id === id)
+
     // this section is used to handle banner img
     const [image, setImage] = useState(areaData?.img);
     const [loading, setLoading] = useState(false);
@@ -81,8 +84,8 @@ const EditLandArea = () => {
         }
 
         const data = {
-            img: await uploadImage(image),
-            englishName: form.englishName.value,
+            img: image ? await uploadImage(image) : editItm?.img,
+            englishName: form.englishName.value === '' ? editItm.englishName : form.englishName.value,
             banglaName: form.banglaName.value,
             fatherOrHusbandsEnglishName: form.fatherOrHusbandsEnglishName.value,
             fatherOrHusbandsBanglaName: form.fatherOrHusbandsBanglaName.value,
@@ -102,31 +105,31 @@ const EditLandArea = () => {
             dueAmountInWord: form.dueAmountInWord.value,
             authorizedSignature: form.authorizedSignature.value,
             sharersSignature: form.sharersSignature.value,
-            gendar: gendar,
+            gendar: gendar === '' ? editItm?.gendar : gendar,
             submitData: submitDate
         }
 
         // console.log(data, '++++++++++++++++');
 
-        fetch("https://sea-properties-server.vercel.app/api/v1/admin/add-land-registration", {
-            method: "POST",
+        fetch(`https://sea-properties-server.vercel.app/api/v1/admin/edit-land-registration?id=${id}`, {
+            method: 'PUT',
             headers: {
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
+        }).then((res) => res.json()).then((data) => {
+            setLoading(false);
+            form.reset()
+            Swal.fire('Update successful', '', 'success')
         })
-            .then((res) => res.json())
-            .then((data) => {
-                setLoading(false);
-                Swal.fire("Your form has been submitted", "", "");
-                // navigate('/admin/project-management');
-            });
+
+
+
 
     }
 
 
 
-    console.log(areaData, '++++++++');
 
     return (
         <div>
@@ -229,6 +232,7 @@ const EditLandArea = () => {
                     <div className='w-full py-[14px] px-4 border border-black flex'>
                         <p>Applicant’s Name in English : </p>
                         <input
+                            defaultValue={editItm?.englishName}
                             name='englishName'
                             type="text"
                             className='w-[800px] focus:outline-none pl-2 bg-transparent'
@@ -237,6 +241,7 @@ const EditLandArea = () => {
                     <div className='w-full py-[14px] px-4 border border-black flex'>
                         <p>Applicant’s Name in Bangla : </p>
                         <input
+                            defaultValue={editItm?.banglaName}
                             name='banglaName'
                             type="text"
                             className='w-[800px] focus:outline-none pl-2 bg-transparent'
@@ -245,6 +250,7 @@ const EditLandArea = () => {
                     <div className='w-full py-[14px] px-4 border border-black flex'>
                         <p>Father/Husband’s Name in English : </p>
                         <input
+                            defaultValue={editItm?.fatherOrHusbandsEnglishName}
                             name='fatherOrHusbandsEnglishName'
                             type="text"
                             className='w-[800px] focus:outline-none pl-2 bg-transparent'
@@ -253,6 +259,7 @@ const EditLandArea = () => {
                     <div className='w-full py-[14px] px-4 border border-black flex'>
                         <p>Father/Husband’s Name in Bangla : </p>
                         <input
+                            defaultValue={editItm?.fatherOrHusbandsBanglaName}
                             name='fatherOrHusbandsBanglaName'
                             type="text"
                             className='w-[800px] focus:outline-none pl-2 bg-transparent'
@@ -261,6 +268,7 @@ const EditLandArea = () => {
                     <div className='w-full py-[14px] px-4 border border-black flex'>
                         <p>Mother’s Name in English : </p>
                         <input
+                            defaultValue={editItm?.motherEnglishName}
                             name='motherEnglishName'
                             type="text"
                             className='w-[800px] focus:outline-none pl-2 bg-transparent'
@@ -269,6 +277,7 @@ const EditLandArea = () => {
                     <div className='w-full py-[14px] px-4 border border-black flex'>
                         <p>Mother’s Name in Bangla : </p>
                         <input
+                            defaultValue={editItm?.motherBanglaName}
                             name='motherBanglaName'
                             type="text"
                             className='w-[800px] focus:outline-none pl-2 bg-transparent'
@@ -277,6 +286,7 @@ const EditLandArea = () => {
                     <div className='w-full py-[14px] px-4 border border-black flex'>
                         <p>Permanent Address in Bangla : </p>
                         <input
+                            defaultValue={editItm?.address}
                             name='address'
                             type="text"
                             className='w-[800px] focus:outline-none pl-2 bg-transparent'
@@ -288,6 +298,7 @@ const EditLandArea = () => {
                             <div className='w-[400px] py-[14px] px-4 border border-black flex justify-between'>
                                 <p>Date of birth : </p>
                                 <input
+                                    defaultValue={editItm?.birthDate}
                                     name='birthDate'
                                     type="date"
                                     className='w-[250px] focus:outline-none pl-2 bg-transparent'
@@ -296,6 +307,7 @@ const EditLandArea = () => {
                             <div className='w-[400px] py-[14px] px-4 border border-black flex'>
                                 <p>NID/Passport : </p>
                                 <input
+                                    defaultValue={editItm?.nidOrPassportNumber}
                                     name='nidOrPassportNumber'
                                     type="text"
                                     className=' focus:outline-none pl-2 bg-transparent'
@@ -307,6 +319,7 @@ const EditLandArea = () => {
                             <div className='w-[400px] py-[14px] px-4 border border-black flex'>
                                 <p>Nationality : </p>
                                 <input
+                                    defaultValue={editItm?.nationality}
                                     name='nationality'
                                     type="text"
                                     className='focus:outline-none pl-2 bg-transparent'
@@ -339,6 +352,7 @@ const EditLandArea = () => {
                     <div className='w-full py-[14px] px-4 border border-black flex'>
                         <p>Name of the project : </p>
                         <input
+                            defaultValue={editItm?.projectName}
                             name='projectName'
                             type="text"
                             className='w-[800px] focus:outline-none pl-2 bg-transparent'
@@ -348,6 +362,7 @@ const EditLandArea = () => {
                     <div className='w-full py-[14px] px-4 border border-black flex'>
                         <p>Project Address : </p>
                         <input
+                            defaultValue={editItm?.projectAddress}
                             name='projectAddress'
                             type="text"
                             className='w-[800px] focus:outline-none pl-2 bg-transparent'
@@ -364,6 +379,7 @@ const EditLandArea = () => {
                         <div className='w-[400px] py-[14px] px-4 border border-black flex'>
                             <p>Total Share Price : </p>
                             <input
+                                defaultValue={editItm?.totalSharePrice}
                                 name='totalSharePrice'
                                 type="text"
                                 className='focus:outline-none pl-2 bg-transparent'
@@ -373,6 +389,7 @@ const EditLandArea = () => {
                         <div className='w-[820px] py-[14px] px-4 border border-black flex'>
                             <p>In Word : </p>
                             <input
+                                defaultValue={editItm?.totalSharePriceInWord}
                                 name='totalSharePriceInWord'
                                 type="text"
                                 className='w-[500px] focus:outline-none pl-2 bg-transparent'
@@ -384,6 +401,7 @@ const EditLandArea = () => {
                         <div className='w-[400px] py-[14px] px-4 border border-black flex'>
                             <p>Booking Money : </p>
                             <input
+                                defaultValue={editItm?.bookingMoney}
                                 name='bookingMoney'
                                 type="text"
                                 className='focus:outline-none pl-2 bg-transparent'
@@ -393,6 +411,7 @@ const EditLandArea = () => {
                         <div className='w-[820px] py-[14px] px-4 border border-black flex'>
                             <p>In Word : </p>
                             <input
+                                defaultValue={editItm?.bookingMoneyInWord}
                                 name='bookingMoneyInWord'
                                 type="text"
                                 className='w-[500px] focus:outline-none pl-2 bg-transparent'
@@ -404,6 +423,7 @@ const EditLandArea = () => {
                         <div className='w-[400px] py-[14px] px-4 border border-black flex'>
                             <p>Due Amount : </p>
                             <input
+                                defaultValue={editItm?.dueAmount}
                                 name='dueAmount'
                                 type="text"
                                 className='focus:outline-none pl-2 bg-transparent'
@@ -413,6 +433,7 @@ const EditLandArea = () => {
                         <div className='w-[820px] py-[14px] px-4 border border-black flex'>
                             <p>In Word : </p>
                             <input
+                                defaultValue={editItm?.dueAmountInWord}
                                 name='dueAmountInWord'
                                 type="text"
                                 className='w-[500px] focus:outline-none pl-2 bg-transparent'
@@ -423,11 +444,11 @@ const EditLandArea = () => {
                     {/* signature input fields */}
                     <div className='flex justify-center gap-[590px] mt-[110px!important]'>
                         < div className='flex flex-col items-center'>
-                            <input name='authorizedSignature' type="text" className='border-b text-center focus:outline-none bg-transparent border-black px-2' />
+                            <input defaultValue={editItm?.authorizedSignature} name='authorizedSignature' type="text" className='border-b text-center focus:outline-none bg-transparent border-black px-2' />
                             <p>Authorized Signature</p>
                         </div>
                         < div className='flex flex-col items-center'>
-                            <input name='sharersSignature' type="text" className='border-b text-center focus:outline-none bg-transparent border-black px-2' />
+                            <input defaultValue={editItm?.sharersSignature} name='sharersSignature' type="text" className='border-b text-center focus:outline-none bg-transparent border-black px-2' />
                             <p>Sharer’s Signature</p>
                         </div>
                     </div>

@@ -89,7 +89,7 @@ const LandReportManagement = () => {
                                             </button>
                                         </li>
                                         <li>
-                                            <Link to={`/admin/edit-land-area`}>
+                                            <Link to={`/admin/edit-land-area/${item?._id}`}>
                                                 <TbEdit className="text-2xl text-[green]" />
                                             </Link>
                                         </li>
