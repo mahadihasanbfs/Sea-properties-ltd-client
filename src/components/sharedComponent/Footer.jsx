@@ -10,7 +10,7 @@ const Footer = () => {
                     <img src={logo} className='w-20' alt="" />
                     <p className="text-gray-800 mt-4 md:w-[260px]">
 
-                        100 North kalshi, Gate No - 1, Mirpur DOHS , Dhaka, Bangladesh
+                        100 North Kalshi, Gate No - 1, Mirpur DOHS, Dhaka, Bangladesh
 
                     </p>
                 </div>
@@ -24,19 +24,19 @@ const Footer = () => {
                         <div
                             className="flex flex-col gap-2">
                             <div
-                                className='text-gray-800 text-md font-[400]'> Phone :
+                                className='text-gray-800 text-md font-[400]'> Phone:
                                 <a
                                     href="tel:01894-440111"
                                     className='text-[#825DC8]'>
-                                    01894-440111
+                                    &nbsp;01894-440111
                                 </a>
                             </div>
                             <div
-                                className='text-gray-800 text-md font-[400]'> Email :
+                                className='text-gray-800 text-md font-[400]'> Email:
                                 <a
                                     href="mailto:example@e.com"
                                     className='text-[#825DC8]'>
-                                    info@seapropertiesltd.com.bd
+                                    &nbsp;info@seapropertiesltd.com.bd
                                 </a>
                             </div>
                         </div>
@@ -100,12 +100,12 @@ const Footer = () => {
             </div>
             <div className="border-t pt-4 mt-6 container md:flex items-center md:justify-between">
                 <p className="text-gray-900 md:text-start text-center text-sm">
-                    © SEA Properties Ltd. All Rights Reserved , {new Date().getFullYear()}
+                    © SEA Properties Ltd. All Rights Reserved, {new Date().getFullYear()}
                 </p>
 
                 <div className="flex md:justify-start justify-center md:mt-0 mt-2 gap-3 items-center">
                     <Link to={'/privacy-policy'} className='border-r pr-3 border-gray-600 text-sm hover:text-blue-600' >Privacy Policy</Link>
-                    <Link className=' pr-3 border-gray-600 text-sm hover:text-blue-600' to={``}>Terms & Conditions</Link>
+                    <Link className=' pr-3 border-gray-600 text-sm hover:text-blue-600' to={`/terms-condition`}>Terms & Conditions</Link>
 
                 </div>
             </div>

@@ -17,7 +17,7 @@ import ReactPlayer from 'react-player'
 import vrImg from '../../../assets/vr.jpg'
 
 const ProjectDetails = () => {
-    const [visible, setVisible] = useState(false);
+    // const [visible, setVisible] = useState(false);
     const [projectData, setProjectData] = useState({});
     const { id } = useParams();
     // eslint-disable-next-line no-unused-vars
@@ -51,7 +51,9 @@ const ProjectDetails = () => {
         setSelectedImageIndex(null);
     };
 
-    const { _id, conditionStatus, vrStatus, vr_url, title, address, banner_img, videoThumbnailImgUpload, video_url, contactPageImg, projectInfo, projectFeatures, gallery_img, projectVideo, mapLink, featureInfo, details } = projectData;
+    const { _id, conditionStatus, vrStatus, vr_url, name, banner_img, videoThumbnailImgUpload, video_url, contactPageImg, project_status, projectInfo, projectFeatures, gallery_img, projectVideo, mapLink, featureInfo, details } = projectData;
+
+    console.log(projectData)
 
     const handleSubmit = (event) => {
         setLoading(true)
@@ -87,13 +89,16 @@ const ProjectDetails = () => {
 
     }
     return (
-        <div className={`${visible && 'overflow-hidden'}`}>
+        <div className={`overflow-hidden`}>
             <SecondaryBanner
                 bannerImg={banner_img}
                 opacity={40}
-                projectName={title}
-                location={address}
+
+                projectName={name}
+                location={details?.info?.address}
+                status={project_status}
             />
+
             {/*  project info  */}
             <div className="max-w-[1366px] mx-auto py-10 px-4 md:px-8 xl:px-20 grid md:grid-cols-2 gap-6 md:gap-0 bg-white ">
                 <figure className="flex items-center">
@@ -291,7 +296,7 @@ const ProjectDetails = () => {
                             </a>}
                         </div>
                     </div>
-                    <figure
+                    {/* <figure
                         style={{
                             backgroundImage: `linear-gradient(to right, rgb(0 0 0 / 30%), rgb(0 0 0 / 30%)), url(${videoThumbnailImgUpload}})`
                         }}
@@ -299,12 +304,17 @@ const ProjectDetails = () => {
                         onClick={() => setVisible(true)}
                     >
                         <IoLogoYoutube className="text-6xl text-red-600" />
-                    </figure>
-                </div>
-            </div>
+                    </figure> */}
+                    <iframe
+                        class="h-[225px] w-[450px] sm:w-[450px] md:w-[600px] md:h-[300px] lg:w-[900px] lg:h-[450px] xl:w-[1200px] xl:h-[600px]"
+                        src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                </iframe>
 
-            {/* video modal */}
-            {
+            </div>
+        </div>
+
+            {/* video modal */ }
+    {/* {
                 visible &&
                 <div className={`fixed top-0 w-screen bg-[#00000055] h-screen bg-black flex justify-center items-center z-[8000]`}>
 
@@ -314,7 +324,6 @@ const ProjectDetails = () => {
                             <source src={video_url} type="video/ogg" />
                             Your browser does not support HTML video.
                         </video>
-                        {/* <video className="w-full h-[300px]" src={video_url}></video> */}
                         <button onClick={() => setVisible(false)} className="text-gray-400 absolute top-[70px] right-8">
                             <IoMdClose className="text-3xl" />
                         </button>
@@ -327,18 +336,19 @@ const ProjectDetails = () => {
                     </button>
                 </div>
             }
+         */}
 
-            {/* project location */}
-            <div className="h-[500px] lg:h-[650px]">
-                <iframe
-                    width="100%"
-                    height='100%'
-                    src={mapLink}
-                />
-            </div>
+    {/* project location */ }
+    <div className="h-[500px] lg:h-[650px]">
+        <iframe
+            width="100%"
+            height='100%'
+            src={mapLink}
+        />
+    </div>
 
 
-        </div>
+        </div >
     );
 };
 

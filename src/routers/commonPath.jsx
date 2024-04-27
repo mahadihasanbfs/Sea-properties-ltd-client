@@ -1,3 +1,4 @@
+
 import SignIn from "../components/Authentication/SignIn";
 import SignUp from "../components/Authentication/SignUp";
 import BoardOfDirector from "../pages/Home/About_us/Board_of_Director/BoardOfDirector";
@@ -16,9 +17,8 @@ import NewsEvent from "../pages/Home/News_Event/NewsEvent";
 import NewsEventReadMore from "../pages/Home/News_Event/NewsEventReadMore";
 import ProjectDetails from "../pages/Home/ProjectDetails/ProjectDetails";
 import OnGoing from "../pages/Home/Projects/OnGoingPage/OnGoing";
-import SeaDetails from "../pages/SeaDetails/SeaDetails";
-import PrivacyPolicy from "./PrivacyPolicy";
-
+import PrivacyPolicy from './PrivacyPolicy'
+import TermsCondition from "./TermsCondition";
 
 const commonPath = [
     {
@@ -100,9 +100,10 @@ const commonPath = [
         element: <PrivacyPolicy />
     },
     {
-        path: 'our-info',
-        element: <SeaDetails />
-    },
+        path: 'terms-condition',
+        element: <TermsCondition/>
+    }
+    ,
     {
         path: '*',
         element: <Home />
