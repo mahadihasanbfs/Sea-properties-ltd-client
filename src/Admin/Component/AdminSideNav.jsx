@@ -117,6 +117,30 @@ export default function AdminSideNav() {
       ],
     },
     {
+      id: 3.1,
+      name: "Banner Management",
+      icon: <CgFileDocument />,
+      path: "/admin/banner-management",
+      role: "admin",
+      isDropdown: false,
+      menu: [
+        {
+          id: 3.1,
+          name: "Add Blog",
+          icon: "ICN",
+          path: "/add-blog",
+          role: "admin",
+        },
+        {
+          id: 3.2,
+          name: "Manage Blog",
+          icon: "ICN",
+          path: "/manage-blog",
+          role: "admin",
+        },
+      ],
+    },
+    {
       id: 4,
       name: "News Letter Management",
       icon: <MdOutlineUnsubscribe />,

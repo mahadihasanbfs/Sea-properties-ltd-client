@@ -5,21 +5,22 @@ import Swal from 'sweetalert2';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 
-const EditLandArea = () => {
-    const [openModal, setOpenModal] = useState(false);
+const EditView = ({ data }) => {
+    console.log(data, '*********---*********');
     const id = useParams().id
-    const { data: areaData = [], refetch } = useQuery({
-        queryKey: ["areadata"],
-        queryFn: async () => {
-            const res = await fetch('https://sea-properties-server.vercel.app/api/v1/admin/all-land-registration');
-            const data = await res.json();
-            return data;
-        },
-    });
-    const editItm = areaData?.data?.find(itm => itm?._id === id)
+    // const { data: data = [], refetch } = useQuery({
+    //     queryKey: ["data"],
+    //     queryFn: async () => {
+    //         const res = await fetch('https://sea-properties-server.vercel.app/api/v1/admin/all-land-registration');
+    //         const data = await res.json();
+    //         return data;
+    //     },
+    // });
+    // const editItm = data?.data?.find(itm => itm?._id === id)
+    const editItm = data
 
     // this section is used to handle banner img
-    const [image, setImage] = useState(areaData?.img);
+    const [image, setImage] = useState(data?.img);
     const [loading, setLoading] = useState(false);
     const date = new Date();
     const fileInputRef = useRef(null);
@@ -65,74 +66,13 @@ const EditLandArea = () => {
         setCheckboxes(updatedCheckboxes);
     };
 
-    const { uploadImage } = useImageUpload();
-    // this section is used to hand form submit
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        setLoading(true);
-        const submitDate = date.getDate().toString() + date.getMonth().toString().padStart(2, "0") + date.getFullYear();
-        const form = event.target;
-        let gendar = '';
-        if (checkboxes.checkbox1) {
-            gendar = 'male'
-        }
-        else if (checkboxes.checkbox2) {
-            gendar = 'female'
-        }
-        else if (checkboxes.checkbox3) {
-            gendar = 'others'
-        }
 
-        const data = {
-            img: image ? await uploadImage(image) : editItm?.img,
-            englishName: form.englishName.value === '' ? editItm.englishName : form.englishName.value,
-            banglaName: form.banglaName.value,
-            fatherOrHusbandsEnglishName: form.fatherOrHusbandsEnglishName.value,
-            fatherOrHusbandsBanglaName: form.fatherOrHusbandsBanglaName.value,
-            motherEnglishName: form.motherEnglishName.value,
-            motherBanglaName: form.motherBanglaName.value,
-            address: form.address.value,
-            birthDate: form.birthDate.value,
-            nidOrPassportNumber: form.nidOrPassportNumber.value,
-            nationality: form.nationality.value,
-            projectName: form.projectName.value,
-            projectAddress: form.projectAddress.value,
-            totalSharePrice: form.totalSharePrice.value,
-            totalSharePriceInWord: form.totalSharePriceInWord.value,
-            bookingMoney: form.bookingMoney.value,
-            bookingMoneyInWord: form.bookingMoneyInWord.value,
-            dueAmount: form.dueAmount.value,
-            dueAmountInWord: form.dueAmountInWord.value,
-            authorizedSignature: form.authorizedSignature.value,
-            sharersSignature: form.sharersSignature.value,
-            gendar: gendar === '' ? editItm?.gendar : gendar,
-            submitData: submitDate
-        }
-
-        // console.log(data, '++++++++++++++++');
-
-        fetch(`https://sea-properties-server.vercel.app/api/v1/admin/edit-land-registration?id=${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        }).then((res) => res.json()).then((data) => {
-            setLoading(false);
-            form.reset()
-            Swal.fire('Update successful', '', 'success')
-        })
-
-
-
-
-    }
 
 
 
 
     return (
-        <div>
+        <div className='bg-[white]'>
             <div
                 style={{
                     backgroundImage: 'url(https://i.ibb.co/D4z4S2h/Rectangle-55.png)'
@@ -167,12 +107,12 @@ const EditLandArea = () => {
 
                     <div className='flex flex-col items-center mr-[170px]'>
                         <img className='w-[180px] h-[90px] object-contain' src={logo} alt="" />
-                        <h2 className='text-[40px] font-medium text-center'>Land <br /> Registration Form</h2>
+                        <h2 className='text-[40px] font-medium text-center'>Land <br /> <br /> Registration Form</h2>
                     </div>
 
                     {/* img upload and date */}
                     <div className='flex flex-col items-end w-fit'>
-                        <input
+                        <input readOnly
                             type="file"
                             ref={fileInputRef}
                             accept="image/*"
@@ -181,19 +121,10 @@ const EditLandArea = () => {
                             className='hidden'
                         />
                         <div className='w-[188px] h-[208px] border-[1px] border-[#A20E27]'>
-                            {!image &&
-                                <div onClick={handleButtonClick} className='w-full h-full text-gray-700 flex flex-col justify-center items-center gap-2 hover:cursor-pointer'>
-                                    <div>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
-                                        </svg>
-                                    </div>
-                                    <h3 className='text-xl font-medium'>Upload Your Image</h3>
-                                </div>
-                            }
-                            {image &&
+
+                            {data.img &&
                                 <div className='relative w-full h-full mx-auto'>
-                                    <img src={URL.createObjectURL(image)} alt="Uploaded" className='w-full h-full object-cover object-center' />
+                                    <img src={data?.img} alt="Uploaded" className='w-full h-full object-cover object-center' />
                                     <div onClick={handleDeleteImage} className='text-red-700 absolute left-full bottom-full hover:cursor-pointer'>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -213,11 +144,12 @@ const EditLandArea = () => {
                     </div>
                 </div>
 
-                <form onSubmit={handleSubmit} className='space-y-4'>
+                <div
+                    className='space-y-4'>
                     {/* serial no */}
                     <div className='flex gap-2 items-end'>
                         <p>Serial no</p>
-                        <input
+                        <input readOnly
                             type="text"
                             name='serialNumber'
                             className='focus:outline-none border-b-[1px] border-black'
@@ -231,65 +163,65 @@ const EditLandArea = () => {
                     {/* client information input field */}
                     <div className='w-full py-[14px] px-4 border border-black flex'>
                         <p>Applicant’s Name in English : </p>
-                        <input
+                        <input readOnly
                             defaultValue={editItm?.englishName}
                             name='englishName'
                             type="text"
-                            className='w-[800px] focus:outline-none pl-2 bg-transparent'
+                            className='w-[800px] focus:outline-none pl-2 cursor-default bg-transparent'
                         />
                     </div>
                     <div className='w-full py-[14px] px-4 border border-black flex'>
                         <p>Applicant’s Name in Bangla : </p>
-                        <input
+                        <input readOnly
                             defaultValue={editItm?.banglaName}
                             name='banglaName'
                             type="text"
-                            className='w-[800px] focus:outline-none pl-2 bg-transparent'
+                            className='w-[800px] focus:outline-none pl-2 cursor-default bg-transparent'
                         />
                     </div>
                     <div className='w-full py-[14px] px-4 border border-black flex'>
                         <p>Father/Husband’s Name in English : </p>
-                        <input
+                        <input readOnly
                             defaultValue={editItm?.fatherOrHusbandsEnglishName}
                             name='fatherOrHusbandsEnglishName'
                             type="text"
-                            className='w-[800px] focus:outline-none pl-2 bg-transparent'
+                            className='w-[800px] focus:outline-none pl-2 cursor-default bg-transparent'
                         />
                     </div>
                     <div className='w-full py-[14px] px-4 border border-black flex'>
                         <p>Father/Husband’s Name in Bangla : </p>
-                        <input
+                        <input readOnly
                             defaultValue={editItm?.fatherOrHusbandsBanglaName}
                             name='fatherOrHusbandsBanglaName'
                             type="text"
-                            className='w-[800px] focus:outline-none pl-2 bg-transparent'
+                            className='w-[800px] focus:outline-none pl-2 cursor-default bg-transparent'
                         />
                     </div>
                     <div className='w-full py-[14px] px-4 border border-black flex'>
                         <p>Mother’s Name in English : </p>
-                        <input
+                        <input readOnly
                             defaultValue={editItm?.motherEnglishName}
                             name='motherEnglishName'
                             type="text"
-                            className='w-[800px] focus:outline-none pl-2 bg-transparent'
+                            className='w-[800px] focus:outline-none pl-2 cursor-default bg-transparent'
                         />
                     </div>
                     <div className='w-full py-[14px] px-4 border border-black flex'>
                         <p>Mother’s Name in Bangla : </p>
-                        <input
+                        <input readOnly
                             defaultValue={editItm?.motherBanglaName}
                             name='motherBanglaName'
                             type="text"
-                            className='w-[800px] focus:outline-none pl-2 bg-transparent'
+                            className='w-[800px] focus:outline-none pl-2 cursor-default bg-transparent'
                         />
                     </div>
                     <div className='w-full py-[14px] px-4 border border-black flex'>
                         <p>Permanent Address in Bangla : </p>
-                        <input
+                        <input readOnly
                             defaultValue={editItm?.address}
                             name='address'
                             type="text"
-                            className='w-[800px] focus:outline-none pl-2 bg-transparent'
+                            className='w-[800px] focus:outline-none pl-2 cursor-default bg-transparent'
                         />
                     </div>
 
@@ -297,20 +229,20 @@ const EditLandArea = () => {
                         <div className='space-y-4'>
                             <div className='w-[400px] py-[14px] px-4 border border-black flex justify-between'>
                                 <p>Date of birth : </p>
-                                <input
+                                <input readOnly
                                     defaultValue={editItm?.birthDate}
                                     name='birthDate'
                                     type="date"
-                                    className='w-[250px] focus:outline-none pl-2 bg-transparent'
+                                    className='w-[250px] focus:outline-none pl-2 cursor-default bg-transparent'
                                 />
                             </div>
                             <div className='w-[400px] py-[14px] px-4 border border-black flex'>
                                 <p>NID/Passport : </p>
-                                <input
+                                <input readOnly
                                     defaultValue={editItm?.nidOrPassportNumber}
                                     name='nidOrPassportNumber'
                                     type="text"
-                                    className=' focus:outline-none pl-2 bg-transparent'
+                                    className=' focus:outline-none pl-2 cursor-default bg-transparent'
                                 />
                             </div>
                         </div>
@@ -318,28 +250,20 @@ const EditLandArea = () => {
                         <div className='space-y-4'>
                             <div className='w-[400px] py-[14px] px-4 border border-black flex'>
                                 <p>Nationality : </p>
-                                <input
+                                <input readOnly
                                     defaultValue={editItm?.nationality}
                                     name='nationality'
                                     type="text"
-                                    className='focus:outline-none pl-2 bg-transparent'
+                                    className='focus:outline-none pl-2 cursor-default bg-transparent'
                                 />
                             </div>
 
                             <div className='flex items-center gap-4'>
                                 <p>Gender: </p>
                                 <div className='flex justify-center items-center gap-2'>
-                                    <p>Male</p>
-                                    <input type="checkbox" checked={checkboxes.checkbox1} onChange={handleCheckboxChange} name='checkbox1' />
+                                    <p>{data?.gender}</p>
                                 </div>
-                                <div className='flex justify-center items-center gap-2'>
-                                    <p>Female</p>
-                                    <input type="checkbox" checked={checkboxes.checkbox2} onChange={handleCheckboxChange} name='checkbox2' />
-                                </div>
-                                <div className='flex justify-center items-center gap-2'>
-                                    <p>Others</p>
-                                    <input type="checkbox" checked={checkboxes.checkbox3} onChange={handleCheckboxChange} name='checkbox3' />
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -351,21 +275,21 @@ const EditLandArea = () => {
 
                     <div className='w-full py-[14px] px-4 border border-black flex'>
                         <p>Name of the project : </p>
-                        <input
+                        <input readOnly
                             defaultValue={editItm?.projectName}
                             name='projectName'
                             type="text"
-                            className='w-[800px] focus:outline-none pl-2 bg-transparent'
+                            className='w-[800px] focus:outline-none pl-2 cursor-default bg-transparent'
                         />
                     </div>
 
                     <div className='w-full py-[14px] px-4 border border-black flex'>
                         <p>Project Address : </p>
-                        <input
+                        <input readOnly
                             defaultValue={editItm?.projectAddress}
                             name='projectAddress'
                             type="text"
-                            className='w-[800px] focus:outline-none pl-2 bg-transparent'
+                            className='w-[800px] focus:outline-none pl-2 cursor-default bg-transparent'
                         />
                     </div>
 
@@ -378,21 +302,21 @@ const EditLandArea = () => {
                     <div className='flex justify-between'>
                         <div className='w-[400px] py-[14px] px-4 border border-black flex'>
                             <p>Total Share Price : </p>
-                            <input
+                            <input readOnly
                                 defaultValue={editItm?.totalSharePrice}
                                 name='totalSharePrice'
                                 type="text"
-                                className='focus:outline-none pl-2 bg-transparent'
+                                className='focus:outline-none pl-2 cursor-default bg-transparent'
                             />
                         </div>
 
                         <div className='w-[820px] py-[14px] px-4 border border-black flex'>
                             <p>In Word : </p>
-                            <input
+                            <input readOnly
                                 defaultValue={editItm?.totalSharePriceInWord}
                                 name='totalSharePriceInWord'
                                 type="text"
-                                className='w-[500px] focus:outline-none pl-2 bg-transparent'
+                                className='w-[500px] focus:outline-none pl-2 cursor-default bg-transparent'
                             />
                         </div>
                     </div>
@@ -400,21 +324,21 @@ const EditLandArea = () => {
                     <div className='flex justify-between'>
                         <div className='w-[400px] py-[14px] px-4 border border-black flex'>
                             <p>Booking Money : </p>
-                            <input
+                            <input readOnly
                                 defaultValue={editItm?.bookingMoney}
                                 name='bookingMoney'
                                 type="text"
-                                className='focus:outline-none pl-2 bg-transparent'
+                                className='focus:outline-none pl-2 cursor-default bg-transparent'
                             />
                         </div>
 
                         <div className='w-[820px] py-[14px] px-4 border border-black flex'>
                             <p>In Word : </p>
-                            <input
+                            <input readOnly
                                 defaultValue={editItm?.bookingMoneyInWord}
                                 name='bookingMoneyInWord'
                                 type="text"
-                                className='w-[500px] focus:outline-none pl-2 bg-transparent'
+                                className='w-[500px] focus:outline-none pl-2 cursor-default bg-transparent'
                             />
                         </div>
                     </div>
@@ -422,21 +346,21 @@ const EditLandArea = () => {
                     <div className='flex justify-between'>
                         <div className='w-[400px] py-[14px] px-4 border border-black flex'>
                             <p>Due Amount : </p>
-                            <input
+                            <input readOnly
                                 defaultValue={editItm?.dueAmount}
                                 name='dueAmount'
                                 type="text"
-                                className='focus:outline-none pl-2 bg-transparent'
+                                className='focus:outline-none pl-2 cursor-default bg-transparent'
                             />
                         </div>
 
                         <div className='w-[820px] py-[14px] px-4 border border-black flex'>
                             <p>In Word : </p>
-                            <input
+                            <input readOnly
                                 defaultValue={editItm?.dueAmountInWord}
                                 name='dueAmountInWord'
                                 type="text"
-                                className='w-[500px] focus:outline-none pl-2 bg-transparent'
+                                className='w-[500px] focus:outline-none pl-2 cursor-default bg-transparent'
                             />
                         </div>
                     </div>
@@ -444,34 +368,22 @@ const EditLandArea = () => {
                     {/* signature input fields */}
                     <div className='flex justify-center gap-[590px] mt-[110px!important]'>
                         < div className='flex flex-col items-center'>
-                            <input defaultValue={editItm?.authorizedSignature} name='authorizedSignature' type="text" className='border-b text-center focus:outline-none bg-transparent border-black px-2' />
+                            <input readOnly defaultValue={editItm?.authorizedSignature} name='authorizedSignature' type="text" className='border-b text-center focus:outline-none bg-transparent border-black px-2' />
                             <p>Authorized Signature</p>
                         </div>
                         < div className='flex flex-col items-center'>
-                            <input defaultValue={editItm?.sharersSignature} name='sharersSignature' type="text" className='border-b text-center focus:outline-none bg-transparent border-black px-2' />
+                            <input readOnly defaultValue={editItm?.sharersSignature} name='sharersSignature' type="text" className='border-b text-center focus:outline-none bg-transparent border-black px-2' />
                             <p>Sharer’s Signature</p>
                         </div>
                     </div>
 
-                    <div className='text-center flex gap-2'>
-                        <button type='submit' className='border-2 border-[#A20E27] px-4 py-2 font-medium uppercase rounded'>
-                            Submit
-                        </button>
-                        {!loading ?
-                            <button type='submit' className='border-2 border-[#A20E27] px-4 py-2 font-medium uppercase rounded'>
-                                Submit
-                            </button>
-                            :
-                            <button type='button' disabled className='border-2 border-[#A20E27] px-4 py-2 font-medium uppercase rounded'>
-                                Submit...
-                            </button>}
-                    </div>
+
                     <div className='w-full h-[118px] bg-cover bg-center bg-no-repeat bg-[#A20E27] mt-[40px!important] flex items-center pl-4' style={{ backgroundImage: "url(https://i.ibb.co/hsytgwT/Rectangle-58-1.png)" }}>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     );
 };
 
-export default EditLandArea;
+export default EditView;

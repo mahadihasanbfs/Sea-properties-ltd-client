@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { MdClose, MdOutlineMenu } from "react-icons/md";
-import { FaAngleDown } from "react-icons/fa6";
+import { FaAngleDown, FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { useContext, useEffect, useRef, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -154,7 +154,8 @@ const Navbar = () => {
                       </NavLink>
                     ) : (
                       <button className="flex items-center  gap-2 h-[60px] relative group">
-                        {itm?.name} <FaAngleDown className="mt-2" />
+                        {itm?.name}
+                        {/* <FaAngleDown className="mt-2" /> */}
                         <ul className="absolute z-[1000] top-[60px] left-0 bg-[#000000e4] w-40 text-white text-left rounded-md shadow-lg fade-in hidden group-hover:block transition-opacity duration-300">
                           {itm?.dropdownItems.map((item) => (
                             <li key={item.id}>
@@ -184,14 +185,12 @@ const Navbar = () => {
                     {/* <img width={40} height={40} className="size-10 rounded-full bg-slate-500 object-cover duration-500 hover:scale-x-[98%] hover:opacity-80" src={user?.photoURL} alt="avatar drop down navigate ui" /> */}
                   </button>
                   <ul
-                    className={`${
-                      on ? "visible duration-300" : "invisible"
-                    } absolute right-0 top-12 z-50 w-[200px] rounded-sm bg-[#252c33] shadow-md `}
+                    className={`${on ? "visible duration-300" : "invisible"
+                      } absolute right-0 top-12 z-50 w-[200px] rounded-sm bg-[#252c33] shadow-md `}
                   >
                     <li
-                      className={`rounded-sm px-2 py-2 ${
-                        on ? "opacity-100 duration-300" : "opacity-0"
-                      }   `}
+                      className={`rounded-sm px-2 py-2 ${on ? "opacity-100 duration-300" : "opacity-0"
+                        }   `}
                     >
                       <Link
                         className="w-full"
@@ -203,9 +202,8 @@ const Navbar = () => {
                       </Link>
                     </li>{" "}
                     <li
-                      className={`rounded-sm px-2 py-2 ${
-                        on ? "opacity-100 duration-300" : "opacity-0"
-                      }   `}
+                      className={`rounded-sm px-2 py-2 ${on ? "opacity-100 duration-300" : "opacity-0"
+                        }   `}
                     >
                       <button
                         onClick={logOut}
@@ -239,9 +237,8 @@ const Navbar = () => {
             style={{
               zIndex: "6000",
             }}
-            className={`absolute bg-white bg-[#101522] top-0 duration-200 ${
-              !open ? "left-[-120%]" : "left-0"
-            } right-0 w-full h-screen   md:hidden ring  `}
+            className={`absolute bg-white bg-[#101522] top-0 duration-200 ${!open ? "left-[-120%]" : "left-0"
+              } right-0 w-full h-screen   md:hidden ring  `}
           >
             <div className="flex container items-center mt-3 bg justify-between w-full">
               <Link to="/" className="text-2xl font-bold ml-5">
@@ -268,13 +265,15 @@ const Navbar = () => {
                         className="flex items-center px-3 py-2 border-b w-full hover:bg-gray-800 hover:text-white gap-2 h-[60px] relative group justify-between"
                       >
                         {itm?.name}
-                        <FaAngleDown
-                          className={`mt-2 ${
-                            openDropdownId === itm.id
-                              ? "transform rotate-180"
-                              : ""
-                          }`}
-                        />
+                        {openDropdownId === itm.id ?
+                          <FaAngleDown
+                            className="mt-3"
+                          />
+                          :
+                          <FaAngleRight
+                            className="mt-3"
+                          />
+                        }
                       </button>
                       {openDropdownId === itm.id && (
                         <div className="mx-auto p-3 rounded-b ring-1 ring-gray-300 bg-gray-100">
