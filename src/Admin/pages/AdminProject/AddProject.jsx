@@ -532,9 +532,24 @@ const AddProject = () => {
                         className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                         placeholder="Enter map link" />
                 </div>
-                {
-                    !loading ? <button className="dashboard_form_btn " type="submit">Submit</button> : <button className="dashboard_form_btn cursor-pointer" type="submit">Loading</button>
-                }
+
+                {loading ? (
+                    <button
+                        disabled
+                        type="submit"
+                        className="px-3 py-1 flex items-center gap-2 rounded bg-[#631f31] text-[white]"
+                    >
+                        <div className="border-gray-300 h-[20px] w-[20px] animate-spin rounded-full border-[4px] border-t-[#c40424]" />
+                        Adding...
+                    </button>
+                ) : (
+                    <button
+                        type="submit"
+                        className="px-3 py-1 rounded bg-[#b02449] text-[white]"
+                    >
+                        +Add
+                    </button>
+                )}
             </form>
         </div>
 

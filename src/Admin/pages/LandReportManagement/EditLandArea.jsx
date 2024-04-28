@@ -122,10 +122,6 @@ const EditLandArea = () => {
             form.reset()
             Swal.fire('Update successful', '', 'success')
         })
-
-
-
-
     }
 
 
@@ -453,10 +449,8 @@ const EditLandArea = () => {
                         </div>
                     </div>
 
-                    <div className='text-center flex gap-2'>
-                        <button type='submit' className='border-2 border-[#A20E27] px-4 py-2 font-medium uppercase rounded'>
-                            Submit
-                        </button>
+                    <div className='text-center flex justify-center gap-2'>
+
                         {!loading ?
                             <button type='submit' className='border-2 border-[#A20E27] px-4 py-2 font-medium uppercase rounded'>
                                 Submit

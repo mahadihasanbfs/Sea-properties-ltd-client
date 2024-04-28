@@ -5,9 +5,11 @@ import { FaAngleDown, FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { useContext, useEffect, useRef, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { ContextApi } from "../../Provider/ContextProvider";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const { zIndex, setZIndex } = useContext(ContextApi)
   const [openDropdownId, setOpenDropdownId] = useState(null);
   const role = localStorage.getItem("role");
   console.log(role);
@@ -222,23 +224,25 @@ const Navbar = () => {
                 </Link>
               )}
               <button
-                onClick={() => setOpen(!open)}
+                onClick={() => {
+                  setOpen(!open)
+                  setZIndex(!zIndex)
+                }}
                 className=" p-1 md:hidden block text-2xl"
               >
                 <MdOutlineMenu />
               </button>
             </div>
-            {/* small side nav */}
           </div>
         </div>
 
-        <div className={` md:hidden block`}>
+        {/* small side nav */}
+        <div className={` md:hidden block  `}>
+          {open && <div className="w-full z-[8000] h-screen bg-[#000000ef] absolute top-0 left-0 right-0 bottom-0" />}
+
           <div
-            style={{
-              zIndex: "6000",
-            }}
-            className={`absolute bg-white bg-[#101522] top-0 duration-200 ${!open ? "left-[-120%]" : "left-0"
-              } right-0 w-full h-screen   md:hidden ring  `}
+            className={`absolute z-[9000] bg-white bg-[#101522] top-0 duration-200 ${!open ? "right-[-120%]" : "right-0"
+              }  w-[80%] h-screen   md:hidden ring  `}
           >
             <div className="flex container items-center mt-3 bg justify-between w-full">
               <Link to="/" className="text-2xl font-bold ml-5">

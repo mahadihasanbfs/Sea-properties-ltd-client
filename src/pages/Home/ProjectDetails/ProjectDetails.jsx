@@ -15,6 +15,7 @@ import DetailShet from "./DetailShet";
 import Swal from "sweetalert2";
 import ReactPlayer from 'react-player'
 import vrImg from '../../../assets/vr.jpg'
+import VideoPlayer from "../../../components/common/VideoPlayer";
 
 const ProjectDetails = () => {
     // const [visible, setVisible] = useState(false);
@@ -53,7 +54,7 @@ const ProjectDetails = () => {
 
     const { _id, conditionStatus, vr_status, vr_url, name, banner_img, videoThumbnailImgUpload, video_url, contactPageImg, project_status, projectInfo, projectFeatures, gallery_img, project_photo, projectVideo, map_link, featureInfo, details } = projectData;
 
-    console.log(projectData)
+    console.log(projectData, 'oooooooo')
 
     const handleSubmit = (event) => {
         setLoading(true)
@@ -85,13 +86,18 @@ const ProjectDetails = () => {
             // navigate('/admin/project-management');
             form.reset()
         })
-
-
     }
+    function extractSrcFromIframe(iframeTag) {
+        var startIdx = iframeTag.indexOf('src="') + 'src="'.length;
+        var endIdx = iframeTag.indexOf('"', startIdx);
+        var srcValue = iframeTag.substring(startIdx, endIdx);
+        return srcValue;
+    }
+
     return (
         <div className={`overflow-hidden`}>
             <SecondaryBanner
-                bannerImg={project_photo}
+                bannerImg={banner_img}
                 opacity={40}
 
                 projectName={name}
@@ -283,67 +289,32 @@ const ProjectDetails = () => {
             )}
 
             {/* video section */}
-            <div className="bg-black flex justify-center items-center py-12 md:py-20 lg:py-[100px]">
-                <div className="space-y-8 w-[80%] md:w-fit">
-                    <div className="flex items-center justify-between">
-                        <h3 className="text-[35px] text-white uppercase">Video Tour</h3>
+            <div className=" max-w-[1366px] mx-auto py-10 px-4 md:px-8 xl:px-20 md:gap-0 bg-white ">
+                <div className="flex items-center justify-between">
+                    <h3 className="md:text-[35px] text-xl text-white uppercase">Video Tour</h3>
 
-
+                    <div className="flex duration-200 items-center justify-center rounded w-[90px] group gap-2 overflow-hidden">
+                        {vr_status && <a href={vr_url} target="_blank" >
+                            <img src={vrImg} alt="vr" className="duration-200 w-full group-hover:scale-[1.2] rounded" />
+                        </a>}
                     </div>
-                    {/* <figure
-                        style={{
-                            backgroundImage: `linear-gradient(to right, rgb(0 0 0 / 30%), rgb(0 0 0 / 30%)), url(${videoThumbnailImgUpload}})`
-                        }}
-                        className="h-[300px] md:w-[650px] md:h-[400px] lg:w-[934px] lg:h-[480px] border-4 border-[#FCF4F4] rounded-[10px] bg-cover flex justify-center items-center hover:cursor-pointer "
-                        onClick={() => setVisible(true)}
-                    >
-                        <IoLogoYoutube className="text-6xl text-red-600" />
-                    </figure> */}
-                    <iframe
-                        class="h-[225px] w-[450px] sm:w-[450px] md:w-[600px] md:h-[300px] lg:w-[900px] lg:h-[450px] xl:w-[1200px] xl:h-[600px]"
-                        src="https://www.youtube.com/embed/tgbNymZ7vqY">
-                    </iframe>
-
+                </div> <br />
+                <div className="md:h-[600px] h-[200px] w-full">
+                    <VideoPlayer thum={''} url={'https://www.youtube.com/embed/tgbNymZ7vqY'} />
                 </div>
             </div>
-            <div className="flex items-center justify-center gap-2">
-                {vr_status && <a href={vr_url} target="_blank" >
-                    <img src={vrImg} alt="vr" className=" rounded" />
-                </a>}
-            </div>
-            {/* video modal */}
-            {/* {
-                visible &&
-                <div className={`fixed top-0 w-screen bg-[#00000055] h-screen bg-black flex justify-center items-center z-[8000]`}>
-
-                    <div className="w-[935px] hidden h-[480px] bg-[#000000]">
-                        <video className="w-full h-full" controls>
-                            <source src={video_url} type="video/mp4" />
-                            <source src={video_url} type="video/ogg" />
-                            Your browser does not support HTML video.
-                        </video>
-                        <button onClick={() => setVisible(false)} className="text-gray-400 absolute top-[70px] right-8">
-                            <IoMdClose className="text-3xl" />
-                        </button>
-                    </div>
-
-                    <ReactPlayer url={video_url} />
-
-                    <button onClick={() => setVisible(false)} className="text-gray-400 absolute top-[70px] right-8">
-                        <IoMdClose className="text-3xl" />
-                    </button>
-                </div>
-            }
-         */}
-
             {/* project location */}
-            <div className="h-[500px] mt-8 lg:h-[650px]">
+            {map_link && (
                 <iframe
+                    className="lg:h-[400px] md:h-[240px] h-[200px]"
+                    src={extractSrcFromIframe(map_link)}
                     width="100%"
-                    height='100%'
-                    src={map_link}
-                />
-            </div>
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+            )}
 
 
         </div >

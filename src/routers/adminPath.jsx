@@ -6,12 +6,16 @@ import ManageBlog from "../Admin/pages/AdminBlog/BlogManagement";
 import AddProject from "../Admin/pages/AdminProject/AddProject";
 import EditProject from "../Admin/pages/AdminProject/EditProject";
 import ManageProject from "../Admin/pages/AdminProject/ManageProject";
+import AddTestimonials from "../Admin/pages/AdminTestimonials/AddTestimonial";
+import ManageTestimonial from "../Admin/pages/AdminTestimonials/AdminTestimonials";
 import BookingManagement from "../Admin/pages/BookingManagement/BookingManagement";
 import ManageContact from "../Admin/pages/ContactManagement/ContactManagement";
 import AddInstallment from "../Admin/pages/Installment/AddInstallment";
 import ManageInstallment from "../Admin/pages/Installment/ManageInstallment";
 import EditLandArea from "../Admin/pages/LandReportManagement/EditLandArea";
 import LandReportManagement from "../Admin/pages/LandReportManagement/LandReportManagement";
+import AddNewsEvent from "../Admin/pages/NewsEvent/AddNewsEvent";
+import NewsEventManagement from "../Admin/pages/NewsEvent/NewsEventManagement";
 import NewsLetterManagement from "../Admin/pages/NewsLetter/NewsLetterManagement";
 import UserHistory from "../Admin/pages/UserHistory/UserHistory";
 import IsAdmin from "./IsAdmin";
@@ -52,6 +56,23 @@ const adminPath = [
   {
     path: "/admin/blog-management",
     element: <ManageBlog />,
+  },
+
+  {
+    path: "/admin/add-testimonial",
+    element: <AddTestimonials />,
+  },
+  {
+    path: "/admin/testimonial-management",
+    element: <ManageTestimonial />,
+  },
+  {
+    path: "/admin/add-news-event",
+    element: <AddNewsEvent />,
+  },
+  {
+    path: "/admin/news-event-management",
+    element: <NewsEventManagement />,
   },
 
   {

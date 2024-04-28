@@ -1,9 +1,8 @@
-import { useParams } from 'react-router-dom';
+import { useLoaderData, useParams } from 'react-router-dom';
 import useGetData from '../../../../hooks/useGetData';
 
 const BlogDetails = () => {
-    const id = useParams().id
-    const data = useGetData(`api/v1/admin/blog/get-blog?blog_id=${id}`);
+    const data = useLoaderData();
     const blog = data?.data;
 
     return (

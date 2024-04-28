@@ -346,3 +346,9 @@ a{
 .dashboard_form_btn:hover {
   background-color: #681a11;
 }
+
+
+#videoBox{
+  width: 100%!important;
+  height: 100%!important;
+}

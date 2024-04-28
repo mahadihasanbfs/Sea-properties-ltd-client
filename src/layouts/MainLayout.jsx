@@ -6,11 +6,13 @@ import { FaAngleUp, FaWhatsapp } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import MessengerCustomerChat from 'react-messenger-customer-chat';
 import { BiSupport } from "react-icons/bi";
+import { useContext } from "react";
+import { ContextApi } from "../Provider/ContextProvider";
 
 
 const MainLayout = () => {
     const [showScrollButton, setShowScrollButton] = useState(false);
-
+    const { zIndex, setZIndex } = useContext(ContextApi)
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 200) { // Adjust the scroll threshold as needed
@@ -44,17 +46,20 @@ const MainLayout = () => {
             <Outlet />
             {/* <ShowCase /> */}
             <Footer />
-            {showScrollButton && <button
-                className="fixed bg-[#ff000042] shadow-xl text-[#c93333] w-[30px] flex justify-center items-center rounded text-2xl h-[30px] bottom-8 left-8"
-                onClick={scrollToTop}>
-                <FaAngleUp />
-            </button>}
+            {!zIndex &&
+                <div>
+                    {showScrollButton && <button
+                        className="fixed bg-[#8a2424ee] shadow-xl text-[#fdfdfd] w-[30px] flex justify-center items-center rounded text-2xl z-[900] h-[30px] bottom-8 left-8"
+                        onClick={scrollToTop}>
+                        <FaAngleUp />
+                    </button>}
+                </div>}
 
             <div className="fixed right-[24px] bottom-[80px] z-[400]">
-                <a href='#' className="bg-[#a82a2a] text-[white] w-[60px] h-[60px] flex items-center justify-center text-3xl cursor-pointer p-2 rounded-full text-white mb-2">
+                {/* <a href='#' className="bg-[#a82a2a] text-[white] w-[60px] h-[60px] flex items-center justify-center text-3xl cursor-pointer p-2 rounded-full text-white mb-2">
                     <BiSupport />
-                </a>
-                <a href='https://wa.link/lfr471' className="bg-[#25D366] text-[white] w-[60px] h-[60px] flex items-center justify-center text-3xl cursor-pointer p-2 rounded-full text-white mb-2">
+                </a> */}
+                <a href='https://wa.link/lfr471' className="bg-[#25D366] shadow-xl text-[white] w-[60px] h-[60px] flex items-center justify-center text-3xl cursor-pointer p-2 rounded-full text-white mb-2">
                     <FaWhatsapp />
                 </a>
                 <div className="icon-box" style={{ position: 'absolute', bottom: 'calc(50px + 2px)', right: 'calc(50px + 2px)' }}>

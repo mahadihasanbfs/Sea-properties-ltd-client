@@ -1,4 +1,3 @@
-
 import SignIn from "../components/Authentication/SignIn";
 import SignUp from "../components/Authentication/SignUp";
 import BoardOfDirector from "../pages/Home/About_us/Board_of_Director/BoardOfDirector";
@@ -71,8 +70,27 @@ const commonPath = [
     },
     {
         path: 'blogs/blogs-details/:id',
-        element: <BlogDetails />
-    }, {
+        element: <BlogDetails />,
+        loader: ({ params }) => {
+            return fetch(`https://sea-properties-server.vercel.app/api/v1/admin/blog/get-blog?blog_id=${params?.id}`)
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    return data;
+                })
+                .catch(error => {
+                    console.error('Error fetching blog details:', error);
+                    // Handle error gracefully, such as displaying a friendly message to the user
+                    return null; // Return null or any default value as needed
+                });
+        }
+    }
+
+    , {
         path: 'projects/:id',
         element: <BlogDetails />
     },

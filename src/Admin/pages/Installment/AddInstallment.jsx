@@ -146,8 +146,9 @@ const AddInstallment = () => {
           <button
             disabled
             type="submit"
-            className="px-3 py-1 rounded bg-[#631f31] text-[white]"
+            className="px-3 py-1 flex items-center gap-2 rounded bg-[#631f31] text-[white]"
           >
+            <div className="border-gray-300 h-[20px] w-[20px] animate-spin rounded-full border-[4px] border-t-[#c40424]" />
             Adding...
           </button>
         ) : (
@@ -155,7 +156,7 @@ const AddInstallment = () => {
             type="submit"
             className="px-3 py-1 rounded bg-[#b02449] text-[white]"
           >
-            Add Installment
+            +Add
           </button>
         )}
       </form>
