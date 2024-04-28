@@ -30,7 +30,7 @@ const HeroSection = () => {
                     sliderData?.map(itm => <SwiperSlide key={itm?.id}>
                         <div
                             style={{ backgroundImage: `url(${itm?.img})` }}
-                            className="w-full h-[650px] bg-cover object-cover"></div>
+                            className="w-full h-screen bg-cover object-cover"></div>
                     </SwiperSlide>)
                 }
 

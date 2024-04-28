@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/Logo_light.png';
 import { FaFacebookF, FaYoutube, FaLinkedinIn, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
@@ -8,9 +8,9 @@ const Footer = () => {
             <div className="container px-12 grid md:grid-cols-2 grid-cols-1 lg:gap-2">
                 <div>
                     <img src={logo} className='w-20' alt="" />
-                    <p className="text-gray-800 mt-4 md:w-[260px]">
+                    <p className="text-gray-800 mt-4 md:w-[400px]">
 
-                        100 North Kalshi, Gate No - 1, Mirpur DOHS, Dhaka, Bangladesh
+                        SEA Properties Ltd. A trusted leader in Bangladeshi real estate company, residential & commercial projects in prime locations, ensuring customer satisfaction.
 
                     </p>
                 </div>

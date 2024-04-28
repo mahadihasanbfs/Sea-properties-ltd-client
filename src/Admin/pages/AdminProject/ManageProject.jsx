@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import AlertModal from "../../../hooks/useAlertModal";
 import EditProject from "./EditProject";
 import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
+import { DB_URL } from "../../../const";
 
 
 const ManageProject = () => {
@@ -13,7 +15,7 @@ const ManageProject = () => {
     const [on, setOn] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(10); // Number of items per page
-    const [allProject, setAllProjects] = useState([])
+    // const [allProject, setAllProjects] = useState([])
     const projectData = [
         {
             id: 1,
@@ -70,11 +72,22 @@ const ManageProject = () => {
 
 
     //get project
-    useEffect(() => {
-        fetch('https://sea-properties-server.vercel.app/api/v1/admin/project/projects')
-            .then(response => response.json())
-            .then(data => setAllProjects(data?.data))
-    }, [])
+    // useEffect(() => {
+    //     fetch('https://sea-properties-server.vercel.app/api/v1')
+    //         .then(response => response.json())
+    //         .then(data => setAllProjects(data?.data))
+    // }, [])
+
+    const { data: allProject = [], refetch } = useQuery({
+        queryKey: ["users"],
+        queryFn: async () => {
+            const res = await fetch(`${DB_URL}/admin/project/projects`);
+            const data = await res.json();
+            return data.data;
+        },
+    });
+    console.log(allProject);
+
 
     // delete project
     const deleteProject = (id) => {
@@ -88,7 +101,7 @@ const ManageProject = () => {
             .then((data) => {
 
                 Swal.fire('Delete Project successful', '', 'success')
-                // reload()
+                refetch()
 
             })
             .catch((error) => {

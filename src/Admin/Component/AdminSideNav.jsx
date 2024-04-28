@@ -74,15 +74,7 @@ export default function AdminSideNav() {
       isDropdown: false,
       menu: [],
     },
-    {
-      id: 3,
-      name: "Project-contact",
-      icon: <BsProjector />,
-      path: "/admin/land-report",
-      role: "admin",
-      isDropdown: false,
-      menu: [],
-    },
+
     {
       id: 4,
       name: "Contact Management",
@@ -151,6 +143,30 @@ export default function AdminSideNav() {
         {
           id: 4.2,
           name: "Manage Installment Data",
+          icon: "",
+          path: "/admin/manage-installment",
+          role: "admin",
+        },
+      ],
+    },
+    {
+      id: 5,
+      name: "Banner Management",
+      icon: <MdOutlineUnsubscribe />,
+      path: "/admin/manage-installment",
+      role: "admin",
+      isDropdown: FaLessThanEqual,
+      menu: [
+        {
+          id: 4.1,
+          name: "Main Banar",
+          icon: "",
+          path: "/admin/add-installment",
+          role: "admin",
+        },
+        {
+          id: 4.2,
+          name: "Footer Banar",
           icon: "",
           path: "/admin/manage-installment",
           role: "admin",
