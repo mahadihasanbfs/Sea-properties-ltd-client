@@ -7,7 +7,8 @@ const BannerCart = ({ itm }) => {
     return (
         <Link to={`project-details/${itm?._id}`}>
             <div className="px-2 xl:mx-[10px]">
-                <img src={itm?.project_photo}
+                <img src={itm?.banner_img
+                }
                     className="object-cover md:h-[400px] h-[300px] w-full" alt="" />
 
                 <h1 className="font-bold text-xl mt-3">{itm?.name}</h1>

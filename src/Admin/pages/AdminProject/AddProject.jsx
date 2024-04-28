@@ -2,7 +2,7 @@
 import { useRef, useState } from "react";
 import AdminTitle from "../../Component/AdminTitle";
 import useImageUpload from "../../../hooks/useUploadImg";
-import Select from 'react-select';
+import CreatableSelect from 'react-select/creatable';
 import Swal from "sweetalert2";
 
 const AddProject = () => {
@@ -10,6 +10,28 @@ const AddProject = () => {
     const [loading, setLoading] = useState(false);
     const [imageFile, setImageFile] = useState(null);
     const fileInputRef = useRef(null);
+    const [images, setImages] = useState([]);
+
+    const handleImageFileChange = (event) => {
+        const files = event.target.files;
+        const newImages = [];
+        for (const file of files) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                newImages.push(e.target.result);
+                setImages([...images, e.target.result]);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const handleRemoveImage = (index) => {
+        const newImages = [...images];
+        newImages.splice(index, 1);
+        setImages(newImages);
+    };
+
+
 
 
     // banner img show and upload
@@ -76,6 +98,7 @@ const AddProject = () => {
 
 
     const [vrOn, setVrOn] = useState(true);
+    const [youtube, setYoutube] = useState(true)
 
     const handleVr = () => {
         setVrOn(!vrOn); // Toggle the state
@@ -87,6 +110,7 @@ const AddProject = () => {
         setLoading(true);
         const form = e.target;
         //
+        console.log('hit')
         // Get values from the form fields
         const name = form.name.value;
         const project_type = form.project_type.value;
@@ -100,9 +124,9 @@ const AddProject = () => {
         const bathroom = form.bathroom.value;
         const launch_date = new Date().getTime();
         const collections = form.collections.value;
-        const video_url = form.video_url.value;
-        const vr_status = form.vr_status.value;
-        const vr_url = form.vr_url.value;
+        const youtube_url = form.youtube_url.value;
+        const vr_status = vrOn
+        const vr_url = vrOn && form.vr_url.value;
         const map_link = form.map_link.value;
 
         // Get files from file inputs
@@ -153,12 +177,11 @@ const AddProject = () => {
                 features: selectedOption,
                 features_img: featureImgUpload
             },
-            vrStatus: vrOn,
+            youtube_url,
             vr_url,
             vr_status,
             conditionStatus: conditionOn,
             videoThumbnailImgUpload: videoThumbnailImgUpload,
-            video_url,
             map_link
         };
 
@@ -232,7 +255,7 @@ const AddProject = () => {
                             name="name"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                             type="text"
-                            placeholder="enter project name" />
+                            placeholder="Enter Project name" />
                     </div>
                     <div className="mt-3 w-full">
                         <label    >Banner image</label><br />
@@ -240,7 +263,7 @@ const AddProject = () => {
                             name="banner_img"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                             type="file"
-                            placeholder="enter project name" />
+                            placeholder="Enter Project name" />
                     </div>
                 </div>
                 <div className="md:flex items-center gap-6">
@@ -250,7 +273,7 @@ const AddProject = () => {
                             name="project_type"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                             type="text"
-                            placeholder="enter project name">
+                            placeholder="Enter Project name">
                             <option value="projectType">Project Type</option>
                             <option value="residential">Residential</option>
                             <option value="commercial">Commercial</option>
@@ -262,7 +285,7 @@ const AddProject = () => {
                             name="project_status"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                             type="text"
-                            placeholder="enter project name">
+                            placeholder="Enter Project name">
                             <option selected value="project status">project status</option>
                             <option value="onGoing">ON Going</option>
                             <option value="upComing">Up Coming</option>
@@ -283,7 +306,7 @@ const AddProject = () => {
                             type="file"
                             name="detail_img"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
-                            placeholder="enter project name" />
+                            placeholder="Enter Project name" />
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
@@ -294,7 +317,7 @@ const AddProject = () => {
                                 name="address"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
-                                placeholder="enter project address" />
+                                placeholder="Enter Project address" />
                         </div>
                         <div className="mt-3 w-full">
                             <label   >Land Area</label><br />
@@ -302,23 +325,23 @@ const AddProject = () => {
                                 name="land_area"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
-                                placeholder="enter land area" />
+                                placeholder="Enter land area" />
                         </div>
                         <div className="mt-3 w-full">
-                            <label   >No of floors</label><br />
+                            <label   >No of Floors</label><br />
                             <input
                                 name="no_of_floors"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
-                                placeholder="enter no of floors" />
+                                placeholder="Enter no of floors" />
                         </div>
                         <div className="mt-3 w-full">
-                            <label   >Apartment/Floors</label><br />
+                            <label   >Apartment / Floors</label><br />
                             <input
                                 name="apartment_floors"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
-                                placeholder="type apartment/floors" />
+                                placeholder="Type apartment/floors" />
                         </div>
                         <div className="mt-3 w-full">
                             <label   >Apartment Size</label><br />
@@ -359,7 +382,7 @@ const AddProject = () => {
                 <br />
 
                 {/* dynamic inputs */}
-                <label htmlFor="cdn" className="text-md font-semibold">
+                <label htmlFor="cdn" className="text-md flex gap-2 font-semibold">
                     <input
                         type="checkbox"
                         id="cdn"
@@ -370,7 +393,7 @@ const AddProject = () => {
                 </label>
 
                 {conditionOn && <div className="border border-[#dbdbdb] mt-3 p-6">
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 justify-between">
                         <h2> Explant Status</h2>
                         <button type="button" className="duration-200 bg-[#e1e0e0] px-4 py-1" onClick={handleAddField}>+ Add Field</button>
                     </div>
@@ -418,7 +441,7 @@ const AddProject = () => {
                             multiple
                             name="gallery_img"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
-                            placeholder="enter project name" />
+                            placeholder="Enter Project name" />
                     </div>
                 </div>
 
@@ -428,13 +451,7 @@ const AddProject = () => {
                     <br />
                     <div className="">
                         <label   >Features Info</label><br />
-                        <Select
-                            isMulti
-                            className="border mt-2 w-full  rounded bg-[#f4f3f3]"
-                            defaultValue={selectedOption}
-                            onChange={setSelectedOption}
-                            options={options}
-                        />
+                        <CreatableSelect isMulti isClearable options={options} />
                     </div>
 
                     <div className="">
@@ -443,7 +460,7 @@ const AddProject = () => {
                             type="file"
                             name="features_img"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
-                            placeholder="enter feature img url" />
+                            placeholder="Enter feature img url" />
                     </div>
                 </div>
 
@@ -451,33 +468,41 @@ const AddProject = () => {
                 <div className="border border-[#dbdbdb] mt-6 p-6 space-y-3">
                     <h2 className="font-bold border-b  border-[gray] pb-3">Video Tour</h2>
                     <br />
-                    <div className="">
-                        <label   >URL</label><br />
+                    <label htmlFor="vr" className="text-md flex gap-2 font-semibold">
+                        <input
+                            type="checkbox"
+                            id="vr"
+                            checked={youtube} // Bind the checked state to conditionOn
+                            onChange={() => setYoutube(!youtube)} // Handle the change event
+                        />
+                        Add Youtube Url
+                    </label>
+
+                    {youtube && <div className="">
+                        <label   >Youtube URL</label><br />
                         <input
                             type="url"
-                            name="video_url"
-                            className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
-                            placeholder="enter video url" />
-                    </div>
-                    <div className="">
-                        <label   >Thumbnail</label><br />
-                        <input
-                            type="file"
                             multiple
-                            name="video_thumbnail"
+                            name="youtube_url"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
-                            placeholder="enter project name" />
-                    </div>
-                    <div className="">
-                        <label   >VR Status</label><br />
-                        <input
-                            type="text"
-                            name="vr_status"
-                            className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
-                            placeholder="enter vr status" />
-                    </div>
+                            placeholder="Enter youtube url" />
+
+                        <br />
+
+                        <div className="">
+                            <label   >Thumbnail</label><br />
+                            <input
+                                type="file"
+
+                                name="video_thumbnail"
+                                className="border mt-1 w-full p-2 rounded bg-[#f4f3f3]"
+                                placeholder="Enter Project name" />
+                        </div>
+                    </div>}
+
+
                     <br />
-                    <label htmlFor="vr" className="text-md font-semibold">
+                    <label htmlFor="vr" className="text-md flex gap-2 font-semibold">
                         <input
                             type="checkbox"
                             id="vr"
@@ -494,7 +519,7 @@ const AddProject = () => {
                             multiple
                             name="vr_url"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
-                            placeholder="enter vr url" />
+                            placeholder="Enter vr url" />
                     </div>}
                 </div>
                 {/* map link */}
@@ -505,10 +530,10 @@ const AddProject = () => {
                         type="text"
                         name="map_link"
                         className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
-                        placeholder="enter map link" />
+                        placeholder="Enter map link" />
                 </div>
                 {
-                    loading ? <button className="dashboard_form_btn" type="submit">submit</button> : <button disabled className="dashboard_form_btn" type="button">submit....</button>
+                    !loading ? <button className="dashboard_form_btn " type="submit">Submit</button> : <button className="dashboard_form_btn cursor-pointer" type="submit">Loading</button>
                 }
             </form>
         </div>

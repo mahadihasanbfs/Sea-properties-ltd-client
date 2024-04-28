@@ -1,17 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AdminTitle from "../../../hooks/useAdminTitle";
 import { MdDeleteOutline } from "react-icons/md";
 import { TbEdit } from "react-icons/tb";
 import useFetchData from "../../../hooks/useFetchData";
 import { DB_URL } from "../../../const";
+import BrightAlert from "bright-alert";
+import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
 
 const UserHistory = () => {
   const [openModal, setOpenModal] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10); // Number of items per page
 
-  const [data] = useFetchData(`${DB_URL}/users`);
-  console.log("data", data);
+  const { data: data = [], refetch } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await fetch(`${DB_URL}/users`);
+      const data = await res.json();
+      return data;
+    },
+  });
+
+
+
   const userData = data?.data;
   //   console.log(data);
   console.log("userData", userData);
@@ -75,22 +87,57 @@ const UserHistory = () => {
   // edit
   const handleSave = (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
-    const totalAmount = e.target.totalAmount.value;
-    const date = new Date().getTime();
-    const due = e.target.due.value;
-    const remingBalance = e.target.remingBalance.value;
+
+    const name = e.target.userName.value;
+    const email = e.target.email.value;
+
 
     const editedItem = {
       name,
-      totalAmount,
-      date,
-      due,
-      remingBalance,
+      email
     };
 
-    console.log(editedItem);
+    fetch(`${DB_URL}/users/update?id=${openModal?._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(editedItem),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        setOpenModal(false);
+        Swal.fire("User Updated", "", "success");
+        refetch();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        Swal.fire("User Not Updated", "", "error");
+        refetch();
+      });
   };
+
+  const delete_user = (id) => {
+    fetch(`${DB_URL}/users/delete?id=${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        Swal.fire("User Deleted", "", "success")
+        refetch()
+      })
+      .catch((error) => {
+        Swal.fire("User Not Deleted", "", "error");
+        refetch()
+      });
+  };
+
+  // useEffect(() => {
+  //   refetch();
+  // }, [data]);
+
+
   return (
     <div className="pt-3">
       <AdminTitle size={"20px"} title="User History" />
@@ -109,7 +156,7 @@ const UserHistory = () => {
           </thead>
           <tbody className="text-gray-600 divide-y">
             {currentItems?.length &&
-              currentItems?.map((item, idx) => (
+              currentItems?.filter((item) => item.email !== 'admin@admin.com').map((item, idx) => (
                 <tr key={idx}>
                   <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
                   {/* <td className="px-6 py-4 whitespace-nowrap">
@@ -125,7 +172,7 @@ const UserHistory = () => {
                   <td className="px-6 py-4 whitespace-nowrap">
                     <ul className="flex items-center gap-2">
                       <li>
-                        <button>
+                        <button onClick={() => delete_user(item._id)}>
                           <MdDeleteOutline className="text-2xl text-[red]" />
                         </button>
                       </li>
@@ -136,23 +183,21 @@ const UserHistory = () => {
                       </li>
                     </ul>
                   </td>
-                  {/* //!  Edit modal */}
+
                   <div>
-                    <div
+                    {openModal?._id == item._id && <div
                       onClick={() => setOpenModal(false)}
-                      className={`fixed z-[100] flex items-center justify-center ${
-                        openModal?._id == item._id
-                          ? "visible opacity-100"
-                          : "invisible opacity-0"
-                      } inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}
+                      className={`fixed z-[100] flex items-center justify-center ${openModal?._id == item._id
+                        ? "visible opacity-100"
+                        : "invisible opacity-0"
+                        } inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}
                     >
                       <div
                         onClick={(e_) => e_.stopPropagation()}
-                        className={`text- absolute md:w-[500px] rounded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${
-                          openModal?._id == item._id
-                            ? "scale-1 opacity-1 duration-300"
-                            : "scale-0 opacity-0 duration-150"
-                        } z-[100]`}
+                        className={`text- absolute md:w-[500px] rounded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${openModal?._id == item._id
+                          ? "scale-1 opacity-1 duration-300"
+                          : "scale-0 opacity-0 duration-150"
+                          } z-[100]`}
                       >
                         <div className="">
                           <h2 className="text-xl font-bold mb-4">Edit </h2>
@@ -168,7 +213,7 @@ const UserHistory = () => {
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="name"
                                 type="text"
-                                name="name"
+                                name="userName"
                                 defaultValue={item.name}
                               />
                             </div>
@@ -177,7 +222,7 @@ const UserHistory = () => {
                                 className="block text-gray-700 text-sm font-bold mb-2"
                                 htmlFor="totalAmount"
                               >
-                                Total Amount:
+                                Email:
                               </label>
                               <input
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -187,36 +232,7 @@ const UserHistory = () => {
                                 defaultValue={item.email}
                               />
                             </div>
-                            {/* <div className="mb-4">
-                            <label
-                              className="block text-gray-700 text-sm font-bold mb-2"
-                              htmlFor="due"
-                            >
-                              Due:
-                            </label>
-                            <input
-                              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                              id="due"
-                              type="number"
-                              name="due"
-                              defaultValue={item.due}
-                            />
-                          </div> */}
-                            {/* <div className="mb-6">
-                            <label
-                              className="block text-gray-700 text-sm font-bold mb-2"
-                              htmlFor="remainingBalance"
-                            >
-                              Remaining Balance:
-                            </label>
-                            <input
-                              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                              id="remainingBalance"
-                              type="number"
-                              name="remainingBalance"
-                              defaultValue={item.remainingBalance}
-                            />
-                          </div> */}
+
                             <div className="flex items-center justify-between">
                               <button
                                 className="bg-[blue] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -235,7 +251,7 @@ const UserHistory = () => {
                           </form>
                         </div>
                       </div>
-                    </div>
+                    </div>}
                   </div>
                   {/* end modal */}
                 </tr>
@@ -248,7 +264,8 @@ const UserHistory = () => {
       <div className="flex justify-center mt-4">
         <button
           onClick={prevPage}
-          className="mx-1  px-3 py-1 rounded bg-gray-200 text-[#d8d8d8] bg-[blue]"
+
+          className="mx-1  px-3 py-1 rounded bg-gray-200 cursor-pointer text-[#d8d8d8] bg-[blue]"
           disabled={currentPage === 1}
         >
           Prev
@@ -257,18 +274,17 @@ const UserHistory = () => {
           <button
             key={number}
             onClick={() => paginate(number)}
-            className={`mx-1 px-3 py-1 rounded ${
-              currentPage === number
-                ? "bg-blue-500 text-white"
-                : "bg-gray-200 text-gray-700"
-            }`}
+            className={`mx-1 px-3 py-1 rounded ${currentPage === number
+              ? "bg-blue-500 text-white"
+              : "bg-gray-200 text-gray-700"
+              }`}
           >
             {number}
           </button>
         ))}
         <button
           onClick={nextPage}
-          className="mx-1 px-3 py-1 rounded bg-gray-200 text-[#d8d8d8] bg-[blue]"
+          className="mx-1 px-3 py-1 rounded bg-gray-200 text-[#d8d8d8] bg-[blue] cursor-pointer "
           disabled={currentPage === Math.ceil(tableItems.length / itemsPerPage)}
         >
           Next

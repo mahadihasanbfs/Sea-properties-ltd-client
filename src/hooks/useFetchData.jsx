@@ -33,7 +33,7 @@ const useFetchData = (url) => {
     fetchData();
   };
 
-  return [data, loading, error, refetch];
+  return [data, loading, error, refetch]; // Return refetch as a function
 };
 
 export default useFetchData;

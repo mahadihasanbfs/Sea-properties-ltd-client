@@ -60,7 +60,7 @@ const OnGoingProject = () => {
                     <button className={`${type === "Residential" && 'text-[#ACA100]'}`} onClick={() => setType('Residential')}>Residential</button>
                     <button className={`${type === "Commercial" && 'text-[#ACA100]'}`} onClick={() => setType('Commercial')}>Commercial</button>
                 </div>
-                <div className="max-w-[1366px] mx-auto px-6 xl:px-[50px] grid gap-10 md:gap-0
+                <div className="max-w-[1366px] mx-auto px-6 xl:px-[50px] grid gap-10 
                  md:grid-cols-3 pb-20">
                     {
                         projectData?.map((item, index) => <Link key={item?._id} to={`/project-details/${item?._id}`}>

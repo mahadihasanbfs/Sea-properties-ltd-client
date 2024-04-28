@@ -1,3 +1,4 @@
+
 import SignIn from "../components/Authentication/SignIn";
 import SignUp from "../components/Authentication/SignUp";
 import BoardOfDirector from "../pages/Home/About_us/Board_of_Director/BoardOfDirector";
@@ -10,15 +11,15 @@ import VisionMision from "../pages/Home/About_us/Vision_Mision/VisionMision";
 import Contact from "../pages/Home/Contact/Contact";
 import BlogDetails from "../pages/Home/Home/Blogs/BlogDetails";
 import MyBlogs from "../pages/Home/Home/Blogs/Blogs";
+import Explore from "../pages/Home/Home/Gellary/Explore";
 import Home from "../pages/Home/Home/Home"
 import LandRegistrationForm from "../pages/Home/LandRegistrationForm/LandRegistrationForm";
 import NewsEvent from "../pages/Home/News_Event/NewsEvent";
 import NewsEventReadMore from "../pages/Home/News_Event/NewsEventReadMore";
 import ProjectDetails from "../pages/Home/ProjectDetails/ProjectDetails";
 import OnGoing from "../pages/Home/Projects/OnGoingPage/OnGoing";
-import SeaDetails from "../pages/SeaDetails/SeaDetails";
-import PrivacyPolicy from "./PrivacyPolicy";
-
+// import PrivacyPolicy from './PrivacyPolicy'
+// import TermsCondition from "./TermsCondition";
 
 const commonPath = [
     {
@@ -94,15 +95,19 @@ const commonPath = [
     {
         path: 'sign-in',
         element: <SignIn />
-    },
-    {
-        path: 'privacy-policy',
-        element: <PrivacyPolicy />
-    },
-    {
-        path: 'our-info',
-        element: <SeaDetails />
-    },
+    }, {
+        path: '/explore',
+        element: <Explore />
+    }
+    // {
+    //     path: 'privacy-policy',
+    //     element: <PrivacyPolicy />
+    // },
+    // {
+    //     path: 'terms-condition',
+    //     element: <TermsCondition/>
+    // }
+    ,
     {
         path: '*',
         element: <Home />
