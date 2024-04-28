@@ -8,7 +8,7 @@ import { FiPieChart } from "react-icons/fi";
 import { LiaHistorySolid } from "react-icons/lia";
 import { BsProjector } from "react-icons/bs";
 import { CgFileDocument } from "react-icons/cg";
-import { MdOutlineUnsubscribe } from "react-icons/md";
+import { MdEvent, MdOutlineUnsubscribe } from "react-icons/md";
 import { BsHouseCheck } from "react-icons/bs";
 import { LuLandmark } from "react-icons/lu";
 
@@ -89,6 +89,54 @@ export default function AdminSideNav() {
       name: "Blog Management",
       icon: <CgFileDocument />,
       path: "/admin/blog-management",
+      role: "admin",
+      isDropdown: false,
+      menu: [
+        {
+          id: 3.1,
+          name: "Add Blog",
+          icon: "ICN",
+          path: "/add-blog",
+          role: "admin",
+        },
+        {
+          id: 3.2,
+          name: "Manage Blog",
+          icon: "ICN",
+          path: "/manage-blog",
+          role: "admin",
+        },
+      ],
+    },
+    {
+      id: 3.3,
+      name: "Testimonials",
+      icon: <CgFileDocument />,
+      path: "/admin/testimonial-management",
+      role: "admin",
+      isDropdown: false,
+      menu: [
+        {
+          id: 3.1,
+          name: "Add Blog",
+          icon: "ICN",
+          path: "/add-blog",
+          role: "admin",
+        },
+        {
+          id: 3.2,
+          name: "Manage Blog",
+          icon: "ICN",
+          path: "/manage-blog",
+          role: "admin",
+        },
+      ],
+    },
+    {
+      id: 3.4,
+      name: "News Events",
+      icon: <MdEvent />,
+      path: "/admin/news-event-management",
       role: "admin",
       isDropdown: false,
       menu: [

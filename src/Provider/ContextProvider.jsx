@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createContext } from "react";
 
 export const ContextApi = createContext(null);
@@ -118,6 +119,7 @@ const ContextProvider = ({ children }) => {
         return chunks;
     }
 
+    const [zIndex, setZIndex] = useState(false);
     const data = {
         AboutUs_OurStoryImg,
         AboutUs_BoardOfDirectorImg,
@@ -127,6 +129,8 @@ const ContextProvider = ({ children }) => {
         AboutUs_CSR,
         newsEventsImg,
         ContactPageImg,
+        zIndex,
+        setZIndex,
         spilitTextIntoChunks
     }
 

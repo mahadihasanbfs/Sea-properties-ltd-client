@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 import ReactQuill from "react-quill";
 import { useQuery } from "@tanstack/react-query";
 
-const ManageBlog = () => {
+const NewsEventManagement = () => {
   const [openModal, setOpenModal] = useState(false);
   const [myValue, setMyValue] = useState(openModal?.description);
 
@@ -53,10 +53,10 @@ const ManageBlog = () => {
   return (
     <div className="pt-3">
       <div className="flex item-center pb-3 justify-between">
-        <AdminTitle size={"20px"} title="Manage Blog" />
+        <AdminTitle size={"20px"} title="Manage News Event" />
 
-        <Link to={"/admin/add-blog"}>
-          <div className="dashboard_form_btn">+Add Blog</div>
+        <Link to={"/admin/add-news-event"}>
+          <div className="dashboard_form_btn">+Add News Event</div>
         </Link>
       </div>
 
@@ -190,4 +190,4 @@ const ManageBlog = () => {
   );
 };
 
-export default ManageBlog;
+export default NewsEventManagement;

@@ -86,7 +86,7 @@ const Gellary = () => {
                     <p className="mt-6">
                         Partner with the best Artisan, to transform your land into a milestone <br /> of aesthetic marvel and superior value.
                     </p>
-                    <Link to={'/explore'} className="mt-6 border-2 duration-150 hover:bg-white hover:text-black px-8 py-2">
+                    <Link to={'/explore'} className="mt-6 border-2 duration-150 hover:bg-white hover:text-black hover:bg-[#b20a0a] px-8 py-2">
                         Explore
                     </Link>
                 </div>

@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import logo from '../../../assets/logo.png';
 import useImageUpload from '../../../hooks/useUploadImg';
 import Swal from 'sweetalert2';
+import { useQuery } from '@tanstack/react-query';
 
 const LandRegistrationForm = () => {
     // this section is used to handle banner img
@@ -55,7 +56,7 @@ const LandRegistrationForm = () => {
     // this section is used to hand form submit
     const handleSubmit = async (event) => {
         event.preventDefault();
-        setLoading(true);
+        // setLoading(true);
         const submitDate = date.getDate().toString() + date.getMonth().toString().padStart(2, "0") + date.getFullYear();
         const form = event.target;
         let gendar = '';
@@ -95,25 +96,37 @@ const LandRegistrationForm = () => {
             submitData: submitDate
         }
 
+
+        console.log(data, '<<<<<<<<<<++++>>>>>>>>>>')
         // console.log(data, '++++++++++++++++');
 
-        fetch("https://sea-properties-server.vercel.app/api/v1/admin/add-land-registration", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                setLoading(false);
-                Swal.fire("Your form has been submitted", "", "");
-                // navigate('/admin/project-management');
-            });
-
+        // fetch("https://sea-properties-server.vercel.app/api/v1/admin/add-land-registration", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify(data),
+        // })
+        //     .then((res) => res.json())
+        //     .then((data) => {
+        //         setLoading(false);
+        //         Swal.fire("Your form has been submitted", "", "");
+        //         // navigate('/admin/project-management');
+        //     });
     }
 
 
+    // Fetch data using custom hook
+    const { data: serialNumber = [], refetch } = useQuery({
+        queryKey: ["serialNumber"],
+        queryFn: async () => {
+            const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/serial-number`);
+            const data = await res.json();
+            return data;
+        },
+    });
+
+    console.log(serialNumber, '--NO--');
     return (
         <div>
             <div

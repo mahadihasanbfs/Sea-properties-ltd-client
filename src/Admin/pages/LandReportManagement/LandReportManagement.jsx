@@ -52,7 +52,7 @@ const LandReportManagement = () => {
     };
 
 
-    console.log();
+    console.log(areaData?.data, '>>>>>>');
     return (
         <div className="pt-3">
             <div className="flex item-center pb-3 justify-between">

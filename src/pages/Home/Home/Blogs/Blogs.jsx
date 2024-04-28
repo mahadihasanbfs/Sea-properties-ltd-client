@@ -1,10 +1,17 @@
+import { useQuery } from '@tanstack/react-query';
 import useGetData from '../../../../hooks/useGetData';
 import { Link } from 'react-router-dom';
 
 const Blogs = () => {
     // Your component logic here
-    const data = useGetData('api/v1/admin/blog/blogs');
-
+    const { data: data = [], refetch } = useQuery({
+        queryKey: ["users"],
+        queryFn: async () => {
+            const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/blog/blogs`);
+            const data = await res.json();
+            return data;
+        },
+    });
     return (
         <div>
             <section className="pt-20 lg:pt-[120px] pb-10 lg:pb-20">

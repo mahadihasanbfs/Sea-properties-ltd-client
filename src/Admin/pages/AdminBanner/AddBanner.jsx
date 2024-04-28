@@ -5,63 +5,36 @@ import { useState } from "react";
 import useImageUpload from "../../../hooks/useUploadImg";
 import Swal from "sweetalert2";
 import { CgClose } from "react-icons/cg";
+import { useNavigate } from "react-router-dom";
 
 const AddBanner = () => {
   const [value, setValue] = useState("");
   const [loading, setLoading] = useState(false);
-  const [images, setImages] = useState([]);
-
-  // image upload from custom hooks
   const { uploadImage } = useImageUpload();
-
-  const handleImageChange = (e) => {
-    const selectedImages = Array.from(e.target.files);
-    setImages(selectedImages);
-  };
-
-  const removeImage = (indexToRemove) => {
-    const filteredImages = images.filter((_, index) => index !== indexToRemove);
-    setImages(filteredImages);
-  };
-
-
+  const navigation = useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true)
     const form = e.target;
-    const name = form.name.value;
-    const description = value;
-    const meta_tag = form.meta_tag.value;
-    const meta_description = form.meta_description.value;
+    const photo = form.photo;
+    const url = form.url.value;
+    // const description = value;
+    // const meta_tag = form.meta_tag.value;
+    // const meta_description = form.meta_description.value;
 
-    const uploadedImageUrls = [];
 
-    // Loop through each image in the images array
-    for (let i = 0; i < images.length; i++) {
-      const image = images[i];
-      try {
-        const imageUrl = await uploadImage(image); // Upload the current image
-        uploadedImageUrls.push(imageUrl); // Add the uploaded image URL to the array
-      } catch (error) {
-        console.error("Error uploading image:", error);
-        uploadedImageUrls.push(null); // Push null if upload fails
-      }
-    }
 
-    console.log("Uploaded Image URLs:", uploadedImageUrls);
-
-    // Now you have all the uploaded image URLs, you can proceed with the rest of your data submission logic
 
     const data = {
-      photos: uploadedImageUrls, // Use uploaded image URLs here
-      name,
+      photo: await uploadImage(photo.files[0]), // Use uploaded image URLs here
+      url,
       date: new Date(),
       status: false,
-      description,
-      meta_tag,
-      meta_description,
+      // meta_tag,
+      // meta_description,
     };
 
-    fetch("https://sea-properties-server.vercel.app/api/v1/admin/banner/add", {
+    fetch("http://localhost:6001/api/v1/api/v1/admin/banner/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -70,8 +43,12 @@ const AddBanner = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        setLoading(false)
         Swal.fire("Banner successfully added", "", "success");
+        navigation('/admin/banner-management');
       });
+
+    console.log(data, '+++++??>');
 
   };
 
@@ -80,63 +57,27 @@ const AddBanner = () => {
       <AdminTitle title="Add Banner" />
       <form onSubmit={handleSubmit}>
         <br />
-        <div className="mb-4 bg-[white] p-4">
-          <div className="relative overflow-hidden  w-full border border-dashed border-[#336cb6] px-4 py-2 bg-[white] flex items-center justify-center text-[#336cb6] ring-offset-2 min-h-[280px] duration-300 focus:outline-none focus:ring-2">
-            <input
-              name="photos"
-              placeholder="Select Photos"
-              className=" absolute scale-[3] top-0 left-0 right-0 bottom-0 w-full h-full"
-              type="file"
-              multiple
-              onChange={handleImageChange}
-            />
-
-            <button className="text-[black] bg-[#e6e6e6] px-6 py-2 rounded">
-              Upload Banner
-            </button>
-          </div>
-          {images.length ?
-            <div className="mt-2 ">
-              <h1 className="mb-2 text-md font-bold">To Upload {images.length}</h1>
-              <div className="flex gap-2 flex-wrap">
-                {images.map((image, index) => (
-                  <div key={index} className="mr-2 mb-2 border rounded border-[red] relative">
-                    <img
-                      src={URL.createObjectURL(image)}
-                      alt={`Image ${index}`}
-                      className="rounded"
-                      style={{ maxWidth: "100px", maxHeight: "100px" }}
-                    />
-                    <button
-                      type="button"
-                      className="text-red-500 ml-1 border border-[red] rounded-full bg-[red] text-[white] absolute -top-2 -right-2"
-                      onClick={() => removeImage(index)}
-                    >
-                      <CgClose />
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            : ''
-          }
-
-        </div>
-
-
 
         <div className="mb-4">
-          <label htmlFor="photo">Name</label>
+          <label htmlFor="photo">Photo</label>
           <input
-            name="name"
-            placeholder="Enter Blog Name"
+            name="photo"
+            type="file"
             className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
-            type="text"
           />
         </div>
 
         <div className="mb-4">
+          <label htmlFor="url">URL</label>
+          <input
+            name="url"
+            placeholder="Enter Blog Name"
+            className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
+            type="url"
+          />
+        </div>
+
+        {/* <div className="mb-4">
           <label htmlFor="tag">Meta Tag</label>
           <input
             name="meta_tag"
@@ -153,13 +94,14 @@ const AddBanner = () => {
             className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
             type="text"
           />
-        </div>
+        </div> */}
         {loading ? (
           <button
             disabled
             type="submit"
-            className="px-3 py-1 rounded bg-[#631f31] text-[white]"
+            className="px-3 py-1 flex items-center gap-2 rounded bg-[#631f31] text-[white]"
           >
+            <div className="border-gray-300 h-[20px] w-[20px] animate-spin rounded-full border-[4px] border-t-[#c40424]" />
             Adding...
           </button>
         ) : (
@@ -167,7 +109,7 @@ const AddBanner = () => {
             type="submit"
             className="px-3 py-1 rounded bg-[#b02449] text-[white]"
           >
-            Add Banner
+            +Add
           </button>
         )}
       </form>

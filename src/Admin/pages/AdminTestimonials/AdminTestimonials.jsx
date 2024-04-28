@@ -8,26 +8,24 @@ import Swal from "sweetalert2";
 import ReactQuill from "react-quill";
 import { useQuery } from "@tanstack/react-query";
 
-const BannerManagement = () => {
+const ManageTestimonial = () => {
     const [openModal, setOpenModal] = useState(false);
     const [myValue, setMyValue] = useState(openModal?.description);
 
     // Fetch data using custom hook
-    const blogData = useGetData("api/v1/admin/blog/blogs");
-
-    const { data: bData = [], refetch } = useQuery({
-        queryKey: ["users"],
+    const { data: testimonialData = [], refetch } = useQuery({
+        queryKey: ["adminTestimonialAdd"],
         queryFn: async () => {
-            const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/blog/blogs`);
+            const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/testimonial/get_testimonials`);
             const data = await res.json();
             return data;
         },
     });
 
-    // delete data using custom hook
     const handleDelete = (id) => {
+        console.log(id, "-------->");
         fetch(
-            `http://localhost:6001/api/v1/admin/blog/delete?banner_id=${id}`,
+            `https://sea-properties-server.vercel.app/api/v1/admin/blog/delete?blog_id=${id}`,
             {
                 method: "DELETE",
                 headers: {
@@ -45,13 +43,14 @@ const BannerManagement = () => {
             });
     };
 
-    console.log(bData, "======");
+    console.log(testimonialData, "======");
     return (
         <div className="pt-3">
             <div className="flex item-center pb-3 justify-between">
-                <AdminTitle size={"20px"} title="Manage Banner" />
-                <Link to={"/admin/add-banner"}>
-                    <div className="dashboard_form_btn">+Add Banner</div>
+                <AdminTitle size={"20px"} title="Manage Testimonial" />
+
+                <Link to={"/admin/add-testimonial"}>
+                    <div className="dashboard_form_btn">+Add Testimonial</div>
                 </Link>
             </div>
 
@@ -61,12 +60,13 @@ const BannerManagement = () => {
                         <tr>
                             <th className="py-3 px-6">Image</th>
                             <th className="py-3 px-6"> Name</th>
-                            <th className="py-3 px-6">Date</th>
+                            <th className="py-3 px-6"> Position</th>
+                            <th className="py-3 px-6">Description</th>
                             <th className="py-3 px-6">Action</th>
                         </tr>
                     </thead>
                     <tbody className="text-gray-600 divide-y">
-                        {bData?.data?.map((item, idx) => (
+                        {testimonialData?.data?.map((item, idx) => (
                             <tr key={idx}>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <img
@@ -76,7 +76,8 @@ const BannerManagement = () => {
                                     />
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">{item?.name}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{item?.date}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{item?.position}</td>
+                                <td className="px-6 py-4 whitespace-nowrap w-[300px]">{item?.description}</td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <ul className="flex items-center gap-2">
                                         <li>
@@ -185,4 +186,4 @@ const BannerManagement = () => {
     );
 };
 
-export default BannerManagement;
+export default ManageTestimonial;
