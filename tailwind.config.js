@@ -10,13 +10,13 @@ export default {
       'inter': ['Inter', 'sans-serif'],
       'roboto': ['Roboto', 'sans-serif']
     },
-     colors: {
-        dark: '#1C2434',
-        light: '#F9FAFB',
-        primary: '#FFD700',
-        secondary: '#252e40fc',
+    colors: {
+      dark: '#1C2434',
+      light: '#F9FAFB',
+      primary: '#FFD700',
+      secondary: '#252e40fc',
 
-      },
+    },
   },
   plugins: [],
 }

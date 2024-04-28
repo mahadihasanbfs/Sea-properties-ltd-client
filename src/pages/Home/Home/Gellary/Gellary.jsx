@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import bg from '../../../../assets/gellaryBg.png';
 import GellaryItem from './GellaryItem';
+import { Link } from 'react-router-dom';
 const Gellary = () => {
 
     const data = [
@@ -85,9 +86,9 @@ const Gellary = () => {
                     <p className="mt-6">
                         Partner with the best Artisan, to transform your land into a milestone <br /> of aesthetic marvel and superior value.
                     </p>
-                    <a href='/our-info' target='_blank' className="mt-6 border-2 duration-150 hover:bg-white hover:text-black px-8 py-2">
+                    <Link to={'/explore'} className="mt-6 border-2 duration-150 hover:bg-white hover:text-black px-8 py-2">
                         Explore
-                    </a>
+                    </Link>
                 </div>
                 <div id='cardDiv' className="relative text-dark  z-30 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {

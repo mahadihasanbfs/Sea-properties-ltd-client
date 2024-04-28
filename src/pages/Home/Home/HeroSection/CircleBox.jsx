@@ -1,10 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const CircleBox = () => {
+    const [isHovered, setIsHovered] = useState(false);
     return (
-        <div className="main-box duration-150  overflow-hidden">
+        <div onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} className="main-box duration-150 group  overflow-hidden">
             <div className="ring-1 relative  content-box ring-white w-[230px] md:w-[300px] h-[230px] md:h-[300px] rounded-full flex items-center justify-center z-[100]">
-                <div className="bg-[#0000009c] text-[red] absolute top-0 left-0 right-0 m-auto bottom-0 content-box w-[150px] h-[150px] flex items-center justify-center rounded-full text-white z-[100] text-sm">Setting Standards</div>
+                <div className="bg-[#0000009c] text-[red]  duration-150 absolute top-0 left-0 right-0 m-auto bottom-0 content-box text-center w-[150px] h-[150px] flex items-center rounded-full text-white z-[100]  text-2xl justify-center">{isHovered ? "Explore" : 'Setting Standards'}</div>
             </div>
             {/* overlay  */}
             <div className="box-1  absolute md:top-[0px] top-[0px] left-0 right-0 bottom-0 m-auto md:w-[340px] w-[220px] h-[220px] md:h-[340px]  bg-[#a5a5a584] rounded-lg">

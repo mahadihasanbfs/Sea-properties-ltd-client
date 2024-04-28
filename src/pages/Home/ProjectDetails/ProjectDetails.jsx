@@ -51,7 +51,7 @@ const ProjectDetails = () => {
         setSelectedImageIndex(null);
     };
 
-    const { _id, conditionStatus, vrStatus, vr_url, name, banner_img, videoThumbnailImgUpload, video_url, contactPageImg, project_status, projectInfo, projectFeatures, gallery_img, projectVideo, mapLink, featureInfo, details } = projectData;
+    const { _id, conditionStatus, vr_status, vr_url, name, banner_img, videoThumbnailImgUpload, video_url, contactPageImg, project_status, projectInfo, projectFeatures, gallery_img, project_photo, projectVideo, map_link, featureInfo, details } = projectData;
 
     console.log(projectData)
 
@@ -91,7 +91,7 @@ const ProjectDetails = () => {
     return (
         <div className={`overflow-hidden`}>
             <SecondaryBanner
-                bannerImg={banner_img}
+                bannerImg={project_photo}
                 opacity={40}
 
                 projectName={name}
@@ -204,11 +204,8 @@ const ProjectDetails = () => {
             <div className="bg-[#B0BEC5] py-16 lg:py-[85px]">
                 <div className="max-w-[1366px] mx-auto px-6 md:px-10 xl:px-[60px] text-white gap-4 grid md:grid-cols-2">
                     <div className="space-y-10">
-                        <iframe
-                            width="100%"
-                            height='100%'
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7688.411418598435!2d90.37320637217408!3d23.837568124644218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c70003cb6d75%3A0x8cc76155358e2b2a!2sSEA%20Properties%20Ltd!5e0!3m2!1sen!2sbd!4v1713820075424!5m2!1sen!2sbd"
-                        />
+                        <img className="w-80% rounded" src={details?.detail_img} alt="" />
+
                     </div>
                     <div className="flex items-center">
                         <form onSubmit={handleSubmit} className="md:space-y-4 space-y-2 w-full">
@@ -218,8 +215,8 @@ const ProjectDetails = () => {
                                 <input
                                     type="text" name="name"
                                     required
-                                    autoComplete="off"
-                                    className="w-full bg-transparent focus:outline-none pt-3 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                                    // autoComplete="off"
+                                    className="w-full bg-transparent focus:outline-none  p-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
                                 />
                             </div>
                             <div>
@@ -227,7 +224,7 @@ const ProjectDetails = () => {
                                 <input
                                     type="text" name="email"
                                     autoComplete="off"
-                                    className="w-full bg-transparent focus:outline-none pt-3 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                                    className="w-full bg-transparent focus:outline-none  p-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
                                 />
                             </div>
                             <div>
@@ -236,16 +233,17 @@ const ProjectDetails = () => {
                                     type="text" name="phone"
                                     required
                                     autoComplete="off"
-                                    className="w-full bg-transparent focus:outline-none pt-3 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                                    className="w-full bg-transparent p-1 focus:outline-none  px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
                                 />
                             </div>
                             <div>
                                 <p>Message</p>
-                                <input
+                                <textarea
+                                    rows="5"
                                     type="text" name="message"
                                     required
-                                    autoComplete="off"
-                                    className="w-full bg-transparent focus:outline-none pt-16 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                                    // autoComplete="off"
+                                    className="w-full bg-transparent focus:outline-none  px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
                                 />
                             </div>
 
@@ -290,11 +288,7 @@ const ProjectDetails = () => {
                     <div className="flex items-center justify-between">
                         <h3 className="text-[35px] text-white uppercase">Video Tour</h3>
 
-                        <div className="flex items-center gap-2">
-                            {vrStatus && <a href={vr_url} target="_blank" >
-                                <img src={vrImg} alt="vr" className="w-[90px] rounded" />
-                            </a>}
-                        </div>
+
                     </div>
                     {/* <figure
                         style={{
@@ -308,13 +302,17 @@ const ProjectDetails = () => {
                     <iframe
                         class="h-[225px] w-[450px] sm:w-[450px] md:w-[600px] md:h-[300px] lg:w-[900px] lg:h-[450px] xl:w-[1200px] xl:h-[600px]"
                         src="https://www.youtube.com/embed/tgbNymZ7vqY">
-                </iframe>
+                    </iframe>
 
+                </div>
             </div>
-        </div>
-
-            {/* video modal */ }
-    {/* {
+            <div className="flex items-center justify-center gap-2">
+                {vr_status && <a href={vr_url} target="_blank" >
+                    <img src={vrImg} alt="vr" className=" rounded" />
+                </a>}
+            </div>
+            {/* video modal */}
+            {/* {
                 visible &&
                 <div className={`fixed top-0 w-screen bg-[#00000055] h-screen bg-black flex justify-center items-center z-[8000]`}>
 
@@ -338,14 +336,14 @@ const ProjectDetails = () => {
             }
          */}
 
-    {/* project location */ }
-    <div className="h-[500px] lg:h-[650px]">
-        <iframe
-            width="100%"
-            height='100%'
-            src={mapLink}
-        />
-    </div>
+            {/* project location */}
+            <div className="h-[500px] mt-8 lg:h-[650px]">
+                <iframe
+                    width="100%"
+                    height='100%'
+                    src={map_link}
+                />
+            </div>
 
 
         </div >
