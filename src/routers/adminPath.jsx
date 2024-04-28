@@ -1,4 +1,6 @@
 import Dashboard from "../Admin/Dashboard";
+import AddBanner from "../Admin/pages/AdminBanner/AddBanner";
+import BannerManagement from "../Admin/pages/AdminBanner/BannerManagement";
 import AddBlog from "../Admin/pages/AdminBlog/AddBlog";
 import ManageBlog from "../Admin/pages/AdminBlog/BlogManagement";
 import AddProject from "../Admin/pages/AdminProject/AddProject";
@@ -50,6 +52,15 @@ const adminPath = [
   {
     path: "/admin/blog-management",
     element: <ManageBlog />,
+  },
+
+  {
+    path: "/admin/add-banner",
+    element: <AddBanner />,
+  },
+  {
+    path: "/admin/banner-management",
+    element: <BannerManagement />,
   },
   {
     path: "/admin/add-installment",

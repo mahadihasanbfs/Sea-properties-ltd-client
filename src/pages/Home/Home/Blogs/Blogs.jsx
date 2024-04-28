@@ -5,7 +5,6 @@ const Blogs = () => {
     // Your component logic here
     const data = useGetData('api/v1/admin/blog/blogs');
 
-    console.log(data, 'blogsssssss');
     return (
         <div>
             <section className="pt-20 lg:pt-[120px] pb-10 lg:pb-20">

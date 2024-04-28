@@ -90,19 +90,17 @@ const ManageBlog = () => {
                 <div>
                   <div
                     onClick={() => setOpenModal(false)}
-                    className={`fixed z-[100] flex items-center justify-center ${
-                      openModal?._id == item._id
-                        ? "visible opacity-100"
-                        : "invisible opacity-0"
-                    } inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}
+                    className={`fixed z-[100] flex items-center justify-center ${openModal?._id == item._id
+                      ? "visible opacity-100"
+                      : "invisible opacity-0"
+                      } inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}
                   >
                     <div
                       onClick={(e_) => e_.stopPropagation()}
-                      className={`text- absolute md:w-[500px] rounded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${
-                        openModal?.id == item.id
-                          ? "scale-1 opacity-1 duration-300"
-                          : "scale-0 opacity-0 duration-150"
-                      } z-[100]`}
+                      className={`text- absolute md:w-[500px] rounded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${openModal?.id == item.id
+                        ? "scale-1 opacity-1 duration-300"
+                        : "scale-0 opacity-0 duration-150"
+                        } z-[100]`}
                     >
                       <div className="">
                         <h2 className="text-xl font-bold mb-4">Edit </h2>

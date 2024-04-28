@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
-const baseUrl = `https://sea-properties-server.vercel.app`
+const baseUrl = `https://sea-properties-server.vercel.app/`
 
 const useGetData = (route) => {
     const [data, setData] = useState([]); // Initialize data as null

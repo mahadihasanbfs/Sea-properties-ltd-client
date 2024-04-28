@@ -7,6 +7,9 @@ import Swal from "sweetalert2";
 import ReactQuill from "react-quill";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import EditView from "./EditView";
+import { IoCloseCircle } from "react-icons/io5";
+import { BsEye } from "react-icons/bs";
 
 const LandReportManagement = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -49,7 +52,7 @@ const LandReportManagement = () => {
     };
 
 
-
+    console.log();
     return (
         <div className="pt-3">
             <div className="flex item-center pb-3 justify-between">
@@ -93,9 +96,32 @@ const LandReportManagement = () => {
                                                 <TbEdit className="text-2xl text-[green]" />
                                             </Link>
                                         </li>
+                                        <li>
+                                            <button onClick={() => setOpenModal(item)}>
+                                                <BsEye className="text-xl text-[#001aff]" />
+                                            </button>
+                                        </li>
                                     </ul>
                                 </td>
+                                <div className="mx-auto w-fit">
+                                    {/* view edit */}
+                                    <div
+                                        onClick={() => setOpenModal(false)}
+                                        className={`fixed z-[100] flex items-center py-[20%] justify-center ${openModal?._id === item?._id ? 'visible opacity-100' : 'invisible opacity-0'} inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-transparent`}
+                                    >
+                                        <div className="h-screen overflow-y-auto w-full flex justify-center">
+                                            <div onClick={(e_) => e_.stopPropagation()} className={`text- mt-[2%]  w-[80%]  bg-[white]  drop-shadow-lg dark:bg-gray-800 dark:text-white ${openModal?._id === item?._id ? 'scale-1 opacity-1 duration-300' : 'scale-0 opacity-0 duration-150 '}`}>
+                                                <EditView data={openModal} />
+                                                <br /><br />
+                                            </div>
+                                            <button type='button' onClick={() => setOpenModal(false)} className="rounded-md absolute top-8 right-6 px-6 py-[6px] text-rose-600 duration-150 hover:bg-rose-600 hover:text-white">
+                                                <IoCloseCircle className='border border-rose-600 text-3xl text-[#b32c2c] rounded-full' />
+                                            </button>
+                                            <br /><br />
+                                        </div>
 
+                                    </div>
+                                </div>
                             </tr>
                         ))}
                     </tbody>
