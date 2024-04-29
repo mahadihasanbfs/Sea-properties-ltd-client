@@ -1,4 +1,6 @@
 import FlatInstallMentPage from "../userDashboard/Pages/FlatInstallMentPage";
+import UserEditLandArea from "../userDashboard/Pages/EditLandArea";
+import UserLandReportManagement from "../userDashboard/Pages/UserLandReport";
 import PrivateRoute from "./PrivateRoute";
 
 const userPath = [
@@ -8,6 +10,13 @@ const userPath = [
       <FlatInstallMentPage />
     ),
   },
+  {
+    path: "/user/land-report",
+    element: (
+      <UserLandReportManagement />
+    ),
+  },
+
 
 ];
 

@@ -4,6 +4,7 @@ import "react-quill/dist/quill.snow.css";
 import { useState } from "react";
 import useImageUpload from "../../../hooks/useUploadImg";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddTestimonials = () => {
     const [value, setValue] = useState("");
@@ -11,7 +12,7 @@ const AddTestimonials = () => {
 
     // image upload from custom hooks
     const { uploadImage } = useImageUpload();
-
+    const navigate = useNavigate();
     // submit handler
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -33,7 +34,7 @@ const AddTestimonials = () => {
 
         };
 
-        fetch("https://sea-properties-server.vercel.app/api/v1/admin/testimonial/add_testimonial", {
+        fetch("https://sea-properties-server.vercel.app/api/v1/admin/testimonial", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -43,8 +44,8 @@ const AddTestimonials = () => {
             .then((res) => res.json())
             .then((data) => {
                 setLoading(false);
-                Swal.fire("Testimonial successfully added", "", "success");
-                // navigate('/admin/project-management');
+                Swal.fire("Add Successfully", "", "success");
+                navigate('/admin/testimonial-management');
             });
 
         console.log(data);
@@ -55,7 +56,7 @@ const AddTestimonials = () => {
             <form onSubmit={handleSubmit}>
                 <br />
                 <div className="mb-4">
-                    <label htmlFor="photo">Photo</label>
+                    <label htmlFor="photo">User Photo</label>
                     <input
                         name="photo"
                         placeholder="Enter Blog Name"
@@ -64,7 +65,7 @@ const AddTestimonials = () => {
                     />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="photo">Name</label>
+                    <label htmlFor="photo">User Name</label>
                     <input
                         name="name"
                         placeholder="Enter Blog Name"
@@ -73,7 +74,7 @@ const AddTestimonials = () => {
                     />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="position">Position</label>
+                    <label htmlFor="position">User Position</label>
                     <input
                         name="position"
                         placeholder="Enter position"
@@ -81,8 +82,9 @@ const AddTestimonials = () => {
                         type="text"
                     />
                 </div>
+
                 <div className="mb-4">
-                    <label htmlFor="meta_description">Description</label>
+                    <label htmlFor="meta_description">Message</label>
                     <textarea
                         name="description"
                         placeholder="Enter Description"

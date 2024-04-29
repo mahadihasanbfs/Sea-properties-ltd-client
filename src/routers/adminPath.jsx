@@ -72,7 +72,8 @@ const adminPath = [
   },
   {
     path: "/admin/news-event-management",
-    element: <NewsEventManagement />,
+    element: <NewsEventManagement
+    />,
   },
 
   {

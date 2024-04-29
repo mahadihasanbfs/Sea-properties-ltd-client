@@ -4,6 +4,7 @@ import AdminTitle from "../../Component/AdminTitle";
 import useImageUpload from "../../../hooks/useUploadImg";
 import CreatableSelect from 'react-select/creatable';
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddProject = () => {
     const [image, setImage] = useState(null);
@@ -104,6 +105,14 @@ const AddProject = () => {
         setVrOn(!vrOn); // Toggle the state
     };
 
+    const [selectedOptions, setSelectedOptions] = useState([]);
+    const navigate = useNavigate();
+    const handleChange = (newValue, actionMeta) => {
+        console.log('Selected Options:', newValue);
+        console.log('Action Meta:', actionMeta);
+        setSelectedOptions(newValue); // Optionally, you can set the selected options to state
+    };
+
     // form submit
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -174,7 +183,7 @@ const AddProject = () => {
             },
             gallery_img: galleryImageUrls,
             featureInfo: {
-                features: selectedOption,
+                features: selectedOptions,
                 features_img: featureImgUpload
             },
             youtube_url,
@@ -185,7 +194,7 @@ const AddProject = () => {
             map_link
         };
 
-        console.log(project_type, data);
+        console.log('testing......', data);
 
         fetch('https://sea-properties-server.vercel.app/api/v1/admin/project/add', {
             method: 'POST',
@@ -196,16 +205,15 @@ const AddProject = () => {
         }).then((res) => res.json()).then((data) => {
             setLoading(false)
             Swal.fire('Project successfully added', '', 'success');
-            // navigate('/admin/project-management');
+            navigate('/admin/manage-project');
         })
 
     };
 
 
-
-
     return (
         <div>
+
             <AdminTitle title='Add project' />
             <br />
             <div className='border border-gray-500 p-4 rounded flex flex-col gap-2'>
@@ -258,7 +266,7 @@ const AddProject = () => {
                             placeholder="Enter Project name" />
                     </div>
                     <div className="mt-3 w-full">
-                        <label    >Banner image</label><br />
+                        <label    >Feature image</label><br />
                         <input
                             name="banner_img"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
@@ -449,9 +457,15 @@ const AddProject = () => {
                 <div className="border border-[#dbdbdb] mt-6 p-6 space-y-3">
                     <h2 className="font-bold border-b  border-[gray] pb-3">Features</h2>
                     <br />
-                    <div className="">
-                        <label   >Features Info</label><br />
-                        <CreatableSelect isMulti isClearable options={options} />
+
+                    <div className="container">
+                        <label>Features Info</label><br />
+                        <CreatableSelect
+                            isMulti
+                            isClearable
+                            onChange={handleChange}
+                            options={options} // Replace 'options' with your actual options array
+                        />
                     </div>
 
                     <div className="">
@@ -532,12 +546,12 @@ const AddProject = () => {
                         className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                         placeholder="Enter map link" />
                 </div>
-
+                <br /> <br />
                 {loading ? (
                     <button
                         disabled
                         type="submit"
-                        className="px-3 py-1 flex items-center gap-2 rounded bg-[#631f31] text-[white]"
+                        className="px-8 py-2 flex items-center gap-2 rounded bg-[#631f31] text-[white]"
                     >
                         <div className="border-gray-300 h-[20px] w-[20px] animate-spin rounded-full border-[4px] border-t-[#c40424]" />
                         Adding...
@@ -545,7 +559,7 @@ const AddProject = () => {
                 ) : (
                     <button
                         type="submit"
-                        className="px-3 py-1 rounded bg-[#b02449] text-[white]"
+                        className="px-8 py-2 rounded bg-[#b02449] text-[white]"
                     >
                         +Add
                     </button>

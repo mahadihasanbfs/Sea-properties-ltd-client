@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import logo from "../../assets/logo.png";
 import { useState } from "react";
-import { FaAngleDown, FaLessThanEqual, FaUpDown } from "react-icons/fa6";
+import { FaAngleDown, FaLessThanEqual, FaUsers } from "react-icons/fa6";
 import { Outlet } from "react-router";
 import { Link, NavLink } from "react-router-dom";
 import { FiPieChart } from "react-icons/fi";
@@ -11,6 +11,8 @@ import { CgFileDocument } from "react-icons/cg";
 import { MdEvent, MdOutlineUnsubscribe } from "react-icons/md";
 import { BsHouseCheck } from "react-icons/bs";
 import { LuLandmark } from "react-icons/lu";
+import { TbBrandBlogger } from "react-icons/tb";
+import { TfiLayoutSliderAlt } from "react-icons/tfi";
 
 export default function AdminSideNav() {
   const [toggleMenu, setToggleMenu] = useState(true);
@@ -87,7 +89,7 @@ export default function AdminSideNav() {
     {
       id: 3,
       name: "Blog Management",
-      icon: <CgFileDocument />,
+      icon: <TbBrandBlogger />,
       path: "/admin/blog-management",
       role: "admin",
       isDropdown: false,
@@ -111,7 +113,7 @@ export default function AdminSideNav() {
     {
       id: 3.3,
       name: "Testimonials",
-      icon: <CgFileDocument />,
+      icon: <FaUsers />,
       path: "/admin/testimonial-management",
       role: "admin",
       isDropdown: false,
@@ -158,8 +160,8 @@ export default function AdminSideNav() {
     },
     {
       id: 3.1,
-      name: "Banner Management",
-      icon: <CgFileDocument />,
+      name: "Banners",
+      icon: <TfiLayoutSliderAlt />,
       path: "/admin/banner-management",
       role: "admin",
       isDropdown: false,
@@ -182,7 +184,7 @@ export default function AdminSideNav() {
     },
     {
       id: 4,
-      name: "News Letter Management",
+      name: "News Letter",
       icon: <MdOutlineUnsubscribe />,
       path: "/admin/newsLetter-management",
       role: "admin",
@@ -221,30 +223,30 @@ export default function AdminSideNav() {
         },
       ],
     },
-    {
-      id: 5,
-      name: "Banner Management",
-      icon: <MdOutlineUnsubscribe />,
-      path: "/admin/manage-installment",
-      role: "admin",
-      isDropdown: FaLessThanEqual,
-      menu: [
-        {
-          id: 4.1,
-          name: "Main Banar",
-          icon: "",
-          path: "/admin/add-installment",
-          role: "admin",
-        },
-        {
-          id: 4.2,
-          name: "Footer Banar",
-          icon: "",
-          path: "/admin/manage-installment",
-          role: "admin",
-        },
-      ],
-    },
+    // {
+    //   id: 5,
+    //   name: "Banner Management",
+    //   icon: <MdOutlineUnsubscribe />,
+    //   path: "/admin/manage-installment",
+    //   role: "admin",
+    //   isDropdown: FaLessThanEqual,
+    //   menu: [
+    //     {
+    //       id: 4.1,
+    //       name: "Main Banar",
+    //       icon: "",
+    //       path: "/admin/add-installment",
+    //       role: "admin",
+    //     },
+    //     {
+    //       id: 4.2,
+    //       name: "Footer Banar",
+    //       icon: "",
+    //       path: "/admin/manage-installment",
+    //       role: "admin",
+    //     },
+    //   ],
+    // },
   ];
   return (
     <ul className="space-y-2">

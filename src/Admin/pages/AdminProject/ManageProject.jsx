@@ -132,7 +132,7 @@ const ManageProject = () => {
                         </tr>
                     </thead>
                     <tbody className="text-gray-600 divide-y">
-                        {allProject.map((item, idx) => (
+                        {allProject?.map((item, idx) => (
                             <tr key={idx}>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <img src={item?.project_photo} className="w-[60px] h-[60px] rounded object-cover" alt="" />

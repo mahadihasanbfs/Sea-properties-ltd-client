@@ -20,19 +20,19 @@ const FlatInstallMentPage = () => {
   //    const { user } = useAuth();
   //    console.log(user);
 
-  console.log(allInstallment);
+  console.log(allInstallment, '^^^^^^^');
 
   // Logic to calculate pagination
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = allInstallment?.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = allInstallment && allInstallment?.slice(indexOfFirstItem, indexOfLastItem);
 
   // Function to handle page change
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   // Function to handle next page
   const nextPage = () => {
-    if (currentPage < Math.ceil(allInstallment.length / itemsPerPage)) {
+    if (currentPage < Math.ceil(allInstallment ? allInstallment.length : 0 / itemsPerPage)) {
       setCurrentPage(currentPage + 1);
     }
   };
@@ -46,7 +46,7 @@ const FlatInstallMentPage = () => {
 
   // Generate pagination numbers
   const paginationNumbers = Array.from(
-    { length: Math.ceil((allInstallment?.length || 0) / itemsPerPage) },
+    { length: Math.ceil((allInstallment ? allInstallment?.length : 0 || 0) / itemsPerPage) },
     (_, i) => i + 1
   );
 
@@ -139,11 +139,10 @@ const FlatInstallMentPage = () => {
           <button
             key={number}
             onClick={() => paginate(number)}
-            className={`mx-1 px-3 py-1 rounded ${
-              currentPage === number
-                ? "bg-blue-500 text-white"
-                : "bg-gray-200 text-gray-700"
-            }`}
+            className={`mx-1 px-3 py-1 rounded ${currentPage === number
+              ? "bg-blue-500 text-white"
+              : "bg-gray-200 text-gray-700"
+              }`}
           >
             {number}
           </button>
@@ -153,7 +152,7 @@ const FlatInstallMentPage = () => {
           className="mx-1 px-3 py-1 rounded bg-gray-200 text-[#d8d8d8] bg-[blue]"
           disabled={
             currentPage ===
-            Math.ceil((allInstallment.length || 0) / itemsPerPage)
+            Math.ceil((allInstallment ? allInstallment.length : 0 || 0) / itemsPerPage)
           }
         >
           Next
