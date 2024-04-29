@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import TestimonialItem from "./TestimonialItem";
 import { useEffect } from "react";
 import Title from "../../../../components/sharedComponent/Title";
+import { useQuery } from "@tanstack/react-query";
 
 
 
@@ -40,64 +41,16 @@ const Testimonials = () => {
             }
         ]
     };
-    const data = [
-        {
-            id: 0,
-            name: 'Aura',
 
-            post: "Residential",
-            message: "   Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita architecto itaque minima cumque temporibus totam et! Corporis suscipit, natus blanditiis aliquid provident, impedit rerum autem laudantium obcaecati, mollitia saepe ratione.",
-            img: "https://i.ibb.co/kGv0Tm3/8dea41640a5ab81ddcbcee903ed2450e.jpg"
+    const { data: data = [], refetch } = useQuery({
+        queryKey: ["testimonialData"],
+        queryFn: async () => {
+            const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/testimonial`);
+            const data = await res.json();
+            return data;
         },
-        {
-            id: 1,
-            name: 'Aura',
+    });
 
-            post: "Residential",
-            message: "   Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita architecto itaque minima cumque temporibus totam et! Corporis suscipit, natus blanditiis aliquid provident, impedit rerum autem laudantium obcaecati, mollitia saepe ratione.",
-            img: "https://i.ibb.co/kGv0Tm3/8dea41640a5ab81ddcbcee903ed2450e.jpg"
-        },
-        {
-            id: 2,
-            name: 'Aura',
-
-            post: "Residential",
-            message: "   Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita architecto itaque minima cumque temporibus totam et! Corporis suscipit, natus blanditiis aliquid provident, impedit rerum autem laudantium obcaecati, mollitia saepe ratione.",
-            img: "https://i.ibb.co/kGv0Tm3/8dea41640a5ab81ddcbcee903ed2450e.jpg"
-        },
-        {
-            id: 3,
-            name: 'Aura',
-
-            post: "Residential",
-            message: "   Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita architecto itaque minima cumque temporibus totam et! Corporis suscipit, natus blanditiis aliquid provident, impedit rerum autem laudantium obcaecati, mollitia saepe ratione.",
-            img: "https://i.ibb.co/kGv0Tm3/8dea41640a5ab81ddcbcee903ed2450e.jpg"
-        },
-        {
-            id: 4,
-            name: 'Aura',
-
-            post: "Residential",
-            message: "   Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita architecto itaque minima cumque temporibus totam et! Corporis suscipit, natus blanditiis aliquid provident, impedit rerum autem laudantium obcaecati, mollitia saepe ratione.",
-            img: "https://i.ibb.co/kGv0Tm3/8dea41640a5ab81ddcbcee903ed2450e.jpg"
-        },
-        {
-            id: 5,
-            name: 'Aura',
-
-            post: "Residential",
-            message: "   Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita architecto itaque minima cumque temporibus totam et! Corporis suscipit, natus blanditiis aliquid provident, impedit rerum autem laudantium obcaecati, mollitia saepe ratione.",
-            img: "https://i.ibb.co/kGv0Tm3/8dea41640a5ab81ddcbcee903ed2450e.jpg"
-        },
-        {
-            id: 6,
-            name: 'Aura',
-
-            post: "Residential",
-            message: "   Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita architecto itaque minima cumque temporibus totam et! Corporis suscipit, natus blanditiis aliquid provident, impedit rerum autem laudantium obcaecati, mollitia saepe ratione.",
-            img: "https://i.ibb.co/kGv0Tm3/8dea41640a5ab81ddcbcee903ed2450e.jpg"
-        },
-    ]
 
     useEffect(() => {
         const next = document.getElementById('sld').childNodes[0].childNodes[2];

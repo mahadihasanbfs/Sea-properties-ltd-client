@@ -3,9 +3,19 @@ import logo from '../../../assets/logo.png';
 import useImageUpload from '../../../hooks/useUploadImg';
 import Swal from 'sweetalert2';
 import { useQuery } from '@tanstack/react-query';
+import { reload } from 'firebase/auth';
 
 const LandRegistrationForm = () => {
     // this section is used to handle banner img
+    const { data: SN = [], relaod } = useQuery({
+        queryKey: ["SN"],
+        queryFn: async () => {
+            const res = await fetch('https://sea-properties-server.vercel.app/api/v1/admin/serial-number');
+            const data = await res.json();
+            return data?.data;
+        },
+    });
+
     const [image, setImage] = useState(null);
     const [loading, setLoading] = useState(false);
     const date = new Date();
@@ -24,6 +34,7 @@ const LandRegistrationForm = () => {
     };
 
     const handleDeleteImage = () => {
+        reload();
         setImage(null);
         fileInputRef.current.value = '';
     };
@@ -56,7 +67,7 @@ const LandRegistrationForm = () => {
     // this section is used to hand form submit
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // setLoading(true);
+        setLoading(true);
         const submitDate = date.getDate().toString() + date.getMonth().toString().padStart(2, "0") + date.getFullYear();
         const form = event.target;
         let gendar = '';
@@ -71,6 +82,7 @@ const LandRegistrationForm = () => {
         }
 
         const data = {
+            SN: SN,
             img: await uploadImage(image),
             englishName: form.englishName.value,
             banglaName: form.banglaName.value,
@@ -96,44 +108,31 @@ const LandRegistrationForm = () => {
             submitData: submitDate
         }
 
-
-        console.log(data, '<<<<<<<<<<++++>>>>>>>>>>')
         // console.log(data, '++++++++++++++++');
-
-        // fetch("https://sea-properties-server.vercel.app/api/v1/admin/add-land-registration", {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify(data),
-        // })
-        //     .then((res) => res.json())
-        //     .then((data) => {
-        //         setLoading(false);
-        //         Swal.fire("Your form has been submitted", "", "");
-        //         // navigate('/admin/project-management');
-        //     });
+        fetch("https://sea-properties-server.vercel.app/api/v1/admin/add-land-registration", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setLoading(false);
+                Swal.fire("Your form has been submitted", "", "");
+                // navigate('/admin/project-management');
+            });
     }
 
 
-    // Fetch data using custom hook
-    const { data: serialNumber = [], refetch } = useQuery({
-        queryKey: ["serialNumber"],
-        queryFn: async () => {
-            const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/serial-number`);
-            const data = await res.json();
-            return data;
-        },
-    });
 
-    console.log(serialNumber, '--NO--');
     return (
         <div>
             <div
                 style={{
                     backgroundImage: 'url(https://i.ibb.co/D4z4S2h/Rectangle-55.png)'
                 }}
-                className="max-w-[1366px] mx-auto bg-cover bg-center h-fit p-[60px] mt-[70px] relative">
+                className="max-w-[1366px] w-[1366px] mx-auto bg-cover bg-center h-fit p-[60px] mt-[70px] relative">
                 {/* social links */}
                 <ul className="space-y-2 absolute">
                     <li>
@@ -214,6 +213,7 @@ const LandRegistrationForm = () => {
                     <div className='flex gap-2 items-end'>
                         <p>Serial no</p>
                         <input
+                            value={SN}
                             type="text"
                             name='serialNumber'
                             className='focus:outline-none border-b-[1px] border-black'
@@ -431,15 +431,24 @@ const LandRegistrationForm = () => {
                         </div>
                     </div>
 
-                    <div className='text-center'>
-                        {!loading ?
-                            <button type='submit' className='border-2 border-[#A20E27] px-4 py-2 font-medium uppercase rounded'>
+                    <div className='text-center flex justify-center'>
+                        {loading ? (
+                            <button
+                                disabled
+                                type="submit"
+                                className="px-8 py-2 flex items-center gap-2 rounded bg-[#631f31] text-[white]"
+                            >
+                                <div className="border-gray-300 h-[20px] w-[20px] animate-spin rounded-full border-[4px] border-t-[#c40424]" />
+                                Submitting...
+                            </button>
+                        ) : (
+                            <button
+                                type="submit"
+                                className="px-8 py-2 rounded bg-[#b02449] text-[white]"
+                            >
                                 Submit
                             </button>
-                            :
-                            <button type='button' disabled className='border-2 border-[#A20E27] px-4 py-2 font-medium uppercase rounded'>
-                                Submit...
-                            </button>}
+                        )}
                     </div>
                     <div className='w-full h-[118px] bg-cover bg-center bg-no-repeat bg-[#A20E27] mt-[40px!important] flex items-center pl-4' style={{ backgroundImage: "url(https://i.ibb.co/hsytgwT/Rectangle-58-1.png)" }}>
                     </div>

@@ -1,22 +1,19 @@
 import { useState } from "react";
 import { MdDeleteOutline } from "react-icons/md";
 import { TbEdit } from "react-icons/tb";
-import useGetData from "../../../hooks/useGetData";
 import Swal from "sweetalert2";
-import ReactQuill from "react-quill";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { IoCloseCircle } from "react-icons/io5";
 import { BsEye } from "react-icons/bs";
-import AdminTitle from "../../../hooks/useAdminTitle";
 
-const LandReportManagement = () => {
+const UserLandReportManagement = () => {
     const [openModal, setOpenModal] = useState(false);
 
     const { data: areaData = [], refetch } = useQuery({
         queryKey: ["allBlog"],
         queryFn: async () => {
-            const res = await fetch('https://sea-properties-server.vercel.app/api/v1/admin/all-land-registration');
+            const res = await fetch('https://sea-properties-server.vercel.app/api/v1/admin/user-land-registration');
             const data = await res.json();
             return data;
         },
@@ -50,13 +47,10 @@ const LandReportManagement = () => {
         return formattedDate;
     };
 
-
-    console.log(areaData?.data, '>>>>>>');
     return (
         <div className="pt-3">
             <div className="flex item-center pb-3 justify-between">
-                <AdminTitle size={"20px"} title="" />
-
+                <h1 className="font-bold text-xl">Land Report</h1>
             </div>
 
             <div className="mt-2 shadow-sm border rounded overflow-x-auto">
@@ -91,16 +85,10 @@ const LandReportManagement = () => {
                                             </button>
                                         </li>
                                         <li>
-                                            <Link to={`/admin/edit-land-area/${item?._id}`}>
-                                                <TbEdit className="text-2xl text-[green]" />
-                                            </Link>
-                                        </li>
-                                        <li>
                                             <Link to={`/view-land-report/${item?._id}`}>
                                                 <BsEye className="text-xl text-[#001aff]" />
                                             </Link>
                                         </li>
-
                                     </ul>
                                 </td>
 
@@ -113,4 +101,4 @@ const LandReportManagement = () => {
     );
 };
 
-export default LandReportManagement;
+export default UserLandReportManagement;

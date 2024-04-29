@@ -8,28 +8,30 @@ import 'swiper/css/navigation';
 
 // import required modules
 import { Autoplay, Navigation } from 'swiper/modules';
+import { useQuery } from "@tanstack/react-query";
 
 
 const HeroSection = () => {
-    const sliderData = [
-        {
-            id: 1,
-            img: 'https://hikmah-holdings-backend.vercel.app/api/v1/image/660cd9ce8ddf1450a6942c94.jpg'
-        }, {
-            id: 2,
-            img: 'https://i.ibb.co/yhfVfwh/e0570631ea539c4c79b4d15df4fb7d82.jpg'
-        }, {
-            id: 3,
-            img: 'https://hikmah-holdings-backend.vercel.app/api/v1/image/660cd9ce8ddf1450a6942c94.jpg'
+    const { data: data = [], refetch } = useQuery({
+        queryKey: ["slData"],
+        queryFn: async () => {
+            const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/banner/banners`);
+            const data = await res.json();
+            return data;
         },
-    ]
+    });
+
+    const sliderData = data?.data?.filter(itm => itm?.position === 'hero_slider')
+
+    console.log(sliderData, 'metch..');
+
     return (
         <div className=" relative">
             <Swiper autoplay={true} navigation={false} modules={[Navigation, Autoplay]} className="mySwiper">
                 {
                     sliderData?.map(itm => <SwiperSlide key={itm?.id}>
                         <div
-                            style={{ backgroundImage: `url(${itm?.img})` }}
+                            style={{ backgroundImage: `url(${itm?.photo})` }}
                             className="w-full h-screen bg-cover object-cover"></div>
                     </SwiperSlide>)
                 }

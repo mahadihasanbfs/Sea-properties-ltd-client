@@ -16,16 +16,15 @@ const ManageTestimonial = () => {
     const { data: testimonialData = [], refetch } = useQuery({
         queryKey: ["adminTestimonialAdd"],
         queryFn: async () => {
-            const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/testimonial/get_testimonials`);
+            const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/testimonial`);
             const data = await res.json();
             return data;
         },
     });
 
     const handleDelete = (id) => {
-        console.log(id, "-------->");
         fetch(
-            `https://sea-properties-server.vercel.app/api/v1/admin/blog/delete?blog_id=${id}`,
+            `https://sea-properties-server.vercel.app/api/v1/admin/testimonial?testimonialId=${id}`,
             {
                 method: "DELETE",
                 headers: {
@@ -35,11 +34,11 @@ const ManageTestimonial = () => {
         )
             .then((res) => res.json())
             .then((data) => {
-                Swal.fire("Blog deleted", "", "success");
-                // reload()
+                Swal.fire("Testimonial deleted", "", "success");
+                refetch();// reload()
             })
             .catch((error) => {
-                console.error("Error deleting project:", error);
+                console.error("Error deleting testimonial:", error);
             });
     };
 
@@ -66,18 +65,18 @@ const ManageTestimonial = () => {
                         </tr>
                     </thead>
                     <tbody className="text-gray-600 divide-y">
-                        {testimonialData?.data?.map((item, idx) => (
+                        {testimonialData?.map((item, idx) => (
                             <tr key={idx}>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <img
                                         src={item?.photo}
-                                        className="w-[60px] h-[60px] rounded object-cover"
+                                        className="w-[60px] h-[60px] border rounded-full object-cover"
                                         alt=""
                                     />
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">{item?.name}</td>
                                 <td className="px-6 py-4 whitespace-nowrap">{item?.position}</td>
-                                <td className="px-6 py-4 whitespace-nowrap w-[300px]">{item?.description}</td>
+                                <td className="px-6 py-4 whitespace-wrap w-[300px]">{item?.description}</td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <ul className="flex items-center gap-2">
                                         <li>
@@ -85,11 +84,11 @@ const ManageTestimonial = () => {
                                                 <MdDeleteOutline className="text-2xl text-[red]" />
                                             </button>
                                         </li>
-                                        <li>
+                                        {/* <li>
                                             <button onClick={() => setOpenModal(item)}>
                                                 <TbEdit className="text-2xl text-[green]" />
                                             </button>
-                                        </li>
+                                        </li> */}
                                     </ul>
                                 </td>
                                 {/* modal */}

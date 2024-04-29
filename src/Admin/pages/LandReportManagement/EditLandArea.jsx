@@ -214,6 +214,7 @@ const EditLandArea = () => {
                     <div className='flex gap-2 items-end'>
                         <p>Serial no</p>
                         <input
+                            value={editItm?.SN}
                             type="text"
                             name='serialNumber'
                             className='focus:outline-none border-b-[1px] border-black'
@@ -450,15 +451,23 @@ const EditLandArea = () => {
                     </div>
 
                     <div className='text-center flex justify-center gap-2'>
-
-                        {!loading ?
-                            <button type='submit' className='border-2 border-[#A20E27] px-4 py-2 font-medium uppercase rounded'>
+                        {loading ? (
+                            <button
+                                disabled
+                                type="submit"
+                                className="px-8 py-2 flex items-center gap-2 rounded bg-[#631f31] text-[white]"
+                            >
+                                <div className="border-gray-300 h-[20px] w-[20px] animate-spin rounded-full border-[4px] border-t-[#c40424]" />
+                                Submitting...
+                            </button>
+                        ) : (
+                            <button
+                                type="submit"
+                                className="px-8 py-2 rounded bg-[#b02449] text-[white]"
+                            >
                                 Submit
                             </button>
-                            :
-                            <button type='button' disabled className='border-2 border-[#A20E27] px-4 py-2 font-medium uppercase rounded'>
-                                Submit...
-                            </button>}
+                        )}
                     </div>
                     <div className='w-full h-[118px] bg-cover bg-center bg-no-repeat bg-[#A20E27] mt-[40px!important] flex items-center pl-4' style={{ backgroundImage: "url(https://i.ibb.co/hsytgwT/Rectangle-58-1.png)" }}>
                     </div>

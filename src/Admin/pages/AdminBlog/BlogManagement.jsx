@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
+import { useState, useRef } from "react";
 import AdminTitle from "../../../hooks/useAdminTitle";
 import { MdDeleteOutline } from "react-icons/md";
 import { TbEdit } from "react-icons/tb";
@@ -8,11 +8,14 @@ import useGetData from "../../../hooks/useGetData";
 import Swal from "sweetalert2";
 import ReactQuill from "react-quill";
 import { useQuery } from "@tanstack/react-query";
+import useImageUpload from "../../../hooks/useUploadImg";
+import JoditEditor from "jodit-react";
 
 const ManageBlog = () => {
   const [openModal, setOpenModal] = useState(false);
   const [myValue, setMyValue] = useState(openModal?.description);
-
+  const [content, setContent] = useState('');
+  const editor = useRef(null);
   // Fetch data using custom hook
   // const blogData = useGetData("api/v1/admin/blog/blogs");
   const { data: blogData = [], refetch } = useQuery({
@@ -25,10 +28,52 @@ const ManageBlog = () => {
   });
 
 
+  const { uploadImage } = useImageUpload();
+  // edit blog
+  const handleEdit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const img = form.img.files[0];
+    const URL = form.url.value;
+
+    let photo;
+    if (img) {
+      photo = await uploadImage(img);
+    } else {
+      // Assign default image URL or whatever default value you have for the image
+      photo = openModal?.photo;
+    }
+
+    const data = {
+      photo,
+      url: URL ? URL : openModal?.url,
+      date: new Date()
+    };
+
+    // Make the PUT request
+    fetch(`https://sea-properties-server.vercel.app/api/v1/admin/banner/update?banner_id=${openModal?._id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(result => {
+        refetch();
+        // Handle success response
+        console.log('Edit successful:', result);
+        setOpenModal(false); // Close modal after successful submission
+      })
+
+    setOpenModal(false)
+
+    console.log('Form data:', data);
+  };
+
 
   // delete data using custom hook
   const handleDelete = (id) => {
-    console.log(id, "-------->");
     fetch(
       `https://sea-properties-server.vercel.app/api/v1/admin/blog/delete?blog_id=${id}`,
       {
@@ -134,14 +179,14 @@ const ManageBlog = () => {
                               className="block text-gray-700 text-sm font-bold mb-2"
                               htmlFor="totalAmount"
                             >
-                              Total Amount:
+                              Name:
                             </label>
                             <input
                               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                               id="name"
                               type="text"
                               name="name"
-                              defaultValue={item.name}
+                              defaultValue={item?.name}
                             />
                           </div>
                           <div className="mb-4">
@@ -149,14 +194,16 @@ const ManageBlog = () => {
                               className="block text-gray-700 text-sm font-bold mb-2"
                               htmlFor="due"
                             >
-                              Due:
+                              Description:
                             </label>
 
-                            <ReactQuill
-                              className="rounded-lg w-full border border-[#336cb6] h-[200px] overflow-hidden text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
-                              theme="snow"
-                              value={myValue}
-                              onChange={setMyValue}
+                            <JoditEditor
+                              ref={editor}
+                              value={content}
+                              tabIndex={1} // tabIndex of textarea
+                              className="bg-[red]"
+                              onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+                              onChange={newContent => { }}
                             />
                           </div>
                         </form>

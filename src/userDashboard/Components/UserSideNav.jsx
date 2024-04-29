@@ -3,6 +3,8 @@ import { useState } from "react";
 import { FaAngleDown, FaUpDown } from "react-icons/fa6";
 import { Outlet } from "react-router";
 import { Link, NavLink } from "react-router-dom";
+import { BsBuildings } from "react-icons/bs";
+import { LiaLandmarkSolid } from "react-icons/lia";
 
 export default function UserSideNav() {
   const [toggleMenu, setToggleMenu] = useState(true);
@@ -18,8 +20,16 @@ export default function UserSideNav() {
     {
       id: 0,
       name: "Flat Installment",
-      icon: "ICN",
+      icon: <BsBuildings />,
       path: "/user/flat-installment",
+      role: "user",
+      isDropdown: false,
+      menu: [],
+    }, {
+      id: 1,
+      name: "Land area",
+      icon: <LiaLandmarkSolid />,
+      path: "/user/land-report",
       role: "user",
       isDropdown: false,
       menu: [],
@@ -39,7 +49,7 @@ export default function UserSideNav() {
               >
                 <div className="flex items-center">
                   <div className="flex justify-between items-center gap-2">
-                    <div className="w-[30px] h-[30px] rounded bg-[gray] flex items-center justify-center">
+                    <div className="w-[30px] h-[30px] rounded bg-[#80808010] flex items-center justify-center">
                       {data?.icon}
                     </div>
                     {/* <img src={data.icon} alt="" className="w-[30px]" /> */}
@@ -56,11 +66,10 @@ export default function UserSideNav() {
 
               {/* body / content  */}
               <div
-                className={`grid overflow-hidden transition-all duration-300 ease-in-out   ${
-                  isOpen === idx
-                    ? "grid-rows-[1fr] opacity-100"
-                    : "grid-rows-[0fr] opacity-0"
-                }`}
+                className={`grid overflow-hidden transition-all duration-300 ease-in-out   ${isOpen === idx
+                  ? "grid-rows-[1fr] opacity-100"
+                  : "grid-rows-[0fr] opacity-0"
+                  }`}
               >
                 <div className="overflow-hidden">
                   <ol
@@ -97,7 +106,7 @@ export default function UserSideNav() {
               <div className={` `}>
                 <div className="flex items-center">
                   <div className="flex justify-between items-center gap-2">
-                    <div className="w-[30px] rounded h-[30px] bg-[gray] flex items-center justify-center">
+                    <div className="w-[30px] rounded h-[30px] bg-[#8080800e] flex items-center justify-center">
                       {data?.icon}
                     </div>
                     {/* <img src={data.icon} alt="" className="w-[30px]" /> */}

@@ -8,6 +8,7 @@ import userPath from "./userPath";
 import adminPath from "./adminPath";
 import IsAdmin from "./IsAdmin";
 import PrivateRoute from "./PrivateRoute";
+import EditView from "../Admin/pages/LandReportManagement/EditView";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
     ),
     children: userPath,
   },
+  {
+    path: '/view-land-report/:id',
+    element: <EditView />
+  }
 ]);
 
 export default router;

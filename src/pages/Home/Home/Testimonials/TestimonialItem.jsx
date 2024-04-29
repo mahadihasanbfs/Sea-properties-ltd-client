@@ -3,19 +3,19 @@
 const TestimonialItem = ({ itm }) => {
     return (
         <div className="m-3">
-            <div className="ring-1 ring-gray-400 rounded p-6">
+            <div className="ring-1 ring-gray-400 md:h-[170px] h-[240px] rounded p-6">
                 <p className="text-sm">
-                    {itm?.message}
+                    {itm?.description.slice(0, 200)}...
                 </p>
                 <div className="flex items-center gap-3 mt-2">
-                    <img src={itm?.img} alt="n" className="w-12 h-12 rounded-full object-cover" />
+                    <img src={itm?.photo} alt="n" className="w-12 h-12 ring-1 ring-gray-500 rounded-full object-cover" />
 
                     <div>
-                        <h4 className="font-semibold">
+                        <h4 className="font-semibold capitalize">
                             {itm?.name}
                         </h4>
                         <p className="text-gray-600 text-sm">
-                            {itm?.post}
+                            {itm?.position}
                         </p>
                     </div>
                 </div>

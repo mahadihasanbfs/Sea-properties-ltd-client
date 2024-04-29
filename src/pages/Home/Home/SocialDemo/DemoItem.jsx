@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import Slider from "react-slick";
 
 const DemoItem = () => {
@@ -66,18 +67,33 @@ const DemoItem = () => {
             img: "https://i.ibb.co/Hdd3VJc/5a62306062088bf15bc1d2b903c35a99.jpg"
         },
     ]
+
+    const { data: sData = [], refetch } = useQuery({
+        queryKey: ["slData"],
+        queryFn: async () => {
+            const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/banner/banners`);
+            const data = await res.json();
+            return data;
+        },
+    });
+
+    const sliderData = sData?.data?.filter(itm => itm?.position === 'footer_slider')
+
+    console.log(sliderData, '***');
+
+
     return (
         <div>
             <div className="slider-container md:px-12 px-6">
                 <Slider className="md:px-2 px-1" {...settings}>
 
                     {
-                        data?.map(itm => <div key={itm?.id} className="slider-item mx-auto">
+                        sliderData?.map(itm => <div key={itm?._id} className="slider-item mx-auto">
                             <div
                                 style={{
-                                    backgroundImage: `url(${itm.img})`
+                                    backgroundImage: `url(${itm.photo})`
                                 }}
-                                className="py-4 slider-content md:h-[240px] bg-cover bg-center object-cover h-[250px] mx-6">
+                                className="py-4 slider-content md:h-[100px] h-[90px]  bg-cover bg-center object-cover   mx-6">
                                 <h3>1</h3>
                             </div>
                         </div>)
