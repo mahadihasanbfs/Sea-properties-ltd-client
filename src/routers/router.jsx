@@ -26,7 +26,9 @@ const router = createBrowserRouter([
     element: (
       <div>
         <ScrollToTop />
-        <AdminLayout />
+       <IsAdmin>
+       <AdminLayout />
+       </IsAdmin>
       </div>
     ),
     // <IsAdmin>
