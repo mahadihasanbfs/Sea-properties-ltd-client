@@ -59,7 +59,7 @@ const MainLayout = () => {
                 {/* <a href='#' className="bg-[#a82a2a] text-[white] w-[60px] h-[60px] flex items-center justify-center text-3xl cursor-pointer p-2 rounded-full text-white mb-2">
                     <BiSupport />
                 </a> */}
-                <a href='https://wa.link/lfr471' className="bg-[#25D366] shadow-xl text-[white] w-[60px] h-[60px] flex items-center justify-center text-3xl cursor-pointer p-2 rounded-full text-white mb-2">
+                <a href='https://api.whatsapp.com/send?phone=8801894440111' className="bg-[#25D366] shadow-xl text-[white] w-[60px] h-[60px] flex items-center justify-center text-3xl cursor-pointer p-2 rounded-full text-white mb-2">
                     <FaWhatsapp />
                 </a>
                 <div className="icon-box" style={{ position: 'absolute', bottom: 'calc(50px + 2px)', right: 'calc(50px + 2px)' }}>
