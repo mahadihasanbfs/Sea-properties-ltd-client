@@ -89,11 +89,11 @@ const commonPath = [
                 });
         }
     }
-
-    , {
-        path: 'projects/:id',
-        element: <BlogDetails />
-    },
+    ,
+    // , {
+    //     path: 'projects/:id',
+    //     element: <BlogDetails />
+    // },
     {
         path: 'project-details/:id',
         element: <ProjectDetails />

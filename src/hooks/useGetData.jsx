@@ -1,18 +1,19 @@
+import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 const baseUrl = `https://sea-properties-server.vercel.app/`
 
 const useGetData = (route) => {
-    const [data, setData] = useState([]); // Initialize data as null
-    useEffect(() => {
-        fetch(`${baseUrl}/${route}`)
-            .then(res => res.json())
-            .then(data => setData(data))
-        return () => {
-            // Optionally do cleanup, if necessary
-        };
-    }, [route]);
+    const { data: data = [], refetch } = useQuery({
+        queryKey: ["data"],
+        queryFn: async () => {
+            const res = await fetch(`${baseUrl}/${route}`);
+            const data = await res.json();
+            return data;
+        },
+    });
+
     return data;
 };
 

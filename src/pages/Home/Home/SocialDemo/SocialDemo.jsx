@@ -17,7 +17,7 @@ const SocialDemo = () => {
 
 
     return (
-        <div className="bg-[#E0F2F1] py-12">
+        <div className="bg-[#E0F2F1] max-w-[1366px] mx-auto py-12 mt-4 px-6 xl:px-4 ">
             <div className="container grid md:grid-cols-2 gap-4">
                 {
                     videos?.map(item =>
@@ -25,7 +25,7 @@ const SocialDemo = () => {
                             <VideoPlayer thum={item?.thumbnail} url={item?.videoUrl} />
                         </div>)
                 }
-                <div className="overflow-hidden md:col-span-2">
+                <div className="overflow-hidden  flex justify-center md:col-span-2">
                     <DemoItem />
                 </div>
             </div>

@@ -36,7 +36,7 @@ const Navbar = () => {
         },
         {
           id: 2,
-          name: "Vision, Mission & Values",
+          name: "Mission & Vision",
           path: "/vision-mision-values",
         },
         {

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Blogs = () => {
     // Your component logic here
-    const { data: data = [], refetch } = useQuery({
+    const { data: data = [], isLoading } = useQuery({
         queryKey: ["users"],
         queryFn: async () => {
             const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/blog/blogs`);
@@ -12,6 +12,18 @@ const Blogs = () => {
             return data;
         },
     });
+
+    if (isLoading) {
+        return <div className='bg-[white] h-screen flex flex-col gap-3 items-center justify-center'>
+            <div className="w-10 h-10 animate-[spin_2s_linear_infinite] rounded-full border-8 border-dotted border-[red]"></div>
+            <p className="text-center">Loading...</p>
+        </div>;
+    }
+
+    if (!data || !data?.data.length) {
+        return <div>No data available</div>;
+    }
+
     return (
         <div>
             <section className="pt-20 lg:pt-[120px] pb-10 lg:pb-20">
