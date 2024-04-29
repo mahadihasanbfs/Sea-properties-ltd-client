@@ -98,6 +98,7 @@ const ManageProject = () => {
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
+            {isLoading && <h2 className="text-center text-xl font-[400] py-2">Loading Project ........</h2>}
             {allProject?.map((item, idx) => (
               <tr key={idx}>
                 <td className="px-6 py-4 whitespace-nowrap">

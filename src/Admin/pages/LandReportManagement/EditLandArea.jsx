@@ -3,9 +3,10 @@ import logo from '../../../assets/logo.png';
 import useImageUpload from '../../../hooks/useUploadImg';
 import Swal from 'sweetalert2';
 import { useQuery } from '@tanstack/react-query';
-import { useParams } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 
 const EditLandArea = () => {
+    const navigate =useNavigate()
     const [openModal, setOpenModal] = useState(false);
     const id = useParams().id
     const { data: areaData = [], refetch } = useQuery({
@@ -120,7 +121,8 @@ const EditLandArea = () => {
         }).then((res) => res.json()).then((data) => {
             setLoading(false);
             form.reset()
-            Swal.fire('Update successful', '', 'success')
+            Swal.fire('Update Successful', '', 'success')
+            navigate('/admin/land-report')
         })
     }
 
