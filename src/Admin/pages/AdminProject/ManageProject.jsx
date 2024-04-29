@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AdminTitle from "../../../hooks/useAdminTitle";
 import { MdDeleteOutline } from "react-icons/md";
 import { TbEdit } from "react-icons/tb";
 import { Link } from "react-router-dom";
-import AlertModal from "../../../hooks/useAlertModal";
-import EditProject from "./EditProject";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import { DB_URL } from "../../../const";
@@ -14,48 +12,24 @@ const ManageProject = () => {
     const [openModal, setOpenModal] = useState(false);
     const [on, setOn] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(10); // Number of items per page
-    // const [allProject, setAllProjects] = useState([])
-    const projectData = [
-        {
-            id: 1,
-            img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            name: 'project 1',
-            date: new Date().getTime(),
-            address: 'dhaka',
+    const [itemsPerPage] = useState(6); // Number of items per page
 
-        },
-        {
-            id: 2,
-            img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            name: 'project 1',
-            date: new Date().getTime(),
-            address: 'dhaka',
-
-        },
-        {
-            id: 3,
-            img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            name: 'project 1',
-            date: new Date().getTime(),
-            address: 'dhaka',
-
-        },
-        // Add more items as needed with unique IDs
-    ];
-
-
-    // Logic to calculate pagination
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = projectData.slice(indexOfFirstItem, indexOfLastItem);
 
-    // Function to handle page change
+    const { data: allProject = [], refetch } = useQuery({
+        queryKey: ["users"],
+        queryFn: async () => {
+            const res = await fetch(`${DB_URL}/admin/project/projects`);
+            const data = await res.json();
+            return data.data;
+        },
+    });
+
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
     // Function to handle next page
     const nextPage = () => {
-        if (currentPage < Math.ceil(projectData.length / itemsPerPage)) {
+        if (currentPage < Math.ceil(allProject ? allProject.length : 0 / itemsPerPage)) {
             setCurrentPage(currentPage + 1);
         }
     };
@@ -67,8 +41,11 @@ const ManageProject = () => {
         }
     };
 
+
+    const currentItems = allProject ? allProject.slice(indexOfFirstItem, indexOfLastItem) : [];
+
     // Generate pagination numbers
-    const paginationNumbers = Array.from({ length: Math.ceil(projectData.length / itemsPerPage) }, (_, i) => i + 1);
+    const paginationNumbers = Array.from({ length: Math.ceil(currentItems ? currentItems.length : 0 / itemsPerPage) }, (_, i) => i + 1);
 
 
     //get project
@@ -78,15 +55,7 @@ const ManageProject = () => {
     //         .then(data => setAllProjects(data?.data))
     // }, [])
 
-    const { data: allProject = [], refetch } = useQuery({
-        queryKey: ["users"],
-        queryFn: async () => {
-            const res = await fetch(`${DB_URL}/admin/project/projects`);
-            const data = await res.json();
-            return data.data;
-        },
-    });
-    console.log(allProject);
+
 
 
     // delete project
@@ -109,6 +78,7 @@ const ManageProject = () => {
             });
     }
 
+    console.log(currentItems);
 
     return (
         <div className="pt-3">
@@ -132,7 +102,7 @@ const ManageProject = () => {
                         </tr>
                     </thead>
                     <tbody className="text-gray-600 divide-y">
-                        {allProject?.map((item, idx) => (
+                        {currentItems && currentItems?.map((item, idx) => (
                             <tr key={idx}>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <img src={item?.project_photo} className="w-[60px] h-[60px] rounded object-cover" alt="" />
@@ -175,7 +145,7 @@ const ManageProject = () => {
                         {number}
                     </button>
                 ))}
-                <button onClick={nextPage} className="mx-1 px-3 py-1 rounded bg-gray-200 text-[#d8d8d8] bg-[blue]" disabled={currentPage === Math.ceil(projectData.length / itemsPerPage)}>Next</button>
+                <button onClick={nextPage} className="mx-1 px-3 py-1 rounded bg-gray-200 text-[#d8d8d8] bg-[blue]" disabled={currentPage === Math.ceil(currentItems ? currentItems.length : 0 / itemsPerPage)}>Next</button>
             </div>
         </div>
     );

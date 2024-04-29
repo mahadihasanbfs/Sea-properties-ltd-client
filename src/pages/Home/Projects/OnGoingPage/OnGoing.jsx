@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import useGetData from "../../../../hooks/useGetData";
 import { Link, useLocation } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 const OnGoingProject = () => {
     const [projectData, setProjectData] = useState([])
@@ -15,10 +16,17 @@ const OnGoingProject = () => {
         setProjectStatus(result);
     }, [filterPath]);
 
+    // const data = useGetData('api/v1/admin/project/projects');
 
 
-    console.log(projectStatus, 'status++++++++++');
-    const data = useGetData('api/v1/admin/project/projects');
+    const { data: data = [], isLoading } = useQuery({
+        queryKey: ["PData"],
+        queryFn: async () => {
+            const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/project/projects`);
+            const data = await res.json();
+            return data;
+        },
+    });
 
     useEffect(() => {
         const filteredData = data?.data?.filter(project => {
@@ -31,9 +39,6 @@ const OnGoingProject = () => {
         });
         setProjectData(filteredData);
     }, [data?.data, projectStatus, type]);
-
-
-    console.log(projectData, '+++++++++++');
 
     return (
         <div className="">

@@ -90,7 +90,6 @@ const NewsLetterManagement = () => {
                     onChange={handleSelectAll}
                   />
                 </th>
-                <th className="py-3 px-6">Name</th>
                 <th className="py-3 px-6">Email</th>
                 <th className="py-3 px-6">Date</th>
                 <th className="py-3 px-6">Action</th>
@@ -106,9 +105,7 @@ const NewsLetterManagement = () => {
                       onChange={() => handleCheckboxChange(item._id)}
                     />
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    {item?.name ? item?.name : "User"}
-                  </td>
+
                   <td className="px-6 py-4 whitespace-nowrap">
                     {item?.email}
                   </td>

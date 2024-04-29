@@ -16,7 +16,6 @@ const BookingManagement = () => {
 
     // delete data using custom hook
     const handleDelete = (id) => {
-        console.log(id, '-------->');
         fetch(`https://sea-properties-server.vercel.app/api/v1/admin/booking/delete?booking_id=${id}`, {
             method: 'DELETE',
             headers: {

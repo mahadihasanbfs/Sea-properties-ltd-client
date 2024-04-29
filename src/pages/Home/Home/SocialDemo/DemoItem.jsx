@@ -84,7 +84,7 @@ const DemoItem = () => {
 
     return (
         <div>
-            <div className="slider-container md:px-12 px-6">
+            <div className="slider-container bg-[green] flex justify-center md:px-12 px-6">
                 <Slider className="md:px-2 px-1" {...settings}>
 
                     {

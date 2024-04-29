@@ -59,7 +59,7 @@ const Testimonials = () => {
     }, []);
 
     return (
-        <div className="">
+        <div className="max-w-[1366px] mx-auto py-12 mt-4 px-6 xl:px-4">
             <div className="container py-12 mt-4 ">
                 <Title text="Client Testimonials " position="start" />
                 <div id="sld" className="slider-container  mt-12  w-full">
