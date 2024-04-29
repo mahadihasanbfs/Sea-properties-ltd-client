@@ -204,7 +204,7 @@ const AddProject = () => {
             body: JSON.stringify(data),
         }).then((res) => res.json()).then((data) => {
             setLoading(false)
-            Swal.fire('Project successfully added', '', 'success');
+            Swal.fire('Project Successfully Added', '', 'success');
             navigate('/admin/manage-project');
         })
 
