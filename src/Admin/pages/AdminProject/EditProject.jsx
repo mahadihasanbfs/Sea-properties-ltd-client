@@ -90,6 +90,7 @@ const EditProject = () => {
 
     // Get values from the form fields
     const name = form.name.value;
+    // console.log(name, "name");
     const project_type = form.project_type.value;
     const project_status = form.project_status.value;
     const address = form.address.value;
@@ -189,8 +190,10 @@ const EditProject = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        Swal.fire("Project Update successful", "", "success");
+        console.log(data)
+        Swal.fire("Project Updated", "", "success");
         navigate("/admin/manage-project");
+        setLoading(false);
       });
   };
 
