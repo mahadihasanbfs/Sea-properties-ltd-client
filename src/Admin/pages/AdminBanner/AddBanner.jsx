@@ -11,12 +11,11 @@ const AddBanner = () => {
   const [value, setValue] = useState("");
   const [loading, setLoading] = useState(false);
   const { uploadImage } = useImageUpload();
-  const navigation = useNavigate()
-
+  const navigation = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true)
+    setLoading(true);
     const form = e.target;
     const photo = form.photo;
     const url = form.url.value;
@@ -24,9 +23,6 @@ const AddBanner = () => {
     // const description = value;
     // const meta_tag = form.meta_tag.value;
     // const meta_description = form.meta_description.value;
-
-
-
 
     const data = {
       photo: await uploadImage(photo.files[0]), // Use uploaded image URLs here
@@ -38,7 +34,7 @@ const AddBanner = () => {
       // meta_description,
     };
 
-    fetch("http://localhost:5001/api/v1/admin/banner/add", {
+    fetch("https://sea-properties-server.vercel.app/api/v1/admin/banner/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,12 +43,10 @@ const AddBanner = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setLoading(false)
+        setLoading(false);
         Swal.fire("Banner Successfully Added", "", "success");
-        navigation('/admin/banner-management');
+        navigation("/admin/banner-management");
       });
-
-
   };
 
   return (
@@ -60,7 +54,6 @@ const AddBanner = () => {
       <AdminTitle title="Add Banner" />
       <form onSubmit={handleSubmit}>
         <br />
-
         <div className="mb-4">
           <label htmlFor="photo">Photo</label>
           <input
@@ -69,7 +62,6 @@ const AddBanner = () => {
             className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
           />
         </div>
-
         <div className="mb-4">
           <label htmlFor="url">URL</label>
           <input
@@ -79,7 +71,6 @@ const AddBanner = () => {
             type="url"
           />
         </div>
-
         <select
           name="position"
           className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
@@ -88,7 +79,6 @@ const AddBanner = () => {
           <option value="footer_slider">Footer Slider</option>
         </select>
         <br /> <br />
-
         {loading ? (
           <button
             disabled
