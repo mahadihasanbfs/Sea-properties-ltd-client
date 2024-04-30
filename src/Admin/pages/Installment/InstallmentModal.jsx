@@ -2,7 +2,12 @@ import Swal from "sweetalert2";
 import { DB_URL } from "../../../const";
 import useFetchData from "../../../hooks/useFetchData";
 import Select from "react-select";
-export default function InstallmentModal({ item, openModal, setOpenModal }) {
+export default function InstallmentModal({
+  item,
+  openModal,
+  setOpenModal,
+  refetch,
+}) {
   const [data] = useFetchData(`${DB_URL}/users`);
   console.log("data", data);
   const userData = data?.data;
@@ -39,9 +44,11 @@ export default function InstallmentModal({ item, openModal, setOpenModal }) {
       })
       .then((data) => {
         console.log("API Response:", data);
+
         Swal.fire("Updated Installment successfully", "", "success");
         setOpenModal(false);
         // Perform any additional actions upon successful response
+        refetch();
       })
       .catch((error) => {
         console.error("Error updating Installment:", error);
