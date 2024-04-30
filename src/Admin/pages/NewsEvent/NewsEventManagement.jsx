@@ -8,6 +8,7 @@ import useGetData from "../../../hooks/useGetData";
 import Swal from "sweetalert2";
 import ReactQuill from "react-quill";
 import { useQuery } from "@tanstack/react-query";
+import { format } from 'date-fns';
 
 const NewsEventManagement = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -16,9 +17,9 @@ const NewsEventManagement = () => {
   // Fetch data using custom hook
   // const blogData = useGetData("api/v1/admin/blog/blogs");
   const { data: blogData = [], refetch } = useQuery({
-    queryKey: ["users"],
+    queryKey: ["news_events"],
     queryFn: async () => {
-      const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/blog/blogs`);
+      const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/news-events`);
       const data = await res.json();
       return data;
     },
@@ -30,7 +31,7 @@ const NewsEventManagement = () => {
   const handleDelete = (id) => {
     console.log(id, "-------->");
     fetch(
-      `https://sea-properties-server.vercel.app/api/v1/admin/blog/delete?blog_id=${id}`,
+      `https://backend.seapropertiesltd.com.bd/api/v1/admin/blog/delete?blog_id=${id}`,
       {
         method: "DELETE",
         headers: {
@@ -56,7 +57,7 @@ const NewsEventManagement = () => {
         <AdminTitle size={"20px"} title="Manage News Event" />
 
         <Link to={"/admin/add-news-event"}>
-          <div className="dashboard_form_btn">+Add News Event</div>
+          <div className="dashboard_form_btn">+ Add News Event</div>
         </Link>
       </div>
 
@@ -75,13 +76,13 @@ const NewsEventManagement = () => {
               <tr key={idx}>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <img
-                    src={item?.photo}
+                    src={item?.featureImg}
                     className="w-[60px] h-[60px] rounded object-cover"
                     alt=""
                   />
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">{item?.name}</td>
-                <td className="px-6 py-4 whitespace-nowrap">{item?.date}</td>
+                <td className="px-6 py-4 whitespace-nowrap">{item?.title}</td>
+                <td className="px-6 py-4 whitespace-nowrap">{format(new Date(item?.date), 'dd-MMMM-yy (H:mm:ss)')}</td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <ul className="flex items-center gap-2">
                     <li>

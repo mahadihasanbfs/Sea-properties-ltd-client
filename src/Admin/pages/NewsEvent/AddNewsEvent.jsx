@@ -4,6 +4,7 @@ import "react-quill/dist/quill.snow.css";
 import { useState } from "react";
 import useImageUpload from "../../../hooks/useUploadImg";
 import Swal from "sweetalert2";
+import JoditEditor from "jodit-react";
 
 const AddNewsEvent = () => {
   const [value, setValue] = useState("");
@@ -61,7 +62,7 @@ const AddNewsEvent = () => {
       meta_description,
     };
 
-    fetch("https://sea-properties-server.vercel.app/api/v1/admin/blog/add", {
+    fetch("https://backend.seapropertiesltd.com.bd/api/v1/admin/add-news-events", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +72,7 @@ const AddNewsEvent = () => {
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);
-        Swal.fire("Blog successfully added", "", "success");
+        Swal.fire("Add News Event Post Successfully", "", "success");
         // navigate('/admin/project-management');
       });
 
@@ -86,7 +87,7 @@ const AddNewsEvent = () => {
           <label htmlFor="photo">Title</label>
           <input
             name="name"
-            placeholder="Enter Blog Name"
+            placeholder="Enter News Events Title"
             className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
             type="text"
           />
@@ -104,8 +105,8 @@ const AddNewsEvent = () => {
 
         <div className="mb-4">
           <label htmlFor="photo">Description</label>
-          <ReactQuill
-            className="rounded-lg w-full border border-[#336cb6] h-[200px] overflow-hidden text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
+          <JoditEditor
+            className="rounded-lg w-full border border-[#336cb6] h-[200px] overflow-hidden  ring-offset-2 duration-300 focus:outline-none focus:ring-2"
             theme="snow"
             value={value}
             onChange={setValue}
@@ -134,7 +135,7 @@ const AddNewsEvent = () => {
                   src={image.url}
                 />
                 <button
-                  className="absolute top-1 right-1 rounded-full bg-gray-800 p-1 text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                  className="absolute top-1 right-1 rounded-full bg-dark bg-gray-800 p-1 text-light hover:bg-[#336cb6] focus:outline-none focus:ring-2 focus:ring-gray-500"
                   type="button"
                   onClick={() => handleImageRemove(index)}
                 >
@@ -174,7 +175,7 @@ const AddNewsEvent = () => {
             type="text"
           />
         </div>
-        {loading ? (
+        {/* {loading ? (
           <button
             disabled
             type="submit"
@@ -183,14 +184,14 @@ const AddNewsEvent = () => {
             <div className="border-gray-300 h-[20px] w-[20px] animate-spin rounded-full border-[4px] border-t-[#c40424]" />
             Adding...
           </button>
-        ) : (
-          <button
-            type="submit"
-            className="px-3 py-1 rounded bg-[#b02449] text-[white]"
-          >
-            +Add
-          </button>
-        )}
+        ) : ( */}
+        <button
+          type="submit"
+          className="px-10 py-2 rounded bg-[#b02449] text-[white]"
+        >
+          + Add
+        </button>
+        {/* )} */}
       </form>
     </div>
   );

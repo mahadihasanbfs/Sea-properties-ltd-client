@@ -60,7 +60,7 @@ const Contact = () => {
         setLoading(false);
         form.reset();
         console.log(data);
-        Swal.fire("Sent Your Appointment", "", "success");
+        Swal.fire("Thanks for contacting us. We will get back to you shortly", "", "success");
       });
   };
   return (
@@ -101,7 +101,7 @@ const Contact = () => {
       </div>
 
       {/* Contact form */}
-      <div className="bg-[#78909C] py-[80px] lg:py-[105px]">
+      <div className="bg-[#768f9b] py-[80px] lg:py-[105px]">
         <div className="max-w-[1366px] mx-auto px-6 md:px-[90px] lg:px-[260px] text-white">
           <h2 className="text-[27px] md:text-[37px] uppercase">
             Book A Free Appointment
@@ -114,7 +114,7 @@ const Contact = () => {
                 name="name"
                 required
                 autoComplete="off"
-                className="w-full md:w-[330px] bg-[#78909C] focus:outline-none pt-3 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                className="w-full md:w-[500px] bg-[#78909C] focus:outline-none pt-3 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
               />
             </div>
             <div>
@@ -123,7 +123,7 @@ const Contact = () => {
                 type="text"
                 name="email"
                 autoComplete="off"
-                className="w-full md:w-[330px] bg-[#78909C] focus:outline-none pt-3 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                className="w-full md:w-[500px] bg-[#78909C] focus:outline-none pt-3 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
               />
             </div>
             <div>
@@ -133,7 +133,7 @@ const Contact = () => {
                 name="phone"
                 required
                 autoComplete="off"
-                className="w-full md:w-[330px] bg-[#78909C] focus:outline-none pt-3 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                className="w-full md:w-[500px] bg-[#78909C] focus:outline-none pt-3 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
               />
             </div>
             <div>
@@ -143,7 +143,7 @@ const Contact = () => {
                 name="message"
                 required
                 autoComplete="off"
-                className="w-full md:w-[330px] bg-[#78909C] focus:outline-none pt-10 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                className="w-full md:w-[500px] bg-[#78909C] focus:outline-none pt-10 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
               />
             </div>
 
@@ -151,7 +151,7 @@ const Contact = () => {
               <input
                 type="submit"
                 value={loading ? "Sending" : "Submit"}
-                className="py-[9px] px-[28px] border-[3px] border-white hover:cursor-pointer"
+                className="py-[9px] px-[28px] border-[3px] border-white hover:cursor-pointer  hover:bg-[#a20e0e] hover:text-light"
               />
             </div>
           </form>

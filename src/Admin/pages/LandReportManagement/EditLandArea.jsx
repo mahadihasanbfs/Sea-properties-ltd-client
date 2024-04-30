@@ -3,10 +3,10 @@ import logo from '../../../assets/logo.png';
 import useImageUpload from '../../../hooks/useUploadImg';
 import Swal from 'sweetalert2';
 import { useQuery } from '@tanstack/react-query';
-import { useParams,useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const EditLandArea = () => {
-    const navigate =useNavigate()
+    const navigate = useNavigate()
     const [openModal, setOpenModal] = useState(false);
     const id = useParams().id
     const { data: areaData = [], refetch } = useQuery({
@@ -212,9 +212,9 @@ const EditLandArea = () => {
                 </div>
 
                 <form onSubmit={handleSubmit} className='space-y-4'>
-                    {/* serial no */}
+                    {/* Serial No */}
                     <div className='flex gap-2 items-end'>
-                        <p>Serial no</p>
+                        <p>Serial No</p>
                         <input
                             value={editItm?.SN}
                             type="text"
