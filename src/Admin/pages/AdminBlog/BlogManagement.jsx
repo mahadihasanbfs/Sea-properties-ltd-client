@@ -86,7 +86,7 @@ const ManageBlog = () => {
       .then((res) => res.json())
       .then((data) => {
         refetch()
-        Swal.fire("Blog deleted", "", "success");
+        Swal.fire("Blog Deleted", "", "success");
         // reload()
       })
       .catch((error) => {
