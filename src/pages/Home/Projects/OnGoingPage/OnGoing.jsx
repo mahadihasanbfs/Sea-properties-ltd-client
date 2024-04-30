@@ -65,20 +65,34 @@ const OnGoingProject = () => {
                     <button className={`${type === "Residential" && 'text-[#ACA100]'}`} onClick={() => setType('Residential')}>Residential</button>
                     <button className={`${type === "Commercial" && 'text-[#ACA100]'}`} onClick={() => setType('Commercial')}>Commercial</button>
                 </div>
-                <div className="max-w-[1366px] mx-auto px-6 xl:px-[50px] grid gap-10 
-                 md:grid-cols-3 pb-20">
-                    {
-                        projectData?.map((item, index) => <Link key={item?._id} to={`/project-details/${item?._id}`}>
-                            <div className="relative xl:w-[423px] xl:h-[423px] justify-self-center overflow-hidden hover:cursor-pointer">
-                                <img className="w-full h-full hover:scale-110 transition-transform duration-1000 ease-in-out object-cover" src={item?.project_photo} alt="" />
-                                <div className="w-full h-[70px] px-6 bg-[#00000080] absolute bottom-20">
-                                    <h3 className="text-[18px] text-[white]">{item?.name}</h3>
-                                    <p className="text-[#C7C3C3]">{item?.details?.info?.address}</p>
+
+                {
+                    isLoading ? <div className='h-[50vh] flex flex-col gap-3 items-center justify-center'>
+                        <div className="w-10 h-10 animate-[spin_2s_linear_infinite] rounded-full border-8 border-dotted border-[red]"></div>
+                        <p className="text-center">Loading...</p>
+                    </div> :
+                        <div>
+                            {
+                                <div className="max-w-[1366px] mx-auto px-6 xl:px-[50px] pb-20">
+                                    {!projectData.length ? <div className='h-[10vh]  w-full flex flex-col gap-3 items-center justify-center'>
+                                        <h1 className="text-2xl font-bold  opacity-[0.3]">Project Not Found</h1>
+                                    </div> :
+                                        <div className=" grid gap-10 md:grid-cols-3">
+                                            {projectData?.map((item, index) => <Link key={item?._id} to={`/project-details/${item?._id}`}>
+                                                <div className="relative xl:w-[423px] xl:h-[423px] justify-self-center overflow-hidden hover:cursor-pointer">
+                                                    <img className="w-full h-full hover:scale-110 transition-transform duration-1000 ease-in-out object-cover" src={item?.project_photo} alt="" />
+                                                    <div className="w-full h-[70px] px-6 bg-[#00000080] absolute bottom-20">
+                                                        <h3 className="text-[18px] text-[white]">{item?.name}</h3>
+                                                        <p className="text-[#C7C3C3]">{item?.details?.info?.address}</p>
+                                                    </div>
+                                                </div>
+                                            </Link>)}
+                                        </div>
+                                    }
                                 </div>
-                            </div>
-                        </Link>)
-                    }
-                </div>
+                            }
+                        </div>
+                }
             </div>
         </div>
     );

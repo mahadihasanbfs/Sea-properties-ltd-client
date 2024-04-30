@@ -75,7 +75,7 @@ const ManageProject = () => {
             });
     };
 
-    console.log(isLoading, "currentItems");
+    console.log(allProject, "currentItems");
     return (
         <div className="pt-3">
             <div className="flex items-center justify-between">

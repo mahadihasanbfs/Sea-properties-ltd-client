@@ -302,21 +302,22 @@ const ProjectDetails = () => {
                 <div className="md:h-[600px] h-[200px] w-full">
                     <VideoPlayer thum={''} url={'https://www.youtube.com/embed/tgbNymZ7vqY'} />
                 </div>
+
+                <br /><br />
+                {map_link && (
+                    <iframe
+                        className="lg:h-[400px] md:h-[240px] h-[200px] rounded-lg"
+                        src={extractSrcFromIframe(map_link)}
+                        width="100%"
+                        style={{ border: 0 }}
+                        allowFullScreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                )}
+
+
             </div>
-            {/* project location */}
-            {map_link && (
-                <iframe
-                    className="lg:h-[400px] md:h-[240px] h-[200px]"
-                    src={extractSrcFromIframe(map_link)}
-                    width="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                ></iframe>
-            )}
-
-
         </div >
     );
 };

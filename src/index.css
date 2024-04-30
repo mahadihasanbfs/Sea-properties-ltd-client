@@ -352,3 +352,39 @@ a{
   width: 100%!important;
   height: 100%!important;
 }
+
+.f-slider > .swiper-button-prev:after, .swiper-button-next:after {
+    font-family: swiper-icons;
+    font-size: 16px!important;
+    background-color: rgb(107, 23, 23);
+    width: 30px;
+    height: 30px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    padding: 2px;
+    text-transform: none !important;
+    letter-spacing: 0;
+    font-variant: initial;
+    line-height: 1;
+}
+
+.f-slider > .swiper-button-next:after, .swiper-button-prev:after {
+    font-family: swiper-icons;
+    font-size: 16px!important;
+    background-color: rgb(107, 23, 23);
+    width: 30px;
+    height: 30px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    padding: 2px;
+    text-transform: none !important;
+    letter-spacing: 0;
+    font-variant: initial;
+    line-height: 1;
+}

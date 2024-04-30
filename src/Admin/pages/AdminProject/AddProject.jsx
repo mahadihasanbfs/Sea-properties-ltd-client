@@ -113,6 +113,8 @@ const AddProject = () => {
         setSelectedOptions(newValue); // Optionally, you can set the selected options to state
     };
 
+    console.log('selectedOptions====', selectedOptions);
+
     // form submit
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -412,10 +414,8 @@ const AddProject = () => {
                                 <label>Name Of Works</label>
                                 <br />
                                 <input
-                                    name="name"
                                     className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                     type="text"
-                                    value={item.name}
                                     placeholder="Enter total bathroom"
                                     onChange={(e) => handleValueChange(index, e)}
                                 />
@@ -547,7 +547,7 @@ const AddProject = () => {
                         placeholder="Enter map link" />
                 </div>
                 <br /> <br />
-                {loading ? (
+                {!loading ? (
                     <button
                         disabled
                         type="submit"
