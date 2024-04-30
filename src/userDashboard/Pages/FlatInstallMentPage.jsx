@@ -7,6 +7,7 @@ import { DB_URL } from "../../const";
 import useAuth from "../../hooks/useAuth";
 import Title from "../../components/sharedComponent/Title";
 import AdminTitle from "../../hooks/useAdminTitle";
+import { useQuery } from "@tanstack/react-query";
 
 const FlatInstallMentPage = () => {
   const { user } = useAuth();
@@ -15,24 +16,44 @@ const FlatInstallMentPage = () => {
   const [on, setOn] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10); // Number of items per page
-  const [allInstallment, setAllInstallments] = useState([]);
+  // const [allInstallment, setAllInstallments] = useState([]);
+
+  const {
+    data: allInstallment = [],
+    refetch,
+    isLoading,
+  } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await fetch(
+        `${DB_URL}/admin/installment/get-installment-email?email=${user?.reloadUserInfo?.email}`
+      );
+      const data = await res.json();
+
+      return data?.data;
+    },
+  });
 
   //    const { user } = useAuth();
   //    console.log(user);
 
-  console.log(allInstallment, '^^^^^^^');
+  console.log(allInstallment, "^^^^^^^");
 
   // Logic to calculate pagination
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = allInstallment && allInstallment?.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems =
+    allInstallment && allInstallment?.slice(indexOfFirstItem, indexOfLastItem);
 
   // Function to handle page change
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   // Function to handle next page
   const nextPage = () => {
-    if (currentPage < Math.ceil(allInstallment ? allInstallment.length : 0 / itemsPerPage)) {
+    if (
+      currentPage <
+      Math.ceil(allInstallment ? allInstallment.length : 0 / itemsPerPage)
+    ) {
       setCurrentPage(currentPage + 1);
     }
   };
@@ -46,23 +67,27 @@ const FlatInstallMentPage = () => {
 
   // Generate pagination numbers
   const paginationNumbers = Array.from(
-    { length: Math.ceil((allInstallment ? allInstallment?.length : 0 || 0) / itemsPerPage) },
+    {
+      length: Math.ceil(
+        (allInstallment ? allInstallment?.length : 0 || 0) / itemsPerPage
+      ),
+    },
     (_, i) => i + 1
   );
 
   //get Installment
-  useEffect(() => {
-    fetch(
-      `${DB_URL}/admin/installment/get-installment-email?email=${user?.reloadUserInfo?.email}`
-    )
-      .then((response) => response.json())
-      .then((data) => setAllInstallments(data?.data));
-  }, [user?.reloadUserInfo?.email]);
+  // useEffect(() => {
+  //   fetch(
+  //     `${DB_URL}/admin/installment/get-installment-email?email=${user?.reloadUserInfo?.email}`
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => setAllInstallments(data?.data));
+  // }, [user?.reloadUserInfo?.email]);
 
   // delete Installment
   const deleteInstallment = (id) => {
     console.log(id);
-    fetch(`${DB_URL}/api/v1/admin/installment/delete?Installment_id=${id}`, {
+    fetch(`${DB_URL}/api/v1/admin/installment/delete?installment_id=${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -90,10 +115,13 @@ const FlatInstallMentPage = () => {
               <th className="py-3 px-6">Email</th>
               <th className="py-3 px-6">Installment Number</th>
               <th className="py-3 px-6">Contact</th>
-              <th className="py-3 px-6">Action</th>
+              {/* <th className="py-3 px-6">Action</th> */}
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
+            {isLoading && (
+              <h1 className="text-lg py-2 text-center">Loading data.......</h1>
+            )}
             {currentItems?.map((item, idx) => (
               <tr key={idx}>
                 <td className="px-6 py-4 whitespace-nowrap">{item?.name}</td>
@@ -102,20 +130,20 @@ const FlatInstallMentPage = () => {
                   {item?.installment}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">{item?.contact}</td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                {/* <td className="px-6 py-4 whitespace-nowrap">
                   <ul className="flex items-center gap-2">
                     <li>
                       <button onClick={() => deleteInstallment(item?._id)}>
                         <MdDeleteOutline className="text-2xl text-[red]" />
                       </button>
                     </li>
-                    {/* <li>
+                    <li>
                       <button onClick={() => setOpenModal(item)}>
                         <TbEdit className="text-2xl text-[green]" />
                       </button>
-                    </li> */}
+                    </li>
                   </ul>
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>
@@ -127,37 +155,40 @@ const FlatInstallMentPage = () => {
       </div>
 
       {/* Pagination */}
-      <div className="flex justify-center mt-4">
-        <button
-          onClick={prevPage}
-          className="mx-1  px-3 py-1 rounded bg-gray-200 text-[#d8d8d8] bg-[blue]"
-          disabled={currentPage === 1}
-        >
-          Prev
-        </button>
-        {paginationNumbers?.map((number) => (
+
+      {allInstallment?.length > 9 && (
+        <div className="flex justify-center mt-4">
           <button
-            key={number}
-            onClick={() => paginate(number)}
-            className={`mx-1 px-3 py-1 rounded ${currentPage === number
-              ? "bg-blue-500 text-white"
-              : "bg-gray-200 text-gray-700"
-              }`}
+            onClick={prevPage}
+            className="mx-1  px-3 py-1 rounded bg-gray-200 text-[#d8d8d8] bg-[blue]"
+            disabled={currentPage === 1}
           >
-            {number}
+            Prev
           </button>
-        ))}
-        <button
-          onClick={nextPage}
-          className="mx-1 px-3 py-1 rounded bg-gray-200 text-[#d8d8d8] bg-[blue]"
-          disabled={
-            currentPage ===
-            Math.ceil((allInstallment ? allInstallment.length : 0 || 0) / itemsPerPage)
-          }
-        >
-          Next
-        </button>
-      </div>
+          {paginationNumbers.map((number) => (
+            <button
+              key={number}
+              onClick={() => paginate(number)}
+              className={`mx-1 px-3 py-1 rounded ${
+                currentPage === number
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-200 text-gray-700"
+              }`}
+            >
+              {number}
+            </button>
+          ))}
+          <button
+            onClick={nextPage}
+            className="mx-1 px-3 py-1 rounded bg-gray-200 text-[#d8d8d8] bg-[blue]"
+            disabled={
+              currentPage === Math.ceil(allInstallment.length / itemsPerPage)
+            }
+          >
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 };

@@ -31,6 +31,8 @@ const ManageInstallment = () => {
     },
   });
 
+  
+
   console.log(allInstallment);
   // Logic to calculate pagination
   const indexOfLastItem = currentPage * itemsPerPage;
