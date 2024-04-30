@@ -51,6 +51,9 @@ const UserLandReportManagement = () => {
         <div className="pt-3">
             <div className="flex item-center pb-3 justify-between">
                 <h1 className="font-bold text-xl">Land Report</h1>
+                <Link to={"/land-registration-form"}>
+                    <div className="dashboard_form_btn">+ Add Land Report</div>
+                </Link>
             </div>
 
             <div className="mt-2 shadow-sm border rounded overflow-x-auto">

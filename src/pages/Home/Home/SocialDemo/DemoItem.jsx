@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 
 const DemoItem = () => {
@@ -84,19 +85,21 @@ const DemoItem = () => {
 
     return (
         <div>
-            <div className="slider-container bg-[green] flex justify-center md:px-12 px-6">
+            <div className="slider-container mt-4 md:px-12 px-6">
                 <Slider className="md:px-2 px-1" {...settings}>
 
                     {
-                        sliderData?.map(itm => <div key={itm?._id} className="slider-item mx-auto">
+
+
+                        sliderData?.map(itm => <Link to={`/project-details/${itm?.url}`} key={itm?._id} className="slider-item rounded mx-auto">
+
                             <div
                                 style={{
                                     backgroundImage: `url(${itm.photo})`
                                 }}
-                                className="py-4 slider-content md:h-[100px] h-[90px]  bg-cover bg-center object-cover   mx-6">
-                                <h3>1</h3>
+                                className="py-4 slider-content md:h-[80px] h-[90px]  bg-cover bg-center object-cover rounded   mx-6">
                             </div>
-                        </div>)
+                        </Link>)
                     }
                 </Slider>
             </div>

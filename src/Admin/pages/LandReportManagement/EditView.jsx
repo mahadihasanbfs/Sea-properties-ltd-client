@@ -91,9 +91,9 @@ const EditView = () => {
 
                 <div
                     className='space-y-4'>
-                    {/* serial no */}
+                    {/* Serial No */}
                     <div className='flex gap-2 items-end'>
-                        <p>Serial no</p>
+                        <p>Serial No</p>
                         <input readOnly
                             value={editItm?.SN}
                             type="text"
