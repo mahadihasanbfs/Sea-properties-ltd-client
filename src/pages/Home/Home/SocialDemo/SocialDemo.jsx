@@ -25,9 +25,10 @@ const SocialDemo = () => {
                             <VideoPlayer thum={item?.thumbnail} url={item?.videoUrl} />
                         </div>)
                 }
-                <div className="overflow-hidden  flex justify-center md:col-span-2">
-                    <DemoItem />
-                </div>
+
+            </div>
+            <div className="">
+                <DemoItem />
             </div>
             {
                 open && <ShowContent setOpen={setOpen} link={src} />

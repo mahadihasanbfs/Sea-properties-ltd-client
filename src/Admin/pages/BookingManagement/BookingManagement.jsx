@@ -7,12 +7,24 @@ import { Link } from "react-router-dom";
 import AlertModal from "../../../hooks/useAlertModal";
 import Swal from "sweetalert2";
 import useGetData from "../../../hooks/useGetData";
+import { useQuery } from "@tanstack/react-query";
 
 const BookingManagement = () => {
     const [openModal, setOpenModal] = useState(false);
 
     // Fetch data using custom hook
-    const data = useGetData('api/v1/admin/booking/bookings');
+    // const data = useGetData('api/v1/admin/booking/bookings');
+
+    const { data: data = [], refetch, isLoading } = useQuery({
+        queryKey: ["bookingData"],
+        queryFn: async () => {
+            const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/booking/bookings`);
+            const data = await res.json();
+            return data;
+        },
+    });
+
+
 
     // delete data using custom hook
     const handleDelete = (id) => {
@@ -40,48 +52,55 @@ const BookingManagement = () => {
                 <div className="flex items-center justify-between">
                     <AdminTitle size={'20px'} title='Booking Management' />
                 </div>
-                <div className="mt-2 shadow-sm border rounded overflow-x-auto">
-                    <table className="w-full table-auto text-sm text-left">
-                        <thead className="bg-[#e4e4e4] text-[#0d1113] font-medium border-[#bab9b9] border-b">
-                            <tr>
-                                <th className="py-3 px-6"> Name</th>
-                                <th className="py-3 px-6">Email</th>
-                                <th className="py-3 px-6">Number</th>
-                                <th className="py-3 px-6">Message</th>
-                                <th className="py-3 px-6">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody className="text-gray-600 divide-y">
-                            {data?.data?.map((item, idx) => (
-                                <tr key={idx}>
+                {isLoading ?
+                    <div className='md:h-[50vh] flex flex-col gap-3 items-center justify-center'>
+                        <div className="w-10 h-10 animate-[spin_2s_linear_infinite] rounded-full border-8 border-dotted border-[red]"></div>
+                        <p className="text-center">Loading...</p>
+                    </div>
+                    :
+                    <div className="mt-2 shadow-sm border rounded overflow-x-auto">
+                        <table className="w-full table-auto text-sm text-left">
+                            <thead className="bg-[#e4e4e4] text-[#0d1113] font-medium border-[#bab9b9] border-b">
+                                <tr>
+                                    <th className="py-3 px-6"> Name</th>
+                                    <th className="py-3 px-6">Email</th>
+                                    <th className="py-3 px-6">Number</th>
+                                    <th className="py-3 px-6">Message</th>
+                                    <th className="py-3 px-6">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody className="text-gray-600 divide-y">
+                                {data?.data?.map((item, idx) => (
+                                    <tr key={idx}>
 
-                                    <td className="px-6 py-4 whitespace-nowrap">{item?.name}</td>
-                                    <td className="px-6 py-4 whitespace-nowrap">{item?.email}</td>
-                                    <td className="px-6 py-4 whitespace-nowrap">{item?.phone}</td>
-                                    <td className="px-6 py-4 whitespace-nowrap">{item?.message}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap">{item?.name}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap">{item?.email}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap">{item?.phone}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap">{item?.message}</td>
 
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <ul className="flex items-center gap-2">
-                                            <li>
-                                                <button
-                                                    onClick={() => handleDelete(item?._id)}
-                                                >
-                                                    <MdDeleteOutline className="text-2xl text-[red]" />
-                                                </button>
-                                            </li>
-                                            {/* <li>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            <ul className="flex items-center gap-2">
+                                                <li>
+                                                    <button
+                                                        onClick={() => handleDelete(item?._id)}
+                                                    >
+                                                        <MdDeleteOutline className="text-2xl text-[red]" />
+                                                    </button>
+                                                </li>
+                                                {/* <li>
                                                 <Link to={`/admin/edit-project/${item?._id}`}>
                                                     <TbEdit className="text-2xl text-[green]" />
                                                 </Link>
                                             </li> */}
-                                        </ul>
-                                    </td>
+                                            </ul>
+                                        </td>
 
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                }
 
 
                 {/* Pagination */}

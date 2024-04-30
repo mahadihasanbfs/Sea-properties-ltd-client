@@ -457,7 +457,7 @@ const EditProject = () => {
                 <label>Name Of Works</label>
                 <br />
                 <input
-                  name="name"
+
                   className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                   type="text"
                   defaultValue={item.name}
