@@ -43,7 +43,7 @@ const AddBlog = () => {
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);
-        Swal.fire("Blog successfully added", "", "success");
+        Swal.fire("Blog Successfully Added", "", "success");
         // navigate('/admin/project-management');
       });
 

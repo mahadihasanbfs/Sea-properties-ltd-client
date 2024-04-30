@@ -48,7 +48,7 @@ const AddBanner = () => {
       .then((res) => res.json())
       .then((data) => {
         setLoading(false)
-        Swal.fire("Banner added", "", "success");
+        Swal.fire("Banner Successfully Added", "", "success");
         navigation('/admin/banner-management');
       });
 
