@@ -98,7 +98,7 @@ const FlatInstallMentPage = () => {
               <th className="py-3 px-6">Email</th>
               <th className="py-3 px-6">Installment Number</th>
               <th className="py-3 px-6">Contact</th>
-              <th className="py-3 px-6">Action</th>
+              {/* <th className="py-3 px-6">Action</th> */}
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
@@ -110,20 +110,20 @@ const FlatInstallMentPage = () => {
                   {item?.installment}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">{item?.contact}</td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                {/* <td className="px-6 py-4 whitespace-nowrap">
                   <ul className="flex items-center gap-2">
                     <li>
                       <button onClick={() => deleteInstallment(item?._id)}>
                         <MdDeleteOutline className="text-2xl text-[red]" />
                       </button>
                     </li>
-                    {/* <li>
+                    <li>
                       <button onClick={() => setOpenModal(item)}>
                         <TbEdit className="text-2xl text-[green]" />
                       </button>
-                    </li> */}
+                    </li>
                   </ul>
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>
