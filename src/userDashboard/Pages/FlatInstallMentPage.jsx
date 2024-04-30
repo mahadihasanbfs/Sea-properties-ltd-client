@@ -7,6 +7,7 @@ import { DB_URL } from "../../const";
 import useAuth from "../../hooks/useAuth";
 import Title from "../../components/sharedComponent/Title";
 import AdminTitle from "../../hooks/useAdminTitle";
+import { useQuery } from "@tanstack/react-query";
 
 const FlatInstallMentPage = () => {
   const { user } = useAuth();
@@ -15,7 +16,23 @@ const FlatInstallMentPage = () => {
   const [on, setOn] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10); // Number of items per page
-  const [allInstallment, setAllInstallments] = useState([]);
+  // const [allInstallment, setAllInstallments] = useState([]);
+
+  const {
+    data: allInstallment = [],
+    refetch,
+    isLoading,
+  } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await fetch(
+        `${DB_URL}/admin/installment/get-installment-email?email=${user?.reloadUserInfo?.email}`
+      );
+      const data = await res.json();
+
+      return data?.data;
+    },
+  });
 
   //    const { user } = useAuth();
   //    console.log(user);
@@ -59,13 +76,13 @@ const FlatInstallMentPage = () => {
   );
 
   //get Installment
-  useEffect(() => {
-    fetch(
-      `${DB_URL}/admin/installment/get-installment-email?email=${user?.reloadUserInfo?.email}`
-    )
-      .then((response) => response.json())
-      .then((data) => setAllInstallments(data?.data));
-  }, [user?.reloadUserInfo?.email]);
+  // useEffect(() => {
+  //   fetch(
+  //     `${DB_URL}/admin/installment/get-installment-email?email=${user?.reloadUserInfo?.email}`
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => setAllInstallments(data?.data));
+  // }, [user?.reloadUserInfo?.email]);
 
   // delete Installment
   const deleteInstallment = (id) => {
