@@ -208,9 +208,9 @@ const ProjectDetails = () => {
 
             {/* Contact form */}
             <div className="bg-[#B0BEC5] py-16 lg:py-[85px]">
-                <div className="max-w-[1366px] mx-auto px-6 md:px-10 xl:px-[60px] text-white gap-4 grid md:grid-cols-2">
+                <div className="max-w-[1366px] mx-auto px-6 md:px-10 xl:px-[60px] text-white gap-10 grid md:grid-cols-2">
                     <div className="space-y-10">
-                        <img className="w-80% rounded" src={details?.detail_img} alt="" />
+                        <img className="w-80% shadow-lg shadow-dark rounded" src={details?.detail_img} alt="" />
 
                     </div>
                     <div className="flex items-center">
@@ -222,7 +222,7 @@ const ProjectDetails = () => {
                                     type="text" name="name"
                                     required
                                     // autoComplete="off"
-                                    className="w-full bg-transparent focus:outline-none  p-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                                    className="w-full px-2 bg-transparent focus:outline-none mt-1 rounded py-2 p-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
                                 />
                             </div>
                             <div>
@@ -230,7 +230,7 @@ const ProjectDetails = () => {
                                 <input
                                     type="text" name="email"
                                     autoComplete="off"
-                                    className="w-full bg-transparent focus:outline-none  p-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                                    className="w-full px-2 bg-transparent focus:outline-none mt-1 rounded py-2 p-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
                                 />
                             </div>
                             <div>
@@ -239,7 +239,7 @@ const ProjectDetails = () => {
                                     type="text" name="phone"
                                     required
                                     autoComplete="off"
-                                    className="w-full bg-transparent p-1 focus:outline-none  px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                                    className="w-full px-2 bg-transparent focus:outline-none mt-1 rounded py-2 p-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
                                 />
                             </div>
                             <div>
@@ -249,12 +249,12 @@ const ProjectDetails = () => {
                                     type="text" name="message"
                                     required
                                     // autoComplete="off"
-                                    className="w-full bg-transparent focus:outline-none  px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                                    className="w-full px-2 bg-transparent focus:outline-none mt-1 rounded py-2 p-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
                                 />
                             </div>
 
                             <div className="pt-6">
-                                <input type="submit" value="Book Now" className="py-[9px] px-[28px] border-[3px] border-white hover:cursor-pointer" />
+                                <input type="submit" value="Book Now" className="py-[9px] px-[28px] hover:bg-[#a20e0e] hover:text-light border-[3px] border-white hover:cursor-pointer" />
                             </div>
                         </form>
                     </div>

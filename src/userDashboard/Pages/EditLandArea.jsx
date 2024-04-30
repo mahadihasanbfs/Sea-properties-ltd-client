@@ -210,9 +210,9 @@ const EditLandArea = () => {
                 </div>
 
                 <form onSubmit={handleSubmit} className='space-y-4'>
-                    {/* serial no */}
+                    {/* Serial No */}
                     <div className='flex gap-2 items-end'>
-                        <p>Serial no</p>
+                        <p>Serial No</p>
                         <input
                             value={editItm?.SN}
                             type="text"

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 const ShowContent = ({ setOpen, link }) => {
     return (
-        <div className="fixed top-0 left-0 w-screen h-screen bg-[#000000ee] flex items-center justify-center z-[2000] opacity-100">
+        <div className="fixed top-0 left-0 w-screen h-screen bg-[#000000ee]  flex items-center justify-center z-[2000] opacity-100">
             <button onClick={() => setOpen(false)} className="text-4xl text-gray-600 fixed right-6 top-4 float-right">
                 x
             </button>

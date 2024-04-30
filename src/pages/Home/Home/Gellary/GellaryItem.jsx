@@ -33,7 +33,7 @@ const GellaryItem = ({ itm, showModal, setShowModal, close, handleModalClose, di
             onClick={() => {
                 setShowModal(itm.id)
             }}
-            className={`relative w-full h-[200px] md:h-[170px] hover:bg-[#9f0931b9] xl:h-[200px] flex items-center justify-center ${!isHovered && 'hover:bg-red-500 hover:text-white'} bg-[#EFEFEE] bg-opacity-85 text-black transition-colors duration-300 text-center px-2 hover:cursor-pointer`}>
+            className={`relative w-full h-[200px] md:h-[170px] hover:bg-[#9f0931b9] xl:h-[200px] flex items-center justify-center ${!isHovered && 'hover:bg-red-500 hover:text-light'} bg-[#EFEFEE] bg-opacity-85 text-black transition-colors duration-300 text-center px-2 hover:cursor-pointer`}>
             {itm?.name}
 
             {/* arrow icon */}
