@@ -119,6 +119,9 @@ const FlatInstallMentPage = () => {
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
+            {isLoading && (
+              <h1 className="text-lg py-2 text-center">Loading data.......</h1>
+            )}
             {currentItems?.map((item, idx) => (
               <tr key={idx}>
                 <td className="px-6 py-4 whitespace-nowrap">{item?.name}</td>
@@ -152,40 +155,40 @@ const FlatInstallMentPage = () => {
       </div>
 
       {/* Pagination */}
-      <div className="flex justify-center mt-4">
-        <button
-          onClick={prevPage}
-          className="mx-1  px-3 py-1 rounded bg-gray-200 text-[#d8d8d8] bg-[blue]"
-          disabled={currentPage === 1}
-        >
-          Prev
-        </button>
-        {paginationNumbers?.map((number) => (
+
+      {allInstallment?.length > 9 && (
+        <div className="flex justify-center mt-4">
           <button
-            key={number}
-            onClick={() => paginate(number)}
-            className={`mx-1 px-3 py-1 rounded ${
-              currentPage === number
-                ? "bg-blue-500 text-white"
-                : "bg-gray-200 text-gray-700"
-            }`}
+            onClick={prevPage}
+            className="mx-1  px-3 py-1 rounded bg-gray-200 text-[#d8d8d8] bg-[blue]"
+            disabled={currentPage === 1}
           >
-            {number}
+            Prev
           </button>
-        ))}
-        <button
-          onClick={nextPage}
-          className="mx-1 px-3 py-1 rounded bg-gray-200 text-[#d8d8d8] bg-[blue]"
-          disabled={
-            currentPage ===
-            Math.ceil(
-              (allInstallment ? allInstallment.length : 0 || 0) / itemsPerPage
-            )
-          }
-        >
-          Next
-        </button>
-      </div>
+          {paginationNumbers.map((number) => (
+            <button
+              key={number}
+              onClick={() => paginate(number)}
+              className={`mx-1 px-3 py-1 rounded ${
+                currentPage === number
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-200 text-gray-700"
+              }`}
+            >
+              {number}
+            </button>
+          ))}
+          <button
+            onClick={nextPage}
+            className="mx-1 px-3 py-1 rounded bg-gray-200 text-[#d8d8d8] bg-[blue]"
+            disabled={
+              currentPage === Math.ceil(allInstallment.length / itemsPerPage)
+            }
+          >
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 };
