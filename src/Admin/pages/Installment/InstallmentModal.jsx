@@ -27,7 +27,7 @@ export default function InstallmentModal({
     // return;
 
     fetch(
-      `https://sea-properties-server.vercel.app/api/v1/admin/installment/update?installment_id=${formValue?._id}`,
+      `https://backend.seapropertiesltd.com.bd/api/v1/admin/installment/update?installment_id=${formValue?._id}`,
       {
         method: "PUT",
         headers: {
@@ -62,11 +62,10 @@ export default function InstallmentModal({
       <div>
         <div
           onClick={() => setOpenModal(false)}
-          className={`fixed z-[100] flex items-center justify-center ${
-            openModal?._id == item._id
-              ? "visible opacity-100"
-              : "invisible opacity-0"
-          } inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}
+          className={`fixed z-[100] flex items-center justify-center ${openModal?._id == item._id
+            ? "visible opacity-100"
+            : "invisible opacity-0"
+            } inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}
         >
           <div
             onClick={(e_) => e_.stopPropagation()}
@@ -85,10 +84,9 @@ export default function InstallmentModal({
                 >
                   Update
                 </button>
-              </div>unded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${
-                openModal?.id == item.id
-                  ? "scale-1 opacity-1 duration-300"
-                  : "scale-0 opacity-0 duration-150"
+              </div>unded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${openModal?.id == item.id
+                ? "scale-1 opacity-1 duration-300"
+                : "scale-0 opacity-0 duration-150"
               } z-[100]`}
           >
             <div className="">

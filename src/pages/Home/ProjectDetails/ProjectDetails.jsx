@@ -29,7 +29,7 @@ const ProjectDetails = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/project/get-project?project_id=${id}`);
+                const response = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/project/get-project?project_id=${id}`);
                 const data = await response.json();
                 // const singleData = data.filter(item => item?._id === id);
                 setProjectData(data?.data);
@@ -53,7 +53,8 @@ const ProjectDetails = () => {
         setSelectedImageIndex(null);
     };
 
-    const { _id, conditionStatus, vr_status, vr_url, name, banner_img, videoThumbnailImgUpload, video_url, contactPageImg, project_status, projectInfo, projectFeatures, gallery_img, project_photo, projectVideo, map_link, featureInfo, details } = projectData;
+    const { _id, conditionStatus,
+        vr_status, vr_url, name, banner_img, videoThumbnailImgUpload, video_url, contactPageImg, project_status, projectInfo, projectFeatures, gallery_img, project_photo, projectVideo, map_link, featureInfo, details } = projectData;
 
     console.log(projectData, 'oooooooo')
 
@@ -76,7 +77,7 @@ const ProjectDetails = () => {
         }
 
 
-        fetch('https://sea-properties-server.vercel.app/api/v1/admin/booking/add', {
+        fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/booking/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -96,10 +97,13 @@ const ProjectDetails = () => {
         return srcValue;
     }
 
+
+
     return (
         <div className={`overflow-hidden`}>
             <SecondaryBanner
-                bannerImg={banner_img}
+                bannerImg={
+                    project_photo}
                 opacity={40}
 
                 projectName={name}

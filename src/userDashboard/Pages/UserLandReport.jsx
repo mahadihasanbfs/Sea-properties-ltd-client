@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { IoCloseCircle } from "react-icons/io5";
 import { BsEye } from "react-icons/bs";
+import { format } from "date-fns";
 
 const UserLandReportManagement = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -13,7 +14,7 @@ const UserLandReportManagement = () => {
     const { data: areaData = [], refetch } = useQuery({
         queryKey: ["allBlog"],
         queryFn: async () => {
-            const res = await fetch('https://sea-properties-server.vercel.app/api/v1/admin/user-land-registration');
+            const res = await fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/user-land-registration');
             const data = await res.json();
             return data;
         },
@@ -22,7 +23,7 @@ const UserLandReportManagement = () => {
     // delete data using custom hook
     const handleDelete = (id) => {
         fetch(
-            `https://sea-properties-server.vercel.app/api/v1/admin/delete-land-registration?id=${id}`,
+            `https://backend.seapropertiesltd.com.bd/api/v1/admin/delete-land-registration?id=${id}`,
             {
                 method: "DELETE",
                 headers: {
@@ -39,20 +40,15 @@ const UserLandReportManagement = () => {
                 console.error("Error deleting project:", error);
             });
     };
-    const formatDate = (dateString) => {
-        const year = dateString.substring(4);
-        const month = dateString.substring(2, 4);
-        const day = dateString.substring(0, 2);
-        const formattedDate = `${day}/${month}/${year}`;
-        return formattedDate;
-    };
+
+    console.log(areaData?.data, '>>>>>>');
 
     return (
         <div className="pt-3">
             <div className="flex item-center pb-3 justify-between">
-                <h1 className="font-bold text-xl">Land Report</h1>
+                <h1 className="font-bold text-xl">Booking History</h1>
                 <Link to={"/land-registration-form"}>
-                    <div className="dashboard_form_btn">+ Add Land Report</div>
+                    <div className="dashboard_form_btn">+ Add New Booking</div>
                 </Link>
             </div>
 
@@ -77,16 +73,16 @@ const UserLandReportManagement = () => {
                                     />
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">{item?.englishName}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{
-                                    formatDate(item?.submitData)
-                                }</td>
+                                <td className="px-6 py-4 whitespace-nowrap">
+                                    {format(new Date(item?.timestamp), 'dd-MMMM-yy (H:mm:ss)')}
+                                </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <ul className="flex items-center gap-2">
-                                        <li>
+                                        {/* <li>
                                             <button onClick={() => handleDelete(item?._id)}>
                                                 <MdDeleteOutline className="text-2xl text-[red]" />
                                             </button>
-                                        </li>
+                                        </li> */}
                                         <li>
                                             <Link to={`/view-land-report/${item?._id}`}>
                                                 <BsEye className="text-xl text-[#001aff]" />

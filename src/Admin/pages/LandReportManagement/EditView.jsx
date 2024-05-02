@@ -16,7 +16,7 @@ const EditView = () => {
     const { data: report = [], refetch } = useQuery({
         queryKey: ["report"],
         queryFn: async () => {
-            const res = await fetch('https://sea-properties-server.vercel.app/api/v1/admin/user-land-registration');
+            const res = await fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/user-land-registration');
             const data = await res.json();
             return data?.data;
         },
@@ -25,7 +25,7 @@ const EditView = () => {
     const editItm = report?.filter(itm => itm?._id === id)[0];
     console.log(editItm, '------====');
     return (
-        <div>
+        <div className='' ref={componentRef}>
             <div>
                 <div
                     style={{

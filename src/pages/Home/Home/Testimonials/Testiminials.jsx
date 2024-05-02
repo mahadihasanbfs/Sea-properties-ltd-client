@@ -45,7 +45,7 @@ const Testimonials = () => {
     const { data: data = [], refetch } = useQuery({
         queryKey: ["testimonialData"],
         queryFn: async () => {
-            const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/testimonial`);
+            const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/testimonial`);
             const data = await res.json();
             return data;
         },
@@ -54,8 +54,8 @@ const Testimonials = () => {
 
     useEffect(() => {
         const next = document.getElementById('sld').childNodes[0].childNodes[2];
-        next.style.cssText += "left: 20px !important;";
-        console.log('Testimonials', next);
+        next.style.cssText += "left: 20px !important; ";
+
     }, []);
 
     return (

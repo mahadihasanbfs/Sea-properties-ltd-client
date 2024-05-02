@@ -7,8 +7,8 @@ const Footer = () => {
         <div className="bg-white  py-12 overflow-hidden lg:px-6">
             <div className="container px-12 grid md:grid-cols-2 grid-cols-1 lg:gap-2">
                 <div>
-                    <img src={logo} className='w-20' alt="" />
-                    <p className="text-gray-800 mt-4 md:w-[400px]">
+                    <img src={logo} className='w-32' alt="" />
+                    <p className="text-gray-800 mt-4 md:w-[400px] text-justify">
 
                         SEA Properties Ltd. A trusted leader in Bangladeshi real estate company, residential & commercial projects in prime locations, ensuring customer satisfaction.
 
