@@ -388,3 +388,22 @@ a{
     font-variant: initial;
     line-height: 1;
 }
+
+
+
+
+@media print {
+
+  html,body{
+  
+    margin: 0!important;
+    padding: 0!important;
+    box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .hide-print {
+    display: none !important;
+  }
+  .print-data {
+    display: block !important;
+  }}
