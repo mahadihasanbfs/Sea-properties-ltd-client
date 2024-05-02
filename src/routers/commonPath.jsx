@@ -17,8 +17,9 @@ import NewsEvent from "../pages/Home/News_Event/NewsEvent";
 import NewsEventReadMore from "../pages/Home/News_Event/NewsEventReadMore";
 import ProjectDetails from "../pages/Home/ProjectDetails/ProjectDetails";
 import OnGoing from "../pages/Home/Projects/OnGoingPage/OnGoing";
-// import PrivacyPolicy from './PrivacyPolicy'
-// import TermsCondition from "./TermsCondition";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
+import TermsCondition from "../pages/TermsCondition";
+
 
 const commonPath = [
   {
@@ -124,22 +125,19 @@ const commonPath = [
     path: "why-sea-properties",
     element: <Explore />,
   },
-  // {
-  //   path: 'terms-condition',
-  //   element: <TermsCondition />
-  // },
-  // {
-  //   path: 'privacy-policy',
-  //   element: <PrivacyPolicy />
-  // },
-  // {
-  //   path: 'terms-condition',
-  //   element: <TermsCondition />
-  // },
-  // {
-  //   path: "*",
-  //   element: <Home />,
-  // },
+
+  {
+    path: 'privacy-policy',
+    element: <PrivacyPolicy />
+  },
+  {
+    path: 'terms-condition',
+    element: <TermsCondition />
+  },
+  {
+    path: "*",
+    element: <Home />,
+  },
 ];
 
 export default commonPath;
