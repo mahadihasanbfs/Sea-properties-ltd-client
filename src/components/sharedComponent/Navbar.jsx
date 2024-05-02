@@ -238,11 +238,11 @@ const Navbar = () => {
 
         {/* small side nav */}
         <div className={` md:hidden block  `}>
-          {open && <div className="w-full z-[8000] h-screen bg-[#000000ef] absolute top-0 left-0 right-0 bottom-0" />}
+          {open && <div className="w-full z-[8000] h-screen bg-[#00000068] absolute top-0 left-0 right-0 bottom-0" />}
 
           <div
-            className={`absolute z-[9000] bg-white bg-[#101522] top-0 duration-200 ${!open ? "right-[-120%]" : "right-0"
-              }  w-[80%] h-screen   md:hidden ring  `}
+            className={`absolute z-[9000] bg-white bg-[#000000] top-0 duration-200 ${!open ? "right-[-120%]" : "right-0"
+              }  w-[80%] h-screen   md:hidden   `}
           >
             <div className="flex container items-center mt-3 bg justify-between w-full">
               <Link to="/" className="text-2xl font-bold ml-5">
@@ -266,7 +266,7 @@ const Navbar = () => {
                             openDropdownId === itm.id ? null : itm.id
                           )
                         }
-                        className="flex items-center px-3 py-2 border-b w-full hover:bg-gray-800 hover:text-white gap-2 h-[60px] relative group justify-between"
+                        className="flex items-center px-3 py-2 border-b border-[#ffffff62] w-full hover:bg-gray-800 hover:text-white gap-2 h-[60px] relative group justify-between"
                       >
                         {itm?.name}
                         {openDropdownId === itm.id ?
@@ -280,7 +280,7 @@ const Navbar = () => {
                         }
                       </button>
                       {openDropdownId === itm.id && (
-                        <div className="mx-auto p-3 rounded-b ring-1 ring-gray-300 bg-gray-100">
+                        <div className="mx-auto p-3 rounded-b bg-gray-100">
                           {itm?.dropdownItems?.map((item) => (
                             <NavLink
                               onClick={() => setOpen(!open)}
@@ -298,7 +298,7 @@ const Navbar = () => {
                     <NavLink
                       to="/"
                       onClick={() => setOpen(!open)}
-                      className="block py-3 px-3 hover:bg-gray-800 hover:text-white duration-150 border-b"
+                      className="block py-3 px-3 hover:bg-gray-800 hover:text-white duration-150 border-b border-[#ffffff62]"
                     >
                       {itm?.name}
                     </NavLink>

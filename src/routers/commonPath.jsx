@@ -66,7 +66,7 @@ const commonPath = [
     loader: async ({ params }) => {
       const id = params.id;
       const response = await fetch(
-        `https://sea-properties-server.vercel.app/api/v1/admin/get-news-events-by-id?id=${id}`
+        `http://localhost:5001/api/v1/admin/get-news-events-by-id?id=${id}`
       );
       const data = await response.json();
       return data.data;
