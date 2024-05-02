@@ -23,7 +23,7 @@ const HeroSection = () => {
 
     const sliderData = data?.data?.filter(itm => itm?.position === 'hero_slider')
 
-    console.log(sliderData, 'metch..');
+
 
     return (
         <div className="relative">

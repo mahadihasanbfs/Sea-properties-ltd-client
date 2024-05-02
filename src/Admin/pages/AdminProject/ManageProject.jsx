@@ -16,9 +16,9 @@ const ManageProject = () => {
     const [itemsPerPage] = useState(10); // Number of items per page
     // const [allProject, setAllProjects] = useState([])
     const { data: allProject = [], refetch, isLoading } = useQuery({
-        queryKey: ["users"],
+        queryKey: ["project"],
         queryFn: async () => {
-            const res = await fetch(`${DB_URL}/admin/project/projects`);
+            const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/project/projects`);
             const data = await res.json();
             return data.data;
         },
@@ -67,7 +67,7 @@ const ManageProject = () => {
         )
             .then((res) => res.json())
             .then((data) => {
-                Swal.fire("Delete Project ", "", "success");
+                Swal.fire("Project Deleted Successfully", "", "success");
                 refetch();
             })
             .catch((error) => {
@@ -107,7 +107,7 @@ const ManageProject = () => {
                             </thead>
                             <tbody className="text-gray-600 divide-y">
                                 {isLoading && <h2 className="text-center text-xl font-[400] py-2">Loading Project ........</h2>}
-                                {allProject?.map((item, idx) => (
+                                {allProject.length ? allProject?.map((item, idx) => (
                                     <tr key={idx}>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <img
@@ -142,7 +142,7 @@ const ManageProject = () => {
                                             </ul>
                                         </td>
                                     </tr>
-                                ))}
+                                )) : ''}
                             </tbody>
                         </table>
                     </div>

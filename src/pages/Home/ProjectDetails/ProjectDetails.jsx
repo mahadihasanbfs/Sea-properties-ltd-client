@@ -16,6 +16,7 @@ import Swal from "sweetalert2";
 import ReactPlayer from 'react-player'
 import vrImg from '../../../assets/vr.jpg'
 import VideoPlayer from "../../../components/common/VideoPlayer";
+import MetaHelmet from "../../../components/MetaHalmate";
 
 const ProjectDetails = () => {
     // const [visible, setVisible] = useState(false);
@@ -70,7 +71,8 @@ const ProjectDetails = () => {
             name,
             email,
             phone,
-            message
+            message,
+            date: new Date()
         }
 
 
@@ -104,8 +106,8 @@ const ProjectDetails = () => {
                 location={details?.info?.address}
                 status={project_status}
             />
-
-            {/*  project info  */}
+            {/* <MetaHelmet title={name} description={details?.info?.address} ogTitle={name} ogDescription={projectInfo} ogImage={banner_img} /> */}
+            {/*  projec  t info  */}
             <div className="max-w-[1366px] mx-auto py-10 px-4 md:px-8 xl:px-20 grid md:grid-cols-2 gap-6 md:gap-0 bg-white ">
                 <figure className="flex items-center">
                     <img className="w-[575px] h-full object-cover" src={details?.detail_img} alt="" />
@@ -210,7 +212,7 @@ const ProjectDetails = () => {
             <div className="bg-[#B0BEC5] py-16 lg:py-[85px]">
                 <div className="max-w-[1366px] mx-auto px-6 md:px-10 xl:px-[60px] text-white gap-10 grid md:grid-cols-2">
                     <div className="space-y-10">
-                        <img className="w-80% shadow-lg shadow-dark rounded" src={details?.detail_img} alt="" />
+                        <img className="w-full h-full shadow-lg shadow-dark rounded" src={details?.detail_img} alt="" />
 
                     </div>
                     <div className="flex items-center">
@@ -254,7 +256,7 @@ const ProjectDetails = () => {
                             </div>
 
                             <div className="pt-6">
-                                <input type="submit" value="Book Now" className="py-[9px] px-[28px] hover:bg-[#a20e0e] hover:text-light border-[3px] border-white hover:cursor-pointer" />
+                                <input type="submit" value="Book Now" className="py-[9px] px-[28px] rounded hover:bg-[#a20e0e] hover:text-light border-[3px] border-white hover:cursor-pointer" />
                             </div>
                         </form>
                     </div>

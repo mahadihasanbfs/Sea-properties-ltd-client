@@ -122,8 +122,8 @@ const SignIn = () => {
       <Helmet>
         <title>Sign In | Sea Properties ltd</title>
       </Helmet>
-      <main className="w-full h-fit my-28 flex bg-white flex-col items-center justify-center px-4">
-        <div className="max-w-xl rounded-xl p-14  w-full text-gray-600 bg-white shadow-xl  ">
+      <main className="w-full h-fit my-28 flex  flex-col items-center justify-center px-4">
+        <div className="lg:max-w-xl rounded-xl lg:p-14  w-full text-gray-600 bg-light shadow-xl  ">
           <div className="text-center">
             <img
               src={Logo}

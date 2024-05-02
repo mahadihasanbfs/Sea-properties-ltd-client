@@ -5,6 +5,11 @@ import BannerCart from "./BannerCart";
 import { useEffect, useState } from "react";
 import Actions from "../Location/Actions";
 
+import { SwiperSlide, Swiper } from "swiper/react";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Autoplay, Navigation } from 'swiper/modules';
+
 
 
 const Banner = () => {
@@ -74,7 +79,7 @@ const Banner = () => {
         );
     }
 
-    console.log(data, 'searched data........');
+    console.log(searchData,);
 
 
     return (
@@ -82,11 +87,13 @@ const Banner = () => {
             <div className="max-w-[1366px] mx-auto py-12 mt-4 px-6 xl:px-4">
                 <Actions onSearch={setSearchTerm} onStatus={setProjectStatus} onType={setProjectType} />
                 <div className="slider-container mt-12 px-6 mr-5 w-[98%] mx-auto">
-                    <Slider  {...settings} className="pl-4">
+
+                    <Swiper slidesPerView={3}
+                        spaceBetween={30} autoplay={true} navigation={false} modules={[Navigation, Autoplay]} className="mySwiper">
                         {
-                            searchData?.map(itm => <BannerCart key={itm?._id} itm={itm} />)
+                            searchData?.map(itm => <SwiperSlide key={itm?._id}> <BannerCart key={itm?._id} itm={itm} />  </SwiperSlide>)
                         }
-                    </Slider>
+                    </Swiper>
                 </div>
             </div>
         </div>

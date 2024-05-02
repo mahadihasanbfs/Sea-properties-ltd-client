@@ -144,8 +144,8 @@ const SignUp = () => {
       <Helmet>
         <title>Sign Up | Sea Properties ltd</title>
       </Helmet>
-      <main className="w-full h-fit my-28 flex bg-white flex-col items-center justify-center px-4">
-        <div className="max-w-xl rounded-xl p-14  w-full text-gray-600 bg-white border shadow-xl  ">
+      <main className="w-full h-fit my-28 flex  flex-col items-center justify-center lg:px-4">
+        <div className="max-w-xl rounded-xl md:p-14 p-0  px-4  py-4 w-full text-gray-600  shadow-xl  ">
           <div className="text-center">
             <img
               src={Logo}

@@ -6,22 +6,31 @@ import { MdDeleteOutline } from "react-icons/md";
 import useGetData from "../../../hooks/useGetData";
 import Swal from "sweetalert2";
 import ReactQuill from "react-quill";
+import { useQuery } from "@tanstack/react-query";
+import { DB_URL } from "../../../const";
+import { BsEye } from "react-icons/bs";
+import { format } from "date-fns";
 
 const ManageContact = () => {
   const [openModal, setOpenModal] = useState(false);
   const [myValue, setMyValue] = useState(openModal?.description);
 
-  // Fetch data using custom hook
-  const contactData = useGetData("api/v1/admin/contacts");
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectAll, setSelectAll] = useState(false);
 
-  // Logic to calculate pagination
-  console.log(contactData, "*-*-**");
-
+  const { data: contactData = [], refetch } = useQuery({
+    queryKey: ["contact_data"],
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:5001/api/v1/admin/contacts`);
+      const data = await res.json();
+      return data.data;
+    },
+  });
   // delete data using custom hook
   const handleDelete = (id) => {
     // console.log(id, "-------->");
     fetch(
-      `https://sea-properties-server.vercel.app/api/v1/admin/contact/delete?contact_id=${id}`,
+      `https://backend.seapropertiesltd.com.bd/api/v1/admin/contact/delete?contact_id=${id}`,
       {
         method: "DELETE",
         headers: {
@@ -32,7 +41,8 @@ const ManageContact = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        Swal.fire("contact deleted", "", "success");
+        Swal.fire("Contact Deleted Successfully", "", "success");
+        refetch();
         // reload()
       })
       .catch((error) => {
@@ -40,22 +50,67 @@ const ManageContact = () => {
       });
   };
 
+
+
+  const handleCheckboxChange = (id) => {
+    const selectedIndex = selectedItems.indexOf(id);
+    let newSelected = [];
+
+    if (selectedIndex === -1) {
+      newSelected = [...selectedItems, id];
+    } else {
+      newSelected = selectedItems.filter((itemId) => itemId !== id);
+    }
+
+    setSelectedItems(newSelected);
+  };
+
+  const handleSelectAll = () => {
+    if (selectAll) {
+      setSelectedItems([]);
+    } else {
+      const allIds = contactData.map((item) => item._id);
+      setSelectedItems(allIds);
+    }
+    setSelectAll(!selectAll);
+  };
+
+  const handleSendEmail = () => {
+    const emails = selectedItems.map((itemId) =>
+      contactData.find((item) => item._id === itemId).email
+    );
+    const recipientList = emails.join(",");
+    const subject = encodeURIComponent("Your Subject");
+    const body = encodeURIComponent("Your Message");
+    window.location.href = `mailto:${recipientList}?subject=${subject}&body=${body}`;
+  };
+
+
+
   console.log(contactData, "======");
   return (
     <div className="pt-3">
       <div className="flex item-center pb-3 justify-between">
         <AdminTitle size={"20px"} title="Manage contact" />
 
-        {/* <Link to={"/admin/add-contact"}>
-          <div className="dashboard_form_btn">+Add contact</div>
-        </Link> */}
+        <button
+          onClick={handleSendEmail}
+          className="bg-blue-500 hover:bg-blue-700 bg-[#006aff] text-[white] py-2 px-4 rounded"
+          disabled={selectedItems.length === 0}
+        >
+          Send Email
+        </button>
       </div>
 
-      <div className="mt-2 shadow-sm border rounded overflow-x-auto">
+      {contactData.length ? <div className="mt-2 shadow-sm border rounded overflow-x-auto">
         <table className="w-full table-auto text-sm text-left">
           <thead className="bg-[#e4e4e4] text-[#0d1113] font-medium border-[#bab9b9] border-b">
             <tr>
-              <th className="py-3 px-6"> Name</th>
+              <th className="py-3 px-6 flex gap-2">  <input
+                type="checkbox"
+                checked={selectAll}
+                onChange={handleSelectAll}
+              /> Name</th>
               <th className="py-3 px-6"> Email</th>
               <th className="py-3 px-6">Phone</th>
               <th className="py-3 px-6">Time</th>
@@ -63,23 +118,20 @@ const ManageContact = () => {
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
-            {contactData?.data?.length < 1 && (
-              <div className="text-center">loading.......</div>
-            )}
-            {contactData?.data?.map((item, idx) => (
+
+            {contactData?.map((item, idx) => (
               <tr key={idx}>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {item?.name ?? "User Name"}
+                <td className="px-6 py-4 whitespace-nowrap flex gap-2">
+                  <input
+                    type="checkbox"
+                    checked={selectedItems.includes(item._id)}
+                    onChange={() => handleCheckboxChange(item._id)}
+                  />   {item?.name ?? "User Name"}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">{item?.email}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{item?.phone}</td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  {new Date(item?.date || new Date()).toLocaleString("en-us", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    hour12: "numeric",
-                  })}
+                  {format(new Date(item?.date), 'dd-MMMM-yy (H:mm:ss)')}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <ul className="flex items-center gap-2">
@@ -89,9 +141,9 @@ const ManageContact = () => {
                       </button>
                     </li>
                     <li>
-                      {/* <button onClick={() => setOpenModal(item)}>
-                        <TbEdit className="text-2xl text-[green]" />
-                      </button> */}
+                      <button onClick={() => setOpenModal(item)}>
+                        <BsEye className="text-2xl text-[green]" />
+                      </button>
                     </li>
                   </ul>
                 </td>
@@ -99,68 +151,22 @@ const ManageContact = () => {
                 <div>
                   <div
                     onClick={() => setOpenModal(false)}
-                    className={`fixed z-[100] flex items-center justify-center ${
-                      openModal?._id == item._id
-                        ? "visible opacity-100"
-                        : "invisible opacity-0"
-                    } inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}
+                    className={`fixed z-[100] flex items-center justify-center ${openModal?._id == item._id
+                      ? "visible opacity-100"
+                      : "invisible opacity-0"
+                      } inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}
                   >
                     <div
                       onClick={(e_) => e_.stopPropagation()}
-                      className={`text- absolute md:w-[500px] rounded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${
-                        openModal?.id == item.id
-                          ? "scale-1 opacity-1 duration-300"
-                          : "scale-0 opacity-0 duration-150"
-                      } z-[100]`}
+                      className={`text- absolute md:w-[500px] rounded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${openModal?.id == item.id
+                        ? "scale-1 opacity-1 duration-300"
+                        : "scale-0 opacity-0 duration-150"
+                        } z-[100]`}
                     >
-                      <div className="">
-                        <h2 className="text-xl font-bold mb-4">Edit </h2>
-                        <form onSubmit={``}>
-                          <div className="mb-4">
-                            <label
-                              className="block text-gray-700 text-sm font-bold mb-2"
-                              htmlFor="img"
-                            >
-                              img:
-                            </label>
-                            <input
-                              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                              id="img"
-                              type="file"
-                              name="img"
-                            />
-                          </div>
-                          <div className="mb-4">
-                            <label
-                              className="block text-gray-700 text-sm font-bold mb-2"
-                              htmlFor="totalAmount"
-                            >
-                              Total Amount:
-                            </label>
-                            <input
-                              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                              id="name"
-                              type="text"
-                              name="name"
-                              defaultValue={item.name}
-                            />
-                          </div>
-                          <div className="mb-4">
-                            <label
-                              className="block text-gray-700 text-sm font-bold mb-2"
-                              htmlFor="due"
-                            >
-                              Due:
-                            </label>
-
-                            <ReactQuill
-                              className="rounded-lg w-full border border-[#336cb6] h-[200px] overflow-hidden text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
-                              theme="snow"
-                              value={myValue}
-                              onChange={setMyValue}
-                            />
-                          </div>
-                        </form>
+                      <div>
+                        <p>  <span className="font-bold">Message:</span> {item.message}</p>
+                        <br />
+                        <a href={`mailto:${item.email}`} className=" px-3 py-2 bg-dark text-light">Send Reply</a>
                       </div>
                     </div>
                   </div>
@@ -170,7 +176,9 @@ const ManageContact = () => {
             ))}
           </tbody>
         </table>
-      </div>
+      </div> :
+        <div className="text-center text-2xl">No Contact Found</div>
+      }
     </div>
   );
 };

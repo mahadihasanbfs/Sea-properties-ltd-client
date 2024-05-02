@@ -1,25 +1,21 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import useGetData from "../../../../hooks/useGetData";
 import { Link, useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
 const OnGoingProject = () => {
-    const [projectData, setProjectData] = useState([])
+    const [projectData, setProjectData] = useState([]);
     const [type, setType] = useState('all');
     const filterPath = useLocation();
-    const [projectStatus, setProjectStatus] = useState(filterPath || "project status");
+    const [projectStatus, setProjectStatus] = useState('');
 
     useEffect(() => {
         const text = filterPath?.hash;
-        const result = text ? text.replace('#', '').toLowerCase() : null;
+        const result = text ? text.replace('#', '').toLowerCase() : '';
         setProjectStatus(result);
     }, [filterPath]);
 
-    // const data = useGetData('api/v1/admin/project/projects');
-
-
-    const { data: data = [], isLoading } = useQuery({
+    const { data: responseData, isLoading } = useQuery({
         queryKey: ["PData"],
         queryFn: async () => {
             const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/project/projects`);
@@ -29,16 +25,18 @@ const OnGoingProject = () => {
     });
 
     useEffect(() => {
-        const filteredData = data?.data?.filter(project => {
-            const projectStatusLowerCase = project?.project_status?.toLowerCase();
-            const projectTypeLowerCase = project?.project_type?.toLowerCase();
+        if (responseData?.data) {
+            const filteredData = responseData.data.filter(project => {
+                const projectStatusLowerCase = project?.project_status?.toLowerCase();
+                const projectTypeLowerCase = project?.project_type?.toLowerCase();
 
-            const matchesPosition = projectStatus === "project status" || (projectStatusLowerCase && projectStatusLowerCase === projectStatus);
-            const matchesType = type === "all" || (projectTypeLowerCase && projectTypeLowerCase === type);
-            return matchesPosition && matchesType;
-        });
-        setProjectData(filteredData);
-    }, [data?.data, projectStatus, type]);
+                const matchesPosition = projectStatus === "" || projectStatusLowerCase === projectStatus;
+                const matchesType = type === "all" || projectTypeLowerCase === type.toLowerCase();
+                return matchesPosition && matchesType;
+            });
+            setProjectData(filteredData);
+        }
+    }, [responseData, projectStatus, type]);
 
     return (
         <div className="">
@@ -66,33 +64,34 @@ const OnGoingProject = () => {
                     <button className={`${type === "Commercial" && 'text-[#ACA100]'}`} onClick={() => setType('Commercial')}>Commercial</button>
                 </div>
 
-                {
-                    isLoading ? <div className='h-[50vh] flex flex-col gap-3 items-center justify-center'>
+                {isLoading ? (
+                    <div className='h-[50vh] flex flex-col gap-3 items-center justify-center'>
                         <div className="w-10 h-10 animate-[spin_2s_linear_infinite] rounded-full border-8 border-dotted border-[red]"></div>
                         <p className="text-center">Loading...</p>
-                    </div> :
-                        <div>
-                            {
-                                <div className="max-w-[1366px] mx-auto px-6 xl:px-[50px] pb-20">
-                                    {!projectData.length ? <div className='h-[10vh]  w-full flex flex-col gap-3 items-center justify-center'>
-                                        <h1 className="text-2xl font-bold  opacity-[0.3]">Project Not Found</h1>
-                                    </div> :
-                                        <div className=" grid gap-10 md:grid-cols-3">
-                                            {projectData?.map((item, index) => <Link key={item?._id} to={`/project-details/${item?._id}`}>
-                                                <div className="relative xl:w-[423px] xl:h-[423px] justify-self-center overflow-hidden hover:cursor-pointer">
-                                                    <img className="w-full h-full hover:scale-110 transition-transform duration-1000 ease-in-out object-cover" src={item?.project_photo} alt="" />
-                                                    <div className="w-full h-[70px] px-6 bg-[#00000080] absolute bottom-20">
-                                                        <h3 className="text-[18px] text-[white]">{item?.name}</h3>
-                                                        <p className="text-[#C7C3C3]">{item?.details?.info?.address}</p>
-                                                    </div>
-                                                </div>
-                                            </Link>)}
+                    </div>
+                ) : (
+                    <div className="max-w-[1366px] mx-auto px-6 xl:px-[50px] pb-20">
+                        {!projectData.length ? (
+                            <div className='h-[10vh]  w-full flex flex-col gap-3 items-center justify-center'>
+                                <h1 className="text-2xl font-bold  opacity-[0.3]">Project Not Found</h1>
+                            </div>
+                        ) : (
+                            <div className="grid gap-10 md:grid-cols-3">
+                                {projectData.map(item => (
+                                    <Link key={item?._id} to={`/project-details/${item?._id}`}>
+                                        <div className="relative xl:w-[423px] xl:h-[423px] justify-self-center overflow-hidden hover:cursor-pointer">
+                                            <img className="w-full h-full hover:scale-110 transition-transform duration-1000 ease-in-out object-cover" src={item?.project_photo} alt="" />
+                                            <div className="w-full h-[70px] px-6 bg-[#00000080] absolute bottom-20">
+                                                <h3 className="text-[18px] text-[white]">{item?.name}</h3>
+                                                <p className="text-[#C7C3C3]">{item?.details?.info?.address}</p>
+                                            </div>
                                         </div>
-                                    }
-                                </div>
-                            }
-                        </div>
-                }
+                                    </Link>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                )}
             </div>
         </div>
     );

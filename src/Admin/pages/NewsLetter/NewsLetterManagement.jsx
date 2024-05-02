@@ -7,14 +7,23 @@ import Swal from "sweetalert2";
 import useGetData from "../../../hooks/useGetData";
 import { DB_URL } from "../../../const";
 import useFetchData from "../../../hooks/useFetchData";
+import { format } from "date-fns";
+import { useQuery } from "@tanstack/react-query";
 
 const NewsLetterManagement = () => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
 
   // Fetch data using custom hook
-  const [data, refetch] = useFetchData(`${DB_URL}/admin/news-letter/get`);
 
+  const { data: data = [], refetch } = useQuery({
+    queryKey: ["news_letter"],
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:5001/api/v1/admin/news-letter/get`);
+      const data = await res.json();
+      return data;
+    },
+  });
   // delete data using custom hook
   const handleDelete = (id) => {
     fetch(`${DB_URL}/admin/news-letter/delete-by-id?newsletter_id=${id}`, {
@@ -110,11 +119,8 @@ const NewsLetterManagement = () => {
                     {item?.email}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    {new Date(item?.date).toLocaleString("en-us", {
-                      weekday: "long",
-                      year: "numeric",
-                      month: "long",
-                    })}
+                    {format(new Date(item?.date), 'dd-MMMM-yy (H:mm:ss)')}
+
                   </td>
 
                   <td className="px-6 py-4 whitespace-nowrap">
