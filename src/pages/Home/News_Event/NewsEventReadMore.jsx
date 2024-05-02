@@ -34,20 +34,20 @@ const NewsEventReadMore = () => {
                 opacity={30}
             ></PrimaryBanner>
 
-            <div className="bg-[#E0F2F2] pb-16 md:pb-[120px] px-4 md:px-0 max-w-[1366px] mx-auto">
+            <div className=" pb-16 md:pb-[120px] px-4 md:px-0 max-w-[1366px] mx-auto">
                 <div dangerouslySetInnerHTML={{ __html: description }} className=" mx-auto py-[60px] space-y-6"></div>
 
 
             </div>
 
             {/* news and event gallery section  */}
-            <div className="max-w-[1366px] mx-auto md:px-5 xl:px-[60px] grid grid-cols-2 md:grid-cols-3">
+            <div className="max-w-[1366px] gap-4 mx-auto md:px-5 xl:px-[60px] grid grid-cols-2 md:grid-cols-3">
                 {
                     galleryImg?.map((img, index) => <img
                         key={index}
                         src={img}
                         onClick={() => openSlider(index)}
-                        className="w-full h-[170px] md:h-[215px] lg:w-[415px] lg:h-[415px] object-cover hover:cursor-pointer hover:contrast-125 transition-all duration-500" />)
+                        className="w-full h-[170px] md:h-[215px] lg:w-[415px] mt-4 border rounded lg:h-[415px] object-cover hover:cursor-pointer hover:contrast-125 transition-all duration-500" />)
                 }
             </div>
 

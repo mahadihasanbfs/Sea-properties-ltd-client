@@ -34,7 +34,7 @@ const AddTestimonials = () => {
 
         };
 
-        fetch("https://sea-properties-server.vercel.app/api/v1/admin/testimonial", {
+        fetch("https://backend.seapropertiesltd.com.bd/api/v1/admin/testimonial", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

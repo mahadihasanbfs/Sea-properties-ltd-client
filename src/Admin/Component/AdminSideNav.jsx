@@ -69,7 +69,7 @@ export default function AdminSideNav() {
     },
     {
       id: 100,
-      name: "Land Report",
+      name: "Booking Form",
       icon: <LuLandmark />,
       path: "/admin/land-report",
       role: "admin",

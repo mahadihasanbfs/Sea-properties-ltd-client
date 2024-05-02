@@ -19,7 +19,7 @@ const Banner = () => {
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
-        fetch('https://sea-properties-server.vercel.app/api/v1/admin/project/projects')
+        fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/project/projects')
             .then(res => res.json())
             .then(data => setData(data?.data))
     }, [])

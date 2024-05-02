@@ -17,8 +17,8 @@ const SocialDemo = () => {
 
 
     return (
-        <div className="bg-[#E0F2F1] max-w-[1366px] mx-auto py-12 mt-4 px-6 xl:px-4 ">
-            <div className="container grid md:grid-cols-2 gap-4">
+        <div className="bg-[#E0F2F1] max-w-[1366px] mx-auto  mt-4 px-6 xl:px-4 ">
+            {/* <div className="container grid md:grid-cols-2 gap-4">
                 {
                     videos?.map(item =>
                         <div className="md:h-[380px] h-[300px]" key={item?._id}>
@@ -26,7 +26,7 @@ const SocialDemo = () => {
                         </div>)
                 }
 
-            </div>
+            </div> */}
             <div className="">
                 <DemoItem />
             </div>

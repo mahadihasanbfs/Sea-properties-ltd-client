@@ -198,7 +198,7 @@ const AddProject = () => {
 
         console.log('testing......', data);
 
-        fetch('https://sea-properties-server.vercel.app/api/v1/admin/project/add', {
+        fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/project/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -268,7 +268,7 @@ const AddProject = () => {
                             placeholder="Enter Project name" />
                     </div>
                     <div className="mt-3 w-full">
-                        <label    >Feature image</label><br />
+                        <label    >Feature Image</label><br />
                         <input
                             name="banner_img"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
@@ -296,7 +296,7 @@ const AddProject = () => {
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                             type="text"
                             placeholder="Enter Project name">
-                            <option selected value="project status">project status</option>
+                            <option selected value="project status">Project Status</option>
                             <option value="onGoing">ON Going</option>
                             <option value="upComing">Up Coming</option>
                             <option value="completed">Completed</option>
@@ -547,7 +547,7 @@ const AddProject = () => {
                         placeholder="Enter map link" />
                 </div>
                 <br /> <br />
-                {!loading ? (
+                {loading ? (
                     <button
                         disabled
                         type="submit"

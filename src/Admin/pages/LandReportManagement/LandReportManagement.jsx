@@ -15,10 +15,10 @@ const LandReportManagement = () => {
     const [openModal, setOpenModal] = useState(false);
     // const navigate = useNavigate()
 
-    const { data: areaData = [], refetch,isLoading } = useQuery({
+    const { data: areaData = [], refetch, isLoading } = useQuery({
         queryKey: ["allBlog"],
         queryFn: async () => {
-            const res = await fetch('https://sea-properties-server.vercel.app/api/v1/admin/all-land-registration');
+            const res = await fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/all-land-registration');
             const data = await res.json();
             return data;
         },
@@ -29,7 +29,7 @@ const LandReportManagement = () => {
     // delete data using custom hook
     const handleDelete = (id) => {
         fetch(
-            `https://sea-properties-server.vercel.app/api/v1/admin/delete-land-registration?id=${id}`,
+            `https://backend.seapropertiesltd.com.bd/api/v1/admin/delete-land-registration?id=${id}`,
             {
                 method: "DELETE",
                 headers: {
@@ -54,7 +54,7 @@ const LandReportManagement = () => {
         return formattedDate;
     };
 
-    
+
 
 
     console.log(areaData?.data, '>>>>>>');
@@ -76,7 +76,7 @@ const LandReportManagement = () => {
                         </tr>
                     </thead>
                     <tbody className="text-gray-600 divide-y">
-                         {isLoading && <h2 className="text-center text-xl font-[400] py-2">Loading  ........</h2>}
+                        {isLoading && <h2 className="text-center text-xl font-[400] py-2">Loading  ........</h2>}
                         {areaData?.data?.map((item, idx) => (
                             <tr key={idx}>
                                 <td className="px-6 py-4 whitespace-nowrap">

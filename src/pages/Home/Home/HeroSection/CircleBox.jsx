@@ -9,7 +9,7 @@ const CircleBox = () => {
                 <div className="bg-[#0000009c] text-[red]  duration-150 absolute top-0 left-0 right-0 m-auto bottom-0 content-box text-center w-[150px] h-[150px] flex items-center rounded-full text-white z-[100]  text-2xl justify-center">{isHovered ? "Explore" : 'Setting Standards'}</div>
             </div>
             {/* overlay  */}
-            <div className="box-1  absolute md:top-[0px] top-[0px] left-0 right-0 bottom-0 m-auto md:w-[340px] w-[220px] h-[220px] md:h-[340px]  bg-[#a5a5a584] rounded-lg">
+            <div className="box-1  absolute md:top-[0px] top-[0px] left-0 right-0 bottom-0 m-auto md:w-[340px] w-[260px] h-[260px] md:h-[340px]  bg-[#a5a5a584] rounded-lg">
             </div>
             {/* link box */}
             {/* 
@@ -26,9 +26,9 @@ const CircleBox = () => {
                     <Link to="/project#upComing" className="text-gray-900 font-bold text-xs md:tex-xl absolute right-[4px] rotate-[135deg] bottom-[24px]">Up Coming
                     </Link>
 
-                    <Link to="/project#completed" className="text-gray-900 font-bold text-xs md:tex-xl absolute left-2 rotate-[225deg] md:bottom-10 bottom-4">Completed</Link>
+                    <Link to="/project#completed" className="text-gray-900 font-bold text-xs md:tex-xl absolute left-2 rotate-[225deg] md:bottom-10 bottom-8">Completed</Link>
 
-                    <Link to="/contact" className="text-gray-900 font-bold text-xs md:tex-xl absolute md:left-2 left-3 md:rotate-[-40deg] rotate-[-41deg] md:top-10 top-4">Contact us</Link>
+                    <Link to="/contact" className="text-gray-900 font-bold text-xs md:tex-xl absolute md:left-2 left-3 md:rotate-[-40deg] rotate-[-41deg] md:top-10 top-4">Contact Us</Link>
                 </div>
             </div>
         </div>

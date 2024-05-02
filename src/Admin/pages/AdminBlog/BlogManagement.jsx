@@ -13,7 +13,7 @@ import JoditEditor from "jodit-react";
 
 const ManageBlog = () => {
   const [openModal, setOpenModal] = useState(false);
-  const [myValue, setMyValue] = useState(openModal?.description);
+
   const [content, setContent] = useState('');
   const editor = useRef(null);
   // Fetch data using custom hook
@@ -21,20 +21,25 @@ const ManageBlog = () => {
   const { data: blogData = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/blog/blogs`);
+      const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/blog/blogs`);
       const data = await res.json();
       return data;
     },
   });
+
+  const [loading, setLoading] = useState(false)
 
 
   const { uploadImage } = useImageUpload();
   // edit blog
   const handleEdit = async (e) => {
     e.preventDefault();
+    console.log('hit');
+    setLoading(true)
     const form = e.target;
     const img = form.img.files[0];
-    const URL = form.url.value;
+    const description = form.description.value;
+    const name = form.title.value;
 
     let photo;
     if (img) {
@@ -46,12 +51,12 @@ const ManageBlog = () => {
 
     const data = {
       photo,
-      url: URL ? URL : openModal?.url,
-      date: new Date()
+      description,
+      name: name,
     };
 
     // Make the PUT request
-    fetch(`https://sea-properties-server.vercel.app/api/v1/admin/banner/update?banner_id=${openModal?._id}`, {
+    fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/blog/update?blog_id=${openModal?._id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -61,21 +66,21 @@ const ManageBlog = () => {
       .then(response => response.json())
       .then(result => {
         refetch();
-        // Handle success response
-        console.log('Edit successful:', result);
-        setOpenModal(false); // Close modal after successful submission
+        setLoading(false)
+        Swal.fire("Blog Updated", "", "success");
+        setOpenModal(false);
       })
-
+    setLoading(false)
     setOpenModal(false)
 
-    console.log('Form data:', data);
+
   };
 
 
   // delete data using custom hook
   const handleDelete = (id) => {
     fetch(
-      `https://sea-properties-server.vercel.app/api/v1/admin/blog/delete?blog_id=${id}`,
+      `https://backend.seapropertiesltd.com.bd/api/v1/admin/blog/delete?blog_id=${id}`,
       {
         method: "DELETE",
         headers: {
@@ -142,24 +147,24 @@ const ManageBlog = () => {
                   </ul>
                 </td>
                 {/* modal */}
-                <div>
+                <div className="">
                   <div
                     onClick={() => setOpenModal(false)}
-                    className={`fixed z-[100] flex items-center justify-center ${openModal?._id == item._id
+                    className={`fixed z-[100] flex  items-center justify-center ${openModal?._id == item._id
                       ? "visible opacity-100"
                       : "invisible opacity-0"
                       } inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}
                   >
                     <div
                       onClick={(e_) => e_.stopPropagation()}
-                      className={`text- absolute md:w-[500px] rounded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${openModal?.id == item.id
+                      className={`text- absolute md:w-[500px] h-[80%] overflow-y-scroll rounded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${openModal?.id == item.id
                         ? "scale-1 opacity-1 duration-300"
                         : "scale-0 opacity-0 duration-150"
                         } z-[100]`}
                     >
                       <div className="">
                         <h2 className="text-xl font-bold mb-4">Edit </h2>
-                        <form onSubmit={``}>
+                        <form onSubmit={handleEdit}>
                           <div className="mb-4">
                             <label
                               className="block text-gray-700 text-sm font-bold mb-2"
@@ -185,11 +190,11 @@ const ManageBlog = () => {
                               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                               id="name"
                               type="text"
-                              name="name"
+                              name="title"
                               defaultValue={item?.name}
                             />
                           </div>
-                          <div className="mb-4">
+                          <div className="mb-4 h-[80%] overflow-y-auto">
                             <label
                               className="block text-gray-700 text-sm font-bold mb-2"
                               htmlFor="due"
@@ -198,31 +203,29 @@ const ManageBlog = () => {
                             </label>
 
                             <JoditEditor
-                              ref={editor}
-                              value={content}
-                              tabIndex={1} // tabIndex of textarea
-                              className="bg-[red]"
-                              onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
-                              onChange={newContent => { }}
+
+                              name="description"
+                              value={item?.description}
                             />
                           </div>
+                          <div className="flex items-center justify-between">
+                            <button
+                              onClick={() => setOpenModal(false)}
+                              className="bg-[red] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                              type="button"
+                            >
+                              Close
+                            </button>
+                            {loading ? <button className="bg-[blue] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Updating ..</button> : <button
+
+                              className="bg-[blue] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                              type="f"
+                            >
+                              Update
+                            </button>}
+                          </div>
                         </form>
-                        <div className="flex items-center justify-between">
-                          <button
-                            onClick={() => setOpenModal(false)}
-                            className="bg-[red] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                            type="button"
-                          >
-                            Close
-                          </button>
-                          <button
-                            onClick={() => setOpenModal(false)}
-                            className="bg-[blue] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                            type="submit"
-                          >
-                            Update
-                          </button>
-                        </div>
+
                       </div>
                     </div>
                   </div>

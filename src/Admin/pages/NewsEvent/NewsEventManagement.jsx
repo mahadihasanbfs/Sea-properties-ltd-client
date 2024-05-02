@@ -31,7 +31,7 @@ const NewsEventManagement = () => {
   const handleDelete = (id) => {
     console.log(id, "-------->");
     fetch(
-      `https://backend.seapropertiesltd.com.bd/api/v1/admin/blog/delete?blog_id=${id}`,
+      `https://backend.seapropertiesltd.com.bd/api/v1/admin/delete_news_event?id=${id}`,
       {
         method: "DELETE",
         headers: {
@@ -42,7 +42,7 @@ const NewsEventManagement = () => {
       .then((res) => res.json())
       .then((data) => {
         refetch()
-        Swal.fire("Blog deleted", "", "success");
+        Swal.fire("News Event Deleted Successfully", "", "success");
         // reload()
       })
       .catch((error) => {

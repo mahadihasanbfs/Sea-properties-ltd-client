@@ -182,168 +182,170 @@ const UserHistory = () => {
         </button>
       </div>
 
-      <div className="mt-2 shadow-sm border rounded overflow-x-auto">
-        <table className="w-full table-auto text-sm text-left">
-          <thead className="bg-[#e4e4e4] text-[#0d1113] font-medium border-[#bab9b9] border-b">
-            <tr>
-              <th className="py-3 px-6">
-                <input
-                  type="checkbox"
-                  checked={selectAll}
-                  onChange={handleSelectAll}
-                />
-              </th>
-              <th className="py-3 px-6">name</th>
-              <th className="py-3 px-6">Email</th>
-              {/* <th className="py-3 px-6">Date</th>
+      {currentItems?.length ? <div>
+        <div className="mt-2 shadow-sm border rounded overflow-x-auto">
+          <table className="w-full table-auto text-sm text-left">
+            <thead className="bg-[#e4e4e4] text-[#0d1113] font-medium border-[#bab9b9] border-b">
+              <tr>
+                <th className="py-3 px-6">
+                  <input
+                    type="checkbox"
+                    checked={selectAll}
+                    onChange={handleSelectAll}
+                  />
+                </th>
+                <th className="py-3 px-6">name</th>
+                <th className="py-3 px-6">Email</th>
+                {/* <th className="py-3 px-6">Date</th>
               <th className="py-3 px-6">Due</th>
               <th className="py-3 px-6">Remaining balance</th> */}
-              <th className="py-3 px-6">Action</th>
-            </tr>
-          </thead>
-          <tbody className="text-gray-600 divide-y">
-            {currentItems?.length &&
-              currentItems?.filter((item) => item.email !== 'admin@admin.com').map((item, idx) => (
-                <tr key={idx}>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <input
-                      type="checkbox"
-                      checked={selectedItems.includes(item._id)}
-                      onChange={() => handleCheckboxChange(item._id)}
-                    />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
-                  {/* <td className="px-6 py-4 whitespace-nowrap">
+                <th className="py-3 px-6">Action</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-600 divide-y">
+              {currentItems?.length &&
+                currentItems?.filter((item) => item.email !== 'admin@admin.com').map((item, idx) => (
+                  <tr key={idx}>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <input
+                        type="checkbox"
+                        checked={selectedItems.includes(item._id)}
+                        onChange={() => handleCheckboxChange(item._id)}
+                      />
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
+                    {/* <td className="px-6 py-4 whitespace-nowrap">
                   {item.totalAmount}
                 </td> */}
-                  {/* <td className="px-6 py-4 whitespace-nowrap">
+                    {/* <td className="px-6 py-4 whitespace-nowrap">
                   {new Date(item.date).toLocaleString()}
                 </td> */}
-                  <td className="px-6 py-4 whitespace-nowrap">{item.email}</td>
-                  {/* <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-4 whitespace-nowrap">{item.email}</td>
+                    {/* <td className="px-6 py-4 whitespace-nowrap">
                   {item.remainingBalance}
                 </td> */}
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <ul className="flex items-center gap-2">
-                      <li>
-                        <button onClick={() => delete_user(item._id)}>
-                          <MdDeleteOutline className="text-2xl text-[red]" />
-                        </button>
-                      </li>
-                      <li>
-                        <button onClick={() => setOpenModal(item)}>
-                          <TbEdit className="text-2xl text-[green]" />
-                        </button>
-                      </li>
-                    </ul>
-                  </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <ul className="flex items-center gap-2">
+                        <li>
+                          <button onClick={() => delete_user(item._id)}>
+                            <MdDeleteOutline className="text-2xl text-[red]" />
+                          </button>
+                        </li>
+                        <li>
+                          <button onClick={() => setOpenModal(item)}>
+                            <TbEdit className="text-2xl text-[green]" />
+                          </button>
+                        </li>
+                      </ul>
+                    </td>
 
-                  <div>
-                    {openModal?._id == item._id && <div
-                      onClick={() => setOpenModal(false)}
-                      className={`fixed z-[100] flex items-center justify-center ${openModal?._id == item._id
-                        ? "visible opacity-100"
-                        : "invisible opacity-0"
-                        } inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}
-                    >
-                      <div
-                        onClick={(e_) => e_.stopPropagation()}
-                        className={`text- absolute md:w-[500px] rounded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${openModal?._id == item._id
-                          ? "scale-1 opacity-1 duration-300"
-                          : "scale-0 opacity-0 duration-150"
-                          } z-[100]`}
+                    <div>
+                      {openModal?._id == item._id && <div
+                        onClick={() => setOpenModal(false)}
+                        className={`fixed z-[100] flex items-center justify-center ${openModal?._id == item._id
+                          ? "visible opacity-100"
+                          : "invisible opacity-0"
+                          } inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}
                       >
-                        <div className="">
-                          <h2 className="text-xl font-bold mb-4">Edit </h2>
-                          <form onSubmit={handleSave}>
-                            <div className="mb-4">
-                              <label
-                                className="block text-gray-700 text-sm font-bold mb-2"
-                                htmlFor="name"
-                              >
-                                name:
-                              </label>
-                              <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="name"
-                                type="text"
-                                name="userName"
-                                defaultValue={item.name}
-                              />
-                            </div>
-                            <div className="mb-4">
-                              <label
-                                className="block text-gray-700 text-sm font-bold mb-2"
-                                htmlFor="totalAmount"
-                              >
-                                Email:
-                              </label>
-                              <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="email"
-                                type="email"
-                                name="email"
-                                defaultValue={item.email}
-                              />
-                            </div>
+                        <div
+                          onClick={(e_) => e_.stopPropagation()}
+                          className={`text- absolute md:w-[500px] rounded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${openModal?._id == item._id
+                            ? "scale-1 opacity-1 duration-300"
+                            : "scale-0 opacity-0 duration-150"
+                            } z-[100]`}
+                        >
+                          <div className="">
+                            <h2 className="text-xl font-bold mb-4">Edit </h2>
+                            <form onSubmit={handleSave}>
+                              <div className="mb-4">
+                                <label
+                                  className="block text-gray-700 text-sm font-bold mb-2"
+                                  htmlFor="name"
+                                >
+                                  name:
+                                </label>
+                                <input
+                                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                  id="name"
+                                  type="text"
+                                  name="userName"
+                                  defaultValue={item.name}
+                                />
+                              </div>
+                              <div className="mb-4">
+                                <label
+                                  className="block text-gray-700 text-sm font-bold mb-2"
+                                  htmlFor="totalAmount"
+                                >
+                                  Email:
+                                </label>
+                                <input
+                                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                  id="email"
+                                  type="email"
+                                  name="email"
+                                  defaultValue={item.email}
+                                />
+                              </div>
 
-                            <div className="flex items-center justify-between">
-                              <button
-                                className="bg-[blue] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                type="submit"
-                              >
-                                Update
-                              </button>
-                              <button
-                                onClick={() => setOpenModal(false)}
-                                className="bg-[red] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                type="button"
-                              >
-                                Close
-                              </button>
-                            </div>
-                          </form>
+                              <div className="flex items-center justify-between">
+                                <button
+                                  className="bg-[blue] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                  type="submit"
+                                >
+                                  Update
+                                </button>
+                                <button
+                                  onClick={() => setOpenModal(false)}
+                                  className="bg-[red] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                  type="button"
+                                >
+                                  Close
+                                </button>
+                              </div>
+                            </form>
+                          </div>
                         </div>
-                      </div>
-                    </div>}
-                  </div>
-                  {/* end modal */}
-                </tr>
-              ))}
-          </tbody>
-        </table>
-      </div>
+                      </div>}
+                    </div>
+                    {/* end modal */}
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
 
-      {/* Pagination */}
-      <div className="flex justify-center mt-4">
-        <button
-          onClick={prevPage}
-
-          className="mx-1  px-3 py-1 rounded bg-gray-200 cursor-pointer text-[#d8d8d8] bg-[blue]"
-          disabled={currentPage === 1}
-        >
-          Prev
-        </button>
-        {paginationNumbers.map((number) => (
+        {/* Pagination */}
+        <div className="flex justify-center mt-4">
           <button
-            key={number}
-            onClick={() => paginate(number)}
-            className={`mx-1 px-3 py-1 rounded ${currentPage === number
-              ? "bg-blue-500 text-white"
-              : "bg-gray-200 text-gray-700"
-              }`}
+            onClick={prevPage}
+
+            className="mx-1  px-3 py-1 rounded bg-gray-200 cursor-pointer text-[#d8d8d8] bg-[blue]"
+            disabled={currentPage === 1}
           >
-            {number}
+            Prev
           </button>
-        ))}
-        <button
-          onClick={nextPage}
-          className="mx-1 px-3 py-1 rounded bg-gray-200 text-[#d8d8d8] bg-[blue] cursor-pointer "
-          disabled={currentPage === Math.ceil(tableItems.length / itemsPerPage)}
-        >
-          Next
-        </button>
-      </div>
+          {paginationNumbers.map((number) => (
+            <button
+              key={number}
+              onClick={() => paginate(number)}
+              className={`mx-1 px-3 py-1 rounded ${currentPage === number
+                ? "bg-blue-500 text-white"
+                : "bg-gray-200 text-gray-700"
+                }`}
+            >
+              {number}
+            </button>
+          ))}
+          <button
+            onClick={nextPage}
+            className="mx-1 px-3 py-1 rounded bg-gray-200 text-[#d8d8d8] bg-[blue] cursor-pointer "
+            disabled={currentPage === Math.ceil(tableItems.length / itemsPerPage)}
+          >
+            Next
+          </button>
+        </div>
+      </div> : 'No data found'}
     </div>
   );
 };

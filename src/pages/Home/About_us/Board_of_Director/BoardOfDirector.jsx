@@ -87,7 +87,7 @@ const BoardOfDirector = () => {
                     </div> */}
                 </div>
                 <figure className="flex items-center justify-center md:justify-end">
-                    <img className="w-[300px] h-[300px] lg:w-[400px] lg:h-[400px] xl:w-[505px] xl:h-[505px] object-cover" src={img3} alt="" />
+                    <img className="w-[300px] h-[300px] lg:w-[400px] lg:h-[400px] xl:w-[505px] xl:h-[505px] object-cover " src={img3} alt="" />
                 </figure>
             </div>
 

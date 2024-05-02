@@ -27,7 +27,7 @@ export default function UserSideNav() {
       menu: [],
     }, {
       id: 1,
-      name: "Land area",
+      name: "Booking History",
       icon: <LiaLandmarkSolid />,
       path: "/user/land-report",
       role: "user",

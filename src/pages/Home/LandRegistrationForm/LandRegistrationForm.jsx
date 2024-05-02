@@ -4,13 +4,14 @@ import useImageUpload from '../../../hooks/useUploadImg';
 import Swal from 'sweetalert2';
 import { useQuery } from '@tanstack/react-query';
 import { reload } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 const LandRegistrationForm = () => {
     // this section is used to handle banner img
     const { data: SN = [], relaod } = useQuery({
         queryKey: ["SN"],
         queryFn: async () => {
-            const res = await fetch('https://sea-properties-server.vercel.app/api/v1/admin/serial-number');
+            const res = await fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/serial-number');
             const data = await res.json();
             return data?.data;
         },
@@ -64,6 +65,7 @@ const LandRegistrationForm = () => {
     };
 
     const { uploadImage } = useImageUpload();
+    const navigate = useNavigate()
     // this section is used to hand form submit
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -105,11 +107,12 @@ const LandRegistrationForm = () => {
             authorizedSignature: form.authorizedSignature.value,
             sharersSignature: form.sharersSignature.value,
             gendar: gendar,
-            submitData: submitDate
+            submitData: submitDate,
+            timestamp: new Date().getTime(),
         }
 
         // console.log(data, '++++++++++++++++');
-        fetch("https://sea-properties-server.vercel.app/api/v1/admin/add-land-registration", {
+        fetch("https://backend.seapropertiesltd.com.bd/api/v1/admin/add-land-registration", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -119,7 +122,9 @@ const LandRegistrationForm = () => {
             .then((res) => res.json())
             .then((data) => {
                 setLoading(false);
-                Swal.fire("Your form has been submitted", "", "");
+                Swal.fire("Your form has been submitted", "", "success");
+                form.reset();
+                navigate('/user/land-report');
                 // navigate('/admin/project-management');
             });
     }
@@ -422,11 +427,11 @@ const LandRegistrationForm = () => {
                     {/* signature input fields */}
                     <div className='flex justify-center gap-[590px] mt-[110px!important]'>
                         < div className='flex flex-col items-center'>
-                            <input name='authorizedSignature' type="text" className='border-b text-center focus:outline-none bg-transparent border-black px-2' />
+                            <input name='authorizedSignature' type="text" readOnly className='border-b text-center focus:outline-none bg-transparent border-black px-2' />
                             <p>Authorized Signature</p>
                         </div>
                         < div className='flex flex-col items-center'>
-                            <input name='sharersSignature' type="text" className='border-b text-center focus:outline-none bg-transparent border-black px-2' />
+                            <input name='sharersSignature' type="text" readOnly className='border-b text-center focus:outline-none bg-transparent border-black px-2' />
                             <p>Sharer’s Signature</p>
                         </div>
                     </div>

@@ -7,7 +7,7 @@ const Blogs = () => {
     const { data: data = [], isLoading } = useQuery({
         queryKey: ["users"],
         queryFn: async () => {
-            const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/blog/blogs`);
+            const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/blog/blogs`);
             const data = await res.json();
             return data;
         },

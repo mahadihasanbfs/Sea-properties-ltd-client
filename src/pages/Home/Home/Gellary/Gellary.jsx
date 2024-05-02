@@ -5,35 +5,36 @@ import { Link } from 'react-router-dom';
 const Gellary = () => {
 
     const data = [
+
         {
             id: 1,
-            name: "Prime Locations",
-            info: 'We offer a selection from the most lucrative locations across the city. Our project locations are selected intelligently, keeping in mind the things that matter to you most.'
-        },
-        {
+            name: "40% Less Cost",
+            info: 'Through purchasing land shares at 40% lower cost,build your own flat.'
+        }, {
             id: 2,
-            name: "Top Consultants",
-            info: 'We engage the leading consultants in their respective fields from both home and abroad, to ensure that every facet of a project is designed to perfection. After all, the best designs can only come from the best minds.'
+            name: "Prime Locations",
+            info: 'We provide a range of prime locations throughout the city, carefully chosen with your needs in mind.'
         },
         {
             id: 3,
-            name: "Highest Quality Materials",
-            info: 'We continuously explore material sourcing globally to enhance the comfort and lifestyle of our clients. Each material used in our projects is selected with the utmost attention to quality, suitability and durability.'
+            name: "Top Consultants",
+            info: 'We work with top consultants from various fields, both domestically and internationally, to ensure every aspect of a project is meticulously designed. Quality designs require expertise from the best professionals.'
         },
         {
             id: 4,
-            name: "Uncompromising Safety",
-            info: 'Our priority to safety is second to none. Structural, electro-mechanical and fire safety stand paramount in our planning and construction methodology, in order to ensure your safety in your sanctuary.'
+            name: "Highest Quality Materials",
+            info: 'We carefully select materials from around the world to improve the comfort and lifestyle of our clients. Quality, suitability, and durability are key factors in our material choices for projects.'
         },
+
         {
             id: 5,
             name: "On-time Delivery",
-            info: 'Our experienced team of highly qualified engineers and management professionals work relentlessly in perfect synergy. At Shanta, delivering uncompromised quality, on time, has become our mantra.'
+            info: 'At SEA, our team of engineers and management professionals work together to deliver quality products on time.'
         },
         {
             id: 6,
             name: "Professional Management",
-            info: 'A safe, clean and comfortable living environment can only be maintained by a team of professionals with an eye for perfection. Our Facility Management team will ensure your desire to live in a beautiful community remains fulfilled.'
+            info: 'Our Facility Management team is dedicated to maintaining a safe, clean, and comfortable living environment for our community.'
         }
     ]
 
@@ -84,9 +85,9 @@ const Gellary = () => {
                         WHY SEA PROPERTIES LIMITED?
                     </h1>
                     <p className="mt-6">
-                        Partner with the best Artisan, to transform your land into a milestone <br /> of aesthetic marvel and superior value.
+                        SEA Properties aims to create an unparalleled experience of luxurious living enveloped in comfort just for you. Our commitment to prestige and sophisticated architecture distinguishes us from the rest.
                     </p>
-                    <Link to={'/explore'} className="mt-6 border-2 duration-150 hover:bg-white hover:text-black hover:bg-[#b20a0a] px-8 py-2">
+                    <Link to={'/why-sea-properties'} className="mt-6 border-2 duration-150 hover:bg-white hover:text-black hover:bg-[#b20a0a] px-8 py-2">
                         Explore
                     </Link>
                 </div>

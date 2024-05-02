@@ -132,17 +132,17 @@ const Navbar = () => {
 
   console.log(user, "user");
   return (
-    <nav className="bg-[#000000e4] text-[white] fixed z-50 flex items-center justify-between w-full top-0 text-white md:h-[70px] h-[60px]">
+    <nav className="bg-[#000000e4] text-[white] fixed z-50 flex items-center justify-between w-full top-0 text-white md:h-[80px] h-[60px]">
       <div className="relative  w-full ">
-        <div className="max-w-[1366px] mx-auto pl-5 pr-2 md:px-10">
+        <div className="max-w-[1366px] mx-auto pl-5  pr-2 md:px-10">
           <div className="flex items-center justify-between">
             <Link to="/" className="text-2xl font-bold hid">
-              <img src={logo} alt="" className="w-[80px] md:w-[100px] " />
+              <img src={logo} alt="" className="w-[80px]  md:w-[120px] " />
             </Link>
             <div className="flex items-center gap-4">
-              <ul className="md:flex hidden items-center gap-4 lg:gap-8">
+              <ul className="md:flex hidden items-center gap-4 lg:gap-12">
                 {links.map((itm) => (
-                  <li key={itm.id} className=" flex items-center">
+                  <li key={itm.id} className=" flex text-xl capitalize items-center">
                     {!itm?.isDropdown ? (
                       <NavLink
                         exact
@@ -155,15 +155,15 @@ const Navbar = () => {
                         {itm?.name}
                       </NavLink>
                     ) : (
-                      <button className="flex items-center  gap-2 h-[60px] relative group">
+                      <button className="flex items-center capitalize  gap-2 h-[60px] relative group">
                         {itm?.name}
                         {/* <FaAngleDown className="mt-2" /> */}
-                        <ul className="absolute z-[1000] top-[60px] left-0 bg-[#000000e4] w-40 text-white text-left rounded-md shadow-lg fade-in hidden group-hover:block transition-opacity duration-300">
+                        <ul className="absolute z-[1000] top-[60px] text-[15px] left-0 bg-[#000000e4] w-40 text-white text-left rounded-md shadow-lg fade-in hidden group-hover:block transition-opacity duration-300">
                           {itm?.dropdownItems.map((item) => (
                             <li key={item.id}>
                               <NavLink
                                 to={item?.path}
-                                className="block py-2 px-3 hover:bg-gray-800"
+                                className="block py-2 px-3   hover:bg-gray-800"
                               >
                                 {item?.name}
                               </NavLink>
@@ -178,7 +178,7 @@ const Navbar = () => {
               {user ? (
                 <div
                   ref={dropDownRef}
-                  className="relative mx-auto w-fit text-black"
+                  className="relative mx-auto w-fit ml-8 text-black"
                 >
                   <button onClick={() => setOn((prev) => !prev)}>
                     <p className="border w-10 h-10 rounded-full bg-[#0a193452] flex items-center justify-center">
@@ -218,7 +218,7 @@ const Navbar = () => {
                 </div>
               ) : (
                 <Link to={"/sign-in"}>
-                  <button className="bg-red-600 text-white md:px-8 px-4 py-1 md:text-md text-sm md:py-2 rounded">
+                  <button className="bg-red-600 text-white md:px-8 px-4 py-1 md:text-xl text-sm md:py-2 rounded">
                     Login
                   </button>
                 </Link>

@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
-const baseUrl = `https://sea-properties-server.vercel.app/`
+const baseUrl = `https://backend.seapropertiesltd.com.bd/`
 
 const useGetData = (route) => {
     const { data: data = [], refetch } = useQuery({
