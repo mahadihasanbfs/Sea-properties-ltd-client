@@ -413,3 +413,7 @@ a{
   padding-bottom: 50px;
 }
 
+#sld > div > button {
+  top: 291px !important;
+  margin-left: 35px;
+}
