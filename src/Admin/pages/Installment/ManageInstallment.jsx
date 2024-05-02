@@ -31,7 +31,7 @@ const ManageInstallment = () => {
     },
   });
 
-  
+
 
   console.log(allInstallment);
   // Logic to calculate pagination
@@ -111,7 +111,9 @@ const ManageInstallment = () => {
 
   if (searchQuery) {
     const filteredInstallments = allInstallment.filter((installment) =>
-      installment.email.toLowerCase().includes(searchQuery.toLowerCase())
+      installment.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      installment.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      installment.contact.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
     currentItems = filteredInstallments;
@@ -209,11 +211,10 @@ const ManageInstallment = () => {
             <button
               key={number}
               onClick={() => paginate(number)}
-              className={`mx-1 px-3 py-1 rounded ${
-                currentPage === number
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-200 text-gray-700"
-              }`}
+              className={`mx-1 px-3 py-1 rounded ${currentPage === number
+                ? "bg-blue-500 text-white"
+                : "bg-gray-200 text-gray-700"
+                }`}
             >
               {number}
             </button>
