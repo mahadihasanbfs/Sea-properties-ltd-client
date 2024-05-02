@@ -12,8 +12,8 @@ const EditView = () => {
         content: () => componentRef.current,
     });
 
-    const id = useParams().id;
-    const { data: report = [], refetch } = useQuery({
+    const { id } = useParams();
+    const { data: report = [] } = useQuery({
         queryKey: ["report"],
         queryFn: async () => {
             const res = await fetch('https://sea-properties-server.vercel.app/api/v1/admin/user-land-registration');
@@ -21,17 +21,19 @@ const EditView = () => {
             return data?.data;
         },
     });
+
     const date = new Date();
-    const editItm = report?.filter(itm => itm?._id === id)[0];
+    const editItm = report?.find(itm => itm?._id === id);
     console.log(editItm, '------====');
     return (
         <div>
             <div>
                 <div
+                    ref={componentRef}
                     style={{
                         backgroundImage: 'url(https://i.ibb.co/D4z4S2h/Rectangle-55.png)'
                     }}
-                    className="max-w-[1366px] mx-auto bg-cover bg-center h-fit p-[60px] mt-[70px] relative">
+                    className="max-w-[1366px] print-data mx-auto bg-cover bg-center h-fit print-main-box px-[60px] mt-[70px] relative">
                     {/* social links */}
                     <ul className="space-y-2 absolute">
                         <li>
@@ -59,9 +61,9 @@ const EditView = () => {
                     {/* logo */}
                     <div className='flex justify-end items-center'>
 
-                        <div className='flex flex-col items-center mr-[170px]'>
+                        <div className='flex flex-col items-center print-center-box mr-[170px]'>
                             <img className='w-[180px] h-[90px] object-contain' src={logo} alt="" />
-                            <h2 className='text-[40px] font-medium text-center'>Land <br /> <br /> Registration Form</h2>
+                            <h2 className='text-[40px] print-title font-medium text-center'>Land <br /> Registration Form</h2>
                         </div>
 
                         {/* img upload and date */}
@@ -201,7 +203,7 @@ const EditView = () => {
                             </div>
 
                             <div className='space-y-4'>
-                                <div className='w-[400px] py-[14px] px-4 border border-black flex'>
+                                <div className='w-[400px] print-box-2 py-[14px] px-4 border border-black flex'>
                                     <p>Nationality : </p>
                                     <input readOnly
                                         defaultValue={editItm?.nationality}
@@ -253,7 +255,7 @@ const EditView = () => {
                         </div>
 
                         <div className='flex justify-between'>
-                            <div className='w-[400px] py-[14px] px-4 border border-black flex'>
+                            <div className='print-box w-[400px] whitespace-nowrap py-[14px] px-4 border border-black flex'>
                                 <p>Total Share Price : </p>
                                 <input readOnly
                                     defaultValue={editItm?.totalSharePrice}
@@ -263,8 +265,8 @@ const EditView = () => {
                                 />
                             </div>
 
-                            <div className='w-[820px] py-[14px] px-4 border border-black flex'>
-                                <p>In Word : </p>
+                            <div className='print-box w-[820px] whitespace-nowrap py-[14px] px-4 border border-black flex'>
+                                <p className='whitespace-wrap'>In Word : </p>
                                 <input readOnly
                                     defaultValue={editItm?.totalSharePriceInWord}
                                     name='totalSharePriceInWord'
@@ -275,7 +277,7 @@ const EditView = () => {
                         </div>
 
                         <div className='flex justify-between'>
-                            <div className='w-[400px] py-[14px] px-4 border border-black flex'>
+                            <div className='whitespace-nowrap print-box w-[400px] py-[14px] px-4 border border-black flex'>
                                 <p>Booking Money : </p>
                                 <input readOnly
                                     defaultValue={editItm?.bookingMoney}
@@ -285,7 +287,7 @@ const EditView = () => {
                                 />
                             </div>
 
-                            <div className='w-[820px] py-[14px] px-4 border border-black flex'>
+                            <div className='w-[820px] whitespace-nowrap print-box py-[14px] px-4 border border-black flex'>
                                 <p>In Word : </p>
                                 <input readOnly
                                     defaultValue={editItm?.bookingMoneyInWord}
@@ -297,7 +299,7 @@ const EditView = () => {
                         </div>
 
                         <div className='flex justify-between'>
-                            <div className='w-[400px] py-[14px] px-4 border border-black flex'>
+                            <div className='w-[400px] whitespace-nowrap print-box py-[14px] px-4 border border-black flex'>
                                 <p>Due Amount : </p>
                                 <input readOnly
                                     defaultValue={editItm?.dueAmount}
@@ -307,7 +309,7 @@ const EditView = () => {
                                 />
                             </div>
 
-                            <div className='w-[820px] py-[14px] px-4 border border-black flex'>
+                            <div className='w-[820px] whitespace-nowrap print-box pt-[14px] pb-[7px] px-4 border border-black flex'>
                                 <p>In Word : </p>
                                 <input readOnly
                                     defaultValue={editItm?.dueAmountInWord}
@@ -319,7 +321,7 @@ const EditView = () => {
                         </div>
 
                         {/* signature input fields */}
-                        <div className='flex justify-center gap-[590px] mt-[110px!important]'>
+                        <div className='flex justify-between  mt-[50px!important]'>
                             < div className='flex flex-col items-center'>
                                 <input readOnly defaultValue={editItm?.authorizedSignature} name='authorizedSignature' type="text" className='border-b text-center focus:outline-none bg-transparent border-black px-2' />
                                 <p>Authorized Signature</p>
@@ -331,7 +333,7 @@ const EditView = () => {
                         </div>
 
 
-                        <div className='w-full h-[118px] bg-cover bg-center bg-no-repeat bg-[#A20E27] mt-[40px!important] flex items-center pl-4' style={{ backgroundImage: "url(https://i.ibb.co/hsytgwT/Rectangle-58-1.png)" }}>
+                        <div className='w-full print-bar h-[118px] bg-cover bg-center bg-no-repeat bg-[#A20E27] mt-[40px!important] flex items-center pl-4' style={{ backgroundImage: "url(https://i.ibb.co/hsytgwT/Rectangle-58-1.png)" }}>
                         </div>
                     </div>
 
