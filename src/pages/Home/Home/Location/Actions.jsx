@@ -12,10 +12,10 @@ const Actions = ({ onSearch, onStatus, onType }) => {
                     <IoSearchOutline />
                 </div>
 
-                <div className="flex items-center gap-2 border px-3 py-1 rounded-full border-gray-500 md:w-auto w-full ">
+                <div className=" ">
                     <select
                         onChange={(e) => onStatus(e.target.value)}
-                        className="outline-none w-full pb-2" name="projectStatus">
+                        className="outline-none  pb-2 flex items-center gap-2 border px-3 py-2 rounded-full border-gray-500 md:w-auto w-full" name="projectStatus">
                         <option value=''>Project Status</option>
                         <option value="ongoing">Ongoing</option>
                         <option value="upcoming">Upcoming</option>
@@ -23,10 +23,10 @@ const Actions = ({ onSearch, onStatus, onType }) => {
                     </select>
                 </div>
 
-                <div className="flex items-center gap-2 border px-3 py-1 rounded-full border-gray-500 md:w-auto w-full ">
+                <div >
                     <select
                         onChange={(e) => onType(e.target.value)}
-                        className="outline-none w-full pb-2" name="projectStatus">
+                        className="outline-none  pb-2 flex items-center gap-2 border px-3 py-2 rounded-full border-gray-500 md:w-auto w-full " name="projectStatus">
                         <option value=''>Project Type</option>
                         <option value="residential">Residential</option>
                         <option value="commercial">Commercial</option>
