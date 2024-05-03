@@ -12,7 +12,6 @@ const Navbar = () => {
   const { zIndex, setZIndex } = useContext(ContextApi)
   const [openDropdownId, setOpenDropdownId] = useState(null);
   const role = localStorage.getItem("role");
-  console.log(role);
   const { logOut, user } = useAuth();
   console.log(user);
   const links = [
@@ -296,7 +295,7 @@ const Navbar = () => {
                     </div>
                   ) : (
                     <NavLink
-                      to="/"
+                      to={itm?.path}
                       onClick={() => setOpen(!open)}
                       className="block py-3 px-3 hover:bg-gray-800 hover:text-white duration-150 border-b border-[#ffffff62]"
                     >

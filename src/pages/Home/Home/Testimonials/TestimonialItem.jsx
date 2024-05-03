@@ -2,8 +2,8 @@
 
 const TestimonialItem = ({ itm }) => {
     return (
-        <div className="m-3 border">
-            <div className="ring-1 ring-gray-400 md:h-[240px] h-[240px] rounded p-6 flex-col flex justify-between">
+        <div className="m-3 ">
+            <div className="ring-1 ring-gray-400 md:h-[240px] h-[400px] rounded p-6 flex-col flex justify-between">
                 <p className=" text-justify   ">
                     {itm?.description.split(" ").slice(0, 50).join(" ")}
                 </p>

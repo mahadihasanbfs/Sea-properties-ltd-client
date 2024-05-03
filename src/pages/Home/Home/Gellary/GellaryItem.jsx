@@ -65,8 +65,8 @@ const GellaryItem = ({ itm, showModal, setShowModal, close, handleModalClose, di
                         width: windowWidth < 1024 ? `${divWidth}px` : '500px'
                     }}
                 >
-                    <h3 className='text-[18px] text-[#231f204d] font-bold capitalize fade-in'>{itm?.name}</h3>
-                    <p className='text-black mt-5 fade-in'>{itm?.info}</p>
+                    <h3 className='text-[18px] text-[#b20a0a] font-bold capitalize fade-in'>{itm?.name}</h3>
+                    <p className='text-dark mt-5 fade-in'>{itm?.info}</p>
 
                     <div onClick={handleModalClose} className='text-gray-200 absolute top-4 right-4'>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
