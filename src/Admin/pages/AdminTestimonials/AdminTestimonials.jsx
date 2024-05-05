@@ -16,7 +16,7 @@ const ManageTestimonial = () => {
     const { data: testimonialData = [], refetch } = useQuery({
         queryKey: ["adminTestimonialAdd"],
         queryFn: async () => {
-            const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/testimonial`);
+            const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/testimonial`);
             const data = await res.json();
             return data;
         },
@@ -24,7 +24,7 @@ const ManageTestimonial = () => {
 
     const handleDelete = (id) => {
         fetch(
-            `https://sea-properties-server.vercel.app/api/v1/admin/testimonial?testimonialId=${id}`,
+            `https://backend.seapropertiesltd.com.bd/api/v1/admin/testimonial?testimonialId=${id}`,
             {
                 method: "DELETE",
                 headers: {
@@ -49,7 +49,7 @@ const ManageTestimonial = () => {
                 <AdminTitle size={"20px"} title="Manage Testimonial" />
 
                 <Link to={"/admin/add-testimonial"}>
-                    <div className="dashboard_form_btn">+Add Testimonial</div>
+                    <div className="dashboard_form_btn">+ Add Testimonial</div>
                 </Link>
             </div>
 
@@ -76,7 +76,7 @@ const ManageTestimonial = () => {
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">{item?.name}</td>
                                 <td className="px-6 py-4 whitespace-nowrap">{item?.position}</td>
-                                <td className="px-6 py-4 whitespace-wrap w-[300px]">{item?.description}</td>
+                                <td className="px-6 py-4 whitespace-wrap w-[300px]">{item?.description.slice(0, 100)}...</td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <ul className="flex items-center gap-2">
                                         <li>
@@ -92,89 +92,7 @@ const ManageTestimonial = () => {
                                     </ul>
                                 </td>
                                 {/* modal */}
-                                <div>
-                                    <div
-                                        onClick={() => setOpenModal(false)}
-                                        className={`fixed z-[100] flex items-center justify-center ${openModal?._id == item._id
-                                            ? "visible opacity-100"
-                                            : "invisible opacity-0"
-                                            } inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}
-                                    >
-                                        <div
-                                            onClick={(e_) => e_.stopPropagation()}
-                                            className={`text- absolute md:w-[500px] rounded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${openModal?.id == item.id
-                                                ? "scale-1 opacity-1 duration-300"
-                                                : "scale-0 opacity-0 duration-150"
-                                                } z-[100]`}
-                                        >
-                                            <div className="">
-                                                <h2 className="text-xl font-bold mb-4">Edit </h2>
-                                                <form onSubmit={``}>
-                                                    <div className="mb-4">
-                                                        <label
-                                                            className="block text-gray-700 text-sm font-bold mb-2"
-                                                            htmlFor="img"
-                                                        >
-                                                            img:
-                                                        </label>
-                                                        <input
-                                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                                            id="img"
-                                                            type="file"
-                                                            name="img"
-                                                        />
-                                                    </div>
-                                                    <div className="mb-4">
-                                                        <label
-                                                            className="block text-gray-700 text-sm font-bold mb-2"
-                                                            htmlFor="totalAmount"
-                                                        >
-                                                            Total Amount:
-                                                        </label>
-                                                        <input
-                                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                                            id="name"
-                                                            type="text"
-                                                            name="name"
-                                                            defaultValue={item.name}
-                                                        />
-                                                    </div>
-                                                    <div className="mb-4">
-                                                        <label
-                                                            className="block text-gray-700 text-sm font-bold mb-2"
-                                                            htmlFor="due"
-                                                        >
-                                                            Due:
-                                                        </label>
 
-                                                        <ReactQuill
-                                                            className="rounded-lg w-full border border-[#336cb6] h-[200px] overflow-hidden text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
-                                                            theme="snow"
-                                                            value={myValue}
-                                                            onChange={setMyValue}
-                                                        />
-                                                    </div>
-                                                </form>
-                                                <div className="flex items-center justify-between">
-                                                    <button
-                                                        onClick={() => setOpenModal(false)}
-                                                        className="bg-[red] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                                        type="button"
-                                                    >
-                                                        Close
-                                                    </button>
-                                                    <button
-                                                        onClick={() => setOpenModal(false)}
-                                                        className="bg-[blue] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                                        type="submit"
-                                                    >
-                                                        Update
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 {/* end modal */}
                             </tr>
                         ))}

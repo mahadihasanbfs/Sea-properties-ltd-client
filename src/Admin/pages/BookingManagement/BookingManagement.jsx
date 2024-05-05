@@ -22,7 +22,7 @@ const BookingManagement = () => {
     const { data: data = [], refetch, isLoading } = useQuery({
         queryKey: ["bookingData"],
         queryFn: async () => {
-            const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/booking/bookings`);
+            const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/booking/bookings`);
             const data = await res.json();
             return data;
         },
@@ -33,7 +33,7 @@ const BookingManagement = () => {
 
     // delete data using custom hook
     const handleDelete = (id) => {
-        fetch(`http://localhost:5001/api/v1/admin/booking/delete?booking_id=${id}`, {
+        fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/booking/delete?booking_id=${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

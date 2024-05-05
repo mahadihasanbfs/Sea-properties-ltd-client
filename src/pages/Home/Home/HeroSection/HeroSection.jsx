@@ -15,7 +15,7 @@ const HeroSection = () => {
     const { data: data = [], isLoading } = useQuery({
         queryKey: ["slData"],
         queryFn: async () => {
-            const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/banner/banners`);
+            const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/banner/banners`);
             const data = await res.json();
             return data;
         },

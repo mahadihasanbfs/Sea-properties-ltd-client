@@ -19,7 +19,7 @@ const Banner = () => {
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
-        fetch('https://sea-properties-server.vercel.app/api/v1/admin/project/projects')
+        fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/project/projects')
             .then(res => res.json())
             .then(data => setData(data?.data))
     }, [])
@@ -89,7 +89,22 @@ const Banner = () => {
                 <div className="slider-container mt-12 px-6 mr-5 w-[98%] mx-auto">
 
                     <Swiper slidesPerView={3}
-                        spaceBetween={30} autoplay={true} navigation={false} modules={[Navigation, Autoplay]} className="mySwiper">
+
+                        spaceBetween={30} autoplay={true} navigation={false} modules={[Navigation, Autoplay]} className="mySwiper"
+                        breakpoints={{
+                            // When window width is <= 640px (small devices), set slidesPerView to 1
+                            320: {
+                                slidesPerView: 1,
+                            },
+                            // When window width is <= 768px (medium devices), set slidesPerView to 2
+                            768: {
+                                slidesPerView: 2,
+                            },
+                            // When window width is <= 1024px (large devices), set slidesPerView to 3
+                            1024: {
+                                slidesPerView: 3,
+                            },
+                        }}>
                         {
                             searchData?.map(itm => <SwiperSlide key={itm?._id}> <BannerCart key={itm?._id} itm={itm} />  </SwiperSlide>)
                         }

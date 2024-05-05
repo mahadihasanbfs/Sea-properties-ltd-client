@@ -19,7 +19,7 @@ const BannerManagement = () => {
     queryKey: ["users"],
     queryFn: async () => {
       const res = await fetch(
-        `https://sea-properties-server.vercel.app/api/v1/admin/banner/banners`
+        `https://backend.seapropertiesltd.com.bd/api/v1/admin/banner/banners`
       );
       const data = await res.json();
       return data;
@@ -53,7 +53,7 @@ const BannerManagement = () => {
 
     // Make the PUT request
     fetch(
-      `https://sea-properties-server.vercel.app/api/v1/admin/banner/update?banner_id=${openModal?._id}`,
+      `https://backend.seapropertiesltd.com.bd/api/v1/admin/banner/update?banner_id=${openModal?._id}`,
       {
         method: "PUT",
         headers: {
@@ -78,7 +78,7 @@ const BannerManagement = () => {
   // delete data using custom hook
   const handleDelete = (id) => {
     fetch(
-      `https://sea-properties-server.vercel.app/api/v1/admin/banner/delete?banner_id=${id}`,
+      `https://backend.seapropertiesltd.com.bd/api/v1/admin/banner/delete?banner_id=${id}`,
       {
         method: "DELETE",
         headers: {
@@ -151,19 +151,17 @@ const BannerManagement = () => {
                 <div>
                   <div
                     onClick={() => setOpenModal(false)}
-                    className={`fixed z-[100] flex items-center justify-center ${
-                      openModal?._id == item._id
-                        ? "visible opacity-100"
-                        : "invisible opacity-0"
-                    } inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}
+                    className={`fixed z-[100] flex items-center justify-center ${openModal?._id == item._id
+                      ? "visible opacity-100"
+                      : "invisible opacity-0"
+                      } inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}
                   >
                     <div
                       onClick={(e_) => e_.stopPropagation()}
-                      className={`text- absolute md:w-[500px] rounded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${
-                        openModal?.id == item.id
-                          ? "scale-1 opacity-1 duration-300"
-                          : "scale-0 opacity-0 duration-150"
-                      } z-[100]`}
+                      className={`text- absolute md:w-[500px] rounded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${openModal?.id == item.id
+                        ? "scale-1 opacity-1 duration-300"
+                        : "scale-0 opacity-0 duration-150"
+                        } z-[100]`}
                     >
                       <div className="">
                         <h2 className="text-xl font-bold mb-4">Edit </h2>

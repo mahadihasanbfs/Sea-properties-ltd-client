@@ -34,7 +34,7 @@ const AddBanner = () => {
       // meta_description,
     };
 
-    fetch("https://sea-properties-server.vercel.app/api/v1/admin/banner/add", {
+    fetch("https://backend.seapropertiesltd.com.bd/api/v1/admin/banner/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

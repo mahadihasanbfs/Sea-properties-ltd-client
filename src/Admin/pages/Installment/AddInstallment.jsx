@@ -58,7 +58,7 @@ const AddInstallment = () => {
     console.log(data);
 
     fetch(
-      "https://sea-properties-server.vercel.app/api/v1/admin/Installment/add",
+      "https://backend.seapropertiesltd.com.bd/api/v1/admin/Installment/add",
       {
         method: "POST",
         headers: {

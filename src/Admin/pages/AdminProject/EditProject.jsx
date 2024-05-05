@@ -51,7 +51,7 @@ const EditProject = () => {
   //get project
   useEffect(() => {
     fetch(
-      `https://sea-properties-server.vercel.app/api/v1/admin/project/get-project?project_id=${id}`
+      `https://backend.seapropertiesltd.com.bd/api/v1/admin/project/get-project?project_id=${id}`
     )
       .then((response) => response.json())
       .then((data) => setAllProjects(data?.data));
@@ -179,7 +179,7 @@ const EditProject = () => {
     };
 
     fetch(
-      `https://sea-properties-server.vercel.app/api/v1/admin/project/update?project_id=${id}`,
+      `https://backend.seapropertiesltd.com.bd/api/v1/admin/project/update?project_id=${id}`,
       {
         method: "PUT",
         headers: {

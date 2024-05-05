@@ -8,7 +8,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 // import required modules
-import { Pagination, Navigation } from 'swiper/modules';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 
 const DemoItem = () => {
 
@@ -16,7 +16,7 @@ const DemoItem = () => {
     const { data: sData = [], isLoading } = useQuery({
         queryKey: ["slData"],
         queryFn: async () => {
-            const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/banner/banners`);
+            const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/banner/banners`);
             const data = await res.json();
             return data;
         },
@@ -32,24 +32,28 @@ const DemoItem = () => {
             {
 
                 <Swiper
-                    pagination={{
-                        type: 'fraction',
-                    }}
+                    // pagination={{
+                    //     type: 'fraction',
+                    // }}
                     navigation={true}
-                    modules={[Pagination, Navigation]}
+
+                    autoplay={{
+                        delay: 2500,
+                    }}
+                    modules={[Pagination, Navigation, Autoplay]}
                     className="mySwiper"
                 >
                     {sliderData?.map(itm => <SwiperSlide key={itm?._id}>
-                        <div className="px-[5%]">
+                        <a href={itm?.url} className="px-[5%]">
                             <div
                                 style={{ backgroundImage: `url(${itm?.photo})` }}
                                 className="bg-[#f5f5f5] h-[320px] rounded-lg" />
-                        </div>
+                        </a>
 
                     </SwiperSlide>)}
 
                 </Swiper>}
-        </div>
+        </div >
     );
 };
 

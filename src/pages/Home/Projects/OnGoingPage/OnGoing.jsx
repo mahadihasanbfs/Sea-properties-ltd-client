@@ -18,7 +18,7 @@ const OnGoingProject = () => {
     const { data: responseData, isLoading } = useQuery({
         queryKey: ["PData"],
         queryFn: async () => {
-            const res = await fetch(`https://sea-properties-server.vercel.app/api/v1/admin/project/projects`);
+            const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/project/projects`);
             const data = await res.json();
             return data;
         },

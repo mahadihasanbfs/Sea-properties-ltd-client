@@ -17,8 +17,9 @@ import NewsEvent from "../pages/Home/News_Event/NewsEvent";
 import NewsEventReadMore from "../pages/Home/News_Event/NewsEventReadMore";
 import ProjectDetails from "../pages/Home/ProjectDetails/ProjectDetails";
 import OnGoing from "../pages/Home/Projects/OnGoingPage/OnGoing";
-// import PrivacyPolicy from './PrivacyPolicy'
-// import TermsCondition from "./TermsCondition";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
+import TermsCondition from "../pages/TermsCondition";
+
 
 const commonPath = [
   {
@@ -66,7 +67,7 @@ const commonPath = [
     loader: async ({ params }) => {
       const id = params.id;
       const response = await fetch(
-        `https://sea-properties-server.vercel.app/api/v1/admin/get-news-events-by-id?id=${id}`
+        `https://backend.seapropertiesltd.com.bd/api/v1/admin/get-news-events-by-id?id=${id}`
       );
       const data = await response.json();
       return data.data;
@@ -82,7 +83,7 @@ const commonPath = [
     element: <BlogDetails />,
     loader: ({ params }) => {
       return fetch(
-        `https://sea-properties-server.vercel.app/api/v1/admin/blog/get-blog?blog_id=${params?.id}`
+        `https://backend.seapropertiesltd.com.bd/api/v1/admin/blog/get-blog?blog_id=${params?.id}`
       )
         .then((res) => {
           if (!res.ok) {
@@ -121,17 +122,18 @@ const commonPath = [
     element: <SignIn />,
   },
   {
-    path: "/explore",
+    path: "why-sea-properties",
     element: <Explore />,
   },
-  // {
-  //     path: 'privacy-policy',
-  //     element: <PrivacyPolicy />
-  // },
-  // {
-  //     path: 'terms-condition',
-  //     element: <TermsCondition/>
-  // }
+
+  {
+    path: 'privacy-policy',
+    element: <PrivacyPolicy />
+  },
+  {
+    path: 'terms-condition',
+    element: <TermsCondition />
+  },
   {
     path: "*",
     element: <Home />,

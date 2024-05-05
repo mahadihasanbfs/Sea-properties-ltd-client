@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { createContext } from "react";
-
+import MOMOTAZBEGUM from '../assets/WhatsApp Image 2024-05-02 at 3.53.44 PM.jpeg';
+import SOLAIMAN from '../assets/WhatsApp Image 2024-05-02 at 3.50.40 PM.jpeg';
+import ANISUZZAMAN from '../assets/WhatsApp Image 2024-05-02 at 3.52.41 PM.jpeg';
 export const ContextApi = createContext(null);
 
 const ContextProvider = ({ children }) => {
@@ -16,9 +18,9 @@ const ContextProvider = ({ children }) => {
     // About us > board_of_directors images.
     const AboutUs_BoardOfDirectorImg = {
         img1: 'https://i.ibb.co/tZBLv7H/bfdd3c9bd06566b8c597396e70f5ed37.jpg',
-        img2: 'https://i.ibb.co/ZB6D06V/4114245ce484d8e390e7fdd04ca882b8.jpg',
-        img3: 'https://i.ibb.co/PYzV7PJ/75ab26b917cabe4f1c1b472b0ca3e229.jpg',
-        img4: 'https://i.ibb.co/qsm9mkm/b1014863ecacb5a7c008a7510b802bf4.jpg',
+        img2: SOLAIMAN,
+        img3: ANISUZZAMAN,
+        img4: MOMOTAZBEGUM,
         img5: 'https://i.ibb.co/LCwmxMg/4f41a86246da7cf2be71a5290e851f8a.jpg'
     }
 
