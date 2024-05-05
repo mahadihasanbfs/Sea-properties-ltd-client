@@ -362,20 +362,20 @@ const AddProject = () => {
                                 placeholder="Apartment Size" />
                         </div>
                         <div className="mt-3 w-full">
-                            <label   >Bedroom</label><br />
+                            <label   >No of Parking</label><br />
                             <input
                                 name="bedroom"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
-                                placeholder="Enter total bedroom" />
+                                placeholder="Enter data" />
                         </div>
                         <div className="mt-3 w-full">
-                            <label   >Bathroom</label><br />
-                            <input
+                            <label   >Flat Details</label><br />
+                            <textarea
                                 name="bathroom"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
-                                placeholder="Enter total bathroom " />
+                                placeholder="Enter data " />
                         </div>
 
                         <div className="mt-3 w-full">

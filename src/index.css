@@ -417,7 +417,9 @@ a{
   .print-bar{
     height : 50px
   }
-  
+  .print-data-show{
+    padding: 2px 5px;
+  }
   .print-main-box{
     padding: 20px;
     margin: 0;

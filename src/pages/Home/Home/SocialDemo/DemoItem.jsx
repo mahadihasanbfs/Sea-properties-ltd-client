@@ -43,11 +43,11 @@ const DemoItem = () => {
                     modules={[Pagination, Navigation, Autoplay]}
                     className="mySwiper"
                 >
-                    {sliderData?.map(itm => <SwiperSlide key={itm?._id}>
+                    {sliderData?.map(itm => <SwiperSlide className="" key={itm?._id}>
                         <a href={itm?.url} className="px-[5%]">
                             <div
                                 style={{ backgroundImage: `url(${itm?.photo})` }}
-                                className="bg-[#f5f5f5] h-[320px] rounded-lg" />
+                                className="bg-[#f5f5f5] object-cover bg-cover md:h-[320px] h-[200px] rounded-lg" />
                         </a>
 
                     </SwiperSlide>)}
