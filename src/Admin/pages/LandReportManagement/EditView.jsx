@@ -60,10 +60,9 @@ const EditView = () => {
 
                     {/* logo */}
                     <div className='flex justify-end items-center'>
-
-                        <div className='flex flex-col items-center print-center-box mr-[170px]'>
-                            <img className='w-[180px] h-[90px] object-contain' src={logo} alt="" />
-                            <h2 className='text-[40px] print-title font-medium text-center'>Land <br /> Registration Form</h2>
+                        <div className='flex flex-col items-center print-center-box  mr-[170px]'>
+                            <img className='w-[180px] print-logo h-[90px] object-contain' src={logo} alt="" />
+                            <h2 className='text-[40px] print-title print-title font-medium text-center'>Land <br /> Registration Form</h2>
                         </div>
 
                         {/* img upload and date */}
@@ -74,11 +73,11 @@ const EditView = () => {
                                 name='test'
                                 className='hidden'
                             />
-                            <div className='w-[188px] h-[208px] border-[1px] border-[#A20E27]'>
+                            <div className='w-[188px] print-photo h-[208px] border-[1px] border-[#A20E27]'>
 
                                 {editItm?.img &&
                                     <div className='relative w-full h-full mx-auto'>
-                                        <img src={editItm?.img} alt="Uploaded" className='w-full h-full object-cover object-center' />
+                                        <img src={editItm?.img} alt="Uploaded" className='w-full  h-full object-cover object-center' />
                                         <div className='text-red-700 absolute left-full bottom-full hover:cursor-pointer'>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -88,13 +87,13 @@ const EditView = () => {
                                 }
                             </div>
 
-                            <div className='w-[294px] h-[40px] border border-[#A20E27] mt-4 relative flex items-center'>
+                            <div className='w-[294px] print-date-box h-[40px] border border-[#A20E27] mt-4 relative flex items-center'>
                                 <img className='absolute top-0 left-1/2 -translate-x-1/2' src="https://i.ibb.co/bWL9pwN/Group-384.png" alt="" />
-                                <p className='absolute left-[28px] text-xl tracking-[10px]'>{date.getDate().toString()}</p>
-                                <p className='absolute  left-[97px] tracking-[10px] text-xl'>{date.getMonth().toString().padStart(2, "0")}</p>
-                                <p className='absolute  left-[165px] tracking-[18px] text-xl'>{date.getFullYear()}</p>
+                                <p className='absolute print-date-text print-tx-1 left-[28px] text-xl tracking-[10px]'>{date.getDate().toString()}</p>
+                                <p className='absolute print-date-text print-tx-2  left-[97px] tracking-[10px] text-xl'>{date.getMonth().toString().padStart(2, "0")}</p>
+                                <p className='absolute print-date-text print-tx-3 left-[165px] tracking-[18px] text-xl'>{date.getFullYear()}</p>
                             </div>
-                            <p className='text-[14px] tracking-[10px] mr-[20px] mt-2'>D D M M Y Y Y Y</p>
+                            <p className='text-[14px] tracking-[10px] print-date-label flex items-center mr-[20px] mt-2'>D D M M Y Y Y Y</p>
                         </div>
                     </div>
 
@@ -111,18 +110,18 @@ const EditView = () => {
                             />
                         </div>
 
-                        <div className='w-full h-[55px] bg-cover bg-[#A20E27] mt-10 flex items-center pl-4' style={{ backgroundImage: "url(https://i.ibb.co/1LdyZhT/Rectangle-58.png)" }}>
-                            <p className='text-[20px] text-white'>Client Information</p>
+                        <div className='w-full print-bar h-[55px] bg-cover bg-[#A20E27] mt-10 flex items-center pl-4' style={{ backgroundImage: "url(https://i.ibb.co/1LdyZhT/Rectangle-58.png)" }}>
+                            <p className='text-[20px] text-[white]'>Client Information</p>
                         </div>
 
                         {/* client information input field */}
-                        <div className='w-full py-[14px] px-4 border border-black flex'>
+                        <div className='w-full whitespace-nowrap print-box py-[14px] px-4 border border-black flex'>
                             <p>Applicant’s Name in English : </p>
                             <input readOnly
                                 defaultValue={editItm?.englishName}
                                 name='englishName'
                                 type="text"
-                                className='w-[800px] focus:outline-none pl-2 cursor-default bg-transparent'
+                                className='w-full focus:outline-none pl-2 cursor-default bg-transparent'
                             />
                         </div>
                         <div className='w-full py-[14px] px-4 border border-black flex'>
@@ -225,7 +224,7 @@ const EditView = () => {
 
                         {/* project details input fields*/}
                         <div className='w-full h-[55px] bg-cover bg-[#A20E27] mt-[40px!important] flex items-center pl-4' style={{ backgroundImage: "url(https://i.ibb.co/1LdyZhT/Rectangle-58.png)" }}>
-                            <p className='text-[20px] text-white'>Project Details</p>
+                            <p className='text-[20px] text-[white]'>Project Details</p>
                         </div>
 
                         <div className='w-full py-[14px] px-4 border border-black flex'>
@@ -251,7 +250,7 @@ const EditView = () => {
 
                         {/* payment information input fields */}
                         <div className='w-full h-[55px] bg-cover bg-[#A20E27] mt-[40px!important] flex items-center pl-4' style={{ backgroundImage: "url(https://i.ibb.co/1LdyZhT/Rectangle-58.png)" }}>
-                            <p className='text-[20px] text-white'>Payment Information</p>
+                            <p className='text-[20px] text-[white]'>Payment Information</p>
                         </div>
 
                         <div className='flex justify-between'>

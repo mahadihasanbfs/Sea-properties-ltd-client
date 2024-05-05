@@ -15,21 +15,15 @@ const Contact = () => {
   const contactInfo = {
     title: "Contact Us",
     companyName: "SEA Properties Limited",
-    address: [
-      //every address item create new address line.
-      `
-            100 North kalshi,
-            Gate No - 01,
-            Mirpur DOHS, Dhaka, Bangladesh`,
-    ],
+
     phone: [
       //every phone item create new line.
-      "Cell: 01894-440111",
+      "Cell: +8801894-440111",
       "Email: info@seapropertiesltd.com.bd",
     ],
   };
 
-  const { title, companyName, address, phone } = contactInfo;
+  const { title, companyName, phone } = contactInfo;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -79,22 +73,32 @@ const Contact = () => {
       {/* Contact Info */}
       <div className="grid md:grid-cols-2">
         <figure>
-          <img src={contactImg} className="w-full h-[350px] object-cover" />
+          <img src={contactImg} className="w-full h-[390px] object-cover" />
         </figure>
         <div className="space-y-6 pl-6 md:pl-[50px] lg:pl-[100px] my-auto py-6 md:py-0">
           <SecondaryTitle text={title} position="text-left" />
-          <p>{companyName}</p>
+          <p className="text-[24px]">{companyName}</p>
 
           <div>
-            <h1> Our Address:</h1>
-            {address?.map((item, index) => (
-              <p key={index}>{item}</p>
-            ))}
+            <h1 className="md:text-[24px] text-[20px]"> Our Address:</h1>
+
+            <p className="md:text-[24px] md:block hidden text-[20px]" >
+              100 North Kalshi,
+              Gate No - 01,
+              Mirpur DOHS <br /> Dhaka, Bangladesh
+            </p>
+
+            <p className="md:text-[24px] md:hidden block text-[20px]" >
+              100 North Kalshi,
+              Gate No - 01,
+              Mirpur DOHS,  Dhaka, Bangladesh
+            </p>
+
           </div>
 
           <div>
             {phone?.map((item, index) => (
-              <p key={index}>{item}</p>
+              <p className="md:text-[24px] text-[20px]" key={index}>{item}</p>
             ))}
           </div>
         </div>

@@ -390,8 +390,6 @@ a{
 }
 
 
-
-
 @media print {
 
   html,body{
@@ -406,7 +404,9 @@ a{
     text-align: center;
    }
    .print-center-box{
-    margin: 0px 0% 0px 20%; ;
+   /* margin-left: 30px!important; */
+    transform: translateX(100px);
+  
    }
   .print-box{
     width : 400px
@@ -429,4 +429,44 @@ a{
   }
   .print-data {
     display: block !important;
-  }}
+  }
+.print-photo {
+    width: 100px!important;
+  height: 110px!important;
+}
+.print-logo{
+  width: 100px!important;
+}
+.print-title{
+  font-size: 18px!important;
+  line-height: 18px!important;
+}
+.print-date-box{
+  width : 230px!important;
+  height : 30px!important;
+}
+.print-date-text{
+  font-size: 12px!important;
+}
+.print-tx-1{
+  left:2px!important;
+}
+.print-tx-2{
+  left: 68px!important;
+}
+.print-tx-3{
+   left: 140px!important;
+}
+.print-date-label{
+  word-spacing: -4px;
+  margin-right: 0px!important;
+}
+.print-bar{
+  height : 34px!important;
+}
+.print-box{
+  padding: 0px 20px!important;
+  white-space: nowrap;
+  width: 100%!important;
+}
+}

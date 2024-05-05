@@ -547,7 +547,7 @@ const AddProject = () => {
                         placeholder="Enter map link" />
                 </div>
                 <br /> <br />
-                {!loading ? (
+                {loading ? (
                     <button
                         disabled
                         type="submit"

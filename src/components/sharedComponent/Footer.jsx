@@ -19,7 +19,7 @@ const Footer = () => {
                 >
                     <div>
                         <h2
-                            className="text-gray-900 font-bold text-[24px] mb-4">Contact
+                            className="text-gray-900 font-bold text-[24px] md:mt-0 mt-6 mb-4">Contact
                         </h2>
                         <div
                             className="flex flex-col gap-2">
@@ -28,7 +28,7 @@ const Footer = () => {
                                 <a
                                     href="tel:01894-440111"
                                     className='text-[#825DC8]'>
-                                    &nbsp;01894-440111
+                                    &nbsp;+8801894-440111
                                 </a>
                             </div>
                             <div
