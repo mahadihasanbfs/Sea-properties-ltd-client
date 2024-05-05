@@ -3,10 +3,9 @@
 import { Link } from "react-router-dom";
 
 const BannerCart = ({ itm }) => {
-    const t = 'hello world this inaksnflasdhp jnkfasjkdfhjkasd jdsahkjfsadh jkdshafasjkj  jnkl kj jhjkhjkh jhjhhjhjkh kljhjk hjkhklj jk hjhjknkl jkh  hfdgdfsdfgfd ;jdfksjg fdslkjdsf kljmfdgsd lkjdfs '
-    return (
+     return (
         <Link to={`project-details/${itm?._id}`}>
-            <div className="px-2 xl:mx-[10px] border border-[#8080802f] p-2 duration-200 hover:shadow-xl rounded">
+            <div className="px-2 xl:mx-[10px]  p-2 duration-200  rounded">
                 <img
                     src={itm?.banner_img}
                     className="object-cover md:h-[400px] h-[300px] rounded w-full" alt="" />
