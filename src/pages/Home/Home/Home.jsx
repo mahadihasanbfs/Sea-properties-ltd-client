@@ -14,7 +14,7 @@ const Home = () => {
         <div className="pb-20">
             <Helmet>
                 <title>
-                    Sea Properties ltd | Your Dream Partner
+                    SEA Properties Ltd. | Your Dream Partner
                 </title>
             </Helmet>
             <HeroSection />

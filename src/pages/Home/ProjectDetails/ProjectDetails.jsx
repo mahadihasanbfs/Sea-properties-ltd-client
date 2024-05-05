@@ -97,8 +97,7 @@ const ProjectDetails = () => {
         return srcValue;
     }
 
-
-
+ 
     return (
         <div className={`overflow-hidden`}>
             <SecondaryBanner
@@ -131,7 +130,8 @@ const ProjectDetails = () => {
                                     <tbody className="bg-white">
                                         <tr className="text-gray-700">
                                             <td className="px-4 flex gap-2 items-center py-3 text-ms font-semibold "><FaLocationDot className="text-xl" /> Address</td>
-                                            <td className="px-4 py-3 text-sm  border-l">{details?.info?.address ? details?.info?.address : 'No Address'}</td>
+
+                                            <td className="px-4 py-3 w-[350px] text-sm  border-l">{details?.info?.address ? details?.info?.address : 'No Address'}</td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
                                             <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><FaPencilRuler className="text-lg" /> Land Area</td>
@@ -157,19 +157,19 @@ const ProjectDetails = () => {
                                             </td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><FaBed className="text-lg" /> Bedroom</td>
+                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><FaBed className="text-lg" /> No of Parking</td>
                                             <td className="px-4 py-3 text-sm  border-l">{details?.info?.bedroom ? details?.info?.bedroom : '0'}</td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><FaBath className="text-lg" /> Bathroom</td>
+                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><FaBath className="text-lg" /> Flat Details</td>
                                             <td className="px-4 py-3 text-sm  border-l">
-                                                {details?.info?.bedroom ? new Date().toString(details?.info?.bedroom) : '0'}
+                                                {details?.info?.bathroom ? details?.info?.bathroom : '0'}
                                             </td>
                                         </tr>
-                                        <tr className="text-gray-700 border-t border-[#c9c9c9]">
+                                        {/* <tr className="text-gray-700 border-t border-[#c9c9c9]">
                                             <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><MdDateRange className="text-lg" /> Launch Date</td>
                                             <td className="px-4 py-3 text-sm  border-l">{details?.info?.launch_date ? new Date().toString(details?.info?.launch_date) : 'N/A'}</td>
-                                        </tr>
+                                        </tr> */}
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
                                             <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><BiSolidCollection className="text-lg" /> Collection</td>
                                             <td className="px-4 py-3 text-sm  border-l">{details?.info?.collections ? details?.info?.collections : 'No Collections'}</td>
