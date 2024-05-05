@@ -106,7 +106,9 @@ const Banner = () => {
                             },
                         }}>
                         {
-                            searchData?.map(itm => <SwiperSlide key={itm?._id}> <BannerCart key={itm?._id} itm={itm} />  </SwiperSlide>)
+                            searchData?.map(itm => <SwiperSlide className="pb-12" key={itm?._id}>
+                                <BannerCart key={itm?._id} itm={itm} />
+                            </SwiperSlide>)
                         }
                     </Swiper>
                 </div>

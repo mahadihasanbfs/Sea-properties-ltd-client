@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import SecondaryBanner from "../../../components/common/SecondaryBanner";
 import SecondaryTitle from "../../../components/common/SecondaryTitle";
@@ -8,7 +9,7 @@ import Slider from "../../../components/common/Slider";
 import { FaBath, FaBed, FaBuilding, FaLocationDot } from "react-icons/fa6";
 import { FaPencilRuler } from "react-icons/fa";
 import { BsGrid3X3GapFill } from "react-icons/bs";
-import { MdDateRange } from "react-icons/md";
+import { MdOutlineHomeWork } from "react-icons/md";
 import { BiSolidCollection } from "react-icons/bi";
 import AlertModal from "../../../hooks/useAlertModal";
 import DetailShet from "./DetailShet";
@@ -16,7 +17,12 @@ import Swal from "sweetalert2";
 import ReactPlayer from 'react-player'
 import vrImg from '../../../assets/vr.jpg'
 import VideoPlayer from "../../../components/common/VideoPlayer";
-import MetaHelmet from "../../../components/MetaHalmate";
+import { CiParking1 } from "react-icons/ci";
+import { BsBuilding, BsCollection } from "react-icons/bs";
+import { IoIosResize } from "react-icons/io";
+import { MdApartment } from "react-icons/md";
+import { TiChartAreaOutline } from "react-icons/ti";
+import { CiLocationOn } from "react-icons/ci";
 
 const ProjectDetails = () => {
     // const [visible, setVisible] = useState(false);
@@ -97,7 +103,7 @@ const ProjectDetails = () => {
         return srcValue;
     }
 
- 
+
     return (
         <div className={`overflow-hidden`}>
             <SecondaryBanner
@@ -129,39 +135,39 @@ const ProjectDetails = () => {
                                             </thead> */}
                                     <tbody className="bg-white">
                                         <tr className="text-gray-700">
-                                            <td className="px-4 flex gap-2 items-center py-3 text-ms font-semibold "><FaLocationDot className="text-xl" /> Address</td>
+                                            <td className="px-4 flex gap-2 items-center py-3 text-ms font-semibold "><CiLocationOn className="text-xl" /> Address</td>
 
                                             <td className="px-4 py-3 w-[350px] text-sm  border-l">{details?.info?.address ? details?.info?.address : 'No Address'}</td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><FaPencilRuler className="text-lg" /> Land Area</td>
+                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><TiChartAreaOutline className="text-lg" /> Land Area</td>
                                             <td className="px-4 py-3 text-sm  border-l">{details?.info?.land_area ? details?.info?.land_area : 'No land area'}</td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><FaBuilding className="text-lg" />  No of Floors</td>
+                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><MdOutlineHomeWork className="text-lg" />  No of Floors</td>
                                             <td className="px-4 py-3 text-sm  border-l">
                                                 {details?.info?.address?.no_of_floors ? details?.info?.address?.no_of_floors : '0'}
                                             </td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><BsGrid3X3GapFill className="text-lg" /> Apartment/Floors</td>
+                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><MdApartment className="text-lg" /> Apartment/Floors</td>
                                             <td className="px-4 py-3 text-sm  border-l">
                                                 {projectInfo?.apartmentFloor ? projectInfo?.apartmentFloor : '0'}
                                             </td>
                                         </tr>
 
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><BsGrid3X3GapFill className="text-lg" /> Apartment Size</td>
+                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><IoIosResize className="text-lg" /> Apartment Size</td>
                                             <td className="px-4 py-3 text-sm  border-l">
                                                 {details?.info?.apartment_size ? details?.info?.apartment_size : '0'}
                                             </td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><FaBed className="text-lg" /> No of Parking</td>
+                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><CiParking1 className="text-lg" /> No of Parking</td>
                                             <td className="px-4 py-3 text-sm  border-l">{details?.info?.bedroom ? details?.info?.bedroom : '0'}</td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><FaBath className="text-lg" /> Flat Details</td>
+                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><BsBuilding className="text-lg" /> Flat Details</td>
                                             <td className="px-4 py-3 text-sm  border-l">
                                                 {details?.info?.bathroom ? details?.info?.bathroom : '0'}
                                             </td>
@@ -171,7 +177,7 @@ const ProjectDetails = () => {
                                             <td className="px-4 py-3 text-sm  border-l">{details?.info?.launch_date ? new Date().toString(details?.info?.launch_date) : 'N/A'}</td>
                                         </tr> */}
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><BiSolidCollection className="text-lg" /> Collection</td>
+                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><BsCollection className="text-lg" /> Collection</td>
                                             <td className="px-4 py-3 text-sm  border-l">{details?.info?.collections ? details?.info?.collections : 'No Collections'}</td>
                                         </tr>
                                     </tbody>

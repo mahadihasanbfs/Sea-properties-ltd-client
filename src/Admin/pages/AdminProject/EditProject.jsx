@@ -403,7 +403,7 @@ const EditProject = () => {
               />
             </div>
             <div className="mt-3 w-full">
-              <label>Bedroom</label>
+              <label>No of Parking</label>
               <br />
               <input
                 defaultValue={allProjects?.details?.info?.bedroom}
@@ -414,9 +414,9 @@ const EditProject = () => {
               />
             </div>
             <div className="mt-3 w-full">
-              <label>Bathroom</label>
+              <label>Flat Details</label>
               <br />
-              <input
+              <textarea
                 defaultValue={allProjects?.details?.info?.bathroom}
                 name="bathroom"
                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
