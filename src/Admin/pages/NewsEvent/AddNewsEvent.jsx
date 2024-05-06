@@ -40,6 +40,7 @@ const AddNewsEvent = () => {
     const form = e.target;
     const photo = await uploadImage(form.photo.files[0]);
     const name = form.name.value;
+    const status = form.status.value;
     const description = value;
     const meta_tag = form.meta_tag.value;
     const meta_description = form.meta_description.value;
@@ -57,6 +58,7 @@ const AddNewsEvent = () => {
       title: name,
       date: new Date(),
       status: false,
+      type : status,
       description,
       meta_tag,
       meta_description,
@@ -155,6 +157,17 @@ const AddNewsEvent = () => {
               </div>
             ))}
           </div>
+        </div>
+
+          <label htmlFor="tag">Status</label>
+        <div className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2 mb-4">
+          <select
+            name="status"
+            className="outline-none w-full bg-[transparent]">
+              <option value="Status" selected>Status</option>
+              <option value="news" >News</option>
+              <option value="event" >Event</option>
+            </select>
         </div>
 
         <div className="mb-4">

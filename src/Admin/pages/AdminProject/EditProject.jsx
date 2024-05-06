@@ -5,6 +5,7 @@ import useImageUpload from "../../../hooks/useUploadImg";
 import Select from "react-select";
 import Swal from "sweetalert2";
 import { useParams, useNavigate } from "react-router-dom";
+import CreatableSelect from 'react-select/creatable';
 
 const EditProject = () => {
   const navigate = useNavigate();
@@ -37,11 +38,7 @@ const EditProject = () => {
 
   // multiple selector
   const [selectedOption, setSelectedOption] = useState(null);
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
+  const options = [];
 
   // upload image
   const { uploadImage } = useImageUpload();
@@ -518,13 +515,20 @@ const EditProject = () => {
           <div className="">
             <label>Features Info</label>
             <br />
-            <Select
+            {/* <Select
               isMulti
               className="border mt-2 w-full  rounded bg-[#f4f3f3]"
               defaultValue={selectedOption}
               onChange={setSelectedOption}
               options={options}
-            />
+            /> */}
+
+<CreatableSelect
+                            isMulti
+                            isClearable
+                            onChange={setSelectedOption}
+  // Replace 'options' with your actual options array
+                        />
           </div>
 
           <div className="">

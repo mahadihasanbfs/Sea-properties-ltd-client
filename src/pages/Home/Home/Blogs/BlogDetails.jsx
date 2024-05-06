@@ -5,6 +5,8 @@ const BlogDetails = () => {
     const data = useLoaderData();
     const blog = data?.data;
 
+
+    console.log(blog, 'get blog....');
     return (
         <div className='mt-[90px]'>
             <div className="max-w-[1366px] mx-auto px-4 md:px-[40px] ">

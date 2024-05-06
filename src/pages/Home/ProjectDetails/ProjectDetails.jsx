@@ -312,7 +312,7 @@ const ProjectDetails = () => {
                     </div>
                 </div> <br />
                 <div className="md:h-[600px] h-[200px] w-full">
-                    <VideoPlayer thum={''} url={'https://www.youtube.com/embed/tgbNymZ7vqY'} />
+                    <VideoPlayer thum={videoThumbnailImgUpload} url={video_url} />
                 </div>
 
                 <br /><br />
