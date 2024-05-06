@@ -78,7 +78,7 @@ const OnGoingProject = () => {
                         ) : (
                             <div className="grid gap-10 md:grid-cols-3">
                                 {projectData.map(item => (
-                                    <Link key={item?._id} to={`/project-details/${item?._id}`}>
+                                    <Link key={item?._id} to={`/project-details/${item?.name}`}>
                                         <div className="relative xl:w-[423px] rounded-lg duration-200 hover:shadow-lg border border-[#80808051] xl:h-[423px] justify-self-center overflow-hidden hover:cursor-pointer">
                                             <img className="w-full h-full hover:scale-110 transition-transform duration-1000 ease-in-out object-cover" src={item?.project_photo} alt="" />
                                             <div className="w-full h-[70px]  px-6 bg-[#00000080] flex justify-center items-center flex-col absolute bottom-20">

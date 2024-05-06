@@ -82,8 +82,8 @@ const commonPath = [
     path: "blogs/blogs-details/:id",
     element: <BlogDetails />,
     loader: ({ params }) => {
-      return fetch(
-        `https://backend.seapropertiesltd.com.bd/api/v1/admin/blog/get-blog?blog_id=${params?.id}`
+       return fetch(
+        `https://backend.seapropertiesltd.com.bd/api/v1/admin/blog/get-blog?blog_id=${encodeURIComponent(params?.id)}`
       )
         .then((res) => {
           if (!res.ok) {

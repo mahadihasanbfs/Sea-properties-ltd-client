@@ -58,11 +58,7 @@ const AddProject = () => {
 
     // multiple selector
     const [selectedOption, setSelectedOption] = useState(null);
-    const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' },
-    ];
+    const options = [];
 
     // upload image 
     const { uploadImage } = useImageUpload();
@@ -113,7 +109,7 @@ const AddProject = () => {
         setSelectedOptions(newValue); // Optionally, you can set the selected options to state
     };
 
-    console.log('selectedOptions====', selectedOptions);
+    
 
     // form submit
     const handleSubmit = async (e) => {
@@ -198,19 +194,20 @@ const AddProject = () => {
 
         console.log('testing......', data);
 
-        fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/project/add', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        }).then((res) => res.json()).then((data) => {
-            setLoading(false)
-            Swal.fire('Project Successfully Added', '', 'success');
-            navigate('/admin/manage-project');
-        })
+        // fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/project/add', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(data),
+        // }).then((res) => res.json()).then((data) => {
+        //     setLoading(false)
+        //     Swal.fire('Project Successfully Added', '', 'success');
+        //     navigate('/admin/manage-project');
+        // })
 
     };
+
 
 
     return (
@@ -464,7 +461,7 @@ const AddProject = () => {
                             isMulti
                             isClearable
                             onChange={handleChange}
-                            options={options} // Replace 'options' with your actual options array
+  // Replace 'options' with your actual options array
                         />
                     </div>
 
@@ -547,7 +544,7 @@ const AddProject = () => {
                         placeholder="Enter map link" />
                 </div>
                 <br /> <br />
-                {loading ? (
+                {!loading ? (
                     <button
                         disabled
                         type="submit"

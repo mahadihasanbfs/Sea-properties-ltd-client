@@ -15,7 +15,7 @@ const NewsEventCard = ({ data }) => {
     //     }
 
     // }, [])
-    const { featureImg, title, _id, description } = data
+    const { featureImg, title, _id, description, type } = data
     const [first100Chars, setFirst100Chars] = useState('');
 
 
@@ -41,14 +41,15 @@ const NewsEventCard = ({ data }) => {
 
 
     return (
-        <Link to={`/news_events/${_id}`} className="w-full xl:w-[400px] h-[550px] md:h-[600px] bg-white relative box-border justify-self-center">
+        <Link to={`/news_events/${title}`} className="w-full xl:w-[400px] h-[550px] md:h-[600px] bg-white relative box-border justify-self-center">
             <figure>
                 <img className="w-full h-[260px] object-cover" src={featureImg} alt="" />
             </figure>
 
             <div className="p-4 space-y-4 xl:space-y-4">
                 <h2 className="text-[19px] font-medium ">{title}</h2>
-                <p className="w-[50px] rounded-[10px] bg-[#777777] text-white text-[12px] text-center capitalize">{'News'}</p>
+                {type &&
+                    <p className="w-[50px] rounded-[10px] bg-[#777777] text-white text-[12px] text-center capitalize">{type}</p>}
                 <p className="text-[15px] font-roboto text-justify">{first100Chars}</p>
             </div>
 
