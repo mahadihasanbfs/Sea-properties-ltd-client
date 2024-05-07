@@ -3,8 +3,8 @@
 import { Link } from "react-router-dom";
 
 const BannerCart = ({ itm }) => {
-     return (
-        <Link to={`project-details/${itm?._id}`}>
+    return (
+        <Link to={`project-details/${itm?.name}`}>
             <div className="px-2 xl:mx-[10px]  p-2 duration-200  rounded">
                 <img
                     src={itm?.banner_img}
