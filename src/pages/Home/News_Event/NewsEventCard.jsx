@@ -54,7 +54,7 @@ const NewsEventCard = ({ data }) => {
             </div>
 
             <button className="uppercase border-b-[1px] text-[13px]  font-roboto border-black absolute  ml-4">
-                <Link to={`/news_events/${_id}`}>Read more</Link>
+                <Link to={`/news_events/${title}`}>Read more</Link>
             </button>
         </Link>
     );
