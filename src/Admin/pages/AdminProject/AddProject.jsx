@@ -194,17 +194,17 @@ const AddProject = () => {
 
         console.log('testing......', data);
 
-        // fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/project/add', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(data),
-        // }).then((res) => res.json()).then((data) => {
-        //     setLoading(false)
-        //     Swal.fire('Project Successfully Added', '', 'success');
-        //     navigate('/admin/manage-project');
-        // })
+        fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/project/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        }).then((res) => res.json()).then((data) => {
+            setLoading(false)
+            Swal.fire('Project Successfully Added', '', 'success');
+            navigate('/admin/manage-project');
+        })
 
     };
 
@@ -544,7 +544,7 @@ const AddProject = () => {
                         placeholder="Enter map link" />
                 </div>
                 <br /> <br />
-                {!loading ? (
+                {loading ? (
                     <button
                         disabled
                         type="submit"
