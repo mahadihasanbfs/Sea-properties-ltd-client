@@ -83,7 +83,9 @@ const Blogs = () => {
                         </div>
                         :
                         <div className="grid md:grid-cols-3 -mx-4">
-                            {data?.data?.map(itm => <Link to={`/blogs/blogs-details/${itm?.name}`} key={itm?._id}>
+                            {data?.data?.map(itm =>
+                                
+                                <Link to={`/blogs/blogs-details/${itm?.name}`} key={itm?._id}>
                                 <div className="w-full  px-4">
                                     <div className="max-w-[370px] p-3 group rounded mx-auto mb-10">
                                         <div className="rounded overflow-hidden mb-8">

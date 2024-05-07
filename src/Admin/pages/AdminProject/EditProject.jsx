@@ -4,13 +4,15 @@ import AdminTitle from "../../Component/AdminTitle";
 import useImageUpload from "../../../hooks/useUploadImg";
 import Select from "react-select";
 import Swal from "sweetalert2";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLoaderData } from "react-router-dom";
 import CreatableSelect from 'react-select/creatable';
+import { useQuery } from "@tanstack/react-query";
 
 const EditProject = () => {
   const navigate = useNavigate();
-  const [allProjects, setAllProjects] = useState([]);
-  const [image, setImage] = useState(null);
+  const loadData = useLoaderData();
+  const allProjects = loadData?.data;
+   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [imageFile, setImageFile] = useState(null);
   const fileInputRef = useRef(null);
@@ -43,16 +45,16 @@ const EditProject = () => {
   // upload image
   const { uploadImage } = useImageUpload();
 
-  // form submit
+  
 
-  //get project
-  useEffect(() => {
-    fetch(
-      `https://backend.seapropertiesltd.com.bd/api/v1/admin/project/get-project?project_id=${id}`
-    )
-      .then((response) => response.json())
-      .then((data) => setAllProjects(data?.data));
-  }, []);
+  // const { data: allProjects = [], refetch } = useQuery({
+  //   queryKey: ["all_Projects"],
+  //   queryFn: async () => {
+  //     const res = await fetch( `https://backend.seapropertiesltd.com.bd/api/v1/admin/project/get-project?project_id=${id}`);
+  //     const data = await res.json();
+  //     return data?.data;
+  //   },
+  // });
 
   const workingData = allProjects?.details?.info?.contractionStatus;
 
@@ -174,9 +176,8 @@ const EditProject = () => {
       video_url,
       map_link,
     };
-
-    fetch(
-      `https://backend.seapropertiesltd.com.bd/api/v1/admin/project/update?project_id=${id}`,
+      fetch(
+      `https://backend.seapropertiesltd.com.bd/api/v1/admin/project/update?project_id=${allProjects?._id}`,
       {
         method: "PUT",
         headers: {
@@ -194,23 +195,25 @@ const EditProject = () => {
       });
   };
 
+
+ 
   return (
     <div>
       <AdminTitle title="Edit project" />
       <br />
-      <div className="border border-gray-500 p-4 rounded flex flex-col gap-2">
+      <div className="border overflow-hidden relative border-gray-500 p-4 rounded flex flex-col gap-2">
         <div>
           <input
             required
-            defaultValue={allProjects?.project_photo}
+            // defaultValue={allProjects?.project_photo}
             type="file"
             accept="image/jpeg, image/png, image/gif, image/bmp, image/webp, image/heic"
             ref={fileInputRef}
             onChange={handleImageChange}
             name="project_photo"
-            className="hidden"
+            className="absolute top-[-28px] left-0 h-[340px] right-0 bottom-0 z-[200]"
           />
-          <div className="w-full h-[250px] border-[1px] border-dashed border-gray-400 rounded-xl">
+          <div className="w-full h-[250px] relative border-[1px] border-dashed border-gray-400 rounded-xl">
             {!image && (
               <div
                 onClick={handleButtonClick}
@@ -236,16 +239,16 @@ const EditProject = () => {
                 <p>Upload only image type file</p>
               </div>
             )}
-            {image && (
-              <div className="relative w-full px-10 py-5 h-[250px] mx-auto">
+            { (
+              <div className="absolute top-0 left-0 right-0 bottom-0 w-full  h-full mx-auto">
                 <img
-                  src={image}
+                  src={image ? image : allProjects?.banner_img}
                   alt="Uploaded"
                   className=" w-full h-full object-cover  rounded-xl"
                 />
-                <div
+             {image &&  <div
                   onClick={handleDeleteImage}
-                  className="absolute top-2  text-gray-100 right-2   -translate-x-1/2 z-50 bg-gray-900 hover:bg-gray-500  h-10 w-10 flex items-center justify-center rounded-full hover:cursor-pointer"
+                  className="absolute top-2 z-[300] text-gray-100 right-2   -translate-x-1/2 z-50 bg-gray-900 hover:bg-gray-500  h-10 w-10 flex items-center justify-center rounded-full hover:cursor-pointer"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -261,7 +264,7 @@ const EditProject = () => {
                       d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
                     />
                   </svg>
-                </div>
+                </div>}
               </div>
             )}
           </div>
@@ -285,7 +288,7 @@ const EditProject = () => {
             <label>Banner image</label>
             <br />
             <input
-              defaultValue={allProjects?.banner_img}
+              // defaultValue={allProjects?.banner_img}
               name="banner_img"
               className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
               type="file"
@@ -335,7 +338,7 @@ const EditProject = () => {
             <label>Detail Image</label>
             <br />
             <input
-              defaultValue={allProjects?.details?.detail_img}
+              // defaultValue={allProjects?.details?.detail_img}
               type="file"
               name="detail_img"
               className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
@@ -498,7 +501,7 @@ const EditProject = () => {
             <label>Gallery Image</label>
             <br />
             <input
-              defaultValue={allProjects?.details?.info?.gallery_img}
+              // defaultValue={allProjects?.details?.info?.gallery_img}
               type="file"
               multiple
               name="gallery_img"
@@ -535,7 +538,7 @@ const EditProject = () => {
             <label>Features Img</label>
             <br />
             <input
-              defaultValue={allProjects?.details?.info?.features_img}
+              // defaultValue={allProjects?.details?.info?.features_img}
               type="file"
               name="features_img"
               className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
@@ -563,7 +566,7 @@ const EditProject = () => {
             <label>Thumbnail</label>
             <br />
             <input
-              defaultValue={allProjects?.video_thumbnail}
+              // defaultValue={allProjects?.video_thumbnail}
               type="file"
               multiple
               name="video_thumbnail"
@@ -608,6 +611,7 @@ const EditProject = () => {
             placeholder="enter map link"
           />
         </div>
+         
         {!loading ? (
           <button className="dashboard_form_btn" type="submit">
             Update
