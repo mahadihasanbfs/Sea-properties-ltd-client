@@ -611,9 +611,7 @@ const EditProject = () => {
             placeholder="enter map link"
           />
         </div>
-          <button className="dashboard_form_btn" type="submit">
-            Update
-          </button>
+         
         {!loading ? (
           <button className="dashboard_form_btn" type="submit">
             Update
