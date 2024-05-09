@@ -28,7 +28,7 @@ export default function UserDashboardLayout() {
                     </div>
                     <div className="px-6 py-2 md:relative ">
                         <nav className="text-white">
-                            <UserSideNav />
+                            <UserSideNav setToggleMenu={setToggleMenu} />
                         </nav>
                     </div>
                 </aside>
