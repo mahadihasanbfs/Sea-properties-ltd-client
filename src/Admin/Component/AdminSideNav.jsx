@@ -14,8 +14,7 @@ import { LuLandmark } from "react-icons/lu";
 import { TbBrandBlogger } from "react-icons/tb";
 import { TfiLayoutSliderAlt } from "react-icons/tfi";
 
-export default function AdminSideNav() {
-  const [toggleMenu, setToggleMenu] = useState(true);
+export default function AdminSideNav({ setToggleMenu }) {
   const [activeMenu, setActiveMenu] = useState(false);
 
   const [open, setOpen] = useState(null);
@@ -248,6 +247,7 @@ export default function AdminSideNav() {
     //   ],
     // },
   ];
+
   return (
     <ul className="space-y-2">
       {links.map((data, idx) => (
@@ -290,7 +290,9 @@ export default function AdminSideNav() {
                   >
                     {data.menu.map((itm) => (
                       <li key={itm?.id}>
-                        <Link to={itm?.path}>
+                        <Link
+                          onClick={() => setToggleMenu(false)}
+                          to={itm?.path}>
                           <div className="px-2 py-2 text-sm rounded flex items-center justify-between duration-200 hover:bg-secondary">
                             <div className="flex items-center gap-2">
                               <span className="bg-[#80808000] w-[36px] h-[36px] flex items-center justify-center rounded">
@@ -310,6 +312,8 @@ export default function AdminSideNav() {
             // single nav
             <NavLink
               to={data?.path}
+              setToggleMenu
+              onClick={() => setToggleMenu(false)}
               className={({ isActive }) =>
                 isActive
                   ? "bg-slate-700  hover:bg-[#00000048] text-white  py-2 pl-3 rounded block"

@@ -28,7 +28,7 @@ export default function AdminLayout() {
                     </div>
                     <div className="px-6 py-2 md:relative ">
                         <nav className="text-white">
-                            <AdminSideNav />
+                            <AdminSideNav setToggleMenu={setToggleMenu} />
                         </nav>
                     </div>
                 </aside>

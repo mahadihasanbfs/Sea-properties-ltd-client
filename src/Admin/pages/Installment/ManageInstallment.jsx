@@ -132,7 +132,7 @@ const ManageInstallment = () => {
           onChange={handleSearchInputChange}
         />
         <Link to={`/admin/add-installment`}>
-          <div className="bg-secondary text-[white] py-2 px-3 rounded">
+          <div className="bg-secondary whitespace-nowrap md:text-md text-xs text-[white] py-2 px-3 rounded">
             + Add Installment
           </div>
         </Link>

@@ -123,13 +123,13 @@ const ProjectDetails = () => {
                     style={{
                         backgroundImage: `url(${details?.detail_img})`
                     }}
-                    className="flex h-full items-center bg-cover object-cover">.
+                    className="flex md:h-full h-[400px] items-center bg-cover object-cover">.
                     {/* <img className="w-[575px] h-full object-cover" src={details?.detail_img} alt="" /> */}
                 </figure>
                 <>
                     {/* component */}
-                    <section className="container mx-auto px-6 font-mono">
-                        <div className="w-full border border-[#c9c9c9] overflow-hidden  shadow-lg">
+                    <section className="md:container mx-auto md:px-6 font-mono">
+                        <div className="w-full mx-auto border border-[#c9c9c9] overflow-hidden  shadow-lg">
                             <div className="w-full overflow-x-auto">
                                 <table className="w-full   ">
                                     {/* <thead>
@@ -140,39 +140,39 @@ const ProjectDetails = () => {
                                             </thead> */}
                                     <tbody className="bg-white">
                                         <tr className="text-gray-700">
-                                            <td className="px-4 flex gap-2 items-center py-3 text-ms font-semibold "><CiLocationOn className="text-xl" /> Address</td>
+                                            <td className="px-4 flex gap-2 items-center py-3 text-xs md:text-ms font-semibold "><CiLocationOn className="text-xl" /> Address</td>
 
                                             <td className="px-4 py-3 w-[350px] text-sm  border-l">{details?.info?.address ? details?.info?.address : 'No Address'}</td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><TiChartAreaOutline className="text-lg" /> Land Area</td>
+                                            <td className="px-4 py-3 flex items-center gap-2 text-xs md:text-ms font-semibold "><TiChartAreaOutline className="text-lg" /> Land Area</td>
                                             <td className="px-4 py-3 text-sm  border-l">{details?.info?.land_area ? details?.info?.land_area : 'No land area'}</td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><MdOutlineHomeWork className="text-lg" />  No of Floors</td>
+                                            <td className="px-4 py-3 flex items-center gap-2 text-xs text-ms font-semibold "><MdOutlineHomeWork className="text-lg" />  No of Floors</td>
                                             <td className="px-4 py-3 text-sm  border-l">
                                                 {details?.info?.no_of_floors ? details?.info?.no_of_floors : '0'}
                                             </td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><MdApartment className="text-lg" /> Apartment/Floors</td>
+                                            <td className="px-4 py-3 flex items-center gap-2 text-xs text-ms font-semibold "><MdApartment className="text-lg" /> Apartment/Floors</td>
                                             <td className="px-4 py-3 text-sm  border-l">
                                                 {details?.info?.apartment_floors ? details?.info?.apartment_floors : '0'}
                                             </td>
                                         </tr>
 
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><IoIosResize className="text-lg" /> Apartment Size</td>
+                                            <td className="px-4 py-3 flex items-center gap-2 text-xs text-ms font-semibold "><IoIosResize className="text-lg" /> Apartment Size</td>
                                             <td className="px-4 py-3 text-sm  border-l">
                                                 {details?.info?.apartment_size ? details?.info?.apartment_size : '0'}
                                             </td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><CiParking1 className="text-lg" /> No of Parking</td>
+                                            <td className="px-4 py-3 flex items-center gap-2 text-xs text-ms font-semibold "><CiParking1 className="text-lg" /> No of Parking</td>
                                             <td className="px-4 py-3 text-sm  border-l">{details?.info?.bedroom ? details?.info?.bedroom : '0'}</td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><BsBuilding className="text-lg" /> Flat Details</td>
+                                            <td className="px-4 py-3 flex items-center gap-2 text-xs text-ms font-semibold "><BsBuilding className="text-lg" /> Flat Details</td>
                                             <td className="px-4 py-3 text-sm  border-l">
                                                 {details?.info?.bathroom ? details?.info?.bathroom : '0'}
                                             </td>
@@ -182,7 +182,7 @@ const ProjectDetails = () => {
                                             <td className="px-4 py-3 text-sm  border-l">{details?.info?.launch_date ? new Date().toString(details?.info?.launch_date) : 'N/A'}</td>
                                         </tr> */}
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
-                                            <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><BsCollection className="text-lg" /> Collection</td>
+                                            <td className="px-4 py-3 flex items-center gap-2 text-xs text-ms font-semibold "><BsCollection className="text-lg" /> Collection</td>
                                             <td className="px-4 py-3 text-sm  border-l">{details?.info?.collections ? details?.info?.collections : 'No Collections'}</td>
                                         </tr>
                                     </tbody>
@@ -209,11 +209,11 @@ const ProjectDetails = () => {
                             text='Features & Amenities'
                             position="text-left"
                         />
-                        <figure className="justify-self-end md:hidden flex items-center">
+                        <figure className="justify-self-end md:mt-0 mt-8 md:hidden flex items-center">
                             <img className="w-[465px] h-[490px] object-cover" src={featureInfo?.features_img} alt="" />
                         </figure>
 
-                        <div className="space-y-5 mt-[60px] text-white">
+                        <div className="space-y-5 md:mt-[60px] mt-4 text-white">
                             {
                                 featureInfo?.features && featureInfo?.features?.map((feature, index) => <p key={index}>{feature?.label}</p>)
                             }
