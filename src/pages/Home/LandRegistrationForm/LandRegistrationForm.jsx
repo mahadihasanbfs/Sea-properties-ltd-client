@@ -1,12 +1,14 @@
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import logo from '../../../assets/logo.png';
 import useImageUpload from '../../../hooks/useUploadImg';
 import Swal from 'sweetalert2';
 import { useQuery } from '@tanstack/react-query';
 import { reload } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../Provider/AuthProvider';
 
 const LandRegistrationForm = () => {
+    const { user } = useContext(AuthContext);
     // this section is used to handle banner img
     const { data: SN = [], relaod } = useQuery({
         queryKey: ["SN"],
@@ -84,6 +86,7 @@ const LandRegistrationForm = () => {
         }
 
         const data = {
+            email: user?.email,
             SN: SN,
             img: await uploadImage(image),
             englishName: form.englishName.value,
@@ -111,7 +114,7 @@ const LandRegistrationForm = () => {
             timestamp: new Date().getTime(),
         }
 
-        // console.log(data, '++++++++++++++++');
+        console.log(data, '++++++++++++++++');
         fetch("https://backend.seapropertiesltd.com.bd/api/v1/admin/add-land-registration", {
             method: "POST",
             headers: {
@@ -203,13 +206,11 @@ const LandRegistrationForm = () => {
                             }
                         </div>
 
-                        <div className='w-[294px] h-[40px] border border-[#A20E27] mt-4 relative flex items-center'>
-                            <img className='absolute top-0 left-1/2 -translate-x-1/2' src="https://i.ibb.co/bWL9pwN/Group-384.png" alt="" />
-                            <p className='absolute left-[28px] text-xl tracking-[10px]'>{date.getDate().toString()}</p>
-                            <p className='absolute  left-[97px] tracking-[10px] text-xl'>{date.getMonth().toString().padStart(2, "0")}</p>
-                            <p className='absolute  left-[165px] tracking-[18px] text-xl'>{date.getFullYear()}</p>
+                        <div className=' whitespace-nowrap border border-[#A20E27] text-[#A20E27] px-1 py-1 mt-1 text-sm font-semibold'>
+                            Date:   {
+                                new Date().toLocaleString(new Date())
+                            }
                         </div>
-                        <p className='text-[14px] tracking-[10px] mr-[20px] mt-2'>D D M M Y Y Y Y</p>
                     </div>
                 </div>
 

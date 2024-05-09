@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
+import { Helmet } from 'react-helmet';
 
 const EditView = () => {
     const componentRef = useRef();
@@ -27,6 +28,9 @@ const EditView = () => {
     console.log(editItm, '------====');
     return (
         <div>
+            <Helmet>
+                <title>Land Registration Report</title>
+            </Helmet>
             <div className='' ref={componentRef}>
                 <div>
                     <div
@@ -39,7 +43,7 @@ const EditView = () => {
 
                         {/* logo */}
                         <div className='flex  justify-between items-center '>
-                            <ul className="space-y-2 mb-3">
+                            <ul className="space-y-2 print-icon-s mb-3">
                                 <li>
                                     <a href="" className="w-6 h-6 rounded-[50%] bg-[#A20E27] flex justify-center items-center">
                                         <img src="https://i.ibb.co/pnVMx5S/facebook-fill.png" alt="" />
@@ -84,7 +88,7 @@ const EditView = () => {
                                     }
                                 </div>
 
-                                <div className=' whitespace-nowrap text-sm print-date-box h-[35px] font-semibold text-[#A20E27] text-end border border-[#A20E27] mt-4 relative px-2 flex items-center'>
+                                <div className=' whitespace-nowrap border border-[#A20E27] text-[#A20E27] px-1 py-1 mt-1 text-sm font-semibold'>
                                     Date:   {
                                         new Date().toLocaleString(editItm?.timestamp)
                                     }
@@ -183,12 +187,12 @@ const EditView = () => {
                             <div className='flex justify-between print-mt-header-3'>
                                 <div className='space-y-4'>
                                     <div className='w-[400px] whitespace-nowrap print-data-show py-[14px] px-4 border border-black flex justify-between'>
-                                        <p>Date of birth : </p>
+                                        <p >Date of birth : </p>
                                         <input readOnly
                                             defaultValue={editItm?.birthDate}
                                             name='birthDate'
                                             type="date"
-                                            className='w-[250px] focus:outline-none pl-2 cursor-default bg-[transparent]'
+                                            className='w-full ml-3  focus:outline-none cursor-default bg-[transparent]'
                                         />
                                     </div>
 
@@ -215,7 +219,7 @@ const EditView = () => {
                                     </div>
 
                                     <div className='w-[400px] print-box-2 whitespace-nowrap print-data-show py-[14px] px-4 border gap-3 border-black flex'>
-                                        <p>Gender: </p>
+                                        <p>Gender : </p>
                                         <div className='flex capitalize justify-center items-center gap-2'>
                                             <p>{editItm?.gendar}</p>
                                         </div>

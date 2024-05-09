@@ -92,8 +92,7 @@ const BookingManagement = () => {
                     <button
                         onClick={handleSendEmail}
                         className="bg-blue-500 hover:bg-blue-700 bg-[#006aff] text-[white] py-2 px-4 rounded"
-                        disabled={selectedItems.length === 0}
-                    >
+                        disabled={selectedItems.length === 0}>
                         Send Email
                     </button>
                 </div>

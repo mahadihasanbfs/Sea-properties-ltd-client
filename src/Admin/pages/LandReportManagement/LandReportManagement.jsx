@@ -61,8 +61,9 @@ const LandReportManagement = () => {
     return (
         <div className="pt-3">
             <div className="flex item-center pb-3 justify-between">
-                <AdminTitle size={"20px"} title="" />
+                <AdminTitle size={"20px"} title="Booking Management" />
 
+                <Link to="/land-registration-form" className="bg-[#1a2635] text-[white] px-5 py-2 rounded-md">Add New</Link>
             </div>
 
             <div className="mt-2 shadow-sm border rounded overflow-x-auto">
