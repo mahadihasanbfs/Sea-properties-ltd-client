@@ -109,7 +109,7 @@ const AddProject = () => {
         setSelectedOptions(newValue); // Optionally, you can set the selected options to state
     };
 
-    
+
 
     // form submit
     const handleSubmit = async (e) => {
@@ -217,8 +217,8 @@ const AddProject = () => {
             <br />
             <div className='border border-gray-500 p-4 rounded flex flex-col gap-2'>
                 <div>
-                    <input
-                        required
+                    <input required
+
 
                         type="file"
                         accept="image/jpeg, image/png, image/gif, image/bmp, image/webp, image/heic"
@@ -258,7 +258,7 @@ const AddProject = () => {
                 <div className="lg:flex block items-center gap-6">
                     <div className="mt-3 w-full">
                         <label   >Project Name</label><br />
-                        <input
+                        <input required
                             name="name"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                             type="text"
@@ -266,7 +266,7 @@ const AddProject = () => {
                     </div>
                     <div className="mt-3 w-full">
                         <label    >Feature Image</label><br />
-                        <input
+                        <input required
                             name="banner_img"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                             type="file"
@@ -309,7 +309,7 @@ const AddProject = () => {
                     <br />
                     <div className="">
                         <label   >Detail Image</label><br />
-                        <input
+                        <input required
                             type="file"
                             name="detail_img"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
@@ -320,7 +320,7 @@ const AddProject = () => {
 
                         <div className="mt-3 w-full">
                             <label   >Address</label><br />
-                            <input
+                            <input required
                                 name="address"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -328,7 +328,7 @@ const AddProject = () => {
                         </div>
                         <div className="mt-3 w-full">
                             <label   >Land Area</label><br />
-                            <input
+                            <input required
                                 name="land_area"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -336,7 +336,7 @@ const AddProject = () => {
                         </div>
                         <div className="mt-3 w-full">
                             <label   >No of Floors</label><br />
-                            <input
+                            <input required
                                 name="no_of_floors"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -344,7 +344,7 @@ const AddProject = () => {
                         </div>
                         <div className="mt-3 w-full">
                             <label   >Apartment / Floors</label><br />
-                            <input
+                            <input required
                                 name="apartment_floors"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -352,7 +352,7 @@ const AddProject = () => {
                         </div>
                         <div className="mt-3 w-full">
                             <label   >Apartment Size</label><br />
-                            <input
+                            <input required
                                 name="apartment_size"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -360,7 +360,7 @@ const AddProject = () => {
                         </div>
                         <div className="mt-3 w-full">
                             <label   >No of Parking</label><br />
-                            <input
+                            <input required
                                 name="bedroom"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -377,7 +377,7 @@ const AddProject = () => {
 
                         <div className="mt-3 w-full">
                             <label   >Collections</label><br />
-                            <input
+                            <input required
                                 name="collections"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -390,7 +390,7 @@ const AddProject = () => {
 
                 {/* dynamic inputs */}
                 <label htmlFor="cdn" className="text-md flex gap-2 font-semibold">
-                    <input
+                    <input required
                         type="checkbox"
                         id="cdn"
                         checked={conditionOn} // Bind the checked state to conditionOn
@@ -410,7 +410,7 @@ const AddProject = () => {
                             <div className="mt-3 w-full">
                                 <label>Name Of Works</label>
                                 <br />
-                                <input
+                                <input required
                                     className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                     type="text"
                                     placeholder="Enter total bathroom"
@@ -421,7 +421,7 @@ const AddProject = () => {
                             <div className="mt-3 w-full">
                                 <label>Project Progress</label><br />
                                 <div className="flex items-center gap-2">
-                                    <input
+                                    <input required
                                         name="progress"
                                         className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                         type="text"
@@ -441,7 +441,7 @@ const AddProject = () => {
                     <br />
                     <div className="">
                         <label   >Gallery Image</label><br />
-                        <input
+                        <input required
                             type="file"
                             multiple
                             name="gallery_img"
@@ -461,13 +461,13 @@ const AddProject = () => {
                             isMulti
                             isClearable
                             onChange={handleChange}
-  // Replace 'options' with your actual options array
+                        // Replace 'options' with your actual options array
                         />
                     </div>
 
                     <div className="">
                         <label   >Features Img</label><br />
-                        <input
+                        <input required
                             type="file"
                             name="features_img"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
@@ -480,7 +480,7 @@ const AddProject = () => {
                     <h2 className="font-bold border-b  border-[gray] pb-3">Video Tour</h2>
                     <br />
                     <label htmlFor="vr" className="text-md flex gap-2 font-semibold">
-                        <input
+                        <input required
                             type="checkbox"
                             id="vr"
                             checked={youtube} // Bind the checked state to conditionOn
@@ -491,7 +491,7 @@ const AddProject = () => {
 
                     {youtube && <div className="">
                         <label   >Youtube URL</label><br />
-                        <input
+                        <input required
                             type="url"
                             multiple
                             name="youtube_url"
@@ -502,7 +502,7 @@ const AddProject = () => {
 
                         <div className="">
                             <label   >Thumbnail</label><br />
-                            <input
+                            <input required
                                 type="file"
 
                                 name="video_thumbnail"
@@ -514,7 +514,7 @@ const AddProject = () => {
 
                     <br />
                     <label htmlFor="vr" className="text-md flex gap-2 font-semibold">
-                        <input
+                        <input required
                             type="checkbox"
                             id="vr"
                             checked={vrOn} // Bind the checked state to conditionOn
@@ -525,7 +525,7 @@ const AddProject = () => {
 
                     {vrOn && <div className="">
                         <label   >VR URL</label><br />
-                        <input
+                        <input required
                             type="url"
                             multiple
                             name="vr_url"
@@ -537,7 +537,7 @@ const AddProject = () => {
                 <br />
                 <div className="">
                     <label   >Map Link</label><br />
-                    <input
+                    <input required
                         type="text"
                         name="map_link"
                         className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"

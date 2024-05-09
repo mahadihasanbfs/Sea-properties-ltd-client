@@ -22,7 +22,7 @@ const BoardOfDirector = () => {
         However, we at SEA Properties Limited have embraced a distinctive approach to foster investor confidence and integrity within the industry.We recognize the importance of transparency and fairness in every transaction.Therefore, instead of leaving individuals vulnerable to deceitful practices, we offer a comprehensive solution.From land acquisition to construction, SEA Properties Limited manages every aspect of the process.Our installment payment system for land registration and construction costs ensures that our clients are protected from any potential fraud.We firmly believe that success is not merely reaching a destination but also embracing the journey.It is our privilege to accompany you on this journey, transforming aspirations into reality while setting new standards within the industry.Thank you for your steadfast support and trust in SEA Properties Limited.`;
 
         let text1 = 'Housing is one of the fundamental needs in Bangladesh. In This country, every single person desire is to build a sweet home in Dhaka. To make digital Bangladesh, we are the only ones who can buy the best land at affordable prices, so that your dream becomes a reality. Stay with SEA Properties Limited to build your dream home in the best residential area of the country at a reasonable price. We go beyond building structures to meet your needs.We recognize the importance of your home, office, or commercial space.These places are where your stories and dreams come to life.We take pride in creating environments that support your success and happiness.We appreciate your trust and faith in us, which have been key factors in our success.We are committed to maintaining our high standards and surpassing your expectations. SEA Properties Limited is dedicated to delivering excellence, value, and sustainability in order to enhance the quality of life and contribute to a more harmonious world.Thank you for being a part of our journey.Together, we will build the future.';
-        let text3 = 'Momotaz Begum is the Founding Director of SEA Properties Limited. She is responsible for analyzing growth potential in various markets and making recommendations for further evaluation based on her observations. As a part of the leadership team, she also helps to shape the organizational culture, and design motivational initiatives for all employees.';
+        let text3 = 'Mamataz Begam is the Founding Director of SEA Properties Limited. She is responsible for analyzing growth potential in various markets and making recommendations for further evaluation based on her observations. As a part of the leadership team, she also helps to shape the organizational culture, and design motivational initiatives for all employees.';
 
         let chunk1 = handleSpilitTextIntoChunks(text1, 280);
         let chunk2 = handleSpilitTextIntoChunks(text2, 500);
@@ -98,7 +98,7 @@ const BoardOfDirector = () => {
                 </figure>
                 <div className="flex flex-col justify-center gap-6">
                     <div className="uppercase space-y-2">
-                        <h3 className="text-[#000] text-[18px] leading-[22px] font-medium"> Momotaz Begum</h3>
+                        <h3 className="text-[#000] text-[18px] leading-[22px] font-medium"> Mamataz Begam</h3>
                         <p className="text-[#7F7B79] text-[14px] leading-4">Director</p>
                     </div>
                     <div className={`flex flex-col justify-between  gap-4  text-justify `}>

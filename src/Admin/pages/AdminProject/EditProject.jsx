@@ -12,7 +12,7 @@ const EditProject = () => {
   const navigate = useNavigate();
   const loadData = useLoaderData();
   const allProjects = loadData?.data;
-   const [image, setImage] = useState(null);
+  const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [imageFile, setImageFile] = useState(null);
   const fileInputRef = useRef(null);
@@ -45,7 +45,7 @@ const EditProject = () => {
   // upload image
   const { uploadImage } = useImageUpload();
 
-  
+
 
   // const { data: allProjects = [], refetch } = useQuery({
   //   queryKey: ["all_Projects"],
@@ -159,24 +159,25 @@ const EditProject = () => {
           contractionStatus: inputFields,
         },
       },
-      gallery_img: galleryImageUrls
+      gallery_img: galleryImageUrls.length
         ? galleryImageUrls
-        : allProjects?.details?.info?.gallery_img,
+        : allProjects?.gallery_img,
       featureInfo: {
-        features: selectedOption,
+        features: selectedOption ? selectedOption : allProjects?.featureInfo?.features,
         features_img: featureImgUpload
           ? featureImgUpload
-          : allProjects?.details?.info?.features_img,
+          : allProjects?.featureInfo?.features_img,
       },
       vr_url,
       vr_status,
       videoThumbnailImgUpload: videoThumbnailImgUpload
         ? videoThumbnailImgUpload
-        : allProjects?.video_thumbnail,
+        : allProjects?.videoThumbnailImgUpload,
       video_url,
       map_link,
     };
-      fetch(
+
+    fetch(
       `https://backend.seapropertiesltd.com.bd/api/v1/admin/project/update?project_id=${allProjects?._id}`,
       {
         method: "PUT",
@@ -193,10 +194,12 @@ const EditProject = () => {
         navigate("/admin/manage-project");
         setLoading(false);
       });
+
+
   };
 
+  console.log(allProjects, '---->');
 
- 
   return (
     <div>
       <AdminTitle title="Edit project" />
@@ -239,14 +242,14 @@ const EditProject = () => {
                 <p>Upload only image type file</p>
               </div>
             )}
-            { (
+            {(
               <div className="absolute top-0 left-0 right-0 bottom-0 w-full  h-full mx-auto">
                 <img
                   src={image ? image : allProjects?.banner_img}
                   alt="Uploaded"
                   className=" w-full h-full object-cover  rounded-xl"
                 />
-             {image &&  <div
+                {image && <div
                   onClick={handleDeleteImage}
                   className="absolute top-2 z-[300] text-gray-100 right-2   -translate-x-1/2 z-50 bg-gray-900 hover:bg-gray-500  h-10 w-10 flex items-center justify-center rounded-full hover:cursor-pointer"
                 >
@@ -526,12 +529,13 @@ const EditProject = () => {
               options={options}
             /> */}
 
-<CreatableSelect
-                            isMulti
-                            isClearable
-                            onChange={setSelectedOption}
-  // Replace 'options' with your actual options array
-                        />
+            <CreatableSelect
+              type="button"
+              isMulti
+              isClearable
+              onChange={setSelectedOption}
+            // Replace 'options' with your actual options array
+            />
           </div>
 
           <div className="">
@@ -589,6 +593,7 @@ const EditProject = () => {
             <label>VR URL</label>
             <br />
             <input
+
               defaultValue={allProjects?.vr_url}
               type="url"
               multiple
@@ -611,7 +616,10 @@ const EditProject = () => {
             placeholder="enter map link"
           />
         </div>
-         
+
+        {/* <button className="dashboard_form_btn" type="submit">
+          Update
+        </button> */}
         {!loading ? (
           <button className="dashboard_form_btn" type="submit">
             Update
