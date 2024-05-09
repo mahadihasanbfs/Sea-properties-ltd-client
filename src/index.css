@@ -406,7 +406,22 @@ a{
    .print-center-box{
    /* margin-left: 30px!important; */
     transform: translateX(100px);
-  
+    margin-top: -105px!important;
+   }
+   .print-mt-header-0{
+    transform: translateY(-30px)!important;
+   }
+   .print-mt-header { 
+      transform: translateY(-30px)!important;
+   }
+   .print-mt-header-2 { 
+      transform: translateY(-40px)!important;
+   }
+    .print-mt-header-3 { 
+      transform: translateY(-40px)!important;
+   }
+      .print-mt-header-4 { 
+      transform: translateY(-70px)!important;
    }
   .print-box{
     width : 400px
@@ -415,7 +430,8 @@ a{
     width : 350px
   }
   .print-bar{
-    height : 50px
+    padding: 0px 8px!important;
+    height : 20px
   }
   .print-data-show{
     padding: 2px 5px;
@@ -433,10 +449,14 @@ a{
     display: block !important;
   }
 .print-photo {
-    width: 100px!important;
-  height: 110px!important;
+    width: 80px!important;
+  height: 100px!important;
+}
+.print-bar> p {
+  font-size: 14px!important;
 }
 .print-logo{
+  margin-top: 60px!important;
   width: 100px!important;
 }
 .print-title{
@@ -463,13 +483,29 @@ a{
   word-spacing: -4px;
   margin-right: 0px!important;
 }
-.print-bar{
-  height : 34px!important;
+
+.print-single-box{
+  width: 30%!important;
+  /* background: red!important; */
 }
+.print-single-box-2{
+  width: 70%!important;
+  /* background: green!important; */
+}
+/* .print-bar{
+  height : 30px!important;
+} */
 .print-box{
   padding: 0px 20px!important;
   white-space: nowrap;
-  width: 100%!important;
+  width: 100%;
+}
+.print-mt-sm{
+  margin-top: 13px!important;
+}
+
+.print-py-sm{
+  padding: 0px 5px!important;
 }
 }
 

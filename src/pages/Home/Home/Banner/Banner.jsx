@@ -79,7 +79,7 @@ const Banner = () => {
         );
     }
 
-    console.log(searchData,);
+
 
 
     return (

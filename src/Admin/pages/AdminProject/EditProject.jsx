@@ -134,7 +134,7 @@ const EditProject = () => {
       banner_img: uploadedBannerImg
         ? uploadedBannerImg
         : allProjects?.banner_img,
-      name: name ? name : allProjects?.name,
+      name: name,
       project_type: allProjects?.project_type
         ? allProjects?.project_type
         : project_type,

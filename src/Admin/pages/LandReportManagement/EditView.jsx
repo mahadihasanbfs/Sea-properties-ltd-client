@@ -31,43 +31,43 @@ const EditView = () => {
                 <div>
                     <div
                         ref={componentRef}
-                        style={{
-                            backgroundImage: 'url(https://i.ibb.co/D4z4S2h/Rectangle-55.png)'
-                        }}
+                        // style={{
+                        //     backgroundImage: 'url(https://i.ibb.co/D4z4S2h/Rectangle-55.png)'
+                        // }}
                         className="max-w-[1366px] print-data mx-auto bg-cover bg-center h-fit print-main-box px-[60px] mt-[70px] relative">
                         {/* social links */}
-                        <ul className="space-y-2 absolute">
-                            <li>
-                                <a href="" className="w-6 h-6 rounded-[50%] bg-[#A20E27] flex justify-center items-center">
-                                    <img src="https://i.ibb.co/pnVMx5S/facebook-fill.png" alt="" />
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" className="w-6 h-6 rounded-[50%] bg-[#A20E27] flex justify-center items-center">
-                                    <img src="https://i.ibb.co/PtkdWgz/twitter.png" alt="" />
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" className="w-6 h-6 rounded-[50%] bg-[#A20E27] flex justify-center items-center">
-                                    <img src="https://i.ibb.co/n1gFW0z/youtube.png" alt="" />
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" className="w-6 h-6 rounded-[50%] bg-[#A20E27] flex justify-center items-center">
-                                    <img src="https://i.ibb.co/gvnHg8X/linkedin-alt.png" alt="" />
-                                </a>
-                            </li>
-                        </ul>
 
                         {/* logo */}
-                        <div className='flex justify-end items-center'>
-                            <div className='flex flex-col items-center print-center-box  mr-[170px]'>
+                        <div className='flex  justify-between items-center '>
+                            <ul className="space-y-2 mb-3">
+                                <li>
+                                    <a href="" className="w-6 h-6 rounded-[50%] bg-[#A20E27] flex justify-center items-center">
+                                        <img src="https://i.ibb.co/pnVMx5S/facebook-fill.png" alt="" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="" className="w-6 h-6 rounded-[50%] bg-[#A20E27] flex justify-center items-center">
+                                        <img src="https://i.ibb.co/PtkdWgz/twitter.png" alt="" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="" className="w-6 h-6 rounded-[50%] bg-[#A20E27] flex justify-center items-center">
+                                        <img src="https://i.ibb.co/n1gFW0z/youtube.png" alt="" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="" className="w-6 h-6 rounded-[50%] bg-[#A20E27] flex justify-center items-center">
+                                        <img src="https://i.ibb.co/gvnHg8X/linkedin-alt.png" alt="" />
+                                    </a>
+                                </li>
+                            </ul>
+                            <div className='flex flex-col  items-center  print-center-box  '>
                                 <img className='w-[180px] print-logo h-[90px] object-contain' src={logo} alt="" />
                                 <h2 className='text-[40px] print-title print-title font-medium text-center'>Land <br /> Registration Form</h2>
                             </div>
 
                             {/* img upload and date */}
-                            <div className='flex flex-col items-end w-fit'>
+                            <div className='flex flex-col items-end '>
                                 <input readOnly
                                     type="file"
                                     accept="image/*"
@@ -84,20 +84,18 @@ const EditView = () => {
                                     }
                                 </div>
 
-                                <div className='w-[294px] print-date-box h-[40px] border border-[#A20E27] mt-4 relative flex items-center'>
-                                    <img className='absolute top-0 left-1/2 -translate-x-1/2' src="https://i.ibb.co/bWL9pwN/Group-384.png" alt="" />
-                                    <p className='absolute print-date-text print-tx-1 left-[28px] text-xl tracking-[10px]'>{date.getDate().toString()}</p>
-                                    <p className='absolute print-date-text print-tx-2  left-[97px] tracking-[10px] text-xl'>{date.getMonth().toString().padStart(2, "0")}</p>
-                                    <p className='absolute print-date-text print-tx-3 left-[165px] tracking-[18px] text-xl'>{date.getFullYear()}</p>
+                                <div className=' whitespace-nowrap text-sm print-date-box h-[35px] font-semibold text-[#A20E27] text-end border border-[#A20E27] mt-4 relative px-2 flex items-center'>
+                                    Date:   {
+                                        new Date().toLocaleString(editItm?.timestamp)
+                                    }
                                 </div>
-                                <p className='text-[14px] tracking-[10px] print-date-label flex items-center mr-[20px] mt-2'>D D M M Y Y Y Y</p>
                             </div>
                         </div>
 
                         <div
-                            className='space-y-4'>
+                            className='space-y-4 '>
                             {/* Serial No */}
-                            <div className='flex gap-2 items-end'>
+                            <div className='flex gap-2 print-mt-header print-mt-sm items-end'>
                                 <p>Serial No</p>
                                 <input readOnly
                                     value={editItm?.SN}
@@ -107,12 +105,12 @@ const EditView = () => {
                                 />
                             </div>
 
-                            <div className='w-full print-bar h-[55px] bg-cover bg-[#A20E27] mt-10 flex items-center pl-4' style={{ backgroundImage: "url(https://i.ibb.co/1LdyZhT/Rectangle-58.png)" }}>
+                            <div className='w-full print-bar print-mt-header-0 h-[55px] bg-cover bg-[#A20E27] mt-10 flex items-center pl-4' style={{ backgroundImage: "url(https://i.ibb.co/1LdyZhT/Rectangle-58.png)" }}>
                                 <p className='text-[20px] text-[white]'>Client Information</p>
                             </div>
 
                             {/* client information input field */}
-                            <div className='w-full whitespace-nowrap print-data-show py-[14px] px-4 border border-black flex'>
+                            <div className='w-full whitespace-nowrap  print-mt-header-3 print-data-show py-[14px] px-4 border border-black flex'>
                                 <p>Applicant’s Name in English : </p>
                                 <input readOnly
                                     defaultValue={editItm?.englishName}
@@ -122,7 +120,7 @@ const EditView = () => {
                                 />
                             </div>
 
-                            <div className='w-full py-[14px] whitespace-nowrap px-4 border print-data-show border-black flex'>
+                            <div className='w-full py-[14px] whitespace-nowrap px-4 border print-mt-header-3 print-data-show border-black flex'>
                                 <p>Applicant’s Name in Bangla : </p>
                                 <input readOnly
                                     defaultValue={editItm?.banglaName}
@@ -132,7 +130,7 @@ const EditView = () => {
                                 />
                             </div>
 
-                            <div className='w-full py-[14px] whitespace-nowrap print-data-show px-4 border border-black flex'>
+                            <div className='w-full py-[14px] whitespace-nowrap print-mt-header-3 print-data-show px-4 border border-black flex'>
                                 <p>Father/Husband’s Name in English : </p>
                                 <input readOnly
                                     defaultValue={editItm?.fatherOrHusbandsEnglishName}
@@ -142,7 +140,7 @@ const EditView = () => {
                                 />
                             </div>
 
-                            <div className='w-full whitespace-nowrap print-data-show py-[14px] px-4 border border-black flex'>
+                            <div className='w-full whitespace-nowrap print-mt-header-3 print-data-show py-[14px] px-4 border border-black flex'>
                                 <p>Father/Husband’s Name in Bangla : </p>
                                 <input readOnly
                                     defaultValue={editItm?.fatherOrHusbandsBanglaName}
@@ -151,7 +149,8 @@ const EditView = () => {
                                     className='w-[800px] focus:outline-none pl-2 cursor-default bg-[transparent]'
                                 />
                             </div>
-                            <div className='w-full py-[14px] whitespace-nowrap bprint-data-show px-4 border border-black flex'>
+
+                            <div className='w-full print-py-sm py-[14px] whitespace-nowrap print-mt-header-3 print-data-show px-4 border border-black flex'>
                                 <p>Mother’s Name in English : </p>
                                 <input readOnly
                                     defaultValue={editItm?.motherEnglishName}
@@ -160,7 +159,8 @@ const EditView = () => {
                                     className='w-[800px] focus:outline-none pl-2 cursor-default bg-[transparent]'
                                 />
                             </div>
-                            <div className='w-full whitespace-nowrap print-data-show py-[14px] px-4 border border-black flex'>
+
+                            <div className='w-full whitespace-nowrap print-mt-header-3 print-data-show py-[14px] px-4 border border-black flex'>
                                 <p>Mother’s Name in Bangla : </p>
                                 <input readOnly
                                     defaultValue={editItm?.motherBanglaName}
@@ -169,7 +169,8 @@ const EditView = () => {
                                     className='w-[800px] focus:outline-none pl-2 cursor-default bg-[transparent]'
                                 />
                             </div>
-                            <div className='w-full whitespace-nowrap print-data-show py-[14px] px-4 border border-black flex'>
+
+                            <div className='w-full whitespace-nowrap print-mt-header-3 print-data-show py-[14px] px-4 border border-black flex'>
                                 <p>Permanent Address in Bangla : </p>
                                 <input readOnly
                                     defaultValue={editItm?.address}
@@ -179,7 +180,7 @@ const EditView = () => {
                                 />
                             </div>
 
-                            <div className='flex justify-between'>
+                            <div className='flex justify-between print-mt-header-3'>
                                 <div className='space-y-4'>
                                     <div className='w-[400px] whitespace-nowrap print-data-show py-[14px] px-4 border border-black flex justify-between'>
                                         <p>Date of birth : </p>
@@ -213,10 +214,10 @@ const EditView = () => {
                                         />
                                     </div>
 
-                                    <div className='flex items-center print-data-show whitespace-nowrap gap-4'>
+                                    <div className='w-[400px] print-box-2 whitespace-nowrap print-data-show py-[14px] px-4 border gap-3 border-black flex'>
                                         <p>Gender: </p>
                                         <div className='flex justify-center items-center gap-2'>
-                                            <p>{editItm?.gender}</p>
+                                            <p>{editItm?.gendar}</p>
                                         </div>
 
                                     </div>
@@ -224,11 +225,11 @@ const EditView = () => {
                             </div>
 
                             {/* project details input fields*/}
-                            <div className='w-full h-[55px] print-bar bg-cover bg-[#A20E27] mt-[40px!important] flex items-center pl-4' style={{ backgroundImage: "url(https://i.ibb.co/1LdyZhT/Rectangle-58.png)" }}>
+                            <div className='w-full h-[55px] print-mt-header-3 print-bar print-mt-sm bg-cover bg-[#A20E27] mt-[40px!important] flex items-center pl-4' style={{ backgroundImage: "url(https://i.ibb.co/1LdyZhT/Rectangle-58.png)" }}>
                                 <p className='text-[20px] text-[white]'>Project Details</p>
                             </div>
 
-                            <div className='w-full py-[14px] print-data-show whitespace-nowrap px-4 border border-black flex'>
+                            <div className='w-full py-[14px] print-mt-header-3 print-data-show whitespace-nowrap px-4 border border-black flex'>
                                 <p>Name of the project : </p>
                                 <input readOnly
                                     defaultValue={editItm?.projectName}
@@ -238,7 +239,7 @@ const EditView = () => {
                                 />
                             </div>
 
-                            <div className='w-full py-[14px] px-4 print-data-show whitespace-nowrap border border-black flex'>
+                            <div className='w-full py-[14px] print-mt-header-3 px-4 print-data-show whitespace-nowrap border border-black flex'>
                                 <p>Project Address : </p>
                                 <input readOnly
                                     defaultValue={editItm?.projectAddress}
@@ -250,12 +251,12 @@ const EditView = () => {
 
 
                             {/* payment information input fields */}
-                            <div className='w-full h-[55px] print-bar bg-cover bg-[#A20E27] mt-[40px!important] flex items-center pl-4' style={{ backgroundImage: "url(https://i.ibb.co/1LdyZhT/Rectangle-58.png)" }}>
+                            <div className='w-full h-[55px] print-bar print-mt-header-4 bg-cover bg-[#A20E27] mt-[40px!important] flex items-center pl-4' style={{ backgroundImage: "url(https://i.ibb.co/1LdyZhT/Rectangle-58.png)" }}>
                                 <p className='text-[20px] text-[white]'>Payment Information</p>
                             </div>
 
-                            <div className='flex justify-between'>
-                                <div className='print-box w-[400px] whitespace-nowrap print-data-show py-[14px] px-4 border border-black flex'>
+                            <div className='flex justify-between print-mt-header-4 print-mt-header-3'>
+                                <div className=' print-single-box w-[400px] whitespace-nowrap print-data-show py-[14px] px-4 border border-black flex'>
                                     <p>Total Share Price : </p>
                                     <input readOnly
                                         defaultValue={editItm?.totalSharePrice}
@@ -265,7 +266,7 @@ const EditView = () => {
                                     />
                                 </div>
 
-                                <div className='print-box w-[820px] whitespace-nowrap print-data-show py-[14px] px-4 border border-black flex'>
+                                <div className='print-box  w-[820px] print-single-box-2 whitespace-nowrap print-data-show py-[14px] px-4 border border-black flex'>
                                     <p className='whitespace-wrap'>In Word : </p>
                                     <input readOnly
                                         defaultValue={editItm?.totalSharePriceInWord}
@@ -276,8 +277,8 @@ const EditView = () => {
                                 </div>
                             </div>
 
-                            <div className='flex justify-between'>
-                                <div className='whitespace-nowrap print-box print-data-show w-[400px] py-[14px] px-4 border border-black flex'>
+                            <div className='flex justify-between print-mt-header-4  print-mt-header-3'>
+                                <div className='whitespace-nowrap print-single-box print-box print-data-show w-[400px] py-[14px] px-4 border border-black flex'>
                                     <p>Booking Money : </p>
                                     <input readOnly
                                         defaultValue={editItm?.bookingMoney}
@@ -287,7 +288,7 @@ const EditView = () => {
                                     />
                                 </div>
 
-                                <div className='w-[820px] whitespace-nowrap print-box py-[14px] px-4 border border-black flex'>
+                                <div className='w-[820px] whitespace-nowrap print-single-box-2 print-box py-[14px] px-4 border border-black flex'>
                                     <p>In Word : </p>
                                     <input readOnly
                                         defaultValue={editItm?.bookingMoneyInWord}
@@ -298,8 +299,8 @@ const EditView = () => {
                                 </div>
                             </div>
 
-                            <div className='flex justify-between'>
-                                <div className='w-[400px] whitespace-nowrap print-box print-data-show py-[14px] px-4 border border-black flex'>
+                            <div className='flex justify-between print-mt-header-4  print-mt-header-3'>
+                                <div className='w-[400px] whitespace-nowrap print-single-box print-box print-data-show py-[14px] px-4 border border-black flex'>
                                     <p>Due Amount : </p>
                                     <input readOnly
                                         defaultValue={editItm?.dueAmount}
@@ -309,7 +310,7 @@ const EditView = () => {
                                     />
                                 </div>
 
-                                <div className='w-[820px] whitespace-nowrap print-box print-data-show pt-[14px] pb-[7px] px-4 border border-black flex'>
+                                <div className='w-[820px]  print-single-box-2 whitespace-nowrap print-box print-data-show pt-[14px] pb-[7px] px-4 border border-black flex'>
                                     <p>In Word : </p>
                                     <input readOnly
                                         defaultValue={editItm?.dueAmountInWord}
@@ -321,20 +322,21 @@ const EditView = () => {
                             </div>
 
                             {/* signature input fields */}
-                            <div className='flex justify-between  mt-[50px!important]'>
+                            <div className='flex justify-between print-mt-sm mt-[50px!important] print-mt-header-3'>
                                 < div className='flex flex-col items-center'>
                                     <input readOnly defaultValue={editItm?.authorizedSignature} name='authorizedSignature' type="text" className='border-b text-center focus:outline-none bg-[transparent] border-black px-2' />
                                     <p>Authorized Signature</p>
                                 </div>
-                                < div className='flex flex-col items-center'>
+
+                                < div className='flex flex-col   items-center'>
                                     <input readOnly defaultValue={editItm?.sharersSignature} name='sharersSignature' type="text" className='border-b text-center focus:outline-none bg-[transparent] border-black px-2' />
                                     <p>Sharer’s Signature</p>
                                 </div>
                             </div>
 
 
-                            <div className='w-full print-bar h-[118px] bg-cover bg-center bg-no-repeat bg-[#A20E27] mt-[40px!important] flex items-center pl-4' style={{ backgroundImage: "url(https://i.ibb.co/hsytgwT/Rectangle-58-1.png)" }}>
-                            </div>
+                            {/* <div className='w-full print-bar h-[118px] bg-cover bg-center bg-no-repeat bg-[#A20E27] mt-[40px!important] flex items-center pl-4' style={{ backgroundImage: "url(https://i.ibb.co/hsytgwT/Rectangle-58-1.png)" }}>
+                            </div> */}
                         </div>
 
                     </div>
