@@ -315,7 +315,7 @@ const ProjectDetails = () => {
                     <h3 className="md:text-[35px] text-xl text-white uppercase">Video Tour</h3>
 
                     <div className="flex duration-200 items-center justify-center rounded w-[90px] group gap-2 overflow-hidden">
-                        {vr_status === 'true' && <a href={vr_url} target="_blank" >
+                        {vr_status && <a href={vr_url} target="_blank" >
                             <img src={vrImg} alt="vr" className="duration-200 w-full group-hover:scale-[1.2] rounded" />
                         </a>}
                     </div>

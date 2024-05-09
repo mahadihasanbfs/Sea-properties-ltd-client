@@ -129,16 +129,16 @@ const LandRegistrationForm = () => {
             });
     }
 
-
-
     return (
         <div>
             <div
-                style={{
-                    backgroundImage: 'url(https://i.ibb.co/D4z4S2h/Rectangle-55.png)'
-                }}
+                // style={{
+                //     backgroundImage: 'url(https://i.ibb.co/D4z4S2h/Rectangle-55.png)'
+                // }}
+
                 className="max-w-[1366px] w-[1366px] mx-auto bg-cover bg-center h-fit p-[60px] mt-[70px] relative">
                 {/* social links */}
+
                 <ul className="space-y-2 absolute">
                     <li>
                         <a href="" className="w-6 h-6 rounded-[50%] bg-[#A20E27] flex justify-center items-center">

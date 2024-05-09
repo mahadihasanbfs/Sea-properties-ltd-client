@@ -182,10 +182,24 @@ const EditProject = () => {
 
     const data = {
       project_photo: project_photo ? project_photo : allProjects?.project_photo,
+// <<<<<<< update_land_report
+//       banner_img: uploadedBannerImg
+//         ? uploadedBannerImg
+//         : allProjects?.banner_img,
+//       name: name,
+//       project_type: allProjects?.project_type
+//         ? allProjects?.project_type
+//         : project_type,
+//       project_status: project_status?.project_status
+//         ? allProjects?.project_status
+//         : project_status,
+
+// =======
       banner_img: uploadedBannerImg ? uploadedBannerImg : allProjects?.banner_img,
       name: name ? name : allProjects?.name,
       project_type: allProjects?.project_type ? allProjects?.project_type : project_type,
       project_status: project_status?.project_status ? allProjects?.project_status : project_status,
+// >>>>>>> main
       details: {
         detail_img: detailImgUpload ? detailImgUpload : allProjects?.details?.detail_img,
         info: {
