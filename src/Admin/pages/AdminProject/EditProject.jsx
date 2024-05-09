@@ -56,14 +56,24 @@ const EditProject = () => {
   //   },
   // });
 
-  const workingData = allProjects?.details?.info?.contractionStatus;
 
-  const [inputFields, setInputFields] = useState([]);
+  const [conditionOn, setConditionOn] = useState(allProjects.conditionStatus);
 
-  useEffect(() => {
-    // Set inputFields state after fetching data
-    setInputFields(workingData);
-  }, []);
+  const handleCheckboxChange = () => {
+    setConditionOn(!conditionOn); // Toggle the state
+  };
+
+
+  const [vrOn, setVrOn] = useState(allProjects.vr_status);
+  const [youtube, setYoutube] = useState(allProjects.youtube_url)
+
+  const handleVr = () => {
+    setVrOn(!vrOn); // Toggle the state
+  };
+
+  const [inputFields, setInputFields] = useState(allProjects?.details?.info?.contractionStatus);
+
+
 
   const handleAddField = () => {
     setInputFields([...inputFields, { name: "", progress: "" }]);
@@ -97,14 +107,14 @@ const EditProject = () => {
     const no_of_floors = form.no_of_floors.value;
     const apartment_floors = form.apartment_floors.value;
     const apartment_size = form.apartment_size.value;
-    const bedroom = form.bedroom.value;
+    const bedroom = form.bedroom.value
     const bathroom = form.bathroom.value;
     const launch_date = new Date().getTime();
     const collections = form.collections.value;
 
-    const video_url = form.video_url.value;
-    const vr_status = form.vr_status.value;
-    const vr_url = form.vr_url.value;
+    const video_url = form?.youtube_url?.value;
+    const vr_status = vrOn;
+    const vr_url = !vrOn ?? form.vr_url.value;
     const map_link = form.map_link.value;
 
     // Get files from file inputs
@@ -129,23 +139,69 @@ const EditProject = () => {
     const featureImgUpload = await uploadImage(features_img);
 
     // Construct data object
+    // const data = {
+    //   project_photo: project_photo ? project_photo : allProjects?.project_photo,
+    //   banner_img: uploadedBannerImg    ? uploadedBannerImg : allProjects?.banner_img,
+    //   name: name ? name : allProjects?.name,
+    //   project_type: allProjects?.project_type   ? allProjects?.project_type     : project_type,
+    //   project_status: project_status?.project_status  ? allProjects?.project_status   : project_status,
+
+    //   details: {
+    //     detail_img: detailImgUpload ? detailImgUpload  : allProjects?.details?.detail_img,
+    // info: {
+    //   address: address ? address : allProjects?.details?.info?.address,
+    //   land_area: land_area ? land_area : allProjects?.details?.info?.land_area,
+    //   no_of_floors: no_of_floors ? no_of_floors : allProjects?.details?.info?.no_of_floors,
+    //   apartment_floors: apartment_floors ? apartment_floors : allProjects?.details?.info?.apartment_floors,
+    //   apartment_size: apartment_size ? apartment_size : allProjects?.details?.info?.apartment_size,
+    //   bathroom: bathroom ? bathroom : allProjects?.details?.info?.bathroom,
+    //   bedroom: bedroom ? bedroom : allProjects?.details?.info?.bedroom,
+    //   launch_date: launch_date ? launch_date : allProjects?.details?.info?.launch_date,
+    //   collections: collections ? collections : allProjects?.details?.info?.collections,
+    //   contractionStatus: inputFields,
+    // },
+    //   },
+    // gallery_img: galleryImageUrls.length
+    //   ? galleryImageUrls
+    //   : allProjects?.gallery_img,
+    // featureInfo: {
+    //   features: selectedOption ? selectedOption : allProjects?.featureInfo?.features,
+    //   features_img: featureImgUpload
+    //     ? featureImgUpload
+    //     : allProjects?.featureInfo?.features_img,
+    // },
+    //   vr_url,
+    //   vr_status,
+    //   conditionStatus: conditionOn,
+    //   videoThumbnailImgUpload: videoThumbnailImgUpload
+    //     ? videoThumbnailImgUpload
+    //     : allProjects?.videoThumbnailImgUpload,
+    //   video_url,
+    //   map_link,
+    // };
+
     const data = {
       project_photo: project_photo ? project_photo : allProjects?.project_photo,
-      banner_img: uploadedBannerImg
-        ? uploadedBannerImg
-        : allProjects?.banner_img,
-      name: name,
-      project_type: allProjects?.project_type
-        ? allProjects?.project_type
-        : project_type,
-      project_status: project_status?.project_status
-        ? allProjects?.project_status
-        : project_status,
+// <<<<<<< update_land_report
+//       banner_img: uploadedBannerImg
+//         ? uploadedBannerImg
+//         : allProjects?.banner_img,
+//       name: name,
+//       project_type: allProjects?.project_type
+//         ? allProjects?.project_type
+//         : project_type,
+//       project_status: project_status?.project_status
+//         ? allProjects?.project_status
+//         : project_status,
 
+// =======
+      banner_img: uploadedBannerImg ? uploadedBannerImg : allProjects?.banner_img,
+      name: name ? name : allProjects?.name,
+      project_type: allProjects?.project_type ? allProjects?.project_type : project_type,
+      project_status: project_status?.project_status ? allProjects?.project_status : project_status,
+// >>>>>>> main
       details: {
-        detail_img: detailImgUpload
-          ? detailImgUpload
-          : allProjects?.details?.detail_img,
+        detail_img: detailImgUpload ? detailImgUpload : allProjects?.details?.detail_img,
         info: {
           address: address ? address : allProjects?.details?.info?.address,
           land_area: land_area ? land_area : allProjects?.details?.info?.land_area,
@@ -159,24 +215,28 @@ const EditProject = () => {
           contractionStatus: inputFields,
         },
       },
+
       gallery_img: galleryImageUrls.length
         ? galleryImageUrls
         : allProjects?.gallery_img,
+
       featureInfo: {
         features: selectedOption ? selectedOption : allProjects?.featureInfo?.features,
         features_img: featureImgUpload
           ? featureImgUpload
           : allProjects?.featureInfo?.features_img,
       },
+      youtube_url: video_url,
       vr_url,
       vr_status,
+      conditionStatus: conditionOn,
       videoThumbnailImgUpload: videoThumbnailImgUpload
         ? videoThumbnailImgUpload
         : allProjects?.videoThumbnailImgUpload,
-      video_url,
-      map_link,
+      map_link
     };
 
+    console.log(data);
     fetch(
       `https://backend.seapropertiesltd.com.bd/api/v1/admin/project/update?project_id=${allProjects?._id}`,
       {
@@ -444,56 +504,67 @@ const EditProject = () => {
 
         {/* dynamic inputs */}
         <div className="border border-[#dbdbdb] mt-6 p-6">
-          <div className="flex items-center justify-between">
-            <h2>Contraction Status</h2>
-            <button
-              type="button"
-              className="duration-200 bg-[#e1e0e0] px-4 py-1"
-              onClick={handleAddField}
-            >
-              + Add Field
-            </button>
-          </div>
-          {/* dynamic inputs */}
-          {workingData?.map((item, index) => (
-            <div key={index} className="grid grid-cols-2 gap-4">
-              <div className="mt-3 w-full">
-                <label>Name Of Works</label>
-                <br />
-                <input
-
-                  className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
-                  type="text"
-                  name="name"
-                  defaultValue={item.name}
-                  placeholder="Name Of The Works"
-                  onChange={(e) => handleValueChange(index, e)}
-                />
-              </div>
-
-              <div className="mt-3 w-full">
-                <label>Project Progress</label>
-                <br />
-                <div className="flex items-center gap-2">
+          <label htmlFor="cdn" className="text-md flex gap-2 font-semibold">
+            <input
+              type="checkbox"
+              id="cdn"
+              checked={conditionOn} // Bind the checked state to conditionOn
+              onChange={handleCheckboxChange} // Handle the change event
+            />
+            Explant Status
+          </label>
+          {conditionOn && <div >
+            <div className="flex items-center justify-between">
+              <h2>Contraction Status</h2>
+              <button
+                type="button"
+                className="duration-200 bg-[#e1e0e0] px-4 py-1"
+                onClick={handleAddField}
+              >
+                + Add Field
+              </button>
+            </div>
+            {/* dynamic inputs */}
+            {inputFields?.map((item, index) => (
+              <div key={index} className="grid grid-cols-2 gap-4">
+                <div className="mt-3 w-full">
+                  <label>Name Of Works</label>
+                  <br />
                   <input
-                    name="progress"
+
                     className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                     type="text"
-                    defaultValue={item.progress}
-                    placeholder="progress"
+                    name="name"
+                    defaultValue={item.name}
+                    placeholder="Name Of The Works"
                     onChange={(e) => handleValueChange(index, e)}
                   />
-                  <button
-                    onClick={() => handleDeleteField(index)}
-                    type="button"
-                    className="bg-[#8a1717] w-[50px] h-[40px] mt-2 flex justify-center text-xl rounded text-[white] items-center"
-                  >
-                    x
-                  </button>
+                </div>
+
+                <div className="mt-3 w-full">
+                  <label>Project Progress</label>
+                  <br />
+                  <div className="flex items-center gap-2">
+                    <input
+                      name="progress"
+                      className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
+                      type="text"
+                      defaultValue={item.progress}
+                      placeholder="progress"
+                      onChange={(e) => handleValueChange(index, e)}
+                    />
+                    <button
+                      onClick={() => handleDeleteField(index)}
+                      type="button"
+                      className="bg-[#8a1717] w-[50px] h-[40px] mt-2 flex justify-center text-xl rounded text-[white] items-center"
+                    >
+                      x
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>}
         </div>
 
         {/*gallery  */}
@@ -553,8 +624,7 @@ const EditProject = () => {
           </div>
         </div>
 
-        {/* Video Tour  */}
-        <div className="border border-[#dbdbdb] mt-6 p-6 space-y-3">
+        {/*   <div className="border border-[#dbdbdb] mt-6 p-6 space-y-3">
           <h2 className="font-bold border-b  border-[gray] pb-3">Video Tour</h2>
           <br />
           <div className="">
@@ -604,7 +674,66 @@ const EditProject = () => {
               placeholder="enter vr url"
             />
           </div>
+        </div>  */}
+
+        <div className="border border-[#dbdbdb] mt-6 p-6 space-y-3">
+          <h2 className="font-bold border-b  border-[gray] pb-3">Video Tour</h2>
+          <br />
+          <label htmlFor="vr" className="text-md flex gap-2 font-semibold">
+            <input
+              type="checkbox"
+              id="vr"
+              checked={youtube} // Bind the checked state to conditionOn
+              onChange={() => setYoutube(!youtube)} // Handle the change event
+            />
+            Add Youtube Url
+          </label>
+
+          {youtube && <div className="">
+            <label   >Youtube URL</label><br />
+            <input
+              type="url"
+              defaultValue={allProjects.youtube_url}
+              name="youtube_url"
+              className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
+              placeholder="Enter youtube url" />
+
+            <br />
+
+            <div className="">
+              <label   >Thumbnail</label><br />
+              <input
+                type="file"
+
+                name="video_thumbnail"
+                className="border mt-1 w-full p-2 rounded bg-[#f4f3f3]"
+                placeholder="Enter Project name" />
+            </div>
+          </div>}
+
+
+          <br />
+          <label htmlFor="vr" className="text-md flex gap-2 font-semibold">
+            <input
+              type="checkbox"
+              id="vr"
+              checked={vrOn} // Bind the checked state to conditionOn
+              onChange={handleVr} // Handle the change event
+            />
+            Add VR url
+          </label>
+
+          {vrOn && <div className="">
+            <label   >VR URL</label><br />
+            <input
+              type="url"
+              multiple
+              name="vr_url"
+              className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
+              placeholder="Enter vr url" />
+          </div>}
         </div>
+
         {/* map link */}
         <br />
         <div className="">
@@ -622,17 +751,19 @@ const EditProject = () => {
         {/* <button className="dashboard_form_btn" type="submit">
           Update
         </button> */}
-        {!loading ? (
-          <button className="dashboard_form_btn" type="submit">
-            Update
-          </button>
-        ) : (
-          <button disabled className="dashboard_form_btn" type="button">
-            Updating....
-          </button>
-        )}
-      </form>
-    </div>
+        {
+          !loading ? (
+            <button className="dashboard_form_btn" type="submit">
+              Update
+            </button>
+          ) : (
+            <button disabled className="dashboard_form_btn" type="button">
+              Updating....
+            </button>
+          )
+        }
+      </form >
+    </div >
   );
 };
 
