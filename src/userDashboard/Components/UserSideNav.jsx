@@ -6,8 +6,7 @@ import { Link, NavLink } from "react-router-dom";
 import { BsBuildings } from "react-icons/bs";
 import { LiaLandmarkSolid } from "react-icons/lia";
 
-export default function UserSideNav() {
-  const [toggleMenu, setToggleMenu] = useState(true);
+export default function UserSideNav({ setToggleMenu }) {
   const [activeMenu, setActiveMenu] = useState(false);
 
   const [open, setOpen] = useState(null);
@@ -97,6 +96,7 @@ export default function UserSideNav() {
             // single nav
             <NavLink
               to={data?.path}
+              onClick={() => setToggleMenu(false)}
               className={({ isActive }) =>
                 isActive
                   ? "bg-slate-700  hover:bg-[#00000048] text-white  py-2 pl-3 rounded block"
