@@ -5,6 +5,12 @@ import PrivateRoute from "./PrivateRoute";
 
 const userPath = [
   {
+    path: '',
+    element: (
+      <UserLandReportManagement />
+    ),
+  },
+  {
     path: "/user/flat-installment",
     element: (
       <FlatInstallMentPage />
@@ -16,8 +22,6 @@ const userPath = [
       <UserLandReportManagement />
     ),
   },
-
-
 ];
 
 export default userPath;
