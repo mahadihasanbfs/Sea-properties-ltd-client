@@ -565,12 +565,12 @@ const AddProject = () => {
                         +Add
                     </button>
                 )}
-                <button
+                {/* <button
                     type="submit"
                     className="px-8 py-2 rounded bg-[#b02449] text-[white]"
                 >
                     +Add
-                </button>
+                </button> */}
             </form>
         </div>
 
