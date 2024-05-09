@@ -15,7 +15,7 @@ import { Autoplay, Navigation } from 'swiper/modules';
 const Banner = () => {
     const [data, setData] = useState([]);
     const [projectStatus, setProjectStatus] = useState('');
-    const [projectType, setProjectType] = useState('');
+    const [projectType, setProjectType] = useState('all');
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
@@ -62,10 +62,25 @@ const Banner = () => {
         ]
     };
 
-    const filterData = projectStatus === '' || projectType === '' ? data : data.filter(itm =>
-        (itm?.project_status && itm.project_status.toLowerCase() === projectStatus.toLowerCase()) ||
-        (itm?.project_type && itm.project_type.toLowerCase() === projectType.toLowerCase())
-    );
+    // const filterData = projectStatus === '' || projectType === '' ? data : data.filter(itm =>
+    //     (itm?.project_status && itm.project_status.toLowerCase() === projectStatus.toLowerCase()) ||
+    //     (itm?.project_type && itm.project_type.toLowerCase() === projectType.toLowerCase())
+    // );
+
+    const [filterData, setFilterData] = useState([]);
+    useEffect(() => {
+        if (data) {
+            const filteredData = data?.filter(project => {
+                const projectStatusLowerCase = project?.project_status?.toLowerCase();
+                const projectTypeLowerCase = project?.project_type?.toLowerCase();
+
+                const matchesPosition = projectStatus === "" || projectStatusLowerCase === projectStatus;
+                const matchesType = projectType === "all" || projectTypeLowerCase === projectType.toLowerCase();
+                return matchesPosition && matchesType;
+            });
+            setFilterData(filteredData);
+        }
+    }, [data, projectStatus, projectType]);
 
     // Search functionality
     let searchData;
@@ -80,6 +95,8 @@ const Banner = () => {
     }
 
 
+
+    console.log(filterData, 'result..');
 
 
     return (

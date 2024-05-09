@@ -449,6 +449,7 @@ a{
     display: block !important;
   }
 .print-photo {
+  border: none!important;
     width: 80px!important;
   height: 100px!important;
 }
@@ -489,7 +490,7 @@ a{
   /* background: red!important; */
 }
 .print-single-box-2{
-  width: 70%!important;
+  width: 64%!important;
   /* background: green!important; */
 }
 /* .print-bar{
@@ -501,7 +502,7 @@ a{
   width: 100%;
 }
 .print-mt-sm{
-  margin-top: 13px!important;
+  margin-top: 8px!important;
 }
 
 .print-py-sm{

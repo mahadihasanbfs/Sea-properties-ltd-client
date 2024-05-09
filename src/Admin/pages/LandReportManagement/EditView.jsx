@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import logo from '../../../assets/logo.png';
+import logo from '../../../assets/Logo_light.png';
 import useImageUpload from '../../../hooks/useUploadImg';
 import Swal from 'sweetalert2';
 import { useQuery } from '@tanstack/react-query';
@@ -216,7 +216,7 @@ const EditView = () => {
 
                                     <div className='w-[400px] print-box-2 whitespace-nowrap print-data-show py-[14px] px-4 border gap-3 border-black flex'>
                                         <p>Gender: </p>
-                                        <div className='flex justify-center items-center gap-2'>
+                                        <div className='flex capitalize justify-center items-center gap-2'>
                                             <p>{editItm?.gendar}</p>
                                         </div>
 
@@ -251,12 +251,12 @@ const EditView = () => {
 
 
                             {/* payment information input fields */}
-                            <div className='w-full h-[55px] print-bar print-mt-header-4 bg-cover bg-[#A20E27] mt-[40px!important] flex items-center pl-4' style={{ backgroundImage: "url(https://i.ibb.co/1LdyZhT/Rectangle-58.png)" }}>
+                            <div className='w-full h-[55px] print-bar print-mt-header-4 bg-cover bg-[#A20E27] mt-[40px!important] flex items-center pl-4 text-start' style={{ backgroundImage: "url(https://i.ibb.co/1LdyZhT/Rectangle-58.png)" }}>
                                 <p className='text-[20px] text-[white]'>Payment Information</p>
                             </div>
 
                             <div className='flex justify-between print-mt-header-4 print-mt-header-3'>
-                                <div className=' print-single-box w-[400px] whitespace-nowrap print-data-show py-[14px] px-4 border border-black flex'>
+                                <div className='text-start print-single-box w-[400px] whitespace-nowrap print-data-show py-[14px] px-4 border border-black flex'>
                                     <p>Total Share Price : </p>
                                     <input readOnly
                                         defaultValue={editItm?.totalSharePrice}
@@ -266,7 +266,7 @@ const EditView = () => {
                                     />
                                 </div>
 
-                                <div className='print-box  w-[820px] print-single-box-2 whitespace-nowrap print-data-show py-[14px] px-4 border border-black flex'>
+                                <div className='print-box  w-[820px] print-single-box-2 whitespace-nowrap  py-[14px] px-4 border border-black flex'>
                                     <p className='whitespace-wrap'>In Word : </p>
                                     <input readOnly
                                         defaultValue={editItm?.totalSharePriceInWord}
@@ -278,7 +278,7 @@ const EditView = () => {
                             </div>
 
                             <div className='flex justify-between print-mt-header-4  print-mt-header-3'>
-                                <div className='whitespace-nowrap print-single-box print-box print-data-show w-[400px] py-[14px] px-4 border border-black flex'>
+                                <div className='text-start print-single-box w-[400px] whitespace-nowrap print-data-show py-[14px] px-4 border border-black flex'>
                                     <p>Booking Money : </p>
                                     <input readOnly
                                         defaultValue={editItm?.bookingMoney}
@@ -300,7 +300,7 @@ const EditView = () => {
                             </div>
 
                             <div className='flex justify-between print-mt-header-4  print-mt-header-3'>
-                                <div className='w-[400px] whitespace-nowrap print-single-box print-box print-data-show py-[14px] px-4 border border-black flex'>
+                                <div className='text-start print-single-box w-[400px] whitespace-nowrap print-data-show py-[14px] px-4 border border-black flex'>
                                     <p>Due Amount : </p>
                                     <input readOnly
                                         defaultValue={editItm?.dueAmount}
