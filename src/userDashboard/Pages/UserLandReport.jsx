@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { MdDeleteOutline } from "react-icons/md";
 import { TbEdit } from "react-icons/tb";
 import Swal from "sweetalert2";
@@ -7,39 +7,22 @@ import { Link } from "react-router-dom";
 import { IoCloseCircle } from "react-icons/io5";
 import { BsEye } from "react-icons/bs";
 import { format } from "date-fns";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const UserLandReportManagement = () => {
     const [openModal, setOpenModal] = useState(false);
-
+    const { user } = useContext(AuthContext)
     const { data: areaData = [], refetch } = useQuery({
-        queryKey: ["allBlog"],
+        queryKey: ["landReport"],
         queryFn: async () => {
-            const res = await fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/user-land-registration');
+            const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/get-user-booking?email=${user?.email}`);
             const data = await res.json();
             return data;
         },
     });
 
-    // delete data using custom hook
-    const handleDelete = (id) => {
-        fetch(
-            `https://backend.seapropertiesltd.com.bd/api/v1/admin/delete-land-registration?id=${id}`,
-            {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }
-        )
-            .then((res) => res.json())
-            .then((data) => {
-                Swal.fire("Data deleted", "", "success");
-                refetch()
-            })
-            .catch((error) => {
-                console.error("Error deleting project:", error);
-            });
-    };
+    console.log(`https://backend.seapropertiesltd.com.bd/api/v1/admin/get-user-booking?email=${user?.email}`);
+    // delete data using custom hook 
 
     console.log(areaData?.data, '>>>>>>');
 
@@ -93,6 +76,11 @@ const UserLandReportManagement = () => {
 
                             </tr>
                         ))}
+                        {!areaData?.data?.length === 0 || areaData?.data == undefined &&
+                            <tr>
+                                <td colSpan={4} className="text-center py-4 font-semibold text-red-500">No Data Found</td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>

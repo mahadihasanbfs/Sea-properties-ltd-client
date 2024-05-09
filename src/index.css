@@ -408,11 +408,18 @@ a{
     transform: translateX(100px);
     margin-top: -105px!important;
    }
+   .print-icon-s{
+    margin-top: -28px!important;
+   }
+   .print-date-of-birth{
+    background-color: red;
+    width: 200px!important;
+   }
    .print-mt-header-0{
     transform: translateY(-30px)!important;
    }
    .print-mt-header { 
-      transform: translateY(-30px)!important;
+      transform: translateY(-27px)!important;
    }
    .print-mt-header-2 { 
       transform: translateY(-40px)!important;
@@ -430,8 +437,8 @@ a{
     width : 350px
   }
   .print-bar{
-    padding: 0px 8px!important;
-    height : 20px
+    padding-bottom: 3px!important;
+    height : 25px!important;
   }
   .print-data-show{
     padding: 2px 5px;

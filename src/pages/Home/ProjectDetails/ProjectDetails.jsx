@@ -119,8 +119,12 @@ const ProjectDetails = () => {
             {/* <MetaHelmet title={name} description={details?.info?.address} ogTitle={name} ogDescription={projectInfo} ogImage={banner_img} /> */}
             {/*  projec  t info  */}
             <div className="max-w-[1366px] mx-auto py-10 px-4 md:px-8 xl:px-20 grid md:grid-cols-2 gap-6 md:gap-0 bg-white ">
-                <figure className="flex items-center">
-                    <img className="w-[575px] h-full object-cover" src={details?.detail_img} alt="" />
+                <figure
+                    style={{
+                        backgroundImage: `url(${details?.detail_img})`
+                    }}
+                    className="flex h-full items-center bg-cover object-cover">.
+                    {/* <img className="w-[575px] h-full object-cover" src={details?.detail_img} alt="" /> */}
                 </figure>
                 <>
                     {/* component */}
@@ -186,6 +190,7 @@ const ProjectDetails = () => {
 
                             </div>
                         </div>
+
                         {conditionStatus &&
                             <button onClick={() => setOn(!on)} className="px-3 py-2 border mt-3">Explant</button>
                         }
