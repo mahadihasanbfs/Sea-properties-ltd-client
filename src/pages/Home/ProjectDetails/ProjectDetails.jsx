@@ -123,7 +123,7 @@ const ProjectDetails = () => {
                     style={{
                         backgroundImage: `url(${details?.detail_img})`
                     }}
-                    className="flex h-full items-center bg-cover object-cover">.
+                    className="flex md:h-full h-[400px] items-center bg-cover object-cover">.
                     {/* <img className="w-[575px] h-full object-cover" src={details?.detail_img} alt="" /> */}
                 </figure>
                 <>
@@ -209,7 +209,7 @@ const ProjectDetails = () => {
                             text='Features & Amenities'
                             position="text-left"
                         />
-                        <figure className="justify-self-end md:hidden flex items-center">
+                        <figure className="justify-self-end md:mt-0 mt-8 md:hidden flex items-center">
                             <img className="w-[465px] h-[490px] object-cover" src={featureInfo?.features_img} alt="" />
                         </figure>
 

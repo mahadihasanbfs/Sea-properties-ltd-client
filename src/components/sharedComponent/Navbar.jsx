@@ -305,13 +305,13 @@ const Navbar = () => {
                 </li>
               ))}
             </ul>
-            <Link to={"/sign-in"}>
+            {/* {<Link to={"/sign-in"}>
               <div className="flex justify-center">
                 <button className="bg-[#c12222] mt-3  w-[93%] text-white md:px-8 px-4  md:text-md text-sm  py-2 rounded">
                   Login
                 </button>
               </div>
-            </Link>
+            </Link>} */}
           </div>
         </div>
       </div>
