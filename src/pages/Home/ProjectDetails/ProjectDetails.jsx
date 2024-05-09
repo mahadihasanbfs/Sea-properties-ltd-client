@@ -104,8 +104,6 @@ const ProjectDetails = () => {
     }
 
 
-    console.log(details, '--->>>>');
-
     return (
         <div className={`overflow-hidden`}>
             <SecondaryBanner
@@ -148,13 +146,13 @@ const ProjectDetails = () => {
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
                                             <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><MdOutlineHomeWork className="text-lg" />  No of Floors</td>
                                             <td className="px-4 py-3 text-sm  border-l">
-                                                {details?.info?.no_of_floors ? details?.info?.no_of_floors : '0'}
+                                                {details?.info?.address?.no_of_floors ? details?.info?.address?.no_of_floors : '0'}
                                             </td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
                                             <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><MdApartment className="text-lg" /> Apartment/Floors</td>
                                             <td className="px-4 py-3 text-sm  border-l">
-                                                {details?.info?.apartment_floors ? details?.info?.apartment_floors : '0'}
+                                                {projectInfo?.apartmentFloor ? projectInfo?.apartmentFloor : '0'}
                                             </td>
                                         </tr>
 
@@ -188,7 +186,7 @@ const ProjectDetails = () => {
                             </div>
                         </div>
                         {conditionStatus &&
-                            <button onClick={() => setOn(!on)} className="px-3 py-2 border md:mt-3 mt-4">Explant</button>
+                            <button onClick={() => setOn(!on)} className="px-3 py-2 border mt-3">Explant</button>
                         }
                         <AlertModal title='Contraction Status' on={on} setOn={setOn}>
                             <DetailShet data={details?.info?.contractionStatus} />
@@ -199,17 +197,17 @@ const ProjectDetails = () => {
 
             {/* project features */}
             <div className="bg-black">
-                <div className="max-w-[1366px] mx-auto md:py-20 px-4 md:px-8 xl:px-20 grid md:grid-cols-2 gap-6 md:gap-0">
+                <div className="max-w-[1366px] mx-auto py-20 px-4 md:px-8 xl:px-20 grid md:grid-cols-2 gap-6 md:gap-0">
                     <div className="">
                         <SecondaryTitle
                             text='Features & Amenities'
                             position="text-left"
                         />
-                        <figure className="justify-self-end md:hidden mt-6 flex items-center">
+                        <figure className="justify-self-end md:hidden flex items-center">
                             <img className="w-[465px] h-[490px] object-cover" src={featureInfo?.features_img} alt="" />
                         </figure>
 
-                        <div className="space-y-4 pb-3 mt-[60px]  text-white">
+                        <div className="space-y-5 mt-[60px] text-white">
                             {
                                 featureInfo?.features && featureInfo?.features?.map((feature, index) => <p key={index}>{feature?.label}</p>)
                             }
@@ -225,7 +223,7 @@ const ProjectDetails = () => {
             </div>
 
             {/* Contact form */}
-            <div className="bg-[#B0BEC5] py-16 lg:py-[85px] md:mt-0 mt-6">
+            <div className="bg-[#B0BEC5] py-16 lg:py-[85px]">
                 <div className="max-w-[1366px] mx-auto px-6 md:px-10 xl:px-[60px] text-white gap-10 grid md:grid-cols-2">
                     <div className="space-y-10 md:block hidden">
                         <img className="w-full h-full shadow-lg shadow-dark rounded" src={details?.detail_img} alt="" />
@@ -316,7 +314,7 @@ const ProjectDetails = () => {
                     <h3 className="md:text-[35px] text-xl text-white uppercase">Video Tour</h3>
 
                     <div className="flex duration-200 items-center justify-center rounded w-[90px] group gap-2 overflow-hidden">
-                        {vr_status === 'true' && <a href={vr_url} target="_blank" >
+                        {vr_status && <a href={vr_url} target="_blank" >
                             <img src={vrImg} alt="vr" className="duration-200 w-full group-hover:scale-[1.2] rounded" />
                         </a>}
                     </div>
