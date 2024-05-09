@@ -203,9 +203,9 @@ const ProjectDetails = () => {
                             text='Features & Amenities'
                             position="text-left"
                         />
-                                            <figure className="justify-self-end md:hidden flex items-center">
-                        <img className="w-[465px] h-[490px] object-cover" src={featureInfo?.features_img} alt="" />
-                    </figure>
+                        <figure className="justify-self-end md:hidden flex items-center">
+                            <img className="w-[465px] h-[490px] object-cover" src={featureInfo?.features_img} alt="" />
+                        </figure>
 
                         <div className="space-y-5 mt-[60px] text-white">
                             {
@@ -233,9 +233,9 @@ const ProjectDetails = () => {
                         <form onSubmit={handleSubmit} className="md:space-y-4 space-y-2 w-full">
                             <h2 className="text-[20px] md:text-[37px] uppercase">Book Now</h2>
                             <div className="space-y-16 py-4 md:hidden block">
-                        <img className="w-full h-full shadow-lg shadow-dark rounded" src={details?.detail_img} alt="" />
+                                <img className="w-full h-full shadow-lg shadow-dark rounded" src={details?.detail_img} alt="" />
 
-                    </div>
+                            </div>
                             <div>
                                 <p>Name*</p>
                                 <input
@@ -314,7 +314,7 @@ const ProjectDetails = () => {
                     <h3 className="md:text-[35px] text-xl text-white uppercase">Video Tour</h3>
 
                     <div className="flex duration-200 items-center justify-center rounded w-[90px] group gap-2 overflow-hidden">
-                        {vr_status && <a href={vr_url} target="_blank" >
+                        {vr_status === 'true' && <a href={vr_url} target="_blank" >
                             <img src={vrImg} alt="vr" className="duration-200 w-full group-hover:scale-[1.2] rounded" />
                         </a>}
                     </div>
