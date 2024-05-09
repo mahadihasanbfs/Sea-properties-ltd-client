@@ -74,6 +74,8 @@ const AddProject = () => {
     // Function to handle input value changes
     const handleValueChange = (index, e) => {
         const { name, value } = e.target;
+
+        console.log('check', name, value);
         const newInputFields = [...inputFields];
         newInputFields[index][name] = value;
         setInputFields(newInputFields);
@@ -119,7 +121,7 @@ const AddProject = () => {
         //
         console.log('hit')
         // Get values from the form fields
-        const name = form.name.value;
+        const name = form.project_name.value;
         const project_type = form.project_type.value;
         const project_status = form.project_status.value;
         const address = form.address.value;
@@ -192,7 +194,6 @@ const AddProject = () => {
             map_link
         };
 
-        console.log('testing......', data);
 
         fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/project/add', {
             method: 'POST',
@@ -206,6 +207,7 @@ const AddProject = () => {
             navigate('/admin/manage-project');
         })
 
+        console.log(name, 'testing......', data);
     };
 
 
@@ -217,7 +219,7 @@ const AddProject = () => {
             <br />
             <div className='border border-gray-500 p-4 rounded flex flex-col gap-2'>
                 <div>
-                    <input required
+                    <input
 
 
                         type="file"
@@ -258,15 +260,16 @@ const AddProject = () => {
                 <div className="lg:flex block items-center gap-6">
                     <div className="mt-3 w-full">
                         <label   >Project Name</label><br />
-                        <input required
-                            name="name"
+                        <input
+                            required
+                            name="project_name"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                             type="text"
                             placeholder="Enter Project name" />
                     </div>
                     <div className="mt-3 w-full">
                         <label    >Feature Image</label><br />
-                        <input required
+                        <input
                             name="banner_img"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                             type="file"
@@ -309,7 +312,7 @@ const AddProject = () => {
                     <br />
                     <div className="">
                         <label   >Detail Image</label><br />
-                        <input required
+                        <input
                             type="file"
                             name="detail_img"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
@@ -320,7 +323,7 @@ const AddProject = () => {
 
                         <div className="mt-3 w-full">
                             <label   >Address</label><br />
-                            <input required
+                            <input
                                 name="address"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -328,7 +331,7 @@ const AddProject = () => {
                         </div>
                         <div className="mt-3 w-full">
                             <label   >Land Area</label><br />
-                            <input required
+                            <input
                                 name="land_area"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -336,7 +339,7 @@ const AddProject = () => {
                         </div>
                         <div className="mt-3 w-full">
                             <label   >No of Floors</label><br />
-                            <input required
+                            <input
                                 name="no_of_floors"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -344,7 +347,7 @@ const AddProject = () => {
                         </div>
                         <div className="mt-3 w-full">
                             <label   >Apartment / Floors</label><br />
-                            <input required
+                            <input
                                 name="apartment_floors"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -352,7 +355,7 @@ const AddProject = () => {
                         </div>
                         <div className="mt-3 w-full">
                             <label   >Apartment Size</label><br />
-                            <input required
+                            <input
                                 name="apartment_size"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -360,7 +363,7 @@ const AddProject = () => {
                         </div>
                         <div className="mt-3 w-full">
                             <label   >No of Parking</label><br />
-                            <input required
+                            <input
                                 name="bedroom"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -377,7 +380,7 @@ const AddProject = () => {
 
                         <div className="mt-3 w-full">
                             <label   >Collections</label><br />
-                            <input required
+                            <input
                                 name="collections"
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
@@ -390,7 +393,7 @@ const AddProject = () => {
 
                 {/* dynamic inputs */}
                 <label htmlFor="cdn" className="text-md flex gap-2 font-semibold">
-                    <input required
+                    <input
                         type="checkbox"
                         id="cdn"
                         checked={conditionOn} // Bind the checked state to conditionOn
@@ -410,10 +413,11 @@ const AddProject = () => {
                             <div className="mt-3 w-full">
                                 <label>Name Of Works</label>
                                 <br />
-                                <input required
+                                <input
                                     className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                     type="text"
-                                    placeholder="Enter total bathroom"
+                                    name="name"
+                                    placeholder="Name Of The Works"
                                     onChange={(e) => handleValueChange(index, e)}
                                 />
                             </div>
@@ -421,12 +425,12 @@ const AddProject = () => {
                             <div className="mt-3 w-full">
                                 <label>Project Progress</label><br />
                                 <div className="flex items-center gap-2">
-                                    <input required
+                                    <input
                                         name="progress"
                                         className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                         type="text"
                                         value={item.progress}
-                                        placeholder="Project progress percents"
+                                        placeholder="progress"
                                         onChange={(e) => handleValueChange(index, e)}
                                     />
                                     <button onClick={() => handleDeleteField(index)} type="button" className="bg-[#8a1717] w-[50px] h-[40px] mt-2 flex justify-center text-xl rounded text-[white] items-center">x</button>
@@ -441,7 +445,7 @@ const AddProject = () => {
                     <br />
                     <div className="">
                         <label   >Gallery Image</label><br />
-                        <input required
+                        <input
                             type="file"
                             multiple
                             name="gallery_img"
@@ -467,7 +471,7 @@ const AddProject = () => {
 
                     <div className="">
                         <label   >Features Img</label><br />
-                        <input required
+                        <input
                             type="file"
                             name="features_img"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
@@ -480,7 +484,7 @@ const AddProject = () => {
                     <h2 className="font-bold border-b  border-[gray] pb-3">Video Tour</h2>
                     <br />
                     <label htmlFor="vr" className="text-md flex gap-2 font-semibold">
-                        <input required
+                        <input
                             type="checkbox"
                             id="vr"
                             checked={youtube} // Bind the checked state to conditionOn
@@ -491,7 +495,7 @@ const AddProject = () => {
 
                     {youtube && <div className="">
                         <label   >Youtube URL</label><br />
-                        <input required
+                        <input
                             type="url"
                             multiple
                             name="youtube_url"
@@ -502,7 +506,7 @@ const AddProject = () => {
 
                         <div className="">
                             <label   >Thumbnail</label><br />
-                            <input required
+                            <input
                                 type="file"
 
                                 name="video_thumbnail"
@@ -514,7 +518,7 @@ const AddProject = () => {
 
                     <br />
                     <label htmlFor="vr" className="text-md flex gap-2 font-semibold">
-                        <input required
+                        <input
                             type="checkbox"
                             id="vr"
                             checked={vrOn} // Bind the checked state to conditionOn
@@ -525,7 +529,7 @@ const AddProject = () => {
 
                     {vrOn && <div className="">
                         <label   >VR URL</label><br />
-                        <input required
+                        <input
                             type="url"
                             multiple
                             name="vr_url"
@@ -537,7 +541,7 @@ const AddProject = () => {
                 <br />
                 <div className="">
                     <label   >Map Link</label><br />
-                    <input required
+                    <input
                         type="text"
                         name="map_link"
                         className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
@@ -561,6 +565,12 @@ const AddProject = () => {
                         +Add
                     </button>
                 )}
+                <button
+                    type="submit"
+                    className="px-8 py-2 rounded bg-[#b02449] text-[white]"
+                >
+                    +Add
+                </button>
             </form>
         </div>
 

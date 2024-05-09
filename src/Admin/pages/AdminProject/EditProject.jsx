@@ -134,7 +134,7 @@ const EditProject = () => {
       banner_img: uploadedBannerImg
         ? uploadedBannerImg
         : allProjects?.banner_img,
-      name,
+      name: name ? name : allProjects?.name,
       project_type: allProjects?.project_type
         ? allProjects?.project_type
         : project_type,
@@ -147,15 +147,15 @@ const EditProject = () => {
           ? detailImgUpload
           : allProjects?.details?.detail_img,
         info: {
-          address,
-          land_area,
-          no_of_floors,
-          apartment_floors,
-          apartment_size,
-          bathroom,
-          bedroom,
-          launch_date,
-          collections,
+          address: address ? address : allProjects?.details?.info?.address,
+          land_area: land_area ? land_area : allProjects?.details?.info?.land_area,
+          no_of_floors: no_of_floors ? no_of_floors : allProjects?.details?.info?.no_of_floors,
+          apartment_floors: apartment_floors ? apartment_floors : allProjects?.details?.info?.apartment_floors,
+          apartment_size: apartment_size ? apartment_size : allProjects?.details?.info?.apartment_size,
+          bathroom: bathroom ? bathroom : allProjects?.details?.info?.bathroom,
+          bedroom: bedroom ? bedroom : allProjects?.details?.info?.bedroom,
+          launch_date: launch_date ? launch_date : allProjects?.details?.info?.launch_date,
+          collections: collections ? collections : allProjects?.details?.info?.collections,
           contractionStatus: inputFields,
         },
       },
@@ -447,6 +447,7 @@ const EditProject = () => {
           <div className="flex items-center justify-between">
             <h2>Contraction Status</h2>
             <button
+              type="button"
               className="duration-200 bg-[#e1e0e0] px-4 py-1"
               onClick={handleAddField}
             >
@@ -463,8 +464,9 @@ const EditProject = () => {
 
                   className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                   type="text"
+                  name="name"
                   defaultValue={item.name}
-                  placeholder="Enter total bathroom"
+                  placeholder="Name Of The Works"
                   onChange={(e) => handleValueChange(index, e)}
                 />
               </div>
@@ -478,7 +480,7 @@ const EditProject = () => {
                     className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                     type="text"
                     defaultValue={item.progress}
-                    placeholder="Project progress percents"
+                    placeholder="progress"
                     onChange={(e) => handleValueChange(index, e)}
                   />
                   <button

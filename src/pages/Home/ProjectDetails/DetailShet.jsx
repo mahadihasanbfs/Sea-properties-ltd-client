@@ -43,7 +43,7 @@ const DetailShet = ({ data }) => {
                                             {itm?.name}
                                         </td>
                                         <td className="px-4 py-3 text-ms border-r border-[#c9c9c9] font-[400]">
-                                            {itm?.progress}% completed
+                                            {itm?.progress}
                                         </td>
                                     </tr>)
                                 }
