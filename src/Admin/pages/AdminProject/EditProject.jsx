@@ -112,7 +112,7 @@ const EditProject = () => {
     const launch_date = new Date().getTime();
     const collections = form.collections.value;
 
-    const video_url = youtube ?? form.video_url.value;
+    const video_url = form?.youtube_url?.value;
     const vr_status = vrOn;
     const vr_url = !vrOn ?? form.vr_url.value;
     const map_link = form.map_link.value;
@@ -212,7 +212,7 @@ const EditProject = () => {
           ? featureImgUpload
           : allProjects?.featureInfo?.features_img,
       },
-      youtube_url: video_url ?? allProjects.youtube_url,
+      youtube_url: video_url,
       vr_url,
       vr_status,
       conditionStatus: conditionOn,
