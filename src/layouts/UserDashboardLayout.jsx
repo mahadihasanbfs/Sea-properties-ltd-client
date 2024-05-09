@@ -19,9 +19,9 @@ export default function UserDashboardLayout() {
             <div className="flex flex-col md:flex-row sticky overflow-hidden h-screen">
                 <aside className={`${toggleMenu ? 'md:w-64 w-full' : 'md:w-64 w-0'} duration-200 w-30  bg-dark text-light h-[100vh] overflow-y-auto shadow-md z-[100]`}>
                     <div className="flex items-center bg-gray-900 justify-between">
-                        <div className="flex items-center text-white px-8 h-[70px] space-x-2">
+                        <Link to={'/'} className="flex items-center text-white px-8 h-[70px] space-x-2">
                             <img src={logo} alt="logo" className="w-20" />
-                        </div>
+                        </Link>
                         <button onClick={() => setToggleMenu(!toggleMenu)} className="mr-10 block md:hidden">
                             <IoClose />
                         </button>
