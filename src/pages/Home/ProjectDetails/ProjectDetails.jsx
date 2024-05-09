@@ -60,7 +60,8 @@ const ProjectDetails = () => {
     };
 
     const { _id, conditionStatus,
-        vr_status, vr_url, name, banner_img, videoThumbnailImgUpload, video_url, contactPageImg, project_status, projectInfo, projectFeatures, gallery_img, project_photo, projectVideo, map_link, featureInfo, details } = projectData;
+        vr_status, vr_url, name, banner_img, videoThumbnailImgUpload,
+        youtube_url, contactPageImg, project_status, projectInfo, projectFeatures, gallery_img, project_photo, projectVideo, map_link, featureInfo, details } = projectData;
 
     console.log(projectData, 'oooooooo')
 
@@ -146,13 +147,13 @@ const ProjectDetails = () => {
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
                                             <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><MdOutlineHomeWork className="text-lg" />  No of Floors</td>
                                             <td className="px-4 py-3 text-sm  border-l">
-                                                {details?.info?.address?.no_of_floors ? details?.info?.address?.no_of_floors : '0'}
+                                                {details?.info?.no_of_floors ? details?.info?.no_of_floors : '0'}
                                             </td>
                                         </tr>
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
                                             <td className="px-4 py-3 flex items-center gap-2 text-ms font-semibold "><MdApartment className="text-lg" /> Apartment/Floors</td>
                                             <td className="px-4 py-3 text-sm  border-l">
-                                                {projectInfo?.apartmentFloor ? projectInfo?.apartmentFloor : '0'}
+                                                {details?.info?.apartment_floors ? details?.info?.apartment_floors : '0'}
                                             </td>
                                         </tr>
 
@@ -320,7 +321,7 @@ const ProjectDetails = () => {
                     </div>
                 </div> <br />
                 <div className="md:h-[600px] h-[200px] w-full">
-                    <VideoPlayer thum={videoThumbnailImgUpload} url={video_url} />
+                    <VideoPlayer thum={videoThumbnailImgUpload} url={youtube_url} />
                 </div>
 
                 <br /><br />
