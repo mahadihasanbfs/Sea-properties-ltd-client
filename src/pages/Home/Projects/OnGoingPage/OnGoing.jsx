@@ -2,16 +2,20 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import MetaHelmet from "../../../../components/MetaHalmate";
 
 const OnGoingProject = () => {
     const [projectData, setProjectData] = useState([]);
     const [type, setType] = useState('all');
     const filterPath = useLocation();
     const [projectStatus, setProjectStatus] = useState('');
+    const [title, setTitle] = useState('')
 
     useEffect(() => {
         const text = filterPath?.hash;
         const result = text ? text.replace('#', '').toLowerCase() : '';
+        const capitalizedResult = result.charAt(0).toUpperCase() + result.slice(1);
+        setTitle(capitalizedResult);
         setProjectStatus(result);
     }, [filterPath]);
 
@@ -34,17 +38,19 @@ const OnGoingProject = () => {
                 const matchesType = type === "all" || projectTypeLowerCase === type.toLowerCase();
                 return matchesPosition && matchesType;
             });
+
             setProjectData(filteredData);
         }
     }, [responseData, projectStatus, type]);
 
     return (
         <div className="">
-            <Helmet>
-                <title>
-                    On Going Project | Sea Properties ltd
-                </title>
-            </Helmet>
+            // <Helmet>
+            //     <title>
+            //
+            //     </title>
+                // </Helmet>
+            <MetaHelmet title={`${title} Projects  | SEA Properties ltd`} description={`This is ${title} Projects of SEA Properties ltd`} ogTitle={`${title} Projects  | SEA Properties ltd`} ogDescription={`This is ${title} Projects of SEA Properties ltd`} />
             {/* banner */}
             <div className="max-w-[1366px] mx-auto flex flex-col md:flex-row justify-between items-center gap-10 md:gap-0 pt-[200px] pb-[100px] xl:pb-[150px] px-[60px] bg-white">
                 <div className="text-[#AAB0B2]">
@@ -78,7 +84,7 @@ const OnGoingProject = () => {
                         ) : (
                             <div className="grid gap-10 md:grid-cols-3">
                                 {projectData.map(item => (
-                                    <Link key={item?._id} to={`/project-details/${item?.name}`}>
+                                    <Link key={item?._id} to={`/project-details/${item?.sku}`}>
                                         <div className="relative xl:w-[423px] rounded-lg duration-200 hover:shadow-lg border border-[#80808051] xl:h-[423px] justify-self-center overflow-hidden hover:cursor-pointer">
                                             <img className="w-full h-full hover:scale-110 transition-transform duration-1000 ease-in-out object-cover" src={item?.project_photo} alt="" />
                                             <div className="w-full h-[70px]  px-6 bg-[#00000080] flex justify-center items-center flex-col absolute bottom-20">
@@ -93,7 +99,7 @@ const OnGoingProject = () => {
                     </div>
                 )}
             </div>
-        </div>
+        </div >
     );
 };
 
