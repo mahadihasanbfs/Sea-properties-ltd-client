@@ -135,7 +135,7 @@ const ManageProject = () => {
                                                     </button>
                                                 </li>
                                                 <li>
-                                                    <Link to={`/admin/edit-project/${item?.name}`}>
+                                                    <Link to={`/admin/edit-project/${item?.sku}`}>
                                                         <TbEdit className="text-2xl text-[green]" />
                                                     </Link>
                                                 </li>

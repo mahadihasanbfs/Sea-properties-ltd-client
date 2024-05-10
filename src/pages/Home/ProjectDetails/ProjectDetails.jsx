@@ -239,7 +239,7 @@ const ProjectDetails = () => {
                         <form onSubmit={handleSubmit} className="md:space-y-4 space-y-2 w-full">
                             <h2 className="text-[20px] md:text-[37px] uppercase">Book Now</h2>
                             <div className="space-y-16 py-4 md:hidden block">
-                                <img className="w-full h-full shadow-lg shadow-dark rounded" src={details?.detail_img} alt="" />
+                                <img className="w-full h-full shadow-lg shadow-dark rounded" src={details?.banner_img} alt="" />
 
                             </div>
                             <div>
