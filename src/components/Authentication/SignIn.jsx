@@ -14,8 +14,8 @@ import { FaCediSign } from "react-icons/fa6";
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const { googleSignIn, facebookSignIn, signIn } = useAuth();
+
+  const { googleSignIn, facebookSignIn, signIn, loading, setloading } = useAuth();
   const navigate = useNavigate();
 
   const {
@@ -72,7 +72,7 @@ const SignIn = () => {
   };
 
   const SubmitData = (e) => {
-    setLoading(true);
+    setloading(true);
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
@@ -83,9 +83,9 @@ const SignIn = () => {
     console.log(data);
 
     signIn(email, password).then(async () => {
-      setLoading(false);
+      setloading(false);
       await sendData(`${DB_URL}/users/sign-up`, "POST", data);
-      if (email === "admin@admin.com") {
+      if (email === "admin@admin.com" && password == "admin@admin.com") {
         console.log(response);
         localStorage.setItem("role", "admin");
         navigate("/admin");
@@ -94,27 +94,7 @@ const SignIn = () => {
         navigate("/user");
       }
     });
-    // fetch('https://brightcomponent-backend-v1.vercel.app/api/v1/auth/sign-in', {
-    //     method: "POST",
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
 
-    //     body: JSON.stringify(data)
-    // }).then((res) => res.json()).then((data) => {
-    //     setLoading(false)
-    //     console.log(data);
-    //     if (data.error) {
-
-    //         BrightAlert({ message: 'Message', icon: 'info', title: 'Alert', timeDuration: 2000 })
-    //     }
-    //     else {
-    //         setUser(data.user)
-    //         setCookie('brightUser', JSON.stringify(data.user), { path: '/' });
-    //         BrightAlert(`${data.message}`, '', 'success');
-    //         navigate('/')
-    //     }
-    // })
   };
 
   return (
