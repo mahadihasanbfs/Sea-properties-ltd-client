@@ -13,9 +13,8 @@ import Swal from 'sweetalert2'
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState("");
-  const { createUser, updateUser, googleSignIn, facebookSignIn } = useAuth();
+  const { createUser, updateUser, googleSignIn, facebookSignIn, loading, setloading } = useAuth();
 
   const {
     sendData,
@@ -112,7 +111,7 @@ const SignUp = () => {
 
   const passwordStrength = checkPasswordStrength(password);
   const SubmitData = async (e) => {
-    setLoading(true);
+    setloading(true);
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
@@ -123,7 +122,7 @@ const SignUp = () => {
     };
     await createUser(email, password).then(() => {
       updateUser(name).then(async () => {
-        setLoading(false);
+        setloading(false);
         await sendData(`${DB_URL}/users/sign-up`, "POST", data);
         console.log(response);
 
