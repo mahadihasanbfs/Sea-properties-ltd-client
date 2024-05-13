@@ -428,7 +428,7 @@ a{
       transform: translateY(-40px)!important;
    }
    .print-footer  {
-    transform: translateY(-60px)!important;
+    transform: translateY(-90px)!important;
    }
    
    .print-mt-footer-4  {
@@ -436,11 +436,26 @@ a{
     width: 200vw!important; 
     margin-left: -60px!important;
     transform: translateX(-80px)!important;
-    transform: translateY(-40px)!important;
+    transform: translateY(-45px)!important;
+   }
+   .print-mt-header-0{
+    margin-bottom: 20px!important;
    }
       .print-mt-header-4 { 
       transform: translateY(-70px)!important;
    }
+   /* .print-details-bar{
+    margin-top: -70px!important;
+   } */
+
+   .print-date-box{
+    /* width: 90px!important; */
+    /* margin-left: 100px!important; */
+   }
+   .print-date-area{
+    margin-left:auto!important;
+    width: 160px!important;
+    }
   .print-box{
     width : 400px
   }
@@ -471,12 +486,15 @@ a{
     overflow: hidden!important;
     display: block !important;
   }
+  .print-grid{
+    margin-top: 30px!important;
+  }
 .print-photo {
   position: relative!important;
-  right: -85px!important;
+  right: 0px!important;
   border: none!important;
-    width: 80px!important;
-  height: 100px!important;
+    width: 120px!important;
+  height: 140px!important;
 }
 .print-mt-title{
   margin-top: -40px!important;
@@ -488,9 +506,10 @@ a{
   font-size: 14px!important;
 }
 .print-logo{
-  margin-top: 2px!important;
-  margin-top: 60px!important;
-  width: 100px!important;
+  margin: auto!Important;
+   margin-top: 80px!important;
+  width: 200px!important;
+  margin-bottom: 15px!important;
 }
 .print-text-xs{
   font-size: 10px!important;
@@ -502,9 +521,7 @@ a{
 .print-m-b{
   margin-bottom: 1px!important;
 }
-.print-date-text{
-  font-size: 7px!important;
-}
+
 .print-head-text{
   margin-top: 2px!important;
   font-size: 22px!important;
@@ -518,6 +535,8 @@ a{
   height : 30px!important;
 }
 .print-date-text{
+  margin-left: 90px!important;
+  font-size: 7px!important;
   font-size: 12px!important;
 }
 .print-tx-1{

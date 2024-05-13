@@ -194,7 +194,7 @@ const LandRegistrationForm = () => {
                                                 value={SN}
                                                 type="text"
                                                 name='serialNumber'
-                                                className='focus:outline-none border-b-[1px] border-black'
+                                                className='focus:outline-none '
                                             />
                                         </div>
                                     </div>
