@@ -28,9 +28,11 @@ const EditView = () => {
         },
     });
 
-    const date = new Date();
     const editItm = report?.find(itm => itm?._id === id);
-    console.log(editItm, '------====');
+    const date = new Date(editItm?.timestamp);
+    const formattedDate = date.toDateString();
+
+    console.log(formattedDate, '------====');
     return (
         <div className=''>
             <Helmet>
@@ -55,53 +57,50 @@ const EditView = () => {
                         <div className=" px-[60px]">
                             <div className="grid grid-cols-3">
                                 <div className="">
-                                    <ul className="space-y-2 absolute">
-                                        <li className='flex gap-2 font-semibold'>
+                                    <ul className="space-y-1 absolute">
+                                        <li className='flex items-center gap-2 font-semibold'>
                                             <a href="" className="w-5 h-5 rounded-[50%] text-[white] bg-[#A20E27] flex justify-center items-center">
                                                 <MdOutlineCall className='text-xs' />
                                             </a>
                                             <small className='print-text-xs'>+88 01894440111</small>
                                         </li>
-                                        <li className='flex gap-2 font-semibold'>
+                                        <li className='flex items-center gap-2 font-semibold'>
                                             <a href="" className="w-5 h-5 rounded-[50%] text-[white] bg-[#A20E27] flex justify-center items-center">
                                                 <AiOutlineGlobal />
 
                                             </a>
                                             <small className='print-text-xs'>https://seapropertiesltd.com.bd</small>
                                         </li>
-                                        <li className='flex gap-2 font-semibold'>
+                                        <li className='flex items-center gap-2 font-semibold'>
                                             <a href="" className="w-5 h-5 rounded-[50%] text-[white] bg-[#A20E27] flex justify-center items-center">
                                                 <HiOutlineMail />
                                             </a>
                                             <small className='print-text-xs'>info.seapropertiesltd@gmail.com</small>
                                         </li>
-                                        <li className='flex gap-2 font-semibold'>
+                                        <li className='flex items-center gap-2 font-semibold'>
                                             <a href="" className="w-5 h-5 rounded-[50%] text-[white] bg-[#A20E27] flex justify-center items-center">
                                                 <FaFacebookF className='text-xs' />
                                             </a>
                                             <small className='print-text-xs'>fb.com/seapropertiesltd.com.bd</small>
                                         </li>
-                                        <li className='flex gap-2  font-semibold  '>
-                                            <span className="bg-[#A20E27] text-[white]  w-5 h-5 rounded-full  flex items-center justify-center">
-                                                <IoLocationOutline />
-                                            </span>
+                                        <li className='flex items-start gap-2 font-semibold'>
+                                            <a href="" className="w-5 h-5 rounded-[50%] text-[white] bg-[#A20E27] flex justify-center items-center">
+                                                <IoLocationOutline className='text-xs' />
+                                            </a>
                                             <small className='print-text-xs'>
                                                 100 North Kalshi, Gate No - 01, <br /> Mirpur DOHS,
                                                 Dhaka, Bangladesh
                                             </small>
                                         </li>
-                                        <li>
 
-                                        </li>
 
                                     </ul>
                                 </div>
                                 <div className="flex justify-center">
                                     <div className='flex  flex-col items-center '>
                                         {/* <span className="ring-1 ring-[black] px-2 py-1 text-sm mb-3 print-m-b rounded-full">CUSTOMER COPY</span> */}
-                                        <div className='print-mt-title flex flex-col justify-center items-center'>
+                                        <div className='print-mt-title h-full flex flex-col justify-center items-between'>
                                             <img className='w-[270px] mt-3 object-contain print-logo' src={logo} alt="" />
-                                            <h2 className='text-[40px] font-[900] print-head-text text-center mt-4'>BOOKING FORM</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -124,33 +123,43 @@ const EditView = () => {
                                             }
                                         </div>
 
-                                        <div className=' whitespace-nowrap border border-[#A20E27] text-[#A20E27] print-date-text px-1 py-1 mt-1 text-sm font-semibold'>
-                                            Date:   {
-                                                new Date().toLocaleString(editItm?.timestamp)
+                                        {/* <div className=' whitespace-nowrap border  text-center border-[#A20E27] text-[#A20E27] print-date-text px-1 py-1 mt-1 text-sm font-semibold'>
+                                            {
+                                                formattedDate
                                             }
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                             </div>
-                            <div className="print-mt-md">
-                                <div className='flex gap-2 items-end'>
-                                    <p>Reference :</p>
+
+                            <div className="grid grid-cols-3 mt-3 print-grid items-end">
+                                <div>
+                                    <div className='flex gap-2 items-end'>
+                                        <p>Reference :</p>
+                                    </div>
+                                    <div className='flex gap-2 whitespace-nowrap items-end'>
+                                        <p>Serial No</p>
+                                        <input
+                                            value={editItm?.SN}
+                                            type="text"
+                                            name='serialNumber'
+                                            className='focus:outline-none  border-dashed w-[100px] border-black'
+                                        />
+                                    </div>
                                 </div>
-                                <div className='flex gap-2 items-end'>
-                                    <p>Serial No</p>
-                                    <input
-                                        value={editItm?.SN}
-                                        type="text"
-                                        name='serialNumber'
-                                        className='focus:outline-none border-b-[1px] border-black'
-                                    />
+                                <h2 className='text-[40px] font-[900]  print-head-text text-center '>BOOKING FORM</h2>
+                                <div className='pb-3'>
+                                    <div className='print-date-area  border border-[#A20E27] text-center w-[200px] ml-auto flex items-center justify-center'>
+                                        {
+                                            formattedDate
+                                        }
+                                    </div>
                                 </div>
                             </div>
+
                             <div
                                 className='space-y-2 '>
                                 {/* Serial No */}
-
-
                                 <div className='w-full print-bar print-mt-header-0 h-[40px] bg-cover bg-[#A20E27] mt-10 flex items-center pl-4'>
                                     <p className='text-[20px] text-[white]'>Client Information</p>
                                 </div>
@@ -227,13 +236,13 @@ const EditView = () => {
                                 </div>
 
                                 <div className='flex justify-between print-mt-header-3'>
-                                    <div className='space-y-4'>
-                                        <div className='w-[400px] whitespace-nowrap print-data-show print-half-div py-[14px] px-4 border border-black flex justify-between'>
+                                    <div className='space-y-2'>
+                                        <div className='w-[400px] whitespace-nowrap print-data-show  print-half-div py-[14px] px-4 border border-black flex justify-between'>
                                             <p >Date of birth : </p>
                                             <input readOnly
                                                 defaultValue={editItm?.birthDate}
                                                 name='birthDate'
-                                                type="date"
+                                                type={editItm?.birthDate ? "date" : "text"}
                                                 className='w-full ml-3  focus:outline-none cursor-default bg-[transparent]'
                                             />
                                         </div>
@@ -249,7 +258,7 @@ const EditView = () => {
                                         </div>
                                     </div>
 
-                                    <div className='space-y-4'>
+                                    <div className='space-y-2'>
                                         <div className='w-[400px] print-box-2 whitespace-nowrap print-data-show print-half-div py-[14px] px-4 border border-black flex'>
                                             <p>Nationality : </p>
                                             <input readOnly
@@ -271,7 +280,7 @@ const EditView = () => {
                                 </div>
 
                                 {/* project details input fields*/}
-                                <div className='w-full h-[40px] print-mt-header-3 print-bar print-mt-sm bg-cover bg-[#A20E27] mt-[40px!important] flex items-center pl-4'>
+                                <div className='w-full h-[40px] print-mt-header-3 print-details-bar print-bar print-mt-sm bg-cover bg-[#A20E27] mt-[30px!important] flex items-center pl-4'>
                                     <p className='text-[20px] text-[white]'>Project Details</p>
                                 </div>
 
