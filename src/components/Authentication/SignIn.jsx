@@ -173,18 +173,18 @@ const SignIn = () => {
             </button>
           </form>
 
-          <div className="flex  justify-center gap-4 mt-4">
-            <div
+          <div className="justify-center gap-4 mt-4">
+            {/* <div
               onClick={handleFacebookSignIn}
               className="w-[220px] h-[50px] rounded-lg text-white bg-[#A20E27] flex justify-center items-center gap-3 hover:cursor-pointer"
             >
               <FaFacebook className="w-6 text-light h-6" />
               <p className="text-lg text-light">Facebook</p>
-            </div>
+            </div> */}
 
             <div
               onClick={handleGoogleSignIn}
-              className="w-[220px] h-[50px] rounded-lg text-white bg-[#A20E27] flex justify-center items-center gap-3  hover:cursor-pointer"
+              className="w-full h-[50px] rounded-lg text-white bg-[#A20E27] flex justify-center items-center gap-3  hover:cursor-pointer"
             >
               <AiFillGoogleCircle className="w-6 text-light h-6" />
               <p className="text-lg text-light">Google</p>
