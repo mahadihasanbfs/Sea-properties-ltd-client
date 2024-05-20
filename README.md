@@ -35,6 +35,8 @@ This project builds a modern, user-friendly, and responsive real estate website 
    The server will start on http://localhost:5173 by default.
 
 **Technology Stack:**
+![image](https://github.com/brightfuturesoft/Sea-properties-ltd-client/assets/73072248/dc6c01cd-0757-4c1e-8297-a1672c066fcb)
+
 
 - React: JavaScript library for building user interfaces.
 - Tailwind CSS: Utility-first CSS framework for rapid styling.
