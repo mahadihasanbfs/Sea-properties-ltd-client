@@ -40,20 +40,12 @@ const EditView = () => {
             </Helmet>
             <div className='' ref={componentRef}>
                 <div>
-
-
-
-
-
-
                     <div
                         ref={componentRef}
                         style={{
                             backgroundImage: `url(${bg})`,
                         }}
                         className="max-w-[1366px] bg-[white] overflow-hidden print-data mx-auto bg-cover bg-center h-fit print-main-box mt-[70px] relative">
-
-
                         <div className=" px-[60px]">
                             <div className="grid grid-cols-3">
                                 <div className="">
@@ -225,15 +217,16 @@ const EditView = () => {
                                     />
                                 </div>
 
-                                <div className='w-full whitespace-nowrap print-mt-header-3 print-data-show py-[14px] px-4 border border-black flex'>
-                                    <p>Permanent Address in Bangla : </p>
-                                    <input readOnly
+                                <div className='w-full whitespace-nowrap print-mt-header-3 print-data-show py-[14px] px-4 border border-black flex h-[80px] items-start'>
+                                    <p className="mr-2">Permanent Address in Bangla:</p>
+                                    <textarea
+                                        readOnly
                                         defaultValue={editItm?.address}
                                         name='address'
-                                        type="text"
-                                        className='w-[800px] focus:outline-none pl-2 cursor-default bg-[transparent]'
+                                        className='flex-grow h-full focus:outline-none pl-2 cursor-default bg-transparent resize-none overflow-hidden'
                                     />
                                 </div>
+
 
                                 <div className='flex justify-between print-mt-header-3'>
                                     <div className='space-y-2'>
@@ -321,7 +314,7 @@ const EditView = () => {
                                         />
                                     </div>
 
-                                    <div className='print-box  w-[820px] print-single-box-2 whitespace-nowrap  py-[14px] px-4 border border-black flex'>
+                                    <div className='print-box  w-[820px] print-single-box-2 whitespace-nowrap  py-[14px] px-4 border border-black flex items-center'>
                                         <p className='whitespace-wrap'>In Word : </p>
                                         <input readOnly
                                             defaultValue={editItm?.totalSharePriceInWord}
@@ -333,7 +326,7 @@ const EditView = () => {
                                 </div>
 
                                 <div className='flex justify-between print-mt-header-4  print-mt-header-3'>
-                                    <div className='text-start print-single-box w-[400px] whitespace-nowrap print-data-show py-[14px] px-4 border border-black flex'>
+                                    <div className='text-start print-single-box w-[400px] whitespace-nowrap print-data-show py-[14px] px-4 border border-black flex items-center'>
                                         <p>Booking Money : </p>
                                         <input readOnly
                                             defaultValue={editItm?.bookingMoney}
@@ -343,7 +336,7 @@ const EditView = () => {
                                         />
                                     </div>
 
-                                    <div className='w-[820px] whitespace-nowrap print-single-box-2 print-box py-[14px] px-4 border border-black flex'>
+                                    <div className='w-[820px]  whitespace-nowrap print-single-box-2 print-box py-[14px] px-4 border border-black flex items-center'>
                                         <p>In Word : </p>
                                         <input readOnly
                                             defaultValue={editItm?.bookingMoneyInWord}
@@ -365,7 +358,7 @@ const EditView = () => {
                                         />
                                     </div>
 
-                                    <div className='w-[820px]  print-single-box-2 whitespace-nowrap print-box print-data-show pt-[14px] pb-[7px] px-4 border border-black flex'>
+                                    <div className='w-[820px]  print-single-box-2 whitespace-nowrap print-box print-data-show pt-[14px] pb-[7px] px-4 border border-black flex items-center'>
                                         <p>In Word : </p>
                                         <input readOnly
                                             defaultValue={editItm?.dueAmountInWord}
@@ -390,19 +383,17 @@ const EditView = () => {
                                 </div>
 
 
-                                {/* <div className='w-full print-bar h-[118px] bg-cover bg-center bg-no-repeat bg-[#A20E27] mt-[40px!important] flex items-center pl-4' style={{ backgroundImage: "url(https://i.ibb.co/hsytgwT/Rectangle-58-1.png)" }}>
-                            </div> */}
                             </div>
                         </div>
 
 
                         <div className='w-full h-[60px] print-bar print-mt-footer-4 bg-cover bg-[#A20E27] mt-[40px!important] flex items-center pl-4 text-start'>
-                            {/* <p className='text-[20px] text-[white]'>Payment Information</p> */}
+
                         </div>
 
                     </div>
 
-                </div >
+                </div>
             </div>
             <div className='flex items-center justify-center'>
                 <button onClick={handlePrint} className='px-4 py-2 mt-8 mb-16 mx-auto bg-[#912424] text-[white] rounded shadow'>

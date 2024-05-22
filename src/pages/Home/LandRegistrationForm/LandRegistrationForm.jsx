@@ -260,7 +260,7 @@ const LandRegistrationForm = () => {
 
                     </div>
 
-                    <div className='space-y-4'>
+                    <div className='space-y-4 '>
                         {/* Serial No */}
 
 
@@ -381,7 +381,7 @@ const LandRegistrationForm = () => {
                             <p className='text-[20px] text-white font-bold text-[white]'>Project Details</p>
                         </div>
 
-                        <div className='w-full py-[10px] px-4 border border-black flex'>
+                        <div className='w-full py-[10px] print- px-4 border border-black flex'>
                             <p>Name of the project : </p>
                             <input
                                 name='projectName'
@@ -406,7 +406,7 @@ const LandRegistrationForm = () => {
                         </div>
 
                         <div className='flex justify-between'>
-                            <div className='w-[400px] py-[10px] px-4 border border-black flex'>
+                            <div className='w-[400px] py-[10px]  px-4 border border-black flex'>
                                 <p>Total Share Price : </p>
                                 <input
                                     name='totalSharePrice'
@@ -415,7 +415,7 @@ const LandRegistrationForm = () => {
                                 />
                             </div>
 
-                            <div className='w-[820px] py-[10px] px-4 border border-black flex'>
+                            <div className='w-[820px] text-[12px]  py-[10px] px-4 border border-black flex'>
                                 <p>In Word : </p>
                                 <input
                                     name='totalSharePriceInWord'
@@ -425,8 +425,8 @@ const LandRegistrationForm = () => {
                             </div>
                         </div>
 
-                        <div className='flex justify-between'>
-                            <div className='w-[400px] py-[10px] px-4 border border-black flex'>
+                        <div className='flex text-[12px] justify-between'>
+                            <div className='w-[400px]  py-[10px] px-4 border border-black flex'>
                                 <p>Booking Money : </p>
                                 <input
                                     name='bookingMoney'
@@ -435,7 +435,7 @@ const LandRegistrationForm = () => {
                                 />
                             </div>
 
-                            <div className='w-[820px] py-[10px] px-4 border border-black flex'>
+                            <div className='w-[820px] text-[12px]  py-[10px] px-4 border border-black flex'>
                                 <p>In Word : </p>
                                 <input
                                     name='bookingMoneyInWord'
@@ -445,7 +445,7 @@ const LandRegistrationForm = () => {
                             </div>
                         </div>
 
-                        <div className='flex justify-between'>
+                        <div className='flex  justify-between'>
                             <div className='w-[400px] py-[10px] px-4 border border-black flex'>
                                 <p>Due Amount : </p>
                                 <input
@@ -455,7 +455,7 @@ const LandRegistrationForm = () => {
                                 />
                             </div>
 
-                            <div className='w-[820px] py-[10px] px-4 border border-black flex'>
+                            <div className='w-[820px]  py-[10px] px-4 border border-black flex'>
                                 <p>In Word : </p>
                                 <input
                                     name='dueAmountInWord'
