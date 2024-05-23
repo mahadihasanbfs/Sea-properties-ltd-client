@@ -4,7 +4,6 @@ import SeniorManagerCard from "./SeniorManagerCard";
 import SecondaryTitle from "../../../../components/common/SecondaryTitle";
 import PrimaryBanner from "../../../../components/common/PrimaryBanner";
 import { Helmet } from "react-helmet";
-import bannerImg from './Group 163.png';
 import md_kamruzzaman from './1.jpg';
 import harunor_rashid from './2.jpg';
 import hedayet_khan from './3.jpg';
@@ -24,7 +23,7 @@ const ManagementTeam = () => {
         {
             "name": "Md. Kamruzzaman",
             "image": md_kamruzzaman,
-            "designation": "Senior Manager(It & Branding)",
+            "designation": "IT & Branding",
             "position": "Senior Manager"
         },
         {
@@ -84,7 +83,7 @@ const ManagementTeam = () => {
         {
             "name": "Md. Tarequr Rahman",
             "image": md_tarequr_rahman,
-            "designation": "Legal Advisor",
+            "designation": "Legal Affairs",
             "position": "Legal Advisor"
         }
     ]
@@ -113,7 +112,7 @@ const ManagementTeam = () => {
             </Helmet>
             {/* management team Section 1 */}
             <PrimaryBanner
-                bannerImg="https://i.ibb.co/C0YmgpJ/Group-163.png"
+                bannerImg='https://i.ibb.co/n894Rhg/SEA-85.jpg'
                 opacity={30}
                 title="Management Team"
                 subTitle="About us"
@@ -153,9 +152,9 @@ const ProfileCard = ({ href, image, alt, name, position, designation }) => (
 
             <h1 class="mt-4 text-2xl font-semibold text-[#C91835] capitalize ">{name}</h1>
 
-            <p class="mt-2 text-gray-500 text-xl capitalize dark:text-gray-300">{position}</p>
+            <p class="mt-2 text-gray-500  text-xl capitalize dark:text-gray-300">{position}</p>
 
-            <p className="text-[17px]">{designation}</p>
+            <p className="text-[17px] capitalize">{designation}</p>
         </div>
 
     </div>
