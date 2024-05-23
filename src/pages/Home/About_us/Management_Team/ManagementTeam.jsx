@@ -50,12 +50,12 @@ const ManagementTeam = () => {
             "designation": "Sales & marketing",
             "position": "Assistant Manager"
         },
-        {
-            "name": "Imran Sarkar Jony",
-            "image": imran_sarkar_jony,
-            "designation": "Sales & marketing",
-            "position": "Assistant Manager"
-        },
+        // {
+        //     "name": "Imran Sarkar Jony",
+        //     "image": imran_sarkar_jony,
+        //     "designation": "Sales & marketing",
+        //     "position": "Assistant Manager"
+        // },
         {
             "name": "Ruma Akter",
             "image": ruma_akter,
