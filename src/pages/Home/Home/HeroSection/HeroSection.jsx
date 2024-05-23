@@ -26,24 +26,17 @@ const HeroSection = () => {
 
 
     return (
-        <div className="relative">
-            {
-                isLoading ? <div
-                    style={{
-                        backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${bg})`
-                    }}
-                    className="w-full h-screen bg-cover object-cover">Loading</div> :
-                    <Swiper autoplay={true} navigation={false} modules={[Navigation, Autoplay]} className="mySwiper">
-                        {
-                            sliderData?.map(itm => <SwiperSlide key={itm?.id}>
-                                <div
-                                    style={{ backgroundImage: `url(${itm?.photo})` }}
-                                    className="w-full h-screen bg-cover object-cover"></div>
-                            </SwiperSlide>)
-                        }
+        <div className="relative h-screen">
+            <Swiper autoplay={true} navigation={false} modules={[Navigation, Autoplay]} className="mySwiper">
+                {
+                    sliderData?.map(itm => <SwiperSlide key={itm?._id}>
+                        <div
+                            style={{ backgroundImage: `url(${itm?.photo})` }}
+                            className="w-full h-screen bg-cover object-cover"></div>
+                    </SwiperSlide>)
+                }
 
-                    </Swiper>
-            }
+            </Swiper>
             <div className="absolute top-0 flex items-center justify-center left-0 right-0 bottom-0 m-auto z-30">
                 <CircleBox />
             </div>
