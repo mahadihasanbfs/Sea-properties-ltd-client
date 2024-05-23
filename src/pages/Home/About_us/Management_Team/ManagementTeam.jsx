@@ -8,7 +8,7 @@ import bannerImg from './Group 163.png';
 import md_kamruzzaman from './1.jpg';
 import harunor_rashid from './2.jpg';
 import hedayet_khan from './3.jpg';
-// import md_fiaz_ahmed_rifath from './4.jpg';
+import md_fiaz_ahmed_rifath from './4.png';
 import wasif_ahmed from './5.jpg';
 import imran_sarkar_jony from './6.jpg';
 import ruma_akter from './7.jpg';
@@ -30,18 +30,18 @@ const ManagementTeam = () => {
         {
             "name": "Harunor Rashid",
             "image": harunor_rashid,
-            "designation": "Manager(Digital marketing)",
+            "designation": "Digital marketing",
             "position": "Manager"
         },
         {
             "name": "Hedayet Khan",
             "image": hedayet_khan,
-            "designation": "Manager(Accounts)",
+            "designation": "Accounts",
             "position": "Manager"
         },
         {
             "name": "Md. Fiaz Ahmed Rifath",
-            "image": "md_fiaz_ahmed_rifath",
+            "image": md_fiaz_ahmed_rifath,
             "designation": "Sales & marketing",
             "position": "Deputy Manager"
         },
@@ -115,7 +115,7 @@ const ManagementTeam = () => {
             <PrimaryBanner
                 bannerImg="https://i.ibb.co/C0YmgpJ/Group-163.png"
                 opacity={30}
-                title="Manegement Team"
+                title="Management Team"
                 subTitle="About us"
             />
             <div class=" bg-gray-100">
@@ -137,9 +137,7 @@ const ManagementTeam = () => {
 
             <div className="max-w-[1366px] mx-auto  px-6 lg:px-[40px] xl:px-[60px]">
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-                    <ProfileList profiles={li1} />
-                    <ProfileList profiles={li2} className="hidden sm:block" />
-                    <ProfileList profiles={li3} className="hidden lg:block" />
+                    {team.map((item) => <ProfileCard {...item} />)}
                 </div>
             </div>
         </div>
@@ -164,9 +162,9 @@ const ProfileCard = ({ href, image, alt, name, position, designation }) => (
 );
 
 const ProfileList = ({ profiles }) => (
-    <ul className="space-y-8">
+    <ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
         {profiles.map((profile, index) => (
-            <ProfileCard key={index} {...profile} />
+            <ProfileCard key={index}  {...profile} />
         ))}
     </ul>
 );
