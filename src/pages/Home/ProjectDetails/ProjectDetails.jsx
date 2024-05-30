@@ -64,7 +64,7 @@ const ProjectDetails = () => {
         vr_status, vr_url, name, banner_img, videoThumbnailImgUpload,
         youtube_url, contactPageImg, project_status, projectInfo, projectFeatures, gallery_img, project_photo, projectVideo, map_link, featureInfo, details } = projectData;
 
-    console.log(projectData, 'oooooooo')
+
 
     const handleSubmit = (event) => {
         setLoading(true)
@@ -239,14 +239,14 @@ const ProjectDetails = () => {
             <div className="bg-[#B0BEC5] py-16 lg:py-[85px]">
                 <div className="max-w-[1366px] mx-auto px-6 md:px-10 xl:px-[60px] text-white gap-10 grid md:grid-cols-2">
                     <div className="space-y-10 md:block hidden">
-                        <img className="w-full h-full shadow-lg shadow-dark rounded" src={details?.detail_img} alt="" />
+                        <img className="w-full h-full shadow-lg shadow-dark rounded" src={projectData?.banner_img} alt="" />
 
                     </div>
                     <div className="flex items-center">
                         <form onSubmit={handleSubmit} className="md:space-y-4 space-y-2 w-full">
                             <h2 className="text-[20px] md:text-[37px] uppercase">Book Now</h2>
                             <div className="space-y-16 py-4 md:hidden block">
-                                <img className="object-none shadow-lg shadow-dark rounded" src={details?.banner_img} alt="" />
+                                <img className="object-none shadow-lg shadow-dark rounded" src={projectData?.banner_img} alt="" />
 
                             </div>
                             <div>
