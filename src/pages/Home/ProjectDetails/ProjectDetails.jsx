@@ -217,7 +217,7 @@ const ProjectDetails = () => {
                             position="text-left"
                         />
                         <figure className="justify-self-end md:mt-0 mt-8 md:hidden flex items-center">
-                            <img className="w-[465px] h-[490px] object-cover" src={featureInfo?.car} alt="" />
+                            <img className="w-[465px] h-[490px] object-cover" src={featureInfo?.features_img} alt="" />
                         </figure>
 
                         <div className="space-y-5 md:mt-[60px] mt-4 text-white">
@@ -239,14 +239,14 @@ const ProjectDetails = () => {
             <div className="bg-[#B0BEC5] py-16 lg:py-[85px]">
                 <div className="max-w-[1366px] mx-auto px-6 md:px-10 xl:px-[60px] text-white gap-10 grid md:grid-cols-2">
                     <div className="space-y-10 md:block hidden">
-                        <img className="w-full h-full shadow-lg shadow-dark rounded" src={projectData?.banner_img} alt="" />
+                        <img className=" object-cover shadow-lg shadow-dark rounded" src={projectData?.banner_img} alt="" />
 
                     </div>
                     <div className="flex items-center">
                         <form onSubmit={handleSubmit} className="md:space-y-4 space-y-2 w-full">
                             <h2 className="text-[20px] md:text-[37px] uppercase">Book Now</h2>
                             <div className="space-y-16 py-4 md:hidden block">
-                                <img className="object-none shadow-lg shadow-dark rounded" src={projectData?.banner_img} alt="" />
+                                <img className="object-fill shadow-lg shadow-dark rounded" src={projectData?.banner_img} alt="" />
 
                             </div>
                             <div>
@@ -286,7 +286,7 @@ const ProjectDetails = () => {
                                 />
                             </div>
 
-                            <div className="pt-6">
+                            <div className="pt-3">
                                 <input type="submit" value="Book Now" className="py-[9px] px-[28px] rounded hover:bg-[#a20e0e] hover:text-light border-[3px] border-white hover:cursor-pointer" />
                             </div>
                         </form>
