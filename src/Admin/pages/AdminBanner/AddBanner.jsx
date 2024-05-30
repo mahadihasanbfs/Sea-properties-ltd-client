@@ -34,7 +34,7 @@ const AddBanner = () => {
       // meta_description,
     };
 
-    fetch("https://backend.seapropertiesltd.com.bd/api/v1/admin/banner/add", {
+    fetch("http://localhost:5001/api/v1/admin/banner/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

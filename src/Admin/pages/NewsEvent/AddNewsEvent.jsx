@@ -58,13 +58,13 @@ const AddNewsEvent = () => {
       title: name,
       date: new Date(),
       status: false,
-      type : status,
+      type: status,
       description,
       meta_tag,
       meta_description,
     };
 
-    fetch("https://backend.seapropertiesltd.com.bd/api/v1/admin/add-news-events", {
+    fetch("http://localhost:5001/api/v1/admin/add-news-events", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -159,15 +159,15 @@ const AddNewsEvent = () => {
           </div>
         </div>
 
-          <label htmlFor="tag">Status</label>
+        <label htmlFor="tag">Status</label>
         <div className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2 mb-4">
           <select
             name="status"
             className="outline-none w-full bg-[transparent]">
-              <option value="Status" selected>Status</option>
-              <option value="news" >News</option>
-              <option value="event" >Event</option>
-            </select>
+            <option value="Status" selected>Status</option>
+            <option value="news" >News</option>
+            <option value="event" >Event</option>
+          </select>
         </div>
 
         <div className="mb-4">

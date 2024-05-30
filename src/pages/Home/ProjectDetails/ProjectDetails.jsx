@@ -23,6 +23,7 @@ import { IoIosResize } from "react-icons/io";
 import { MdApartment } from "react-icons/md";
 import { TiChartAreaOutline } from "react-icons/ti";
 import { CiLocationOn } from "react-icons/ci";
+import { LiaHandshake } from "react-icons/lia";
 
 const ProjectDetails = () => {
     // const [visible, setVisible] = useState(false);
@@ -35,7 +36,7 @@ const ProjectDetails = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/project/get-project?project_id=${id}`);
+                const response = await fetch(`http://localhost:5001/api/v1/admin/project/get-project?project_id=${id}`);
                 const data = await response.json();
                 // const singleData = data.filter(item => item?._id === id);
                 setProjectData(data?.data);
@@ -84,7 +85,7 @@ const ProjectDetails = () => {
         }
 
 
-        fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/booking/add', {
+        fetch('http://localhost:5001/api/v1/admin/booking/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -184,6 +185,10 @@ const ProjectDetails = () => {
                                         <tr className="text-gray-700 border-t border-[#c9c9c9]">
                                             <td className="px-4 py-3 flex items-center gap-2 text-xs text-ms font-semibold "><BsCollection className="text-lg" /> Collection</td>
                                             <td className="px-4 py-3 text-sm  border-l">{details?.info?.collections ? details?.info?.collections : 'No Collections'}</td>
+                                        </tr>
+                                        <tr className="text-gray-700 border-t border-[#c9c9c9]">
+                                            <td className="px-4 py-3 flex items-center gap-2 text-xs text-ms font-semibold "><LiaHandshake className="text-lg" /> Handover</td>
+                                            <td className="px-4 py-3 text-sm  border-l">{details?.info?.handover ? details?.info?.handover : 'No Handover'}</td>
                                         </tr>
                                     </tbody>
                                 </table>

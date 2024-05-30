@@ -49,30 +49,30 @@ const adminPath = [
     path: "/admin/edit-project/:id",
     // loader: async ({ params }) => {
     //    const response = await fetch(
-    //     `https://backend.seapropertiesltd.com.bd/api/v1/admin/project/get-project?project_id=${encodeURIComponent(params?.id)}}`
+    //     `http://localhost:5001/api/v1/admin/project/get-project?project_id=${encodeURIComponent(params?.id)}}`
     //   );
     //   const data = await response.json();
     //   return data.data;
     // },
     loader: ({ params }) => {
       return fetch(
-       `https://backend.seapropertiesltd.com.bd/api/v1/admin/project/get-project?project_id=${params?.id}`
-     )
-       .then((res) => {
-         if (!res.ok) {
-           throw new Error("Network response was not ok");
-         }
-         return res.json();
-       })
-       .then((data) => {
-         return data;
-       })
-       .catch((error) => {
-         console.error("Error fetching project:", error);
-         // Handle error gracefully, such as displaying a friendly message to the user
-         return null; // Return null or any default value as needed
-       });
-   },
+        `http://localhost:5001/api/v1/admin/project/get-project?project_id=${params?.id}`
+      )
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return res.json();
+        })
+        .then((data) => {
+          return data;
+        })
+        .catch((error) => {
+          console.error("Error fetching project:", error);
+          // Handle error gracefully, such as displaying a friendly message to the user
+          return null; // Return null or any default value as needed
+        });
+    },
     element: <EditProject />,
   },
   {

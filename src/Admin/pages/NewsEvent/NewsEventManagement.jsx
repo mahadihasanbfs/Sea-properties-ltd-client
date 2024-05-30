@@ -19,7 +19,7 @@ const NewsEventManagement = () => {
   const { data: blogData = [], refetch } = useQuery({
     queryKey: ["news_events"],
     queryFn: async () => {
-      const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/news-events`);
+      const res = await fetch(`http://localhost:5001/api/v1/admin/news-events`);
       const data = await res.json();
       return data;
     },
@@ -31,7 +31,7 @@ const NewsEventManagement = () => {
   const handleDelete = (id) => {
     console.log(id, "-------->");
     fetch(
-      `https://backend.seapropertiesltd.com.bd/api/v1/admin/delete_news_event?id=${id}`,
+      `http://localhost:5001/api/v1/admin/delete_news_event?id=${id}`,
       {
         method: "DELETE",
         headers: {

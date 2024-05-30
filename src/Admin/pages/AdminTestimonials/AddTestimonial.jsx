@@ -34,7 +34,7 @@ const AddTestimonials = () => {
 
         };
 
-        fetch("https://backend.seapropertiesltd.com.bd/api/v1/admin/testimonial", {
+        fetch("http://localhost:5001/api/v1/admin/testimonial", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

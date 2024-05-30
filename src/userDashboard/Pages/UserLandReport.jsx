@@ -15,13 +15,13 @@ const UserLandReportManagement = () => {
     const { data: areaData = [], refetch } = useQuery({
         queryKey: ["landReport"],
         queryFn: async () => {
-            const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/get-user-booking?email=${user?.email}`);
+            const res = await fetch(`http://localhost:5001/api/v1/admin/get-user-booking?email=${user?.email}`);
             const data = await res.json();
             return data;
         },
     });
 
-    console.log(`https://backend.seapropertiesltd.com.bd/api/v1/admin/get-user-booking?email=${user?.email}`);
+    console.log(`http://localhost:5001/api/v1/admin/get-user-booking?email=${user?.email}`);
     // delete data using custom hook 
 
     console.log(areaData?.data, '>>>>>>');
