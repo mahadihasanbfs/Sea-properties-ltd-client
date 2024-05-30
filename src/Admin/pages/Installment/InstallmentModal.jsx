@@ -27,7 +27,7 @@ export default function InstallmentModal({
     // return;
 
     fetch(
-      `http://localhost:5001/api/v1/admin/installment/update?installment_id=${formValue?._id}`,
+      `https://backend.seapropertiesltd.com.bd/api/v1/admin/installment/update?installment_id=${formValue?._id}`,
       {
         method: "PUT",
         headers: {

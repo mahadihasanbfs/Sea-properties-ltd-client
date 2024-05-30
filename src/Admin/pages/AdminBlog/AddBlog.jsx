@@ -34,7 +34,7 @@ const AddBlog = () => {
       meta_description,
     };
 
-    fetch("http://localhost:5001/api/v1/admin/blog/add", {
+    fetch("https://backend.seapropertiesltd.com.bd/api/v1/admin/blog/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

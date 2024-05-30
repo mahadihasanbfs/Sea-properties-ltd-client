@@ -50,7 +50,7 @@ const EditProject = () => {
   // const { data: allProjects = [], refetch } = useQuery({
   //   queryKey: ["all_Projects"],
   //   queryFn: async () => {
-  //     const res = await fetch( `http://localhost:5001/api/v1/admin/project/get-project?project_id=${id}`);
+  //     const res = await fetch( `https://backend.seapropertiesltd.com.bd/api/v1/admin/project/get-project?project_id=${id}`);
   //     const data = await res.json();
   //     return data?.data;
   //   },
@@ -238,7 +238,7 @@ const EditProject = () => {
 
     console.log(data);
     fetch(
-      `http://localhost:5001/api/v1/admin/project/update?project_id=${allProjects?._id}`,
+      `https://backend.seapropertiesltd.com.bd/api/v1/admin/project/update?project_id=${allProjects?._id}`,
       {
         method: "PUT",
         headers: {

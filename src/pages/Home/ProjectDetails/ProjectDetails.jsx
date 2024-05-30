@@ -36,7 +36,7 @@ const ProjectDetails = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await fetch(`http://localhost:5001/api/v1/admin/project/get-project?project_id=${id}`);
+                const response = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/project/get-project?project_id=${id}`);
                 const data = await response.json();
                 // const singleData = data.filter(item => item?._id === id);
                 setProjectData(data?.data);
@@ -85,7 +85,7 @@ const ProjectDetails = () => {
         }
 
 
-        fetch('http://localhost:5001/api/v1/admin/booking/add', {
+        fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/booking/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -206,6 +206,8 @@ const ProjectDetails = () => {
                 </>
             </div>
 
+            {console.log(projectData)}
+
             {/* project features */}
             <div className="bg-black">
                 <div className="max-w-[1366px] mx-auto py-20 px-4 md:px-8 xl:px-20 grid md:grid-cols-2 gap-6 md:gap-0">
@@ -215,7 +217,7 @@ const ProjectDetails = () => {
                             position="text-left"
                         />
                         <figure className="justify-self-end md:mt-0 mt-8 md:hidden flex items-center">
-                            <img className="w-[465px] h-[490px] object-cover" src={featureInfo?.features_img} alt="" />
+                            <img className="w-[465px] h-[490px] object-cover" src={featureInfo?.car} alt="" />
                         </figure>
 
                         <div className="space-y-5 md:mt-[60px] mt-4 text-white">
@@ -244,7 +246,7 @@ const ProjectDetails = () => {
                         <form onSubmit={handleSubmit} className="md:space-y-4 space-y-2 w-full">
                             <h2 className="text-[20px] md:text-[37px] uppercase">Book Now</h2>
                             <div className="space-y-16 py-4 md:hidden block">
-                                <img className="w-full h-full shadow-lg shadow-dark rounded" src={details?.banner_img} alt="" />
+                                <img className="object-none shadow-lg shadow-dark rounded" src={details?.banner_img} alt="" />
 
                             </div>
                             <div>

@@ -19,7 +19,7 @@ const Banner = () => {
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
-        fetch('http://localhost:5001/api/v1/admin/project/projects')
+        fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/project/projects')
             .then(res => res.json())
             .then(data => setData(data?.data))
     }, [])
@@ -98,7 +98,7 @@ const Banner = () => {
 
     return (
         <div>
-            <div className="max-w-[1366px] mx-auto py-12 mt-4 px-6 xl:px-4">
+            <div className="max-w-[1366px] mx-auto py-12 mt-4 px-6 xl:px-4  ">
                 <Actions onSearch={setSearchTerm} onStatus={setProjectStatus} onType={setProjectType} />
                 <div className="slider-container mt-12  mr-5 w-[98%] mx-auto">
 
@@ -120,7 +120,7 @@ const Banner = () => {
                             },
                         }}>
                         {
-                            searchData?.map(itm => <SwiperSlide className="pb-12 px-0" key={itm?._id}>
+                            searchData?.map(itm => <SwiperSlide className="pb-12 px-6" key={itm?._id}>
                                 <BannerCart key={itm?._id} itm={itm} />
                             </SwiperSlide>)
                         }

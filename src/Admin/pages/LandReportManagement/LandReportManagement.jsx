@@ -18,7 +18,7 @@ const LandReportManagement = () => {
     const { data: areaData = [], refetch, isLoading } = useQuery({
         queryKey: ["allBlog"],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5001/api/v1/admin/all-land-registration');
+            const res = await fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/all-land-registration');
             const data = await res.json();
             return data;
         },
@@ -29,7 +29,7 @@ const LandReportManagement = () => {
     // delete data using custom hook
     const handleDelete = (id) => {
         fetch(
-            `http://localhost:5001/api/v1/admin/delete-land-registration?id=${id}`,
+            `https://backend.seapropertiesltd.com.bd/api/v1/admin/delete-land-registration?id=${id}`,
             {
                 method: "DELETE",
                 headers: {

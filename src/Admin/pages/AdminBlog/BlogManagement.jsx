@@ -21,7 +21,7 @@ const ManageBlog = () => {
   const { data: blogData = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5001/api/v1/admin/blog/blogs`);
+      const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/blog/blogs`);
       const data = await res.json();
       return data;
     },
@@ -56,7 +56,7 @@ const ManageBlog = () => {
     };
 
     // Make the PUT request
-    fetch(`http://localhost:5001/api/v1/admin/blog/update?blog_id=${openModal?._id}`, {
+    fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/blog/update?blog_id=${openModal?._id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -80,7 +80,7 @@ const ManageBlog = () => {
   // delete data using custom hook
   const handleDelete = (id) => {
     fetch(
-      `http://localhost:5001/api/v1/admin/blog/delete?blog_id=${id}`,
+      `https://backend.seapropertiesltd.com.bd/api/v1/admin/blog/delete?blog_id=${id}`,
       {
         method: "DELETE",
         headers: {

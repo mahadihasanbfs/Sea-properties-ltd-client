@@ -18,7 +18,7 @@ const ManageProject = () => {
     const { data: allProject = [], refetch, isLoading } = useQuery({
         queryKey: ["project"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5001/api/v1/admin/project/projects`);
+            const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/project/projects`);
             const data = await res.json();
             return data.data;
         },
@@ -57,7 +57,7 @@ const ManageProject = () => {
 
     const deleteProject = (id) => {
         fetch(
-            `http://localhost:5001/api/v1/admin/project/delete?project_id=${id}`,
+            `https://backend.seapropertiesltd.com.bd/api/v1/admin/project/delete?project_id=${id}`,
             {
                 method: "DELETE",
                 headers: {

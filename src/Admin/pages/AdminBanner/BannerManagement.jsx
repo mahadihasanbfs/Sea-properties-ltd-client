@@ -19,7 +19,7 @@ const BannerManagement = () => {
     queryKey: ["users"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5001/api/v1/admin/banner/banners`
+        `https://backend.seapropertiesltd.com.bd/api/v1/admin/banner/banners`
       );
       const data = await res.json();
       return data;
@@ -53,7 +53,7 @@ const BannerManagement = () => {
 
     // Make the PUT request
     fetch(
-      `http://localhost:5001/api/v1/admin/banner/update?banner_id=${openModal?._id}`,
+      `https://backend.seapropertiesltd.com.bd/api/v1/admin/banner/update?banner_id=${openModal?._id}`,
       {
         method: "PUT",
         headers: {
@@ -78,7 +78,7 @@ const BannerManagement = () => {
   // delete data using custom hook
   const handleDelete = (id) => {
     fetch(
-      `http://localhost:5001/api/v1/admin/banner/delete?banner_id=${id}`,
+      `https://backend.seapropertiesltd.com.bd/api/v1/admin/banner/delete?banner_id=${id}`,
       {
         method: "DELETE",
         headers: {
