@@ -50,7 +50,7 @@ const EditProject = () => {
   // const { data: allProjects = [], refetch } = useQuery({
   //   queryKey: ["all_Projects"],
   //   queryFn: async () => {
-  //     const res = await fetch( `https://backend.seapropertiesltd.com.bd/api/v1/admin/project/get-project?project_id=${id}`);
+  //     const res = await fetch( `http://localhost:5001/api/v1/admin/project/get-project?project_id=${id}`);
   //     const data = await res.json();
   //     return data?.data;
   //   },
@@ -182,24 +182,24 @@ const EditProject = () => {
 
     const data = {
       project_photo: project_photo ? project_photo : allProjects?.project_photo,
-// <<<<<<< update_land_report
-//       banner_img: uploadedBannerImg
-//         ? uploadedBannerImg
-//         : allProjects?.banner_img,
-//       name: name,
-//       project_type: allProjects?.project_type
-//         ? allProjects?.project_type
-//         : project_type,
-//       project_status: project_status?.project_status
-//         ? allProjects?.project_status
-//         : project_status,
+      // <<<<<<< update_land_report
+      //       banner_img: uploadedBannerImg
+      //         ? uploadedBannerImg
+      //         : allProjects?.banner_img,
+      //       name: name,
+      //       project_type: allProjects?.project_type
+      //         ? allProjects?.project_type
+      //         : project_type,
+      //       project_status: project_status?.project_status
+      //         ? allProjects?.project_status
+      //         : project_status,
 
-// =======
+      // =======
       banner_img: uploadedBannerImg ? uploadedBannerImg : allProjects?.banner_img,
       name: name ? name : allProjects?.name,
       project_type: allProjects?.project_type ? allProjects?.project_type : project_type,
       project_status: project_status?.project_status ? allProjects?.project_status : project_status,
-// >>>>>>> main
+      // >>>>>>> main
       details: {
         detail_img: detailImgUpload ? detailImgUpload : allProjects?.details?.detail_img,
         info: {
@@ -238,7 +238,7 @@ const EditProject = () => {
 
     console.log(data);
     fetch(
-      `https://backend.seapropertiesltd.com.bd/api/v1/admin/project/update?project_id=${allProjects?._id}`,
+      `http://localhost:5001/api/v1/admin/project/update?project_id=${allProjects?._id}`,
       {
         method: "PUT",
         headers: {

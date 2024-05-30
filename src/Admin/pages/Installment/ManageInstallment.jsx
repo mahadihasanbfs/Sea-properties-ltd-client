@@ -75,7 +75,7 @@ const ManageInstallment = () => {
   const deleteInstallment = (id) => {
     console.log(id);
     fetch(
-      `https://backend.seapropertiesltd.com.bd/api/v1/admin/installment/delete?installment_id=${id}`,
+      `http://localhost:5001/api/v1/admin/installment/delete?installment_id=${id}`,
       {
         method: "DELETE",
         headers: {

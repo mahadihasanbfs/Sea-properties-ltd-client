@@ -14,7 +14,7 @@ const NewsEvent = () => {
     const { data: events = [], refetch } = useQuery({
         queryKey: ["news-events"],
         queryFn: async () => {
-            const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/news-events`);
+            const res = await fetch(`http://localhost:5001/api/v1/admin/news-events`);
             const data = await res.json();
             return data.data;
         },

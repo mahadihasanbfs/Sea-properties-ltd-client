@@ -5,10 +5,18 @@ import { Link } from "react-router-dom";
 const BannerCart = ({ itm }) => {
     return (
         <Link to={`project-details/${itm?.sku}`}>
-            <div className="px-2 xl:mx-[10px]  p-2 duration-200  rounded">
-                <img
+            <div className="   duration-200  rounded">
+                <div
+                    style={{
+                        backgroundImage: `url(${itm?.banner_img})`,
+                        backgroundSize: '100% 100%',
+                    }}
+                    className="w-[350px] h-[400px] bg-contain bg-center">
+                    f
+                </div>
+                {/* <img
                     src={itm?.banner_img}
-                    className="object-cover md:h-[400px] h-[300px] rounded w-full" alt="" />
+                    className=" h-[400px] object-cover rounded " alt="" /> */}
 
                 <h1 className="font-bold text-xl mt-3 capitalize">{itm?.name.slice(0, 60)}</h1>
                 <p className="text-gray-600">{itm?.details?.info?.address}</p>

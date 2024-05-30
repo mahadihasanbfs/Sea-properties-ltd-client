@@ -21,7 +21,7 @@ const ManageContact = () => {
   const { data: contactData = [], refetch } = useQuery({
     queryKey: ["contact_data"],
     queryFn: async () => {
-      const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/contacts`);
+      const res = await fetch(`http://localhost:5001/api/v1/admin/contacts`);
       const data = await res.json();
       return data.data;
     },
@@ -30,7 +30,7 @@ const ManageContact = () => {
   const handleDelete = (id) => {
     // console.log(id, "-------->");
     fetch(
-      `https://backend.seapropertiesltd.com.bd/api/v1/admin/contact/delete?contact_id=${id}`,
+      `http://localhost:5001/api/v1/admin/contact/delete?contact_id=${id}`,
       {
         method: "DELETE",
         headers: {

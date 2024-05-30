@@ -16,7 +16,7 @@ const DemoItem = () => {
     const { data: sData = [], isLoading } = useQuery({
         queryKey: ["slData"],
         queryFn: async () => {
-            const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/banner/banners`);
+            const res = await fetch(`http://localhost:5001/api/v1/admin/banner/banners`);
             const data = await res.json();
             return data;
         },

@@ -67,7 +67,7 @@ const commonPath = [
     loader: async ({ params }) => {
       const id = params.id;
       const response = await fetch(
-        `https://backend.seapropertiesltd.com.bd/api/v1/admin/get-news-events-by-id?id=${id}`
+        `http://localhost:5001/api/v1/admin/get-news-events-by-id?id=${id}`
       );
       const data = await response.json();
       return data.data;
@@ -82,8 +82,8 @@ const commonPath = [
     path: "blogs/blogs-details/:id",
     element: <BlogDetails />,
     loader: ({ params }) => {
-       return fetch(
-        `https://backend.seapropertiesltd.com.bd/api/v1/admin/blog/get-blog?blog_id=${encodeURIComponent(params?.id)}`
+      return fetch(
+        `http://localhost:5001/api/v1/admin/blog/get-blog?blog_id=${encodeURIComponent(params?.id)}`
       )
         .then((res) => {
           if (!res.ok) {

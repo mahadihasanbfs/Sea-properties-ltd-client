@@ -7,7 +7,7 @@ const Blogs = () => {
     const { data: data = [], isLoading } = useQuery({
         queryKey: ["users"],
         queryFn: async () => {
-            const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/blog/blogs`);
+            const res = await fetch(`http://localhost:5001/api/v1/admin/blog/blogs`);
             const data = await res.json();
             return data;
         },
@@ -84,44 +84,44 @@ const Blogs = () => {
                         :
                         <div className="grid md:grid-cols-3 -mx-4">
                             {data?.data?.map(itm =>
-                                
+
                                 <Link to={`/blogs/blogs-details/${itm?.name}`} key={itm?._id}>
-                                <div className="w-full  px-4">
-                                    <div className="max-w-[370px] p-3 group rounded mx-auto mb-10">
-                                        <div className="rounded overflow-hidden mb-8">
-                                            <img
-                                                src={itm?.photo}
-                                                alt="image"
-                                                className="w-full group-hover:scale-[1.2] duration-300 h-[240px] object-cover"
-                                            />
-                                        </div>
-                                        <div>
-                                            {/* {itm?.date && <span
+                                    <div className="w-full  px-4">
+                                        <div className="max-w-[370px] p-3 group rounded mx-auto mb-10">
+                                            <div className="rounded overflow-hidden mb-8">
+                                                <img
+                                                    src={itm?.photo}
+                                                    alt="image"
+                                                    className="w-full group-hover:scale-[1.2] duration-300 h-[240px] object-cover"
+                                                />
+                                            </div>
+                                            <div>
+                                                {/* {itm?.date && <span
                                                 className=" bg-primary rounded inline-block text-center pt-1 px-4 text-xs leading-loose font-semibold text-white mb-5 "
                                             >
                                                 {itm?.date}
                                             </span>} */}
-                                            <h3>
-                                                <a
-                                                    href="javascript:void(0)"
-                                                    className="font-semiboldtext-xl sm:text-2xl lg:text-xl xl:text-2xl mb-4 inline-block text-dark hover:text-primary font-semibold capitalize
+                                                <h3>
+                                                    <a
+                                                        href="javascript:void(0)"
+                                                        className="font-semiboldtext-xl sm:text-2xl lg:text-xl xl:text-2xl mb-4 inline-block text-dark hover:text-primary font-semibold capitalize
                   "
-                                                >
-                                                    {itm?.name}
-                                                </a>
-                                            </h3>
-                                            <p>
-                                                {new DOMParser()
-                                                    .parseFromString(itm?.description, "text/html")
-                                                    .body.textContent.split(" ")
-                                                    .slice(0, 5)
-                                                    .join(" ")}
-                                            </p>
+                                                    >
+                                                        {itm?.name}
+                                                    </a>
+                                                </h3>
+                                                <p>
+                                                    {new DOMParser()
+                                                        .parseFromString(itm?.description, "text/html")
+                                                        .body.textContent.split(" ")
+                                                        .slice(0, 5)
+                                                        .join(" ")}
+                                                </p>
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </Link>)}
+                                </Link>)}
 
 
 

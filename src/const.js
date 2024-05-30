@@ -1,2 +1,2 @@
-// export const DB_URL = "https://backend.seapropertiesltd.com.bd/api/v1";
-export const DB_URL = "https://backend.seapropertiesltd.com.bd/api/v1";
+// export const DB_URL = "http://localhost:5001/api/v1";
+export const DB_URL = "http://localhost:5001/api/v1";
