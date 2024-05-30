@@ -58,7 +58,7 @@ const AddInstallment = () => {
     console.log(data);
 
     fetch(
-      "http://localhost:5001/api/v1/admin/Installment/add",
+      "https://backend.seapropertiesltd.com.bd/api/v1/admin/Installment/add",
       {
         method: "POST",
         headers: {

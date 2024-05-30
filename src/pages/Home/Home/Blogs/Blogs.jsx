@@ -7,7 +7,7 @@ const Blogs = () => {
     const { data: data = [], isLoading } = useQuery({
         queryKey: ["users"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5001/api/v1/admin/blog/blogs`);
+            const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/blog/blogs`);
             const data = await res.json();
             return data;
         },

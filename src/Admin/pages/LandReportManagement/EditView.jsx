@@ -22,7 +22,7 @@ const EditView = () => {
     const { data: report = [] } = useQuery({
         queryKey: ["report"],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5001/api/v1/admin/user-land-registration');
+            const res = await fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/user-land-registration');
             const data = await res.json();
             return data?.data;
         },

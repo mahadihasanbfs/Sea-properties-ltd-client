@@ -12,7 +12,7 @@ const BannerCart = ({ itm }) => {
                         backgroundSize: '100% 100%',
                     }}
                     className="w-[350px] h-[400px] bg-contain bg-center">
-                    f
+
                 </div>
                 {/* <img
                     src={itm?.banner_img}

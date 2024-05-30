@@ -64,7 +64,7 @@ const AddNewsEvent = () => {
       meta_description,
     };
 
-    fetch("http://localhost:5001/api/v1/admin/add-news-events", {
+    fetch("https://backend.seapropertiesltd.com.bd/api/v1/admin/add-news-events", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -18,7 +18,7 @@ const LandRegistrationForm = () => {
     const { data: SN = [], relaod } = useQuery({
         queryKey: ["SN"],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5001/api/v1/admin/serial-number');
+            const res = await fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/serial-number');
             const data = await res.json();
             return data?.data;
         },
@@ -120,7 +120,7 @@ const LandRegistrationForm = () => {
         }
 
         console.log(data, '++++++++++++++++');
-        fetch("http://localhost:5001/api/v1/admin/add-land-registration", {
+        fetch("https://backend.seapropertiesltd.com.bd/api/v1/admin/add-land-registration", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -13,25 +13,6 @@ const AddProject = () => {
     const fileInputRef = useRef(null);
     const [images, setImages] = useState([]);
 
-    const handleImageFileChange = (event) => {
-        const files = event.target.files;
-        const newImages = [];
-        for (const file of files) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                newImages.push(e.target.result);
-                setImages([...images, e.target.result]);
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-
-    const handleRemoveImage = (index) => {
-        const newImages = [...images];
-        newImages.splice(index, 1);
-        setImages(newImages);
-    };
-
 
 
 
@@ -197,7 +178,8 @@ const AddProject = () => {
         };
 
 
-        fetch('http://localhost:5001/api/v1/admin/project/add', {
+
+        fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/project/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
