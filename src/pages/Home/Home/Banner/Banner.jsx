@@ -120,7 +120,7 @@ const Banner = () => {
                             },
                         }}>
                         {
-                            searchData?.map(itm => <SwiperSlide className="pb-12 px-6" key={itm?._id}>
+                            searchData?.map(itm => <SwiperSlide className="pb-12 lg:px-6" key={itm?._id}>
                                 <BannerCart key={itm?._id} itm={itm} />
                             </SwiperSlide>)
                         }
