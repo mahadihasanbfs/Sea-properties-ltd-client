@@ -3,6 +3,9 @@ import AddBanner from "../Admin/pages/AdminBanner/AddBanner";
 import BannerManagement from "../Admin/pages/AdminBanner/BannerManagement";
 import AddBlog from "../Admin/pages/AdminBlog/AddBlog";
 import ManageBlog from "../Admin/pages/AdminBlog/BlogManagement";
+import AddLand from "../Admin/pages/AdminLandManagement/AddLand";
+import EditLand from "../Admin/pages/AdminLandManagement/EditLand";
+import Lands from "../Admin/pages/AdminLandManagement/Lands";
 import AddProject from "../Admin/pages/AdminProject/AddProject";
 import EditProject from "../Admin/pages/AdminProject/EditProject";
 import ManageProject from "../Admin/pages/AdminProject/ManageProject";
@@ -133,6 +136,18 @@ const adminPath = [
     path: "/admin/edit-land-area/:id",
     element: <EditLandArea />,
   },
+  // {
+  //   path: "/admin/edit-lands/:id",
+  //   element: <EditLand />,
+  // },
+  // {
+  //   path: "/admin/lands",
+  //   element: <Lands />,
+  // },
+  // {
+  //   path: "/admin/lands/add-land",
+  //   element: <AddLand />,
+  // },
 ];
 
 export default adminPath;

@@ -2,7 +2,7 @@
 
 **Description:**
 
-This project builds a modern, user-friendly, and responsive real estate website for Sea Properties Ltd., leveraging the efficiency of Vite.js and the flexibility of your preferred UI library (React, Vue, or Svelte).
+This project builds a modern, user-friendly, and responsive real estate website for SEA Properties Ltd., leveraging the efficiency of Vite.js and the flexibility of your preferred UI library (React, Vue, or Svelte).
 
 **Key Features:**
 
@@ -10,7 +10,7 @@ This project builds a modern, user-friendly, and responsive real estate website 
 - **Advanced Search:** Empower users to easily find their dream property through customizable filters and search criteria.
 - **Compelling Property Presentations:** Captivate potential buyers with high-quality images, virtual tours, and detailed descriptions.
 - **Responsive Design:** Ensure the website flawlessly adapts to desktops, tablets, and mobile devices, providing an optimal experience on any screen.
-- **Customizable Branding:** Tailor the website's look and feel to seamlessly match Sea Properties Ltd.'s brand identity.
+- **Customizable Branding:** Tailor the website's look and feel to seamlessly match SEA Properties Ltd.'s brand identity.
 
 **Prerequisites:**
 

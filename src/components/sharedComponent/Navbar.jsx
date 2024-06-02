@@ -91,6 +91,13 @@ const Navbar = () => {
         },
       ],
     },
+    // {
+    //   id: 9,
+    //   name: "Land",
+    //   path: "/land",
+    //   isDropdown: false,
+    //   dropdownItems: [],
+    // },
     {
       id: 4,
       name: "News & Events",

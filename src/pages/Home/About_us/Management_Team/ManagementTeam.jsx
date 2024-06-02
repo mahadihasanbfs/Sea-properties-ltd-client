@@ -107,7 +107,7 @@ const ManagementTeam = () => {
         <div className="pb-28">
             <Helmet>
                 <title>
-                    Management Team | Sea Properties ltd
+                    Management Team | SEA Properties Ltd.
                 </title>
             </Helmet>
             {/* management team Section 1 */}

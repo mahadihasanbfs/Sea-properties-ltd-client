@@ -557,12 +557,7 @@ const AddProject = () => {
                         +Add
                     </button>
                 )}
-                <button
-                    type="submit"
-                    className="px-8 py-2 rounded bg-[#b02449] text-[white]"
-                >
-                    +Add
-                </button>
+
             </form>
         </div>
 

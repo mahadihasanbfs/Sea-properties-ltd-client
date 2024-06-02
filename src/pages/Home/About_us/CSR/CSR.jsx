@@ -40,7 +40,7 @@ const CSR = () => {
         <div>
             <Helmet>
                 <title>
-                    CSR | Sea Properties ltd
+                    CSR | SEA Properties Ltd.
                 </title>
             </Helmet>
             {/* AboutUs_CSR_ banner section */}

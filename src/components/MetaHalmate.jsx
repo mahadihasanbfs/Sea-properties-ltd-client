@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 const MetaHelmet = ({ title, description, ogTitle, ogDescription, ogImage }) => {
     return (
         <Helmet>
-            <title>{title}|| Sea Property LTD</title>
+            <title>{title} || SEA Properties Ltd.</title>
             <meta name="description" content={description} />
             <meta property="og:title" content={ogTitle} />
             <meta property="og:description" content={ogDescription} />

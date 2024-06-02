@@ -4,7 +4,8 @@ import useContextApi from "../../../../hooks/useContextApi";
 import PrimaryBanner from "../../../../components/common/PrimaryBanner";
 import { Helmet } from "react-helmet";
 
-
+import bg from '../../../../assets/background.jpg';
+import apr from '../../../../assets/our-approch.jpg';
 
 const OurStory = () => {
 
@@ -21,9 +22,9 @@ const OurStory = () => {
     }
 
     useEffect(() => {
-        let text1 = `Imagine the bustling streets of Dhaka, where buildings rise high and each corner reveals a different tale. Driven by enthusiasm and a common vision, a group of dreamers gathered around a table in the middle of this urban symphony. SEA Properties Ltd was established as a result, serving as a platform for communities to flourish and as much more than just a real estate company.
+        let text1 = `Imagine the bustling streets of Dhaka, where buildings rise high and each corner reveals a different tale. Driven by enthusiasm and a common vision, a group of dreamers gathered around a table in the middle of this urban symphony. SEA Properties Ltd. was established as a result, serving as a platform for communities to flourish and as much more than just a real estate company.
 
-When we thought about opening  SEA Properties Ltd, we were just a tiny team with huge goals, driven by the idea that buildings might be more than just places to live; they could also serve as hubs for creativity and connection. Creating environments that make people feel completely at home has always been our goal, from the initial blueprint to the last coat of paint.
+When we thought about opening  SEA Properties Ltd., we were just a tiny team with huge goals, driven by the idea that buildings might be more than just places to live; they could also serve as hubs for creativity and connection. Creating environments that make people feel completely at home has always been our goal, from the initial blueprint to the last coat of paint.
 
 Our path has been filled with highs and lows, but no matter what, our spirit has been unwavering. We've danced on the brink of possibility, broken down walls, and withstood storms. And we've come out stronger, more resilient, and more inspired than ever after conquering every obstacle.
 
@@ -33,7 +34,7 @@ Our tale is far from done as we look to the future. Every sunrise serves as a re
 
 Welcome to our story, which is one of ardor, tenacity, and the promise of opportunity. The trip is just as significant as the destination at SEA Properties Ltd. And we're co-writing this once-in-a-lifetime story's next chapter.
 `
-        let text2 = `When we thought about opening  SEA Properties Ltd, we were just a tiny team with huge goals, driven by the idea that buildings might be more than just places to live; they could also serve as hubs for creativity and connection. Creating environments that make people feel completely at home has always been our goal, from the initial blueprint to the last coat of paint.
+        let text2 = `When we thought about opening  SEA Properties Ltd., we were just a tiny team with huge goals, driven by the idea that buildings might be more than just places to live; they could also serve as hubs for creativity and connection. Creating environments that make people feel completely at home has always been our goal, from the initial blueprint to the last coat of paint.
 `
 
         let text3 = `Our path has been filled with highs and lows, but no matter what, our spirit has been unwavering. We've danced on the brink of possibility, broken down walls, and withstood storms. And we've come out stronger, more resilient, and more inspired than ever after conquering every obstacle.
@@ -60,7 +61,7 @@ Welcome to our story, which is one of ardor, tenacity, and the promise of opport
         <div>
             <Helmet>
                 <title>
-                    Our Story | Sea Properties ltd
+                    Our Story | SEA Properties Ltd.
                 </title>
             </Helmet>
             {/* our story Section 1  */}
@@ -74,7 +75,7 @@ Welcome to our story, which is one of ardor, tenacity, and the promise of opport
             {/* our story section 2 */}
             <div className="max-w-[1366px] md:h-[722px] mx-auto px-[20px] xl:px-[80px] xl:grid grid-cols-2 flex flex-col  md:flex-row items-center gap-6 md:gap-0  mt-8 md:mt-[60px]">
                 <div className="basis-[40%]">
-                    <img className="w-[588px] md:h-[722px] object-cover" src={`${img2}`} alt="" />
+                    <img className="w-[588px] md:h-[722px] object-cover" src={`${bg}`} alt="" />
                 </div>
                 <div className={`flex flex-col justify-between md:ml-10 xl:ml-20 text-justify basis-[60%] h-full`}>
                     <h3 className="text-[#AAB0B2] text-3xl lg:text-4xl uppercase mb-6 md:mb-0">Background</h3>
@@ -92,7 +93,7 @@ Welcome to our story, which is one of ardor, tenacity, and the promise of opport
                         <h3 className="text-white text-3xl lg:text-4xl uppercase">Who We Are</h3>
                         <img className="w-[404px] md:h-[456px] object-cover" src={`${img3}`} alt="" />
                     </div>
-                    <div className="flex flex-col justify-center gap-[47px] text-justify basis-[60%]">
+                    <div className="flex flex-col justify-center  gap-[47px] text-justify basis-[60%]">
                         Our company offers a portfolio of high-end developments in Dhaka city, with a strong reputation in the Real Estate market and access to luxury apartments and commercial spaces in prime locations.
                         <br />
                         <br />
@@ -106,11 +107,14 @@ Welcome to our story, which is one of ardor, tenacity, and the promise of opport
             </div>
 
             {/* our story section 4 */}
-            <div style={{ backgroundImage: `linear-gradient(to right, rgb(0 0 0 / 80%), rgb(0 0 0 / 80%)), url(${img4})` }}
+
+            <div style={{
+                backgroundImage: `linear-gradient(rgb(0 0 0 / 66%), #04040c) ,url("${apr}")`
+            }}
                 className="md:h-[740px] text-[#ffffff] bg-cover flex items-center py-20 md:py-0">
                 <div className="max-w-[720px] mx-auto text-white flex flex-col gap-6 text-center lg:text-left">
-                    <h3 className="uppercase text-3xl text-white lg:text-4xl mb-">Our Approach</h3>
-                    <p className="text-sm lg:text-[16px] text-white leading-[22px] px-4 md:px-0">
+                    <h3 className="uppercase text-center text-3xl text-white lg:text-4xl mb-">Our Approach</h3>
+                    <p className="text-sm lg:text-[16px] text-justify text-white leading-[22px] px-4 md:px-0">
                         Buying a property like an apartment, home, or office is a significant life goal for many people. It requires saving money over time to make this dream come true. This pursuit of buying property can be passed down through generations. However, once the purchase is made, one may question whether the dream has truly been fulfilled.
                         <br />
                         <br />
