@@ -136,18 +136,18 @@ const adminPath = [
     path: "/admin/edit-land-area/:id",
     element: <EditLandArea />,
   },
-  {
-    path: "/admin/edit-lands/:id",
-    element: <EditLand />,
-  },
-  {
-    path: "/admin/lands",
-    element: <Lands />,
-  },
-  {
-    path: "/admin/lands/add-land",
-    element: <AddLand />,
-  },
+  // {
+  //   path: "/admin/edit-lands/:id",
+  //   element: <EditLand />,
+  // },
+  // {
+  //   path: "/admin/lands",
+  //   element: <Lands />,
+  // },
+  // {
+  //   path: "/admin/lands/add-land",
+  //   element: <AddLand />,
+  // },
 ];
 
 export default adminPath;

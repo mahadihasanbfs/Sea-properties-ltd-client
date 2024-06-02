@@ -19,6 +19,7 @@ const AddLand = () => {
 
 
     const handleSubmit = async (e) => {
+        setLoading(true);
         e.preventDefault();
         console.log(selectedOptions);
         const gallery_img = e.target.gallery_img.files;
@@ -36,7 +37,7 @@ const AddLand = () => {
             galleryImg: galleryImageUrls
         };
         console.log('+++++++++++++++', data);
-        fetch('', {
+        fetch('http://localhost:5001/api/v1/admin/land/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -95,7 +96,7 @@ const AddLand = () => {
                 type="submit"
                 className="px-8 py-2 rounded bg-[#b02449] text-[white]"
             >
-                +Add
+                {loading ? 'Adding...' : '+Add'}
             </button>
         </form>
     );

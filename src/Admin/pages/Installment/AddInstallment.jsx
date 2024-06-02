@@ -193,8 +193,6 @@ const AddInstallment = () => {
             +Add
           </button>
         )}
-
-        <button type="submit">sdjahfl</button>
       </form>
     </div>
   );

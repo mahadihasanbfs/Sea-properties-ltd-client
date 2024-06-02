@@ -110,14 +110,14 @@ const commonPath = [
     path: "project",
     element: <OnGoing />,
   },
-  {
-    path: "land",
-    element: <Land />,
-  },
-  {
-    path: "land-registration-form",
-    element: <LandRegistrationForm />,
-  },
+  // {
+  //   path: "land",
+  //   element: <Land />,
+  // },
+  // {
+  //   path: "land-registration-form",
+  //   element: <LandRegistrationForm />,
+  // },
   {
     path: "sign-up",
     element: <SignUp />,

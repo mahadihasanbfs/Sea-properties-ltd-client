@@ -223,30 +223,30 @@ export default function AdminSideNav({ setToggleMenu }) {
       ],
     },
 
-    {
-      id: 5,
-      name: "Manage Land",
-      icon: <MdOutlineUnsubscribe />,
-      path: "/admin/manage-installment",
-      role: "admin",
-      isDropdown: FaLessThanEqual,
-      menu: [
-        {
-          id: 4.1,
-          name: "Lands",
-          icon: "",
-          path: "lands",
-          role: "admin",
-        },
-        {
-          id: 4.2,
-          name: "Add Land",
-          icon: "",
-          path: "lands/add-land",
-          role: "admin",
-        },
-      ],
-    },
+    // {
+    //   id: 5,
+    //   name: "Manage Land",
+    //   icon: <MdOutlineUnsubscribe />,
+    //   path: "/admin/manage-installment",
+    //   role: "admin",
+    //   isDropdown: FaLessThanEqual,
+    //   menu: [
+    //     {
+    //       id: 4.1,
+    //       name: "Lands",
+    //       icon: "",
+    //       path: "lands",
+    //       role: "admin",
+    //     },
+    //     {
+    //       id: 4.2,
+    //       name: "Add Land",
+    //       icon: "",
+    //       path: "lands/add-land",
+    //       role: "admin",
+    //     },
+    //   ],
+    // },
   ];
 
   return (
