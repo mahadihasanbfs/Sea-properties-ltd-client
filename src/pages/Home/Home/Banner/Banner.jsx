@@ -94,16 +94,13 @@ const Banner = () => {
         );
     }
 
-
-
-    console.log(filterData, 'result..');
-
+    console.log('===>>..', searchData)
 
     return (
         <div>
-            <div className="max-w-[1366px] mx-auto py-12 mt-4 px-6 xl:px-4">
+            <div className="max-w-[1366px] mx-auto py-12 mt-4 px-6 xl:px-4  ">
                 <Actions onSearch={setSearchTerm} onStatus={setProjectStatus} onType={setProjectType} />
-                <div className="slider-container mt-12 px-6 mr-5 w-[98%] mx-auto">
+                <div className="slider-container mt-12  mr-5 w-[98%] mx-auto">
 
                     <Swiper slidesPerView={3}
 
@@ -123,7 +120,7 @@ const Banner = () => {
                             },
                         }}>
                         {
-                            searchData?.map(itm => <SwiperSlide className="pb-12" key={itm?._id}>
+                            searchData?.map(itm => <SwiperSlide className="pb-12 lg:px-6" key={itm?._id}>
                                 <BannerCart key={itm?._id} itm={itm} />
                             </SwiperSlide>)
                         }

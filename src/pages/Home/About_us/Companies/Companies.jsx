@@ -42,7 +42,7 @@ const Companies = () => {
         <div className="bg-[#E0F2F1]">
             <Helmet>
                 <title>
-                    Companies | Sea Properties ltd
+                    Companies | SEA Properties Ltd.
                 </title>
             </Helmet>
             {/* AboutUs_Companies banner section */}

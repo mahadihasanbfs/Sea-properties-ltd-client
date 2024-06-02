@@ -27,7 +27,7 @@ const VisionMision = () => {
         <div>
             <Helmet>
                 <title>
-                    Vision, Mission and Values | Sea Properties ltd
+                    Vision, Mission and Values | SEA Properties Ltd.
                 </title>
             </Helmet>
             {/* vision mision Section 1  */}
@@ -48,7 +48,7 @@ const VisionMision = () => {
                             </div>
                         </div>
                         <div className="max-w-[500px] mx-auto p-4">
-                            <p className="text-gray-700 mb-6">Our vision is make a trust, quality and integrity which is the prime role of the business. We at SEA properties Ltd. ensure to build space that is a blend of comfort and convenience. We strive to delver sustainable and innovative design with uncompromised quality on time delivery.
+                            <p className="text-gray-700 mb-6">Our vision is make a trust, quality and integrity which is the prime role of the business. We at SEA Properties Ltd. ensure to build space that is a blend of comfort and convenience. We strive to delver sustainable and innovative design with uncompromised quality on time delivery.
                             </p>
 
                         </div>
@@ -63,9 +63,9 @@ const VisionMision = () => {
                             <h1 className="text-xl font-bold mb-4">For Our Residents:</h1>
                             <p className="text-gray-700 mb-6">Every element, from the coziness of contemporary amenities to the coziness of classic design, is thoughtfully designed with our residents' comfort and happiness in mind. Here, their investment is in a lifestyle that embraces genuineness and provides unmatched value rather than merely real estate.</p>
                             <h1 className="text-xl font-bold mb-4">For Our Team:</h1>
-                            <p className="text-gray-700 mb-6">Our team members are valued members of a caring community at SEA Properties Ltd; not just coworkers. By providing them with opportunities for personal development, mentoring, and training, we enable them to realize their greatest potential.</p>
+                            <p className="text-gray-700 mb-6">Our team members are valued members of a caring community at SEA Properties Ltd.; not just coworkers. By providing them with opportunities for personal development, mentoring, and training, we enable them to realize their greatest potential.</p>
                             <h1 className="text-xl font-bold mb-4">For Our Partners:</h1>
-                            <p className="text-gray-700 mb-6">Purchasing an investment in SEA Properties Ltd is more than simply a financial decision; it's about joining forces with a group of people dedicated to generating steady returns. By utilizing market data and cultivating trust via transparent communication, together with financial gains, partners who work with us...</p>
+                            <p className="text-gray-700 mb-6">Purchasing an investment in SEA Properties Ltd. is more than simply a financial decision; it's about joining forces with a group of people dedicated to generating steady returns. By utilizing market data and cultivating trust via transparent communication, together with financial gains, partners who work with us...</p>
                         </div>
                     </div>
                     <div className="flex flex-col py-10 md:flex-row justify-center items-center gap-16 md:gap-28">

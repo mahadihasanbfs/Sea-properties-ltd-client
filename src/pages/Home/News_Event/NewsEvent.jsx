@@ -26,7 +26,7 @@ const NewsEvent = () => {
         <div>
             <Helmet>
                 <title>
-                    News and Events | Sea Properties ltd
+                    News and Events | SEA Properties Ltd.
                 </title>
             </Helmet>
             {/* News and events banner section */}

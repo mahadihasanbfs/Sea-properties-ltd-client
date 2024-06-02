@@ -10,7 +10,7 @@ const OurClient = () => {
         <div>
             <Helmet>
                 <title>
-                    Our Clients | Sea Properties ltd
+                    Our Clients | SEA Properties Ltd.
                 </title>
             </Helmet>
             {/* AboutUs_Our_Client banner section */}
@@ -30,7 +30,7 @@ const OurClient = () => {
                     We pride ourselves in creating spaces where leading corporates choose to establish their place of business. At Shanta, you become part of an elite community of renowned local and global names.
                 </p>
             </div>
- 
+
             <div className="bg-[#DCDCDC]">
                 <div className="max-w-[1366px] mx-auto px-3 md:px-6 lg:px-[60px] py-[50px] lg:py-[90px] grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {

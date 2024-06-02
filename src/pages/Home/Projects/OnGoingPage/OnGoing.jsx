@@ -45,12 +45,11 @@ const OnGoingProject = () => {
 
     return (
         <div className="">
-            // <Helmet>
-            //     <title>
-            //
-            //     </title>
-                // </Helmet>
-            <MetaHelmet title={`${title} Projects  | SEA Properties ltd`} description={`This is ${title} Projects of SEA Properties ltd`} ogTitle={`${title} Projects  | SEA Properties ltd`} ogDescription={`This is ${title} Projects of SEA Properties ltd`} />
+            <Helmet>
+                <title>{title} | SEA Properties Ltd.</title>
+            </Helmet>
+
+
             {/* banner */}
             <div className="max-w-[1366px] mx-auto flex flex-col md:flex-row justify-between items-center gap-10 md:gap-0 pt-[200px] pb-[100px] xl:pb-[150px] px-[60px] bg-white">
                 <div className="text-[#AAB0B2]">
@@ -86,7 +85,7 @@ const OnGoingProject = () => {
                                 {projectData.map(item => (
                                     <Link key={item?._id} to={`/project-details/${item?.sku}`}>
                                         <div className="relative xl:w-[423px] rounded-lg duration-200 hover:shadow-lg border border-[#80808051] xl:h-[423px] justify-self-center overflow-hidden hover:cursor-pointer">
-                                            <img className="w-full h-full hover:scale-110 transition-transform duration-1000 ease-in-out object-cover" src={item?.project_photo} alt="" />
+                                            <img className="w-full h-full hover:scale-110 transition-transform duration-1000 ease-in-out object-cover" src={item?.banner_img} alt="" />
                                             <div className="w-full h-[70px]  px-6 bg-[#00000080] flex justify-center items-center flex-col absolute bottom-20">
                                                 <h3 className="text-[18px] text-[white]">{item?.name}</h3>
                                                 <p className="text-[#C7C3C3]">{item?.details?.info?.address}</p>

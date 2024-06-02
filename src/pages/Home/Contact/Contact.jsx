@@ -60,7 +60,7 @@ const Contact = () => {
   return (
     <div>
       <Helmet>
-        <title>Contact | Sea Properties ltd</title>
+        <title>Contact | SEA Properties Ltd.</title>
       </Helmet>
       {/* Contact banner section */}
       <PrimaryBanner

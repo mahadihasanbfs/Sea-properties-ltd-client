@@ -1,5 +1,5 @@
 import React from 'react';
-import image from './expand-min.png';
+import image from '../../../../assets/explore.jpg';
 
 const Explore = () => {
     return (

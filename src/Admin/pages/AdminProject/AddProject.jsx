@@ -13,25 +13,6 @@ const AddProject = () => {
     const fileInputRef = useRef(null);
     const [images, setImages] = useState([]);
 
-    const handleImageFileChange = (event) => {
-        const files = event.target.files;
-        const newImages = [];
-        for (const file of files) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                newImages.push(e.target.result);
-                setImages([...images, e.target.result]);
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-
-    const handleRemoveImage = (index) => {
-        const newImages = [...images];
-        newImages.splice(index, 1);
-        setImages(newImages);
-    };
-
 
 
 
@@ -133,6 +114,7 @@ const AddProject = () => {
         const bathroom = form.bathroom.value;
         const launch_date = new Date().getTime();
         const collections = form.collections.value;
+        const handover = form.handover.value;
         const youtube_url = form.youtube_url.value;
         const vr_status = vrOn
         const vr_url = vrOn && form.vr_url.value;
@@ -178,6 +160,7 @@ const AddProject = () => {
                     bedroom,
                     launch_date,
                     collections,
+                    handover,
                     contractionStatus: inputFields
                 }
             },
@@ -195,6 +178,7 @@ const AddProject = () => {
         };
 
 
+
         fetch('https://backend.seapropertiesltd.com.bd/api/v1/admin/project/add', {
             method: 'POST',
             headers: {
@@ -204,10 +188,10 @@ const AddProject = () => {
         }).then((res) => res.json()).then((data) => {
             setLoading(false)
             Swal.fire('Project Successfully Added', '', 'success');
-            navigate('/admin/manage-project');
+            // navigate('/admin/manage-project');
         })
 
-        console.log(name, 'testing......', data);
+        console.log(data, 'testing......', uploadedBannerImg, banner_img);
     };
 
 
@@ -268,7 +252,7 @@ const AddProject = () => {
                             placeholder="Enter Project name" />
                     </div>
                     <div className="mt-3 w-full">
-                        <label    >Feature Image</label><br />
+                        <label    >Cart Image</label><br />
                         <input
                             name="banner_img"
                             className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
@@ -385,8 +369,16 @@ const AddProject = () => {
                                 className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
                                 type="text"
                                 placeholder="Total Collection " />
-                        </div>
 
+                        </div>
+                    </div>
+                    <div className="mt-3 w-full">
+                        <label   >Handover</label><br />
+                        <input
+                            name="handover"
+                            className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
+                            type="text"
+                            placeholder="Hand over date " />
                     </div>
                 </div>
                 <br />
@@ -565,12 +557,7 @@ const AddProject = () => {
                         +Add
                     </button>
                 )}
-                {/* <button
-                    type="submit"
-                    className="px-8 py-2 rounded bg-[#b02449] text-[white]"
-                >
-                    +Add
-                </button> */}
+
             </form>
         </div>
 

@@ -62,7 +62,7 @@ const Testimonials = () => {
         <div className="max-w-[1366px] mx-auto py-12 mt-4 px-6 xl:px-4">
             <div className="container py-12 mt-4 ">
                 <Title text="Testimonials " position="start" />
-                <div id="sld" className="slider-container  mt-20   w-full">
+                <div id="sld" className="slider-container  mt-4   w-full">
                     <Slider {...settings}>
                         {
                             data?.map(itm => <TestimonialItem key={itm?.id} itm={itm} />)

@@ -35,7 +35,7 @@ const BoardOfDirector = () => {
         <div className="pb-[70px]">
             <Helmet>
                 <title>
-                    Board of Directors | Sea Properties ltd
+                    Board of Directors | SEA Properties Ltd.
                 </title>
             </Helmet>
             {/* board of director Section 1  */}

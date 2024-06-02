@@ -30,8 +30,8 @@ const VideoPlayer = ({ thum, url }) => {
                         cursor: "pointer",
                     }}
                     onClick={handlePlay}>
-                    <span className="flex items-center justify-center w-12 h-12 rounded-full  text-white bg-red-500">
-                        <FaPlay />
+                    <span className="flex items-center bg-[#A20E27] text-[white] justify-center w-12 h-12 rounded-full  text-white bg-red-500">
+                        <FaPlay className="ml-1" />
                     </span>
                 </div>
             )}

@@ -555,10 +555,12 @@ a{
 
 .print-single-box{
   width: 30%!important;
+  font-size: 12px !important;
   /* background: red!important; */
 }
 .print-single-box-2{
   width: 64%!important;
+  font-size: 12px!important;
   /* background: green!important; */
 }
 /* .print-bar{
@@ -596,3 +598,12 @@ a{
     margin-left: 35px;
   }
 }
+/* 
+body{
+  
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    
+} */
+

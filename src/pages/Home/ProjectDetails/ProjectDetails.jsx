@@ -23,6 +23,7 @@ import { IoIosResize } from "react-icons/io";
 import { MdApartment } from "react-icons/md";
 import { TiChartAreaOutline } from "react-icons/ti";
 import { CiLocationOn } from "react-icons/ci";
+import { LiaHandshake } from "react-icons/lia";
 
 const ProjectDetails = () => {
     // const [visible, setVisible] = useState(false);
@@ -63,7 +64,7 @@ const ProjectDetails = () => {
         vr_status, vr_url, name, banner_img, videoThumbnailImgUpload,
         youtube_url, contactPageImg, project_status, projectInfo, projectFeatures, gallery_img, project_photo, projectVideo, map_link, featureInfo, details } = projectData;
 
-    console.log(projectData, 'oooooooo')
+
 
     const handleSubmit = (event) => {
         setLoading(true)
@@ -185,6 +186,10 @@ const ProjectDetails = () => {
                                             <td className="px-4 py-3 flex items-center gap-2 text-xs text-ms font-semibold "><BsCollection className="text-lg" /> Collection</td>
                                             <td className="px-4 py-3 text-sm  border-l">{details?.info?.collections ? details?.info?.collections : 'No Collections'}</td>
                                         </tr>
+                                        <tr className="text-gray-700 border-t border-[#c9c9c9]">
+                                            <td className="px-4 py-3 flex items-center gap-2 text-xs text-ms font-semibold "><LiaHandshake className="text-lg" /> Handover</td>
+                                            <td className="px-4 py-3 text-sm  border-l">{details?.info?.handover ? details?.info?.handover : 'No Handover'}</td>
+                                        </tr>
                                     </tbody>
                                 </table>
 
@@ -200,6 +205,8 @@ const ProjectDetails = () => {
                     </section>
                 </>
             </div>
+
+            {console.log(projectData)}
 
             {/* project features */}
             <div className="bg-black">
@@ -232,14 +239,14 @@ const ProjectDetails = () => {
             <div className="bg-[#B0BEC5] py-16 lg:py-[85px]">
                 <div className="max-w-[1366px] mx-auto px-6 md:px-10 xl:px-[60px] text-white gap-10 grid md:grid-cols-2">
                     <div className="space-y-10 md:block hidden">
-                        <img className="w-full h-full shadow-lg shadow-dark rounded" src={details?.detail_img} alt="" />
+                        <img className=" object-cover shadow-lg shadow-dark rounded" src={projectData?.banner_img} alt="" />
 
                     </div>
                     <div className="flex items-center">
                         <form onSubmit={handleSubmit} className="md:space-y-4 space-y-2 w-full">
                             <h2 className="text-[20px] md:text-[37px] uppercase">Book Now</h2>
                             <div className="space-y-16 py-4 md:hidden block">
-                                <img className="w-full h-full shadow-lg shadow-dark rounded" src={details?.banner_img} alt="" />
+                                <img className="object-fill shadow-lg shadow-dark rounded" src={projectData?.banner_img} alt="" />
 
                             </div>
                             <div>
@@ -279,7 +286,7 @@ const ProjectDetails = () => {
                                 />
                             </div>
 
-                            <div className="pt-6">
+                            <div className="pt-3">
                                 <input type="submit" value="Book Now" className="py-[9px] px-[28px] rounded hover:bg-[#a20e0e] hover:text-light border-[3px] border-white hover:cursor-pointer" />
                             </div>
                         </form>

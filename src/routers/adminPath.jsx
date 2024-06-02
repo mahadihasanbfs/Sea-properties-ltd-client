@@ -3,6 +3,9 @@ import AddBanner from "../Admin/pages/AdminBanner/AddBanner";
 import BannerManagement from "../Admin/pages/AdminBanner/BannerManagement";
 import AddBlog from "../Admin/pages/AdminBlog/AddBlog";
 import ManageBlog from "../Admin/pages/AdminBlog/BlogManagement";
+import AddLand from "../Admin/pages/AdminLandManagement/AddLand";
+import EditLand from "../Admin/pages/AdminLandManagement/EditLand";
+import Lands from "../Admin/pages/AdminLandManagement/Lands";
 import AddProject from "../Admin/pages/AdminProject/AddProject";
 import EditProject from "../Admin/pages/AdminProject/EditProject";
 import ManageProject from "../Admin/pages/AdminProject/ManageProject";
@@ -56,23 +59,23 @@ const adminPath = [
     // },
     loader: ({ params }) => {
       return fetch(
-       `https://backend.seapropertiesltd.com.bd/api/v1/admin/project/get-project?project_id=${params?.id}`
-     )
-       .then((res) => {
-         if (!res.ok) {
-           throw new Error("Network response was not ok");
-         }
-         return res.json();
-       })
-       .then((data) => {
-         return data;
-       })
-       .catch((error) => {
-         console.error("Error fetching project:", error);
-         // Handle error gracefully, such as displaying a friendly message to the user
-         return null; // Return null or any default value as needed
-       });
-   },
+        `https://backend.seapropertiesltd.com.bd/api/v1/admin/project/get-project?project_id=${params?.id}`
+      )
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return res.json();
+        })
+        .then((data) => {
+          return data;
+        })
+        .catch((error) => {
+          console.error("Error fetching project:", error);
+          // Handle error gracefully, such as displaying a friendly message to the user
+          return null; // Return null or any default value as needed
+        });
+    },
     element: <EditProject />,
   },
   {
@@ -132,6 +135,18 @@ const adminPath = [
   {
     path: "/admin/edit-land-area/:id",
     element: <EditLandArea />,
+  },
+  {
+    path: "/admin/edit-lands/:id",
+    element: <EditLand />,
+  },
+  {
+    path: "/admin/lands",
+    element: <Lands />,
+  },
+  {
+    path: "/admin/lands/add-land",
+    element: <AddLand />,
   },
 ];
 

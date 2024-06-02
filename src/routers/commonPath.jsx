@@ -12,13 +12,14 @@ import BlogDetails from "../pages/Home/Home/Blogs/BlogDetails";
 import MyBlogs from "../pages/Home/Home/Blogs/Blogs";
 import Explore from "../pages/Home/Home/Gellary/Explore";
 import Home from "../pages/Home/Home/Home";
+import Land from "../pages/Home/Land/Land";
 import LandRegistrationForm from "../pages/Home/LandRegistrationForm/LandRegistrationForm";
 import NewsEvent from "../pages/Home/News_Event/NewsEvent";
 import NewsEventReadMore from "../pages/Home/News_Event/NewsEventReadMore";
 import ProjectDetails from "../pages/Home/ProjectDetails/ProjectDetails";
 import OnGoing from "../pages/Home/Projects/OnGoingPage/OnGoing";
-// import PrivacyPolicy from "../pages/PrivacyPolicy";
-// import TermsCondition from "../pages/TermsCondition";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
+import TermsCondition from "../pages/TermsCondition";
 
 
 const commonPath = [
@@ -82,7 +83,7 @@ const commonPath = [
     path: "blogs/blogs-details/:id",
     element: <BlogDetails />,
     loader: ({ params }) => {
-       return fetch(
+      return fetch(
         `https://backend.seapropertiesltd.com.bd/api/v1/admin/blog/get-blog?blog_id=${encodeURIComponent(params?.id)}`
       )
         .then((res) => {
@@ -110,6 +111,10 @@ const commonPath = [
     element: <OnGoing />,
   },
   {
+    path: "land",
+    element: <Land />,
+  },
+  {
     path: "land-registration-form",
     element: <LandRegistrationForm />,
   },
@@ -126,14 +131,14 @@ const commonPath = [
     element: <Explore />,
   },
 
-  // {
-  //   path: 'privacy-policy',
-  //   element: <PrivacyPolicy />
-  // },
-  // {
-  //   path: 'terms-condition',
-  //   element: <TermsCondition />
-  // },
+  {
+    path: 'privacy-policy',
+    element: <PrivacyPolicy />
+  },
+  {
+    path: 'terms-condition',
+    element: <TermsCondition />
+  },
   {
     path: "*",
     element: <Home />,

@@ -100,7 +100,7 @@ const SignIn = () => {
   return (
     <div>
       <Helmet>
-        <title>Sign In | Sea Properties ltd</title>
+        <title>Sign In | SEA Properties Ltd.</title>
       </Helmet>
       <main className="w-full h-fit my-28 flex  flex-col items-center justify-center px-4">
         <div className="lg:max-w-xl rounded-xl lg:p-14  w-full text-gray-600 bg-light shadow-xl  ">
