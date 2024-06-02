@@ -9,6 +9,7 @@ const useImageUpload = () => {
     });
 
     const uploadImage = async (file) => {
+
         setUploadState({ ...uploadState, isLoading: true });
         try {
             const formData = new FormData();
@@ -25,7 +26,7 @@ const useImageUpload = () => {
 
             const imageData = await response.json();
             setUploadState({ ...uploadState, imageUrl: imageData.imageUrl });
-            return imageData.imageUrl;
+            return imageData.fileUrl;
         } catch (error) {
             setUploadState({ ...uploadState, error: error.message });
             return null;

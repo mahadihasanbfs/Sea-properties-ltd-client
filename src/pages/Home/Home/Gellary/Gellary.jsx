@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import bg from '../../../../assets/gellaryBg.png';
+import bg from '../../../../assets/background.jpg';
 import GellaryItem from './GellaryItem';
 import { Link } from 'react-router-dom';
 const Gellary = () => {
@@ -74,7 +74,7 @@ const Gellary = () => {
 
     return (
         <div
-            className='bg-cover text-light object-cover py-24 flex items-center px-4 md:px-6 lg:px-10 bg-fixed'
+            className='bg-cover bg-start text-light object-cover py-24 flex items-center px-4 md:px-6 lg:px-10 bg-fixed'
             style={{
                 backgroundImage: `linear-gradient(#0000001a, #0000001c), url(${bg})`
             }}
