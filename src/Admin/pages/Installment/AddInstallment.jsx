@@ -18,9 +18,6 @@ const AddInstallment = () => {
   const [data] = useFetchData(`${DB_URL}/users`);
   console.log("data", data);
   const userData = data?.data;
-
-  // console.log("userData", userData);
-
   const [selectedInstallmentUser, setSelectedInstallmentUser] = useState("");
 
   // Event handler for when an option is selected
@@ -197,5 +194,4 @@ const AddInstallment = () => {
     </div>
   );
 };
-
 export default AddInstallment;
