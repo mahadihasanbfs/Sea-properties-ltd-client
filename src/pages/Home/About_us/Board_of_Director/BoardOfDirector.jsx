@@ -3,6 +3,7 @@ import useContextApi from "../../../../hooks/useContextApi";
 import P from "../../../../components/sharedComponent/P";
 import PrimaryBanner from "../../../../components/common/PrimaryBanner";
 import { Helmet } from "react-helmet";
+import ss from '../../../../assets/board-of-drector.jpg';
 
 const BoardOfDirector = () => {
     const { AboutUs_BoardOfDirectorImg, spilitTextIntoChunks } = useContextApi();
@@ -40,7 +41,7 @@ const BoardOfDirector = () => {
             </Helmet>
             {/* board of director Section 1  */}
             <PrimaryBanner
-                bannerImg={img1}
+                bannerImg={ss}
                 opacity={20}
                 title="Board of Directors"
                 subTitle="About us"
