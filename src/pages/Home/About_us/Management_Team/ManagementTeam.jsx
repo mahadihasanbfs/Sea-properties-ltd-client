@@ -15,6 +15,7 @@ import fardaus_rahman from './8.jpg';
 import md_rahat_hasan from './9.jpg';
 import saif_bin_nabi from './10.jpg';
 import md_tarequr_rahman from './11.jpg';
+import ss from '../Management_Team/team.jpg';
 
 
 
@@ -112,7 +113,7 @@ const ManagementTeam = () => {
             </Helmet>
             {/* management team Section 1 */}
             <PrimaryBanner
-                bannerImg='https://i.ibb.co/n894Rhg/SEA-85.jpg'
+                bannerImg={ss}
                 opacity={30}
                 title="Management Team"
                 subTitle="About us"

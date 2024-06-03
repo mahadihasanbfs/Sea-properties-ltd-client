@@ -6,6 +6,7 @@ import ContactMap from "./ContactMap";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { DB_URL } from "../../../const";
+import ss from '../../..//assets/contact.jpg';
 
 const Contact = () => {
   const { ContactPageImg } = useContextApi();
@@ -66,7 +67,7 @@ const Contact = () => {
       <PrimaryBanner
         title={"Get in touch"}
         subTitle={"Contact"}
-        bannerImg={bannerImg}
+        bannerImg={ss}
         opacity={30}
       ></PrimaryBanner>
 

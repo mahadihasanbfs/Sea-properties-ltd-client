@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet";
 
 import bg from '../../../../assets/background.jpg';
 import apr from '../../../../assets/our-approch.jpg';
+import ss from '../../../../assets/ourstor.jpg';
 
 const OurStory = () => {
 
@@ -66,7 +67,7 @@ Welcome to our story, which is one of ardor, tenacity, and the promise of opport
             </Helmet>
             {/* our story Section 1  */}
             <PrimaryBanner
-                bannerImg={img1}
+                bannerImg={ss}
                 opacity={60}
                 title="OUR STORY"
                 subTitle="About us"
