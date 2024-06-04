@@ -3,7 +3,7 @@ import useContextApi from "../../../../hooks/useContextApi";
 import P from "../../../../components/sharedComponent/P";
 import PrimaryBanner from "../../../../components/common/PrimaryBanner";
 import { Helmet } from "react-helmet";
-
+import vission from '../../../../assets/vission.jpg';
 
 const VisionMision = () => {
     const { spilitTextIntoChunks } = useContextApi();
@@ -32,7 +32,7 @@ const VisionMision = () => {
             </Helmet>
             {/* vision mision Section 1  */}
             <PrimaryBanner
-                bannerImg="https://i.ibb.co/ydY8vSf/bannerimg.png"
+                bannerImg={vission}
                 opacity={20}
                 title="Vision Mission & Values"
                 subTitle="About us"
