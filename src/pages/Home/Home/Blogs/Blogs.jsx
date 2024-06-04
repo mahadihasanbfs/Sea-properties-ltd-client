@@ -113,8 +113,7 @@ const Blogs = () => {
                                                 <p>
                                                     {new DOMParser()
                                                         .parseFromString(itm?.description, "text/html")
-                                                        .body.textContent.split(" ")
-                                                        .slice(0, 5)
+                                                        .body.textContent.split(" ")?.slice(0, 5)
                                                         .join(" ")}
                                                 </p>
 

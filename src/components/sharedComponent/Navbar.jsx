@@ -188,7 +188,7 @@ const Navbar = () => {
                 >
                   <button onClick={() => setOn((prev) => !prev)}>
                     <p className="border w-10 h-10 rounded-full bg-[#000000e4] flex items-center justify-center">
-                      {user.displayName.slice(0, 1)}
+                      {user?.displayName?.slice(0, 1)}
                     </p>
                     {/* <img width={40} height={40} className="size-10 rounded-full bg-slate-500 object-cover duration-500 hover:scale-x-[98%] hover:opacity-80" src={user?.photoURL} alt="avatar drop down navigate ui" /> */}
                   </button>

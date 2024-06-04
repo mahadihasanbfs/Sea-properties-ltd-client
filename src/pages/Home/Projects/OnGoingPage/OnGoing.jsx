@@ -14,7 +14,7 @@ const OnGoingProject = () => {
     useEffect(() => {
         const text = filterPath?.hash;
         const result = text ? text.replace('#', '').toLowerCase() : '';
-        const capitalizedResult = result.charAt(0).toUpperCase() + result.slice(1);
+        const capitalizedResult = result.charAt(0).toUpperCase() + result?.slice(1);
         setTitle(capitalizedResult);
         setProjectStatus(result);
     }, [filterPath]);
@@ -53,7 +53,7 @@ const OnGoingProject = () => {
             {/* banner */}
             <div className="max-w-[1366px] mx-auto flex flex-col md:flex-row justify-between items-center gap-10 md:gap-0 pt-[200px] pb-[100px] xl:pb-[150px] px-[60px] bg-white">
                 <div className="text-[#AAB0B2]">
-                    <p className="text-[14px] uppercase">{filterPath.hash.slice(1)}</p>
+                    <p className="text-[14px] uppercase">{filterPath?.hash?.slice(1)}</p>
                     <h3 className="text-[37px] uppercase">Projects in progress</h3>
                 </div>
                 <div>
