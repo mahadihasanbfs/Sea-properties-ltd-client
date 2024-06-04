@@ -120,6 +120,8 @@ const ManageInstallment = () => {
   }
   // Filter the allInstallment data based on the search query
 
+
+  console.log(currentItems, '----->');
   return (
     <div className="pt-3">
       <div className="flex items-center justify-between">
@@ -141,11 +143,15 @@ const ManageInstallment = () => {
         <table className="w-full table-auto text-sm text-left">
           <thead className="bg-[#e4e4e4] text-[#0d1113] font-medium border-[#bab9b9] border-b">
             <tr>
-              <th className="py-3 px-6">Installment Name</th>
-              <th className="py-3 px-6">Email</th>
-              <th className="py-3 px-6">Installment Number</th>
-              <th className="py-3 px-6">Contact</th>
-              <th className="py-3 px-6">Action</th>
+              {/* <th className="py-3 px-6">Installment Name</th> */}
+              <th className="py-3 text-nowrap px-6">Email</th>
+              <th className="py-3 text-nowrap px-6">Particular</th>
+              <th className="py-3 text-nowrap px-6">Check Number</th>
+              <th className="py-3 text-nowrap px-6">MR No</th>
+              <th className="py-3 text-nowrap px-6">Receive Amount</th>
+              <th className="py-3 text-nowrap px-6">Due</th>
+              <th className="py-3 text-nowrap px-6">Receive Date</th>
+              <th className="py-3 text-nowrap px-6">Action</th>
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
@@ -155,13 +161,23 @@ const ManageInstallment = () => {
             {currentItems?.length &&
               currentItems?.map((item, idx) => (
                 <tr key={idx}>
-                  <td className="px-6 py-4 whitespace-nowrap">{item?.name}</td>
+                  {/* <td className="px-6 py-4 whitespace-nowrap">{item?.name}</td> */}
                   <td className="px-6 py-4 whitespace-nowrap">{item?.email}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{item?.particular}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    {item?.installment}
+                    {item?.checkNumber ?? 'N/A'}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    {item?.contact}
+                    {item?.checkNumber ?? 'N/A'}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {item?.mrNo ?? 'N/A'}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {item?.receiveAmount ?? 'N/A'}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {item?.receiveDate ?? 'N/A'}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <ul className="flex items-center gap-2">

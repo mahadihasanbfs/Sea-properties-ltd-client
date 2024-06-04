@@ -11,11 +11,11 @@ function spilitTextIntoChunks(text, chunkLength) {
         if (!(chunk.endsWith('.'))) {
             let lastIndexOfDot = chunk.lastIndexOf('.');
             if (lastIndexOfDot === -1) {
-                chunk = text.slice(startIndex, text.indexOf('.', startIndex) + 1);
+                chunk = text?.slice(startIndex, text.indexOf('.', startIndex) + 1);
                 chunks.push(chunk);
                 startIndex += (chunk.length + 1);
             } else {
-                chunk = text.slice(startIndex, text.indexOf('.', (startIndex + lastIndexOfDot + 1)) + 1);
+                chunk = text?.slice(startIndex, text.indexOf('.', (startIndex + lastIndexOfDot + 1)) + 1);
                 chunks.push(chunk);
                 startIndex += ((startIndex + lastIndexOfDot + 1) + 1);
             }

@@ -103,7 +103,7 @@ const FlatInstallMentPage = () => {
         console.error("Error deleting Installment:", error);
       });
   };
-
+  console.log(currentItems, user, '===========>>', `${DB_URL}/admin/installment/get-installment-email?email=${user?.reloadUserInfo?.email}`);
   return (
     <div className="pt-3">
       <AdminTitle size={"20px"} title="Your Installment" />
@@ -111,46 +111,47 @@ const FlatInstallMentPage = () => {
         <table className="w-full table-auto text-sm text-left">
           <thead className="bg-[#e4e4e4] text-[#0d1113] font-medium border-[#bab9b9] border-b">
             <tr>
-              <th className="py-3 px-6">Installment Name</th>
-              <th className="py-3 px-6">Email</th>
-              <th className="py-3 px-6">Installment Number</th>
-              <th className="py-3 px-6">Contact</th>
-              {/* <th className="py-3 px-6">Action</th> */}
+              {/* <th className="py-3 px-6">Installment Name</th> */}
+              <th className="py-3 text-nowrap px-6">Email</th>
+              <th className="py-3 text-nowrap px-6">Particular</th>
+              <th className="py-3 text-nowrap px-6">Check Number</th>
+              <th className="py-3 text-nowrap px-6">MR No</th>
+              <th className="py-3 text-nowrap px-6">Receive Amount</th>
+              <th className="py-3 text-nowrap px-6">Due</th>
+              <th className="py-3 text-nowrap px-6">Receive Date</th>
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
             {isLoading && (
               <h1 className="text-lg py-2 text-center">Loading data.......</h1>
             )}
-            {currentItems?.map((item, idx) => (
-              <tr key={idx}>
-                <td className="px-6 py-4 whitespace-nowrap">{item?.name}</td>
-                <td className="px-6 py-4 whitespace-nowrap">{item?.email}</td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {item?.installment}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">{item?.contact}</td>
-                {/* <td className="px-6 py-4 whitespace-nowrap">
-                  <ul className="flex items-center gap-2">
-                    <li>
-                      <button onClick={() => deleteInstallment(item?._id)}>
-                        <MdDeleteOutline className="text-2xl text-[red]" />
-                      </button>
-                    </li>
-                    <li>
-                      <button onClick={() => setOpenModal(item)}>
-                        <TbEdit className="text-2xl text-[green]" />
-                      </button>
-                    </li>
-                  </ul>
-                </td> */}
-              </tr>
-            ))}
+            {currentItems?.length &&
+              currentItems?.map((item, idx) => (
+                <tr key={idx}>
+                  {/* <td className="px-6 py-4 whitespace-nowrap">{item?.name}</td> */}
+                  <td className="px-6 py-4 whitespace-nowrap">{item?.email}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{item?.particular}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {item?.checkNumber ?? 'N/A'}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {item?.checkNumber ?? 'N/A'}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {item?.mrNo ?? 'N/A'}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {item?.receiveAmount ?? 'N/A'}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {item?.receiveDate ?? 'N/A'}
+                  </td>
+
+                </tr>
+              ))}
           </tbody>
 
-          {/* modal */}
-          <div></div>
-          {/* end modal */}
+
         </table>
       </div>
 
@@ -169,11 +170,10 @@ const FlatInstallMentPage = () => {
             <button
               key={number}
               onClick={() => paginate(number)}
-              className={`mx-1 px-3 py-1 rounded ${
-                currentPage === number
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-200 text-gray-700"
-              }`}
+              className={`mx-1 px-3 py-1 rounded ${currentPage === number
+                ? "bg-blue-500 text-white"
+                : "bg-gray-200 text-gray-700"
+                }`}
             >
               {number}
             </button>

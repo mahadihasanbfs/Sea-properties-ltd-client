@@ -76,7 +76,7 @@ const ManageTestimonial = () => {
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">{item?.name}</td>
                                 <td className="px-6 py-4 whitespace-nowrap">{item?.position}</td>
-                                <td className="px-6 py-4 whitespace-wrap w-[300px]">{item?.description.slice(0, 100)}...</td>
+                                <td className="px-6 py-4 whitespace-wrap w-[300px]">{item?.description?.slice(0, 100)}...</td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <ul className="flex items-center gap-2">
                                         <li>

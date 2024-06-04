@@ -37,7 +37,6 @@ const SignUp = () => {
         email: result?.user?.reloadUserInfo?.email,
       };
 
-      console.log(googleUserData);
 
       await sendData(`${DB_URL}/users/sign-up`, "POST", googleUserData);
 
@@ -124,8 +123,6 @@ const SignUp = () => {
       updateUser(name).then(async () => {
         setloading(false);
         await sendData(`${DB_URL}/users/sign-up`, "POST", data);
-        console.log(response);
-
         if (email === "admin@admin.com") {
           localStorage.setItem("role", "admin");
           navigate("/admin");

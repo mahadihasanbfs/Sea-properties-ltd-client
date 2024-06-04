@@ -1,8 +1,6 @@
-// import ReactQuill from "react-quill";
 import AdminTitle from "../../Component/AdminTitle";
 import "react-quill/dist/quill.snow.css";
 import { useState } from "react";
-// import useImageUpload from "../../../hooks/useUploadImg";
 import Swal from "sweetalert2";
 import useFetchData from "../../../hooks/useFetchData";
 import { DB_URL } from "../../../const";
@@ -10,11 +8,8 @@ import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 
 const AddInstallment = () => {
-  // const [value, setValue] = useState("");
   const [loading, setLoading] = useState(false);
-
   const navigate = useNavigate();
-
   const [data] = useFetchData(`${DB_URL}/users`);
   console.log("data", data);
   const userData = data?.data;
@@ -23,16 +18,10 @@ const AddInstallment = () => {
   // Event handler for when an option is selected
   const handleInstallmentChange = (e) => {
     console.log("e", e);
-
     setSelectedInstallmentUser(e);
   };
 
-
-
   console.log(selectedInstallmentUser);
-
-  // image upload from custom hooks
-  // const { uploadImage } = useImageUpload();
 
   // submit handler
   const handleSubmit = async (e) => {
@@ -42,19 +31,34 @@ const AddInstallment = () => {
     const formValue = Object.fromEntries(new FormData(e.target));
     console.log("Form Values:", formValue);
 
-    const name = formValue.name;
-    // const amount = formValue.amount;
-    const contact = formValue.contact;
-    const installment = formValue.installment;
-    const particular = formValue.particular;
-    const mrNo = formValue.mrNo;
-    const receiveDate = formValue.receiveDate;
-    const checkNumber = formValue.checkNumber;
-    const receiveAmount = formValue.receiveAmount;
-    const due = formValue.due;
+    const {
+      name,
+      contact,
+      installment,
+      particular,
+      mrNo,
+      receiveDate,
+      checkNumber,
+      receiveAmount,
+      due
+    } = formValue;
+
+    // Log each input value
+    console.log('Name:', name);
+    console.log('Contact:', contact);
+    console.log('Installment:', installment);
+    console.log('Particular:', particular);
+    console.log('MR No:', mrNo);
+    console.log('Receive Date:', receiveDate);
+    console.log('Check Number:', checkNumber);
+    console.log('Receive Amount:', receiveAmount);
+    console.log('Due:', due);
 
     const data = {
       email: selectedInstallmentUser?.value,
+      name,
+      contact,
+      installment,
       particular,
       mrNo,
       receiveDate,
@@ -79,13 +83,12 @@ const AddInstallment = () => {
       .then((data) => {
         setLoading(false);
         console.log(data);
-        Swal.fire("Installment  Added", "", "success");
+        Swal.fire("Installment Added", "", "success");
         navigate("/admin/manage-installment");
       });
 
     setLoading(false);
   };
-
 
   return (
     <div className="my-4">
@@ -153,7 +156,7 @@ const AddInstallment = () => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="receivedAmount">Received Amount</label>
+          <label htmlFor="receiveAmount">Received Amount</label>
           <input
             name="receiveAmount"
             required
