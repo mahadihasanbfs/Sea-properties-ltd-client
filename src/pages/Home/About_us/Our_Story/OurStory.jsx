@@ -24,7 +24,7 @@ const OurStory = () => {
 
     useEffect(() => {
         let text1 = `Imagine the bustling streets of Dhaka, where buildings rise high and each corner reveals a different tale. Driven by enthusiasm and a common vision, a group of dreamers gathered around a table in the middle of this urban symphony. SEA Properties Ltd. was established as a result, serving as a platform for communities to flourish and as much more than just a real estate company.
-
+    
 When we thought about opening  SEA Properties Ltd., we were just a tiny team with huge goals, driven by the idea that buildings might be more than just places to live; they could also serve as hubs for creativity and connection. Creating environments that make people feel completely at home has always been our goal, from the initial blueprint to the last coat of paint.
 
 Our path has been filled with highs and lows, but no matter what, our spirit has been unwavering. We've danced on the brink of possibility, broken down walls, and withstood storms. And we've come out stronger, more resilient, and more inspired than ever after conquering every obstacle.
@@ -80,10 +80,22 @@ Welcome to our story, which is one of ardor, tenacity, and the promise of opport
                 </div>
                 <div className={`flex flex-col justify-between md:ml-10 xl:ml-20 text-justify basis-[60%] h-full`}>
                     <h3 className="text-[#AAB0B2] text-3xl lg:text-4xl uppercase mb-6 md:mb-0">Background</h3>
-                    {
-                        text1.map((txt, index) => <P key={index} text={txt} size={'text-sm lg:text-[16px]'} lineHeight={'lg:leading-[22px]'}></P>)
+                    <p className="text-[black] font-semibold text-sm lg:text-[16px] md:mb-1 mb-3">
+                        Imagine the bustling streets of Dhaka, where buildings rise high and each corner reveals a different tale. Driven by enthusiasm and a common vision, a group of dreamers gathered around a table in the middle of this urban symphony. SEA Properties Ltd. was established as a result, serving as a platform for communities to flourish and as much more than just a real estate company.
+                    </p>
+                    <p className="text-[black] font-semibold text-sm lg:text-[16px] md:mb-1 mb-3">
+                        When we thought about opening SEA Properties Ltd., we were just a tiny team with huge goals, driven by the idea that buildings might be more than just places to live; they could also serve as hubs for creativity and connection. Creating environments that make people feel completely at home has always been our goal, from the initial blueprint to the last coat of paint.
+                    </p>
+                    <p className="text-[black] font-semibold text-sm lg:text-[16px] md:mb-1 mb-3">
+                        Our path has been filled with highs and lows, but no matter what, our spirit has been unwavering. We've danced on the brink of possibility, broken down walls, and withstood storms. And we've come out stronger, more resilient, and more inspired than ever after conquering every obstacle.
+                    </p>
+                    <p className="text-[black] font-semibold text-sm lg:text-[16px] md:mb-1 mb-3">
+                        Every project we work on is a labor of love, from famous sites that line the skyline to obscure treasures scattered throughout the terrain. However, it's not simply the structures we design that make us unique; it's also the tales we tell and the lives we change in the process. Our tale is far from done as we look to the future.
+                    </p>
+                    <p className="text-[black] font-semibold text-sm lg:text-[16px] md:mb-1 mb-3">
+                        Every sunrise serves as a reminder of the limitless possibilities that lay ahead, including new experiences to have, goals to pursue, and places to discover. Welcome to our story, which is one of ardor, tenacity, and the promise of opportunity. The trip is just as significant as the destination at SEA Properties Ltd. And we're co-writing this once-in-a-lifetime story's next chapter.
+                    </p>
 
-                    }
                 </div>
             </div>
 

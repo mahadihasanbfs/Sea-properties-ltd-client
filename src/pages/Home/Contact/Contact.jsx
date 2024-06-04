@@ -7,6 +7,8 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { DB_URL } from "../../../const";
 import ss from '../../..//assets/contact.jpg';
+import con2 from '../../../assets/con2.jpg';
+
 
 const Contact = () => {
   const { ContactPageImg } = useContextApi();
@@ -74,7 +76,7 @@ const Contact = () => {
       {/* Contact Info */}
       <div className="grid md:grid-cols-2">
         <figure>
-          <img src={contactImg} className="w-full h-[390px] object-cover" />
+          <img src={con2} className="w-full h-[390px] object-cover" />
         </figure>
         <div className="space-y-6 pl-6 md:pl-[50px] lg:pl-[100px] my-auto py-6 md:py-0">
           <SecondaryTitle text={title} position="text-left" />
