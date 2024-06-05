@@ -22,6 +22,9 @@ const EditProject = () => {
     fileInputRef.current.click();
   };
 
+
+ 
+
   const handleDeleteImage = () => {
     setImage(null);
     fileInputRef.current.value = "";
@@ -65,7 +68,7 @@ const EditProject = () => {
 
 
   const [vrOn, setVrOn] = useState(allProjects.vr_status);
-  const [youtube, setYoutube] = useState(allProjects.youtube_url)
+  const [youtube, setYoutube] = useState(allProjects?.youtube_url)
 
   const handleVr = () => {
     setVrOn(!vrOn); // Toggle the state
@@ -96,6 +99,7 @@ const EditProject = () => {
     e.preventDefault();
     setLoading(true);
     const form = e.target;
+    console.log( 'thumbnail----', e.target);
 
     // Get values from the form fields
     const name = form.name.value;
@@ -120,7 +124,7 @@ const EditProject = () => {
     // Get files from file inputs
     const detail_img = form?.detail_img.files[0];
     const banner_img = e.target.banner_img.files[0];
-    const video_thumbnail = e.target.video_thumbnail.files[0];
+    const video_thumbnail = youtube ? e.target.video_thumbnail.files[0] : '';
     const gallery_img = e.target.gallery_img.files;
     const features_img = e.target.features_img.files[0];
 
@@ -130,76 +134,22 @@ const EditProject = () => {
 
       galleryImageUrls.push(imageUrl);
     }
-
     // Asynchronously upload images
     const project_photo = await uploadImage(imageFile);
     const uploadedBannerImg = await uploadImage(banner_img);
     const detailImgUpload = await uploadImage(detail_img);
-    const videoThumbnailImgUpload = await uploadImage(video_thumbnail);
+    const videoThumbnailImgUpload =  youtube ? await uploadImage(video_thumbnail) : null;
     const featureImgUpload = await uploadImage(features_img);
 
-    // Construct data object
-    // const data = {
-    //   project_photo: project_photo ? project_photo : allProjects?.project_photo,
-    //   banner_img: uploadedBannerImg    ? uploadedBannerImg : allProjects?.banner_img,
-    //   name: name ? name : allProjects?.name,
-    //   project_type: allProjects?.project_type   ? allProjects?.project_type     : project_type,
-    //   project_status: project_status?.project_status  ? allProjects?.project_status   : project_status,
-
-    //   details: {
-    //     detail_img: detailImgUpload ? detailImgUpload  : allProjects?.details?.detail_img,
-    // info: {
-    //   address: address ? address : allProjects?.details?.info?.address,
-    //   land_area: land_area ? land_area : allProjects?.details?.info?.land_area,
-    //   no_of_floors: no_of_floors ? no_of_floors : allProjects?.details?.info?.no_of_floors,
-    //   apartment_floors: apartment_floors ? apartment_floors : allProjects?.details?.info?.apartment_floors,
-    //   apartment_size: apartment_size ? apartment_size : allProjects?.details?.info?.apartment_size,
-    //   bathroom: bathroom ? bathroom : allProjects?.details?.info?.bathroom,
-    //   bedroom: bedroom ? bedroom : allProjects?.details?.info?.bedroom,
-    //   launch_date: launch_date ? launch_date : allProjects?.details?.info?.launch_date,
-    //   collections: collections ? collections : allProjects?.details?.info?.collections,
-    //   contractionStatus: inputFields,
-    // },
-    //   },
-    // gallery_img: galleryImageUrls.length
-    //   ? galleryImageUrls
-    //   : allProjects?.gallery_img,
-    // featureInfo: {
-    //   features: selectedOption ? selectedOption : allProjects?.featureInfo?.features,
-    //   features_img: featureImgUpload
-    //     ? featureImgUpload
-    //     : allProjects?.featureInfo?.features_img,
-    // },
-    //   vr_url,
-    //   vr_status,
-    //   conditionStatus: conditionOn,
-    //   videoThumbnailImgUpload: videoThumbnailImgUpload
-    //     ? videoThumbnailImgUpload
-    //     : allProjects?.videoThumbnailImgUpload,
-    //   video_url,
-    //   map_link,
-    // };
 
     const data = {
       project_photo: project_photo ? project_photo : allProjects?.project_photo,
-      // <<<<<<< update_land_report
-      //       banner_img: uploadedBannerImg
-      //         ? uploadedBannerImg
-      //         : allProjects?.banner_img,
-      //       name: name,
-      //       project_type: allProjects?.project_type
-      //         ? allProjects?.project_type
-      //         : project_type,
-      //       project_status: project_status?.project_status
-      //         ? allProjects?.project_status
-      //         : project_status,
-
-      // =======
+   
       banner_img: uploadedBannerImg ? uploadedBannerImg : allProjects?.banner_img,
       name: name ? name : allProjects?.name,
       project_type: allProjects?.project_type ? allProjects?.project_type : project_type,
       project_status: project_status?.project_status ? allProjects?.project_status : project_status,
-      // >>>>>>> main
+
       details: {
         detail_img: detailImgUpload ? detailImgUpload : allProjects?.details?.detail_img,
         info: {
@@ -235,8 +185,8 @@ const EditProject = () => {
         : allProjects?.videoThumbnailImgUpload,
       map_link
     };
-
-    console.log(data);
+    
+    console.log(data, "testing.........");
     fetch(
       `https://backend.seapropertiesltd.com.bd/api/v1/admin/project/update?project_id=${allProjects?._id}`,
       {
@@ -247,19 +197,18 @@ const EditProject = () => {
         body: JSON.stringify(data),
       }
     )
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
-        Swal.fire("Project Updated", "", "success");
-        navigate("/admin/manage-project");
-        setLoading(false);
-      });
-
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data)
+      Swal.fire("Project Updated", "", "success");
+      navigate("/admin/manage-project");
+      setLoading(false);
+    });
+    
 
   };
 
-  console.log(allProjects, '---->');
-
+ 
   return (
     <div>
       <AdminTitle title="Edit project" />
@@ -762,6 +711,8 @@ const EditProject = () => {
             </button>
           )
         }
+
+        <button type="submit">submit+++++++++++++</button>
       </form >
     </div >
   );
