@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import { DB_URL } from "../../../const";
 import useFetchData from "../../../hooks/useFetchData";
 import Select from "react-select";
+
 export default function InstallmentModal({
   item,
   openModal,
@@ -10,30 +11,32 @@ export default function InstallmentModal({
 }) {
   const [data] = useFetchData(`${DB_URL}/users`);
   console.log("data", data);
+  
   const userData = data?.data;
 
-  console.log(item);
-
-  //   !! submit handler
   const updateModalHandler = (e) => {
     e.preventDefault();
     const formValue = Object.fromEntries(new FormData(e.target));
     console.log("Form Value:", formValue);
 
-    const { _id, ...data } = formValue;
-    // console.log(data);
-    console.log(_id);
+    const { _id, ...restData } = formValue;
 
-    // return;
+    // Add receiveDate to the data object
+    const updatedData = {
+      ...restData,
+      receiveDate: new Date().toISOString(), // Adjust the date format as needed
+    };
+
+    console.log('Updated Data:', updatedData);
 
     fetch(
-      `https://backend.seapropertiesltd.com.bd/api/v1/admin/installment/update?installment_id=${formValue?._id}`,
+      `https://backend.seapropertiesltd.com.bd/api/v1/admin/installment/update?installment_id=${item?._id}`,
       {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(updatedData),
       }
     )
       .then((res) => {
@@ -47,7 +50,6 @@ export default function InstallmentModal({
 
         Swal.fire("Updated Installment successfully", "", "success");
         setOpenModal(false);
-        // Perform any additional actions upon successful response
         refetch();
       })
       .catch((error) => {
@@ -58,18 +60,91 @@ export default function InstallmentModal({
 
   return (
     <div>
-      {" "}
-      <div>
+      <div
+        onClick={() => setOpenModal(false)}
+        className={`fixed z-[100] flex items-center justify-center ${openModal?._id === item._id ? "visible opacity-100" : "invisible opacity-0"} inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}
+      >
         <div
-          onClick={() => setOpenModal(false)}
-          className={`fixed z-[100] flex items-center justify-center ${openModal?._id == item._id
-            ? "visible opacity-100"
-            : "invisible opacity-0"
-            } inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}
+          onClick={(e_) => e_.stopPropagation()}
+          className={`rounded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${openModal?._id === item._id ? "scale-1 opacity-1 duration-300" : "scale-0 opacity-0 duration-150"} z-[100]`}
         >
-          <div
-            onClick={(e_) => e_.stopPropagation()}
-            className={`text- absolute md:w-[500px] ro    <div className="flex items-center justify-between">
+          <div className="">
+            <h2 className="text-xl text-[black] font-bold mb-4">Edit Installment</h2>
+            <form className="font-[600] !text-[black]" onSubmit={updateModalHandler}>
+              <div className=" space-y-1 mt-3">
+                <label htmlFor="email">Email</label>
+                <Select
+                  id="email"
+                  name="email"
+                  defaultValue={{
+                    label: item?.email,
+                    value: item?.email,
+                  }}
+                  className="rounded-lg w-full border border-[#336cb6] bg-[white] text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
+                  options={userData
+                    ?.filter((user) => user?.role !== "admin")
+                    ?.map((user) => ({
+                      label: user.email,
+                      value: user.email,
+                    }))}
+                />
+              </div>
+              <div className="mb-4 space-y-1 mt-3">
+                <label htmlFor="due">Due</label>
+                <input
+                  name="due"
+                  defaultValue={item?.due}
+                  required
+                  placeholder="Enter Due"
+                  className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#000] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
+                  type="text"
+                />
+              </div>
+              <div className="mb-4 text-[black] space-y-1 mt-3">
+                <label htmlFor="mrNo">Mr No</label>
+                <input
+                  name="mrNo"
+                  required
+                  defaultValue={item?.mrNo}
+                  type="number"
+                  placeholder="Enter Installment Name"
+                  className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#000] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
+                />
+              </div>
+              <div className="mb-4 space-y-1 mt-3">
+                <label htmlFor="particular">Particular</label>
+                <input
+                  name="particular"
+                  type="text"
+                  defaultValue={item?.particular}
+                  required
+                  placeholder="Enter Particular"
+                  className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#000] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
+                />
+              </div>
+              <div className="mb-4 space-y-1 mt-3">
+                <label htmlFor="checkNumber">Check Number</label>
+                <input
+                  name="checkNumber"
+                  required
+                  type="text"
+                  defaultValue={item?.checkNumber}
+                  placeholder="Enter Check Number"
+                  className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[black] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
+                />
+              </div>
+              <div className="mb-4 space-y-1 mt-3">
+                <label htmlFor="receiveAmount">Receive Amount</label>
+                <input
+                  name="receiveAmount"
+                  required
+                  type="number"
+                  defaultValue={item?.receiveAmount}
+                  placeholder="Enter Received Amount"
+                  className="rounded-lg w-full border border-[#000] px-4 py-2 text-[black] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
+                />
+              </div>
+              <div className="flex items-center justify-between">
                 <button
                   onClick={() => setOpenModal(false)}
                   className="bg-[red] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -78,134 +153,13 @@ export default function InstallmentModal({
                   Close
                 </button>
                 <button
-                  // onClick={() => setOpenModal(false)}
                   className="bg-[blue] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                   type="submit"
                 >
                   Update
                 </button>
-              </div>unded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${openModal?.id == item.id
-                ? "scale-1 opacity-1 duration-300"
-                : "scale-0 opacity-0 duration-150"
-              } z-[100]`}
-          >
-            <div className="">
-              <h2 className="text-xl font-bold mb-4">Edit </h2>
-              <form onSubmit={updateModalHandler}>
-                {/* form content */}
-                <div>
-                  <label htmlFor="Installment">Select Installment:</label>
-                  <br />
-
-                  <input
-                    name="_id"
-                    defaultValue={item?._id}
-                    required
-                    placeholder="Enter Installment Name"
-                    className="hidden"
-                    type="text"
-                  />
-                  {/* <select
-                    id="Installment"
-                    value={item?.email} // Set the value attribute to the selected value
-                    name="email"
-                    required
-                    className="rounded-lg w-full border border-[#336cb6] px-4 py-2 bg-[white] text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
-                  >
-                    <option disabled>Select User</option>
-                    {userData?.map((user) => (
-                      <option
-                        className="text-black"
-                        key={user.email}
-                        value={user.email}
-                      >
-                        {user.email}
-                      </option>
-                    ))}
-                  </select> */}
-                </div>
-                <div className="">
-                  <Select
-                    id="email"
-                    name="email"
-                    // value={selectedInstallmentUser}
-                    // onChange={handleInstallmentChange}
-
-                    defaultValue={{
-                      label: item?.email,
-                      value: item?.email,
-                    }}
-                    className="rounded-lg w-full border border-[#336cb6]  bg-[white] text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
-                    options={userData
-                      ?.filter((item) => item?.role !== "admin")
-                      ?.map((user) => ({
-                        label: user.email,
-                        value: user.email,
-                      }))}
-                  />
-                </div>
-                <div className="mb-4">
-                  <label htmlFor="name">Name</label>
-                  <input
-                    name="name"
-                    defaultValue={item?.name}
-                    required
-                    placeholder="Enter Installment Name"
-                    className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
-                    type="text"
-                  />
-                </div>
-                <div className="mb-4">
-                  <label htmlFor="amount">Amount</label>
-                  <input
-                    name="amount"
-                    required
-                    defaultValue={item?.amount}
-                    type="number"
-                    placeholder="Enter Installment Name"
-                    className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
-                  />
-                </div>
-                <div className="mb-4">
-                  <label htmlFor="contact">Contact</label>
-                  <input
-                    name="contact"
-                    type="number"
-                    defaultValue={item?.contact}
-                    required
-                    placeholder="Enter Contact Name"
-                    className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
-                  />
-                </div>
-                <div className="mb-4">
-                  <label htmlFor="installment">Installment Number</label>
-                  <input
-                    name="installment"
-                    required
-                    type="number"
-                    defaultValue={item?.installment}
-                    placeholder="Enter installment Name"
-                    className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
-                  />
-                </div>
-                <div className="flex items-center justify-between">
-                  <button
-                    onClick={() => setOpenModal(false)}
-                    className="bg-[red] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    type="button"
-                  >
-                    Close
-                  </button>
-                  <button
-                    // onClick={() => setOpenModal(false)}
-                    className="bg-[blue] text-[white] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    type="submit"
-                  >
-                    Update
-                  </button>
-                </div>
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
