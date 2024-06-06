@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import logo from '../assets/logo.png';
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import { FaAngleDown, FaUpDown } from 'react-icons/fa6';
 import { IoClose } from 'react-icons/io5';
 import { Outlet } from "react-router";
@@ -14,6 +15,11 @@ export default function AdminLayout() {
     const [toggleMenu, setToggleMenu] = useState(false);
     const [activeMenu, setActiveMenu] = useState(false);
     const { logOut } = useAuth()
+    const navigate = useNavigate();
+    const handleLogout =()=>{
+        logOut();
+        navigate('/')
+    }
     return (
         <div className="min-h-screen bg-gray-100">
             <div className="flex flex-col md:flex-row sticky overflow-hidden h-screen">
@@ -62,7 +68,7 @@ export default function AdminLayout() {
                                     <ul className="bg-whtie shadow-lg absolute top-[57px] bg-[white] ring-1 ring-[#8080805d] right-0  w-[200px] p-2">
 
                                         <li>
-                                            <button className='w-full' onClick={() => logOut()}>
+                                            <button className='w-full' onClick={handleLogout}>
                                                 <div className="flex w-full hover:bg-dark duration-100 hover:text-[white] text-sm px-2 py-2 items-center  gap-2">
                                                     Log out
                                                 </div>

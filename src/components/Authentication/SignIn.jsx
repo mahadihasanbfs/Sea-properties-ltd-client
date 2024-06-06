@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Logo from "../../assets/logo.png";
+import Logo from "../../assets/Logo_light.png";
 import { FaEye, FaFacebook } from "react-icons/fa";
 import { TbEyeOff } from "react-icons/tb";
 import { Link, useNavigate } from "react-router-dom";
@@ -11,10 +11,11 @@ import useSendData from "../../hooks/usePostData";
 import { DB_URL } from "../../const";
 import Swal from "sweetalert2";
 import { FaCediSign } from "react-icons/fa6";
+import ForgotPasswordModal from "./ForgetPasswordMOdal";
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
-
+  const [openModal, setOpenModal] = useState(false);
   const { googleSignIn, facebookSignIn, signIn, loading, setloading } = useAuth();
   const navigate = useNavigate();
 
@@ -108,7 +109,7 @@ const SignIn = () => {
             <img
               src={Logo}
               width={300}
-              className="w-[116px] h-[40px] mx-auto"
+              className="w-[116px] object-cover mx-auto"
             />
           </div>
           <form
@@ -155,7 +156,8 @@ const SignIn = () => {
               </div>
             </div>
 
-            <p className="">
+          <div className="flex items-center justify-between">
+          <p className="">
               Are you have no account?{" "}
               <Link
                 to={"/sign-up"}
@@ -164,6 +166,17 @@ const SignIn = () => {
                 Sign up
               </Link>
             </p>
+
+
+<button
+type="button"
+onClick={() => setOpenModal(true)}
+className="text-[blue]">
+  Forget Password
+</button>
+     </div>
+
+     <ForgotPasswordModal openModal={openModal} setOpenModal={setOpenModal} />
 
             <button
               disabled={loading}

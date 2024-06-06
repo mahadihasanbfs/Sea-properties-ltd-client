@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Logo from "../../assets/logo.png";
+import Logo from "../../assets/Logo_light.png";
 import { FaEye, FaFacebook } from "react-icons/fa";
 import { TbEyeOff } from "react-icons/tb";
 // import BrightAlert from "bright-alert";
@@ -146,7 +146,7 @@ const SignUp = () => {
             <img
               src={Logo}
               width={300}
-              className="w-[116px] h-[40px] mx-auto"
+              className="w-[116px] object-cover mx-auto"
             />
           </div>
           <form
