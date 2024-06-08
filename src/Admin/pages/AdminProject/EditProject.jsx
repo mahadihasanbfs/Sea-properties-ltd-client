@@ -164,7 +164,7 @@ const EditProject = () => {
           launch_date: launch_date ? launch_date : allProjects?.details?.info?.launch_date,
           collections: collections ? collections : allProjects?.details?.info?.collections,
           contractionStatus: inputFields,
-          handoverDate: handoverDate ?? allProjects?.details?.info?.handover,
+          handover: handoverDate ?? allProjects?.details?.info?.handover,
         },
       },
 
@@ -212,19 +212,7 @@ const EditProject = () => {
 
 
   console.log('handover:::::', allProjects?.details?.info?.handover)
-  const handoverDateStr = allProjects?.details?.info?.handover;
-  const handoverDate = handoverDateStr ? new Date(handoverDateStr) : null;
-  const formatDate = (date) => {
-    if (!date) return ""; // Return empty string if date is null
-
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, "0");
-    const day = date.getDate().toString().padStart(2, "0");
-
-    return `${year}-${month}-${day}`;
-  };
-  const formattedHandoverDate = handoverDate ? formatDate(handoverDate) : "";
-
+ 
 
   return (
     <div>
@@ -472,10 +460,10 @@ const EditProject = () => {
         <label>Handover Date</label>
         <br />
         <input
-          defaultValue={formattedHandoverDate}
+          defaultValue={allProjects?.details?.info?.handover}
           name="handoverDate"
           className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
-          type="date"
+          type="text"
           placeholder="Total Collection"
         />
       </div>

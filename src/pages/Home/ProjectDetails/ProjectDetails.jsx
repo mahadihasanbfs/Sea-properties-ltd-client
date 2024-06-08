@@ -270,8 +270,7 @@ const ProjectDetails = () => {
             <div className="bg-[#B0BEC5] py-16 lg:py-[85px]">
                 <div className="max-w-[1366px] mx-auto px-6 md:px-10 xl:px-[60px] text-white gap-10 grid md:grid-cols-2">
                     <div className="space-y-10 md:block hidden">
-                        <img className=" object-cover shadow-lg shadow-dark rounded" src={projectData?.banner_img} alt="" />
-
+                        <img className=" object-cover shadow-lg shadow-dark rounded h-full" src={projectData?.banner_img} alt="" />
                     </div>
                     <div className="flex items-center">
                         <form onSubmit={handleSubmit} className="md:space-y-4 space-y-2 w-full">

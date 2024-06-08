@@ -22,70 +22,35 @@ const Blogs = () => {
     }
 
     if (!data || !data?.data.length) {
-        return <div>No data available</div>;
+        return <div className='flex items-center justify-center h-screen fotn-bold text-gray-300 text-2xl'>No data available</div>;
     }
 
     return (
         <div>
-              <Helmet>
+            <Helmet>
                 <title>
-                   Blogs | SEA Properties Ltd.
+                    Blogs | SEA Properties Ltd.
                 </title>
             </Helmet>
             <section className="pt-20 lg:pt-[120px] pb-10 lg:pb-20">
                 <div className="container">
                     <div className="flex flex-wrap justify-center -mx-4">
                         <div className="w-full px-4">
-                            <div className="text-center mx-auto mb-[60px] lg:mb-20 max-w-[510px]">
+                            <div className="text-center mx-auto mb-[60px] lg:mb-14 max-w-[510px]">
                                 {/* <span className="font-semibold text-2xl text-[#A20E27] mb-2 block">
                                     Our Blogs
                                 </span> */}
                                 <h2
-                                    className=" font-bold text-3xl text-[#A20E27] sm:text-4xl md:text-[40px]  mb-4"
+                                    className=" font-bold text-3xl text-[#A20E27] sm:text-4xl md:text-[40px] "
                                 >
                                     Our Blogs
                                 </h2>
-                              
+
                             </div>
                         </div>
                     </div>
-                    {data && data.length ?
 
-                        <div className="md:grid text-[transparent] grid-cols-3 gap-14">
-                            <div className="p-6 rounded-md  shadow-md mx-auto  bg-[#657287] ">
-                                <div className="animate-pulse">
-                                    {/* Product Image Skeleton */}
-                                    <div className="w-[100%] lg:h-52 md:h-52 h-48 rounded-lg bg-[#9FADC2] mb-6 text-[transparent]">. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, ex facilis quibusdam libero tempora, itaque ratione atque totam animi magni illum enim, praesentium numquam temporibus doloremque. Quaerat omnis aut possimus!</div>
-                                    {/* Product Title Skeleton */}
-                                    <div className="w-[97%] h-4 rounded-lg bg-[#9FADC2] mb-4"></div>
-                                    {/* Product Heading Skeleton */}
-                                    <div className="w-[94%] h-4 rounded-lg bg-[#9FADC2] mb-4"></div>
-
-                                </div>
-                            </div>  <div className="p-6 rounded-md  shadow-md mx-auto  bg-[#657287] ">
-                                <div className="animate-pulse">
-                                    {/* Product Image Skeleton */}
-                                    <div className="w-[100%] lg:h-52 md:h-52 h-48 rounded-lg bg-[#9FADC2] mb-6 text-[transparent]">. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, ex facilis quibusdam libero tempora, itaque ratione atque totam animi magni illum enim, praesentium numquam temporibus doloremque. Quaerat omnis aut possimus!</div>
-                                    {/* Product Title Skeleton */}
-                                    <div className="w-[97%] h-4 rounded-lg bg-[#9FADC2] mb-4"></div>
-                                    {/* Product Heading Skeleton */}
-                                    <div className="w-[94%] h-4 rounded-lg bg-[#9FADC2] mb-4"></div>
-
-                                </div>
-                            </div>  <div className="p-6 rounded-md  shadow-md mx-auto  bg-[#657287] ">
-                                <div className="animate-pulse">
-                                    {/* Product Image Skeleton */}
-                                    <div className="w-[100%] lg:h-52 md:h-52 h-48 rounded-lg bg-[#9FADC2] mb-6 text-[transparent]">. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, ex facilis quibusdam libero tempora, itaque ratione atque totam animi magni illum enim, praesentium numquam temporibus doloremque. Quaerat omnis aut possimus!</div>
-                                    {/* Product Title Skeleton */}
-                                    <div className="w-[97%] h-4 rounded-lg bg-[#9FADC2] mb-4"></div>
-                                    {/* Product Heading Skeleton */}
-                                    <div className="w-[94%] h-4 rounded-lg bg-[#9FADC2] mb-4"></div>
-
-                                </div>
-                            </div>
-                        </div>
-                        :
-                        <div className="grid md:grid-cols-3 -mx-4">
+                    <div className="grid md:grid-cols-3 -mx-4">
                             {data?.data?.map(itm =>
 
                                 <Link to={`/blogs/blogs-details/${itm?.name}`} key={itm?._id}>
@@ -100,15 +65,15 @@ const Blogs = () => {
                                             </div>
                                             <div>
                                                 {/* {itm?.date && <span
-                                                className=" bg-primary rounded inline-block text-center pt-1 px-4 text-xs leading-loose font-semibold text-white mb-5 "
-                                            >
-                                                {itm?.date}
-                                            </span>} */}
+                    className=" bg-primary rounded inline-block text-center pt-1 px-4 text-xs leading-loose font-semibold text-white mb-5 "
+                >
+                    {itm?.date}
+                </span>} */}
                                                 <h3>
                                                     <a
                                                         href="javascript:void(0)"
                                                         className="font-semiboldtext-xl sm:text-2xl lg:text-xl xl:text-2xl mb-4 inline-block text-dark hover:text-[#A20E27] font-semibold capitalize
-                  "
+"
                                                     >
                                                         {itm?.name}
                                                     </a>
@@ -128,12 +93,10 @@ const Blogs = () => {
 
 
                         </div>
-                    }
 
                 </div>
             </section>
-
-        </div>
+         </div>
     );
 }
 
