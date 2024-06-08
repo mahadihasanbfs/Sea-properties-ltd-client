@@ -120,6 +120,7 @@ const EditProject = () => {
     const vr_status = vrOn;
     const vr_url = !vrOn ?? form.vr_url.value;
     const map_link = form.map_link.value;
+    const handoverDate = form.handoverDate.value;
 
     // Get files from file inputs
     const detail_img = form?.detail_img.files[0];
@@ -163,6 +164,7 @@ const EditProject = () => {
           launch_date: launch_date ? launch_date : allProjects?.details?.info?.launch_date,
           collections: collections ? collections : allProjects?.details?.info?.collections,
           contractionStatus: inputFields,
+          handoverDate: handoverDate ?? allProjects?.details?.info?.handover,
         },
       },
 
@@ -186,7 +188,7 @@ const EditProject = () => {
       map_link
     };
     
-    console.log(data, "testing.........");
+    // console.log(data, "testing.........");
     fetch(
       `https://backend.seapropertiesltd.com.bd/api/v1/admin/project/update?project_id=${allProjects?._id}`,
       {
@@ -208,7 +210,22 @@ const EditProject = () => {
 
   };
 
- 
+
+  console.log('handover:::::', allProjects?.details?.info?.handover)
+  const handoverDateStr = allProjects?.details?.info?.handover;
+  const handoverDate = handoverDateStr ? new Date(handoverDateStr) : null;
+  const formatDate = (date) => {
+    if (!date) return ""; // Return empty string if date is null
+
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const day = date.getDate().toString().padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+  };
+  const formattedHandoverDate = handoverDate ? formatDate(handoverDate) : "";
+
+
   return (
     <div>
       <AdminTitle title="Edit project" />
@@ -448,9 +465,22 @@ const EditProject = () => {
                 placeholder="Total Collection "
               />
             </div>
-          </div>
-        </div>
 
+
+          </div>
+            <div className="mt-3 w-full">
+        <label>Handover Date</label>
+        <br />
+        <input
+          defaultValue={formattedHandoverDate}
+          name="handoverDate"
+          className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
+          type="date"
+          placeholder="Total Collection"
+        />
+      </div>
+        </div>
+      
         {/* dynamic inputs */}
         <div className="border border-[#dbdbdb] mt-6 p-6">
           <label htmlFor="cdn" className="text-md flex gap-2 font-semibold">
@@ -711,7 +741,6 @@ const EditProject = () => {
             </button>
           )
         }
- 
       </form >
     </div >
   );
