@@ -111,7 +111,7 @@ const ProjectDetails = () => {
         <div className={`overflow-hidden`}>
                <Helmet>
                 <title>
-                   {name} | SEA Properties Ltd.
+                   {name ?? ''} | SEA Properties Ltd.
                 </title>
             </Helmet>
             <SecondaryBanner
@@ -241,14 +241,14 @@ const ProjectDetails = () => {
 
             {/* project features */}
             <div className="bg-black">
-                <div className="max-w-[1366px] mx-auto py-20 px-4 md:px-8 xl:px-20 grid md:grid-cols-2 gap-6 md:gap-0">
+                <div className="max-w-[1366px] mx-auto py-12 px-4 md:px-8 xl:px-20 grid md:grid-cols-2 gap-6 md:gap-0">
                     <div className="">
                         <SecondaryTitle
                             text='Features & Amenities'
                             position="text-left"
                         />
-                        <figure className="justify-self-end md:mt-0 mt-8 md:hidden flex items-center">
-                            {/* <img className="w-[465px] h-[490px] object-cover" src={featureInfo?.features_img} alt="" /> */}
+                        <figure className="justify-self-end md:mt-0 mt-4 md:hidden flex items-center">
+                            <img className="w-[465px] h-[490px] object-cover" src={featureInfo?.features_img} alt="" />
                         </figure>
 
                         <div className="space-y-5 md:mt-[60px] mt-4 text-white">
