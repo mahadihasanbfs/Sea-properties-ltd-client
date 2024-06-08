@@ -53,8 +53,8 @@ const OnGoingProject = () => {
             {/* banner */}
             <div className="max-w-[1366px] mx-auto flex flex-col md:flex-row justify-between items-center gap-10 md:gap-0 pt-[200px] pb-[100px] xl:pb-[150px] px-[60px] bg-white">
                 <div className="text-[#AAB0B2]">
-                    <p className="text-[14px] uppercase">{filterPath?.hash?.slice(1)}</p>
-                    <h3 className="text-[37px] uppercase">Projects in progress</h3>
+                    {/* <p className="text-[14px] uppercase"></p> */}
+                    <h3 className="text-[37px] uppercase">{filterPath?.hash?.slice(1)} Projects </h3>
                 </div>
                 <div>
                     <img src="https://i.ibb.co/jzV8h9n/Rectangle-46.png" alt="" />
@@ -64,9 +64,9 @@ const OnGoingProject = () => {
             {/* filter nav */}
             <div className="bg-[#F9F9F9]">
                 <div className="max-w-[1366px] mx-auto h-[80px] space-x-10 px-[50px] flex items-center">
-                    <button className={`${type === "all" && 'text-[#ACA100]'}`} onClick={() => setType('all')}>All</button>
-                    <button className={`${type === "Residential" && 'text-[#ACA100]'}`} onClick={() => setType('Residential')}>Residential</button>
-                    <button className={`${type === "Commercial" && 'text-[#ACA100]'}`} onClick={() => setType('Commercial')}>Commercial</button>
+                    <button className={`text-lg ${type === "all" && 'text-[#A20E27]'}`} onClick={() => setType('all')}>All</button>
+                    <button className={`text-lg ${type === "Residential" && 'text-[#A20E27]'}`} onClick={() => setType('Residential')}>Residential</button>
+                    <button className={`text-lg ${type === "Commercial" && 'text-[#A20E27]'}`} onClick={() => setType('Commercial')}>Commercial</button>
                 </div>
 
                 {isLoading ? (

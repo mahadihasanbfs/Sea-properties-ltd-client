@@ -156,7 +156,7 @@ const SignIn = () => {
               </div>
             </div>
 
-          <div className="flex items-center justify-between">
+          <div className="flex md:text-sm text-xs items-center justify-between">
           <p className="">
               Are you have no account?{" "}
               <Link
@@ -171,7 +171,7 @@ const SignIn = () => {
 <button
 type="button"
 onClick={() => setOpenModal(true)}
-className="text-[blue]">
+className="text-[blue] text-nowrap">
   Forget Password
 </button>
      </div>

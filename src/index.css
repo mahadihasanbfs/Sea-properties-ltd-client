@@ -607,3 +607,43 @@ body{
     
 } */
 
+
+.swiper-button-next{
+  position: absolute;
+  left: 50px!important;
+}
+
+.f-slider > .swiper-button-next:after, .swiper-button-prev:after {
+  font-family: swiper-icons;
+  font-size: 12px !important;
+  background-color: #A20E27;
+  width: 30px;
+  height: 27px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  padding: 2px;
+  text-transform: none !important;
+  letter-spacing: 0;
+  font-variant: initial;
+  line-height: 1;
+}
+.f-slider > .swiper-button-prev:after, .swiper-button-next:after {
+  font-family: swiper-icons;
+  font-size: 12px !important;
+  background-color: #A20E27;
+  width: 30px;
+  height: 27px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  padding: 2px;
+  text-transform: none !important;
+  letter-spacing: 0;
+  font-variant: initial;
+  line-height: 1;
+}

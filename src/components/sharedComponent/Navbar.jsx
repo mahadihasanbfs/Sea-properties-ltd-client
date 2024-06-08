@@ -154,7 +154,7 @@ const Navbar = () => {
                         exact
                         to={itm?.path}
                         className={({ isActive }) =>
-                          isActive ? "border-b-4 border-[#9b2d2d]" : ""
+                          isActive ? "border-b-4 border-[#A20E27] pb-3 mt-4" : ""
                         }
                         activeClassName="bg-yellow-500"
                       >

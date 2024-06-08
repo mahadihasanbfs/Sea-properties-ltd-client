@@ -58,6 +58,17 @@ export default function InstallmentModal({
       });
   };
 
+
+  // <th className="py-3 px-6">Email</th>
+  // <th className="py-3 px-6">Particular</th>
+  // <th className="py-3 px-6">Check Number</th>
+  // <th className="py-3 px-6">MR No</th>
+  // <th className="py-3 px-6">Receive Amount</th>
+  // <th className="py-3 px-6">Due</th>
+  // <th className="py-3 px-6">Receive Date</th>
+  // <th className="py-3 px-6">Action</th>
+
+
   return (
     <div>
       <div
@@ -89,28 +100,7 @@ export default function InstallmentModal({
                     }))}
                 />
               </div>
-              <div className="mb-4 space-y-1 mt-3">
-                <label htmlFor="due">Due</label>
-                <input
-                  name="due"
-                  defaultValue={item?.due}
-                  required
-                  placeholder="Enter Due"
-                  className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#000] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
-                  type="text"
-                />
-              </div>
-              <div className="mb-4 text-[black] space-y-1 mt-3">
-                <label htmlFor="mrNo">Mr No</label>
-                <input
-                  name="mrNo"
-                  required
-                  defaultValue={item?.mrNo}
-                  type="number"
-                  placeholder="Enter Installment Name"
-                  className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#000] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
-                />
-              </div>
+
               <div className="mb-4 space-y-1 mt-3">
                 <label htmlFor="particular">Particular</label>
                 <input
@@ -122,6 +112,7 @@ export default function InstallmentModal({
                   className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#000] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
                 />
               </div>
+          
               <div className="mb-4 space-y-1 mt-3">
                 <label htmlFor="checkNumber">Check Number</label>
                 <input
@@ -133,6 +124,19 @@ export default function InstallmentModal({
                   className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[black] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
                 />
               </div>
+
+              <div className="mb-4 text-[black] space-y-1 mt-3">
+                <label htmlFor="mrNo">Mr No</label>
+                <input
+                  name="mrNo"
+                  required
+                  defaultValue={item?.mrNo}
+                  type="number"
+                  placeholder="Enter Installment Name"
+                  className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#000] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
+                />
+              </div>
+
               <div className="mb-4 space-y-1 mt-3">
                 <label htmlFor="receiveAmount">Receive Amount</label>
                 <input
@@ -144,6 +148,26 @@ export default function InstallmentModal({
                   className="rounded-lg w-full border border-[#000] px-4 py-2 text-[black] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
                 />
               </div>
+
+              <div className="mb-4 space-y-1 mt-3">
+                <label htmlFor="due">Due</label>
+                <input
+                  name="due"
+                  defaultValue={item?.due}
+                  required
+                  placeholder="Enter Due"
+                  className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#000] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
+                  type="text"
+                />
+              </div>
+        
+             
+         
+             
+            
+           
+          
+             
               <div className="flex items-center justify-between">
                 <button
                   onClick={() => setOpenModal(false)}
@@ -159,6 +183,7 @@ export default function InstallmentModal({
                   Update
                 </button>
               </div>
+          
             </form>
           </div>
         </div>

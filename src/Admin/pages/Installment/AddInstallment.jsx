@@ -150,7 +150,7 @@ const AddInstallment = () => {
           <input
             name="checkNumber"
             required
-            type="number"
+            type="text"
             placeholder="Enter Check Number"
             className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
           />

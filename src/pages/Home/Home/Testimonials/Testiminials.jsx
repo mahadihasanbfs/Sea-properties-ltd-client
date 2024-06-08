@@ -1,47 +1,15 @@
-import Slider from "react-slick/lib/slider";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import TestimonialItem from "./TestimonialItem";
-import { useEffect } from "react";
-import Title from "../../../../components/sharedComponent/Title";
 import { useQuery } from "@tanstack/react-query";
+import Title from "../../../../components/sharedComponent/Title";
+import TestimonialItem from "./TestimonialItem";
 
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation'; // Import navigation styles
+import { FreeMode, Pagination, Navigation } from 'swiper/modules';
 
 const Testimonials = () => {
-    let settings = {
-        dots: false,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        initialSlide: 0,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    initialSlide: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    };
-
     const { data: data = [], refetch } = useQuery({
         queryKey: ["testimonialData"],
         queryFn: async () => {
@@ -51,23 +19,56 @@ const Testimonials = () => {
         },
     });
 
-
-    useEffect(() => {
-        const next = document.getElementById('sld').childNodes[0].childNodes[2];
-        next.style.cssText += "left: 20px !important; ";
-
-    }, []);
-
     return (
-        <div className="max-w-[1366px] mx-auto py-12 mt-4 px-6 xl:px-4">
+        <div className="max-w-[1366px] mx-auto py-12 mt-4 px-2 xl:px-4">
             <div className="container py-12 mt-4 ">
                 <Title text="Testimonials " position="start" />
-                <div id="sld" className="slider-container  mt-4   w-full">
-                    <Slider {...settings}>
-                        {
-                            data?.map(itm => <TestimonialItem key={itm?.id} itm={itm} />)
-                        }
-                    </Slider>
+                <div id="sld" className="slider-container mt-4 w-full relative">
+                    <Swiper
+                        slidesPerView={2}
+                        spaceBetween={20}
+                        freeMode={true}
+                     
+                        navigation={{
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        }}
+                        breakpoints={{
+                            1024: {
+                                slidesPerView: 2,
+                                spaceBetween: 20,
+                            },
+                            600: {
+                                slidesPerView: 1,
+                                spaceBetween: 10,
+                            },
+                            480: {
+                                slidesPerView: 1,
+                                spaceBetween: 10,
+                            },
+                            320: {
+                                slidesPerView: 1,
+                                spaceBetween: 10,
+                            },
+                            300: {
+                                slidesPerView: 1,
+                                spaceBetween: 10,
+                            },
+                        }}
+                        modules={[FreeMode, Pagination, Navigation]}
+                        className="mySwiper"
+                    >
+                        {data?.map(itm => (
+                            <SwiperSlide key={itm.id}>
+                                <TestimonialItem itm={itm} />
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                   
+                 <div className="relative mt-10">
+                 <div className="swiper-button-next absolute left-10"></div>
+                 <div className="swiper-button-prev"></div>
+                 </div>
                 </div>
             </div>
         </div>

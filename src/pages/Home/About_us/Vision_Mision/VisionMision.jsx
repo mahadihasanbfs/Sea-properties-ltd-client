@@ -40,7 +40,7 @@ const VisionMision = () => {
 
             {/* vision mision section 2 */}
             <div className="bg-[#B0BEC5]">
-                <div className="max-w-[1366px] mx-auto px-5 xl:px-[200px] pt-[120px] pb-40   font-medium text-justify">
+                <div className="max-w-[1366px] mx-auto px-5 xl:px-[200px] pt-[120px] pb-0   font-medium text-justify">
                     <div className="flex flex-col md:flex-row justify-center items-center gap-16 md:gap-28">
                         <div className="w-full md:w-[300px] lg:w-[400px] h-[300px] lg:h-[400px] bg-gradient-to-r from-blue-400 to-purple-500 text-white text-center border border-gray-300 rounded-lg shadow-lg overflow-hidden">
                             <div className="flex items-center justify-center h-full">

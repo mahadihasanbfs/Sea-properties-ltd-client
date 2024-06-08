@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet";
 
 import bg from '../../../../assets/background.jpg';
 import apr from '../../../../assets/our-approch.jpg';
-import ss from '../../../../assets/ourstor.jpg';
+import ss from '../../../../assets/borad.jpg';
 
 const OurStory = () => {
 
@@ -75,11 +75,14 @@ Welcome to our story, which is one of ardor, tenacity, and the promise of opport
 
             {/* our story section 2 */}
             <div className="max-w-[1366px] md:h-[722px] mx-auto px-[20px] xl:px-[80px] xl:grid grid-cols-2 flex flex-col  md:flex-row items-center gap-6 md:gap-0  mt-8 md:mt-[60px]">
-                <div className="basis-[40%]">
+                <div className="basis-[40%] md:block hidden">
                     <img className="w-[588px] md:h-[722px] object-cover" src={`${bg}`} alt="" />
                 </div>
                 <div className={`flex flex-col justify-between md:ml-10 xl:ml-20 text-justify basis-[60%] h-full`}>
                     <h3 className="text-[#AAB0B2] text-3xl lg:text-4xl uppercase mb-6 md:mb-0">Background</h3>
+                    <div className="basis-[40%] block md:hidden mb-3">
+                    <img className="w-[588px] md:h-[722px] object-cover" src={`${bg}`} alt="" />
+                </div>
                     <p className="text-[black] font-semibold text-sm lg:text-[16px] md:mb-1 mb-3">
                         Imagine the bustling streets of Dhaka, where buildings rise high and each corner reveals a different tale. Driven by enthusiasm and a common vision, a group of dreamers gathered around a table in the middle of this urban symphony. SEA Properties Ltd. was established as a result, serving as a platform for communities to flourish and as much more than just a real estate company.
                     </p>
@@ -100,7 +103,7 @@ Welcome to our story, which is one of ardor, tenacity, and the promise of opport
             </div>
 
             {/* our story section 3 */}
-            <div className="bg-[#B0BEC5] lg:h-[681px] mt-[107px]">
+            <div className="bg-[#B0BEC5] lg:h-[681px] md:mt-[107px] mt-[40px]">
                 <div className="max-w-[1366px] mx-auto h-full px-6 xl:px-[80px] py-10 lg:py-[75px] lg:grid grid-cols-2 flex flex-col  md:flex-row items-center gap-6 lg:gap-0">
                     <div className="flex flex-col justify-start gap-8 basis-[40%]">
                         <h3 className="text-white text-3xl lg:text-4xl uppercase">Who We Are</h3>
