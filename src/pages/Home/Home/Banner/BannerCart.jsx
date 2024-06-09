@@ -5,14 +5,15 @@ import { Link } from "react-router-dom";
 const BannerCart = ({ itm }) => {
     return (
         <Link to={`project-details/${itm?.sku}`}>
-            <div className="   duration-200  rounded">
+            <div className="  duration-200  rounded">
                 <div
-                    style={{
-                        backgroundImage: `url(${itm?.banner_img})`,
-                        backgroundSize: '100% 100%',
-                    }}
-                    className="w-[350px] h-[400px] bg-contain bg-center">
-
+                    // style={{
+                    //     backgroundImage: `url(${itm?.banner_img})`,
+                    //     backgroundSize: '100% 100%',
+                    //     objectFit : 'unset'
+                    // }}
+                    className="md:w-full w-[350px] md:h-[450px] relative h-[400px] bg-contain bg-center">
+                    <img src={itm?.banner_img} alt="" className="w-full h-full absolute top-0 left-0 right-0" />
                 </div>
                 {/* <img
                     src={itm?.banner_img}

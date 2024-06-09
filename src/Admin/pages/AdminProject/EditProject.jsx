@@ -302,7 +302,7 @@ const EditProject = () => {
             />
           </div>
           <div className="mt-3 w-full">
-            <label>Banner image</label>
+            <label>Cart image</label>
             <br />
             <input
               // defaultValue={allProjects?.banner_img}

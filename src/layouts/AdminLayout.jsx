@@ -10,6 +10,7 @@ import AdminSideNav from '../Admin/Component/AdminSideNav';
 import { GoHome } from "react-icons/go";
 import { RxHamburgerMenu } from "react-icons/rx";
 import useAuth from '../hooks/useAuth';
+import { Helmet } from 'react-helmet';
 
 export default function AdminLayout() {
     const [toggleMenu, setToggleMenu] = useState(false);
@@ -22,6 +23,11 @@ export default function AdminLayout() {
     }
     return (
         <div className="min-h-screen bg-gray-100">
+               <Helmet>
+                <title>
+                    Dashboard | SEA Properties Ltd.
+                </title>
+            </Helmet>
             <div className="flex flex-col md:flex-row sticky overflow-hidden h-screen">
                 <aside className={`${!toggleMenu ? 'lg:w-64 md:w-0 w-0' : 'lg:w-0 w-full'} duration-200 w-30  bg-dark text-light h-[100vh] overflow-y-auto shadow-md z-[100]`}>
                     <div className="flex items-center bg-gray-900 justify-between">
