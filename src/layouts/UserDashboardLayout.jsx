@@ -8,6 +8,7 @@ import { Link, NavLink } from 'react-router-dom';
 import UserSideNav from '../userDashboard/Components/UserSideNav';
 import useAuth from '../hooks/useAuth';
 import { MdMenu } from 'react-icons/md';
+import { Helmet } from 'react-helmet';
 
 
 export default function UserDashboardLayout() {
@@ -16,6 +17,11 @@ export default function UserDashboardLayout() {
     const { user, logOut } = useAuth()
     return (
         <div className="min-h-screen bg-gray-100">
+               <Helmet>
+                <title>
+                   Dashboard | SEA Properties Ltd.
+                </title>
+            </Helmet>
             <div className="flex flex-col md:flex-row sticky overflow-hidden h-screen">
                 <aside className={`${toggleMenu ? 'md:w-64 w-full' : 'md:w-64 w-0'} duration-200 w-30  bg-dark text-light h-[100vh] overflow-y-auto shadow-md z-[100]`}>
                     <div className="flex items-center bg-gray-900 justify-between">

@@ -103,24 +103,39 @@ const Banner = () => {
                 <div className="slider-container mt-12  mr-5 w-[98%] mx-auto">
 
                     <Swiper slidesPerView={3}
-
-                        spaceBetween={30} autoplay={true} navigation={false} modules={[Navigation, Autoplay]} className="mySwiper"
+                         spaceBetween={90} 
+                        autoplay={true} navigation={false} modules={[Navigation, Autoplay]} className="mySwiper"
                         breakpoints={{
                             // When window width is <= 640px (small devices), set slidesPerView to 1
+                            300: {
+                                slidesPerView: 1,
+                                
+                             },
                             320: {
                                 slidesPerView: 1,
-                            },
+                                
+                             },
                             // When window width is <= 768px (medium devices), set slidesPerView to 2
                             768: {
                                 slidesPerView: 2,
-                            },
+                                
+                             },
                             // When window width is <= 1024px (large devices), set slidesPerView to 3
                             1024: {
                                 slidesPerView: 3,
+                                spaceBetween: 80 
+                            },
+                            1200: {
+                                slidesPerView: 3,
+                                spaceBetween: 80 
+                            },
+                            1280: {
+                                slidesPerView: 3,
+                                spaceBetween: 80 
                             },
                         }}>
                         {
-                            searchData?.map(itm => <SwiperSlide className="pb-12 lg:px-6" key={itm?._id}>
+                            searchData?.map(itm => <SwiperSlide className="pb-12 m-auto" key={itm?._id}>
                                 <BannerCart key={itm?._id} itm={itm} />
                             </SwiperSlide>)
                         }
