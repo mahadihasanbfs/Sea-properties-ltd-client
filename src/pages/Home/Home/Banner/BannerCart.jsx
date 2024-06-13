@@ -12,7 +12,8 @@ const BannerCart = ({ itm }) => {
                     //     backgroundSize: '100% 100%',
                     //     objectFit : 'unset'
                     // }}
-                    className="md:w-full w-[350px] md:h-[450px] relative h-[400px] bg-contain bg-center">
+                    className={`${itm?.status ? ' border-[3px] border-[#f34444]' : 'border-[green]'} relative xl:w-[423px] rounded-lg duration-200 hover:shadow-lg   xl:h-[423px] justify-self-center overflow-hidden hover:cursor-pointer`}>
+                    {itm?.status && <span className="bg-[red] absolute text-xs text-[white] w-[100px] h-[30px] flex items-center justify-center rounded-br-2xl z-[100]">Out of Sold</span>}
                     <img src={itm?.banner_img} alt="" className="w-full h-full absolute top-0 left-0 right-0" />
                 </div>
                 {/* <img

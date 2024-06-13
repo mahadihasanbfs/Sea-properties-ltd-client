@@ -13,6 +13,7 @@ const EditAdminLand = () => {
     const fileInputRef = useRef(null);
     const id = useParams()?.id;
     const landData = useLoaderData()?.data;
+    const [toggle, setToggle] = useState(landData?.status ?? false);
 
 
 
@@ -78,23 +79,11 @@ const EditAdminLand = () => {
         const project_status = form.project_status?.value;
         const address = form.address?.value;
         const land_area = form.land_area?.value;
-        const no_of_floors = form.no_of_floors?.value;
-        const apartment_floors = form.apartment_floors?.value;
-        const apartment_size = form.apartment_size?.value;
-        const bedroom = form.bedroom?.value;
-        const bathroom = form.bathroom?.value;
-        const launch_date = new Date().getTime();
-        const collections = form.collections?.value;
-        const handover = form.handover?.value;
-        const youtube_url = form.youtube_url?.value;
-        const vr_status = vrOn;
-        const vr_url = vrOn ? form.vr_url?.value : null;
+
         const map_link = form.map_link?.value;
 
         // Get files from file inputs
-        const detail_img = form?.detail_img?.files[0];
         const banner_img = form?.banner_img?.files[0];
-        const video_thumbnail = form?.video_thumbnail?.files[0];
         const gallery_img = form?.gallery_img?.files;
         const features_img = form?.features_img?.files[0];
 
@@ -115,6 +104,7 @@ const EditAdminLand = () => {
             banner_img: uploadedBannerImg ?? landData?.banner_img,
             name: name ?? landData?.name,
             date: new Date(),
+            status: toggle,
             project_type: project_type ?? landData?.project_type,
             project_status: project_status ?? landData?.project_type,
             Project_location: land_area ?? landData?.Project_location,
@@ -161,7 +151,18 @@ const EditAdminLand = () => {
 
     return (
         <div>
-            <AdminTitle title='Edit Land' />
+            <div className="flex items-center justify-between">
+                <AdminTitle title='Edit Land' />
+
+                <div className="flex items-center gap-2">
+                    <span className="text-sm">Out Of Sold</span>
+                    <div className="flex gap-5">
+                        <button onClick={() => setToggle((prev) => !prev)} className={`flex h-6 w-12 items-center rounded-full border border-[#1d4428] ${toggle ? 'bg-[#2c8a5262]' : null}`}>
+                            <div className={`size-6 rounded-full bg-[#279044] duration-200 ${toggle ? 'translate-x-6' : 'translate-x-0'}`}></div>
+                        </button>
+                    </div>
+                </div>
+            </div>
             <br />
             <div className='border border-gray-500 p-4 rounded flex flex-col gap-2'>
                 <div>

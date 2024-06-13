@@ -11,7 +11,7 @@ const AddAdminLand = () => {
     const [loading, setLoading] = useState(false);
     const [imageFile, setImageFile] = useState(null);
     const fileInputRef = useRef(null);
-
+    const [toggle, setToggle] = useState(false);
     // banner img show and upload
     const handleButtonClick = () => {
         fileInputRef.current.click();
@@ -97,6 +97,7 @@ const AddAdminLand = () => {
             project_photo,
             banner_img: uploadedBannerImg,
             name,
+            status: toggle,
             date: new Date(),
             project_type,
             project_status,
@@ -130,7 +131,7 @@ const AddAdminLand = () => {
         setLoading(false);
     };
 
-
+    console.log('===>', toggle);
     // form submit
     // const handleSubmit = async (e) => {
     //     e.preventDefault();
@@ -230,7 +231,18 @@ const AddAdminLand = () => {
 
     return (
         <div>
-            <AdminTitle title='Add Land' />
+            <div className="flex items-center justify-between">
+                <AdminTitle title='Add Land' />
+
+                <div className="flex items-center gap-2">
+                    <span className="text-sm">Out Of Sold</span>
+                    <div className="flex gap-5">
+                        <button onClick={() => setToggle((prev) => !prev)} className={`flex h-6 w-12 items-center rounded-full border border-[#1d4428] ${toggle ? 'bg-[#2c8a5262]' : null}`}>
+                            <div className={`size-6 rounded-full bg-[#279044] duration-200 ${toggle ? 'translate-x-6' : 'translate-x-0'}`}></div>
+                        </button>
+                    </div>
+                </div>
+            </div>
             <br />
             <div className='border border-gray-500 p-4 rounded flex flex-col gap-2'>
                 <div>

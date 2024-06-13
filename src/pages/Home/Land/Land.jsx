@@ -43,6 +43,8 @@ const Land = () => {
         }
     }, [responseData, projectStatus, type]);
 
+
+    console.log('--', responseData);
     return (
         <div className="">
             <Helmet>
@@ -62,12 +64,12 @@ const Land = () => {
             </div>
 
             {/* filter nav */}
-            <div className="bg-[#F9F9F9]">
-                <div className="max-w-[1366px] mx-auto h-[80px] space-x-10 px-[50px] flex items-center">
+            <div className="bg-[#F9F9F9] pt-12">
+                {/* <div className="max-w-[1366px] mx-auto h-[80px] space-x-10 px-[50px] flex items-center">
                     <button className={`text-lg ${type === "all" && 'text-[#A20E27]'}`} onClick={() => setType('all')}>All</button>
                     <button className={`text-lg ${type === "Residential" && 'text-[#A20E27]'}`} onClick={() => setType('Residential')}>Residential</button>
                     <button className={`text-lg ${type === "Commercial" && 'text-[#A20E27]'}`} onClick={() => setType('Commercial')}>Commercial</button>
-                </div>
+                </div> */}
 
                 {isLoading ? (
                     <div className='h-[50vh] flex flex-col gap-3 items-center justify-center'>
@@ -82,12 +84,16 @@ const Land = () => {
                             </div>
                         ) : (
                             <div className="grid gap-10 md:grid-cols-3">
-                                {projectData?.map(item => (
+                                {responseData?.map(item => (
                                     <Link key={item?._id} to={`/land_detail/${item?.sku}`}>
-                                        <div className="relative xl:w-[423px] rounded-lg duration-200 hover:shadow-lg border border-[#80808051] xl:h-[423px] justify-self-center overflow-hidden hover:cursor-pointer">
+                                        <div
+
+                                            className={`${item?.status ? ' border-[3px] border-[#f34444]' : 'border-[green]'} relative xl:w-[423px] rounded-lg duration-200 hover:shadow-lg   xl:h-[423px] justify-self-center overflow-hidden hover:cursor-pointer`}>
+                                            {item?.status && <span className="bg-[red] absolute text-xs text-[white] w-[100px] h-[30px] flex items-center justify-center rounded-br-2xl z-[100]">Out of Sold</span>}
                                             <img className="w-full h-full hover:scale-110 transition-transform duration-1000 ease-in-out object-cover" src={item?.banner_img} alt="" />
                                             <div className="w-full h-[70px]  px-6 bg-[#000000ac] flex justify-center items-center flex-col absolute bottom-20">
-                                                <h3 className="text-[18px] text-[white]">{item?.name}</h3>
+                                                <h3 className="text-[18px] text-xl text-[white]">{item?.name}</h3>
+                                                <h3 className="text-[18px] text-sm text-[white]">{item?.details?.info?.address}</h3>
                                             </div>
                                         </div>
                                     </Link>

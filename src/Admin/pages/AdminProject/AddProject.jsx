@@ -12,7 +12,7 @@ const AddProject = () => {
     const [imageFile, setImageFile] = useState(null);
     const fileInputRef = useRef(null);
     const [images, setImages] = useState([]);
-
+    const [toggle, setToggle] = useState(false);
 
 
 
@@ -147,6 +147,7 @@ const AddProject = () => {
             banner_img: uploadedBannerImg,
             name,
             project_type,
+            status: toggle,
             project_status,
             details: {
                 detail_img: detailImgUpload,
@@ -199,7 +200,19 @@ const AddProject = () => {
     return (
         <div>
 
-            <AdminTitle title='Add project' />
+            <div className="flex items-center justify-between">
+                <AdminTitle title='Add Project' />
+
+                <div className="flex items-center gap-2">
+                    <span className="text-sm">Out Of Sold</span>
+                    <div className="flex gap-5">
+                        <button onClick={() => setToggle((prev) => !prev)} className={`flex h-6 w-12 items-center rounded-full border border-[#1d4428] ${toggle ? 'bg-[#2c8a5262]' : null}`}>
+                            <div className={`size-6 rounded-full bg-[#279044] duration-200 ${toggle ? 'translate-x-6' : 'translate-x-0'}`}></div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <br />
             <div className='border border-gray-500 p-4 rounded flex flex-col gap-2'>
                 <div>
