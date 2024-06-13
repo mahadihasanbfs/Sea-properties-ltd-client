@@ -96,24 +96,8 @@ const Navbar = () => {
       id: 11,
       name: "Land",
       path: "/land",
-      isDropdown: true,
-      dropdownItems: [
-        {
-          id: 1,
-          name: "Land On Going",
-          path: "/land#onGoing",
-        },
-        {
-          id: 2,
-          name: "Land Up Coming",
-          path: "/land#upComing",
-        },
-        {
-          id: 3,
-          name: "Land Completed",
-          path: "/land#completed",
-        },
-      ],
+      isDropdown: false,
+      dropdownItems: [],
     },
 
     {
@@ -156,7 +140,7 @@ const Navbar = () => {
 
   console.log(user, "user");
   return (
-    <nav className="bg-[#000000e4] text-[white] fixed z-50 flex items-center justify-between w-full top-0 text-white md:h-[80px] h-[60px]">
+    <nav className="bg-[#000000e4] text-[white] fixed  flex items-center justify-between w-full top-0 text-white md:h-[80px] h-[60px] z-[500]">
       <div className="relative  w-full ">
         <div className="max-w-[1366px] mx-auto pl-5  pr-2 md:px-10">
           <div className="flex items-center justify-between">

@@ -103,6 +103,7 @@ const ManageProject = () => {
                                     <th className="py-3 px-6">Project Name</th>
                                     <th className="py-3 px-6">Date</th>
                                     <th className="py-3 px-6">Address</th>
+                                    <th className="py-3 px-6">Out of Sold</th>
                                     <th className="py-3 px-6">Action</th>
                                 </tr>
                             </thead>
@@ -127,6 +128,14 @@ const ManageProject = () => {
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             {item?.details?.info?.address}
+                                        </td>
+                                        <td className="px-6 font-semibold py-4 whitespace-nowrap">
+                                            {
+                                                item?.status ?
+                                                    <div className="bg-[#0080001a] flex items-center justify-center text-[#2b932b] px-2 w-[100px] rounded-full h-[30px]">Enable</div>
+                                                    :
+                                                    <div className="bg-[#80000018] flex items-center justify-center text-[#f14141] px-2 w-[100px] rounded-full h-[30px]">Disable</div>
+                                            }
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <ul className="flex items-center gap-2">
