@@ -91,13 +91,31 @@ const Navbar = () => {
         },
       ],
     },
-    // {
-    //   id: 9,
-    //   name: "Land",
-    //   path: "/land",
-    //   isDropdown: false,
-    //   dropdownItems: [],
-    // },
+
+    {
+      id: 11,
+      name: "Land",
+      path: "/land",
+      isDropdown: true,
+      dropdownItems: [
+        {
+          id: 1,
+          name: "Land On Going",
+          path: "/land#onGoing",
+        },
+        {
+          id: 2,
+          name: "Land Up Coming",
+          path: "/land#upComing",
+        },
+        {
+          id: 3,
+          name: "Land Completed",
+          path: "/land#completed",
+        },
+      ],
+    },
+
     {
       id: 4,
       name: "News & Events",

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import AdminTitle from "../../../hooks/useAdminTitle";
 import { MdDeleteOutline } from "react-icons/md";

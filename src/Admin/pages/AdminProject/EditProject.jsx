@@ -23,7 +23,7 @@ const EditProject = () => {
   };
 
 
- 
+
 
   const handleDeleteImage = () => {
     setImage(null);
@@ -99,7 +99,7 @@ const EditProject = () => {
     e.preventDefault();
     setLoading(true);
     const form = e.target;
-    console.log( 'thumbnail----', e.target);
+    console.log('thumbnail----', e.target);
 
     // Get values from the form fields
     const name = form.name.value;
@@ -139,13 +139,13 @@ const EditProject = () => {
     const project_photo = await uploadImage(imageFile);
     const uploadedBannerImg = await uploadImage(banner_img);
     const detailImgUpload = await uploadImage(detail_img);
-    const videoThumbnailImgUpload =  youtube ? await uploadImage(video_thumbnail) : null;
+    const videoThumbnailImgUpload = youtube ? await uploadImage(video_thumbnail) : null;
     const featureImgUpload = await uploadImage(features_img);
 
 
     const data = {
       project_photo: project_photo ? project_photo : allProjects?.project_photo,
-   
+
       banner_img: uploadedBannerImg ? uploadedBannerImg : allProjects?.banner_img,
       name: name ? name : allProjects?.name,
       project_type: allProjects?.project_type ? allProjects?.project_type : project_type,
@@ -187,7 +187,7 @@ const EditProject = () => {
         : allProjects?.videoThumbnailImgUpload,
       map_link
     };
-    
+
     // console.log(data, "testing.........");
     fetch(
       `https://backend.seapropertiesltd.com.bd/api/v1/admin/project/update?project_id=${allProjects?._id}`,
@@ -199,20 +199,20 @@ const EditProject = () => {
         body: JSON.stringify(data),
       }
     )
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data)
-      Swal.fire("Project Updated", "", "success");
-      navigate("/admin/manage-project");
-      setLoading(false);
-    });
-    
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        Swal.fire("Project Updated", "", "success");
+        navigate("/admin/manage-project");
+        setLoading(false);
+      });
+
 
   };
 
 
   console.log('handover:::::', allProjects?.details?.info?.handover)
- 
+
 
   return (
     <div>
@@ -456,19 +456,19 @@ const EditProject = () => {
 
 
           </div>
-            <div className="mt-3 w-full">
-        <label>Handover Date</label>
-        <br />
-        <input
-          defaultValue={allProjects?.details?.info?.handover}
-          name="handoverDate"
-          className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
-          type="text"
-          placeholder="Total Collection"
-        />
-      </div>
+          <div className="mt-3 w-full">
+            <label>Handover Date</label>
+            <br />
+            <input
+              defaultValue={allProjects?.details?.info?.handover}
+              name="handoverDate"
+              className="border mt-2 w-full p-2 rounded bg-[#f4f3f3]"
+              type="text"
+              placeholder="Total Collection"
+            />
+          </div>
         </div>
-      
+
         {/* dynamic inputs */}
         <div className="border border-[#dbdbdb] mt-6 p-6">
           <label htmlFor="cdn" className="text-md flex gap-2 font-semibold">

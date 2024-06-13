@@ -13,6 +13,7 @@ import MyBlogs from "../pages/Home/Home/Blogs/Blogs";
 import Explore from "../pages/Home/Home/Gellary/Explore";
 import Home from "../pages/Home/Home/Home";
 import Land from "../pages/Home/Land/Land";
+import LandDetails from "../pages/Home/Land/LandDetail";
 import LandRegistrationForm from "../pages/Home/LandRegistrationForm/LandRegistrationForm";
 import NewsEvent from "../pages/Home/News_Event/NewsEvent";
 import NewsEventReadMore from "../pages/Home/News_Event/NewsEventReadMore";
@@ -110,10 +111,14 @@ const commonPath = [
     path: "project",
     element: <OnGoing />,
   },
-  // {
-  //   path: "land",
-  //   element: <Land />,
-  // },
+  {
+    path: "land",
+    element: <Land />,
+  },
+  {
+    path: "land_detail/:id",
+    element: <LandDetails />,
+  },
   {
     path: "land-registration-form",
     element: <LandRegistrationForm />,
