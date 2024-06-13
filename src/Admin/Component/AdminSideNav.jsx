@@ -198,6 +198,7 @@ export default function AdminSideNav({ setToggleMenu }) {
       isDropdown: false,
       menu: [],
     },
+
     {
       id: 4,
       name: "Installment Data",
@@ -221,6 +222,16 @@ export default function AdminSideNav({ setToggleMenu }) {
           role: "admin",
         },
       ],
+    },
+
+    {
+      id: 5,
+      name: "Land Management",
+      icon: <BsHouseCheck />,
+      path: "/admin/manage-land",
+      role: "admin",
+      isDropdown: false,
+      menu: [],
     },
 
     // {

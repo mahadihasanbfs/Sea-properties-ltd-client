@@ -21,10 +21,6 @@ const UserLandReportManagement = () => {
         },
     });
 
-    console.log(`https://backend.seapropertiesltd.com.bd/api/v1/admin/get-user-booking?email=${user?.email}`);
-    // delete data using custom hook 
-
-    console.log(areaData?.data, '>>>>>>');
 
     return (
         <div className="pt-3">

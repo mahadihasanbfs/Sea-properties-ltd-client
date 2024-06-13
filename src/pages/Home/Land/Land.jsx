@@ -1,134 +1,103 @@
-import { useState } from "react";
-import SecondaryTitle from "../../../components/common/SecondaryTitle";
-import Slider from "../../../components/common/Slider";
-import { DB_URL } from "../../../const";
+import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
+import { Link, useLocation } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import bg from '../../../assets/contact.jpg';
 
 const Land = () => {
-    const [loading, setLoading] = useState(false);
+    const [projectData, setProjectData] = useState([]);
+    const [type, setType] = useState('all');
+    const filterPath = useLocation();
+    const [projectStatus, setProjectStatus] = useState('');
+    const [title, setTitle] = useState('');
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const phone = form.phone.value;
-        const message = form.message.value;
+    useEffect(() => {
+        const text = filterPath?.hash;
+        const result = text ? text.replace('#', '').toLowerCase() : '';
+        const capitalizedResult = result.charAt(0).toUpperCase() + result.slice(1);
+        setTitle(capitalizedResult);
+        setProjectStatus(result);
+    }, [filterPath]);
 
-        const data = {
-            name,
-            email,
-            phone,
-            message,
-            date: new Date(),
-        };
-        console.log(data);
+    const { data: responseData, isLoading } = useQuery({
+        queryKey: ["PData"],
+        queryFn: async () => {
+            const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/land/lands`);
+            const data = await res.json();
+            return data?.data;
+        },
+    });
 
-        fetch(`${DB_URL}/user/contact/add`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                setLoading(false);
-                form.reset();
-                console.log(data);
-                Swal.fire("Thanks for contacting us. We will get back to you shortly", "", "success");
+    useEffect(() => {
+        if (responseData) {
+            const filteredData = responseData.filter(project => {
+                const projectStatusLowerCase = project?.project_status?.toLowerCase();
+                const projectTypeLowerCase = project?.project_type?.toLowerCase();
+
+                const matchesStatus = projectStatus === "" || projectStatusLowerCase === projectStatus;
+                const matchesType = type === "all" || projectTypeLowerCase === type.toLowerCase();
+                return matchesStatus && matchesType;
             });
-    };
+
+            setProjectData(filteredData);
+        }
+    }, [responseData, projectStatus, type]);
+
     return (
-        <div>
-            <div className="max-w-[1366px] mx-auto py-10 px-4 md:px-8 xl:px-20  gap-6 md:gap-0 bg-white">
+        <div className="">
+            <Helmet>
+                <title>{title} | SEA Properties Ltd.</title>
+            </Helmet>
 
-                {/* project features */}
-                <div className="bg-black">
-                    <div className="max-w-[1366px] mx-auto py-20 px-4 md:px-8 xl:px-20 grid md:grid-cols-2 gap-6 md:gap-0">
-                        <div className="">
-                            <SecondaryTitle
-                                text='Features & Amenities'
-                                position="text-left"
-                            />
-                            <figure className="justify-self-end md:mt-0 mt-8 md:hidden flex items-center">
-                                <img className="w-[465px] h-[490px] object-cover" src="" alt="" />
-                            </figure>
-
-                            <div className="space-y-5 md:mt-[60px] mt-4 text-white">
-                                <p >kdsjkjsdahihu</p>
-                            </div>
-                            {/* <button className="py-[9px] px-[32px] text-white border-[3px] border-white  mt-6">
-                                Explore
-                            </button> */}
-                        </div>
-                        <figure className="justify-self-end md:flex hidden items-center">
-                            <img className="w-[465px] h-[490px] object-cover" src='' alt="" />
-                        </figure>
+            {/* banner */}
+            <div style={{ backgroundImage: `linear-gradient(30deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)), url('${bg}')`, backgroundAttachment: '' }} className=" mx-auto flex flex-col md:flex-row justify-between items-center gap-10 md:gap-0 pt-[200px] pb-[100px] xl:pb-[150px] px-[60px] bg-cover object-cover bg-white">
+                <div className="flex justify-between max-w-[1366px] m-auto  w-full">
+                    <div className="text-[#fff] ">
+                        <h3 className="text-[37px] uppercase">{filterPath?.hash?.slice(1)} Our Land </h3>
+                    </div>
+                    <div>
+                        {/* <img src="https://i.ibb.co/jzV8h9n/Rectangle-46.png" alt="" /> */}
                     </div>
                 </div>
-
-                {/* Contact form */}
-
             </div>
-            {/* Contact form */}
-            <div className="bg-[#768f9b] py-[80px] lg:py-[105px]">
-                <div className="max-w-[1366px] mx-auto px-6 md:px-[90px] lg:px-[260px] text-white">
-                    <h2 className="text-[27px] md:text-[37px] uppercase">
-                        Book A Free Appointment
-                    </h2>
-                    <form onSubmit={handleSubmit} className="space-y-4 mt-10">
-                        <div>
-                            <p>Name*</p>
-                            <input
-                                type="text"
-                                name="name"
-                                required
-                                autoComplete="off"
-                                className="w-full md:w-[500px] bg-[#78909C] focus:outline-none pt-3 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
-                            />
-                        </div>
-                        <div>
-                            <p>Enter your Email</p>
-                            <input
-                                type="text"
-                                name="email"
-                                autoComplete="off"
-                                className="w-full md:w-[500px] bg-[#78909C] focus:outline-none pt-3 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
-                            />
-                        </div>
-                        <div>
-                            <p>Phone Number*</p>
-                            <input
-                                type="text"
-                                name="phone"
-                                required
-                                autoComplete="off"
-                                className="w-full md:w-[500px] bg-[#78909C] focus:outline-none pt-3 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
-                            />
-                        </div>
-                        <div>
-                            <p>Message</p>
-                            <input
-                                type="text"
-                                name="message"
-                                required
-                                autoComplete="off"
-                                className="w-full md:w-[500px] bg-[#78909C] focus:outline-none pt-10 px-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
-                            />
-                        </div>
 
-                        <div className="pt-6">
-                            <input
-                                type="submit"
-                                value={loading ? "Sending" : "Submit"}
-                                className="py-[9px] px-[28px] border-[3px] border-white hover:cursor-pointer  hover:bg-[#a20e0e] hover:text-light"
-                            />
-                        </div>
-                    </form>
+            {/* filter nav */}
+            <div className="bg-[#F9F9F9]">
+                <div className="max-w-[1366px] mx-auto h-[80px] space-x-10 px-[50px] flex items-center">
+                    <button className={`text-lg ${type === "all" && 'text-[#A20E27]'}`} onClick={() => setType('all')}>All</button>
+                    <button className={`text-lg ${type === "Residential" && 'text-[#A20E27]'}`} onClick={() => setType('Residential')}>Residential</button>
+                    <button className={`text-lg ${type === "Commercial" && 'text-[#A20E27]'}`} onClick={() => setType('Commercial')}>Commercial</button>
                 </div>
-            </div>
 
-        </div>
+                {isLoading ? (
+                    <div className='h-[50vh] flex flex-col gap-3 items-center justify-center'>
+                        <div className="w-10 h-10 animate-[spin_2s_linear_infinite] rounded-full border-8 border-dotted border-[red]"></div>
+                        <p className="text-center">Loading...</p>
+                    </div>
+                ) : (
+                    <div className="max-w-[1366px] mx-auto px-6 xl:px-[50px] pb-20">
+                        {!projectData?.length ? (
+                            <div className='h-[10vh]  w-full flex flex-col gap-3 items-center justify-center'>
+                                <h1 className="text-2xl font-bold  opacity-[0.3]">Land Not Found</h1>
+                            </div>
+                        ) : (
+                            <div className="grid gap-10 md:grid-cols-3">
+                                {projectData?.map(item => (
+                                    <Link key={item?._id} to={`/land_detail/${item?.sku}`}>
+                                        <div className="relative xl:w-[423px] rounded-lg duration-200 hover:shadow-lg border border-[#80808051] xl:h-[423px] justify-self-center overflow-hidden hover:cursor-pointer">
+                                            <img className="w-full h-full hover:scale-110 transition-transform duration-1000 ease-in-out object-cover" src={item?.banner_img} alt="" />
+                                            <div className="w-full h-[70px]  px-6 bg-[#000000ac] flex justify-center items-center flex-col absolute bottom-20">
+                                                <h3 className="text-[18px] text-[white]">{item?.name}</h3>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                )}
+            </div>
+        </div >
     );
 };
 
