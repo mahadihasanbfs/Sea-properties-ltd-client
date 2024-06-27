@@ -30,7 +30,7 @@ const Land = () => {
 
     useEffect(() => {
         if (responseData) {
-            const filteredData = responseData.filter(project => {
+            const filteredData = responseData?.filter(project => {
                 const projectStatusLowerCase = project?.project_status?.toLowerCase();
                 const projectTypeLowerCase = project?.project_type?.toLowerCase();
 
@@ -44,11 +44,10 @@ const Land = () => {
     }, [responseData, projectStatus, type]);
 
 
-    console.log('--', responseData);
     return (
         <div className="">
             <Helmet>
-                <title>{title} | SEA Properties Ltd.</title>
+                <title>Land | SEA Properties Ltd.</title>
             </Helmet>
 
             {/* banner */}
@@ -88,18 +87,14 @@ const Land = () => {
                                             {item?.status && <span className="bg-[red] absolute text-[16px] text-[white] w-[100px] h-[30px] flex items-center justify-center  rounded-br-2xl z-[100]">SOLD OUT</span>}
                                            
                                         </div> */}
-                                        <div className="max-w-xs mx-auto overflow-hidden bg-white rounded-lg shadow-md">
+                                        <div className="mx-auto overflow-hidden bg-white rounded-lg shadow-md">
                                             <div className="relative">
                                                 <img className="w-full h-full hover:scale-110 transition-transform duration-1000 ease-in-out object-cover" src={item?.banner_img} alt="" />
                                                 <div className="w-full h-[70px]  px-6 bg-[#000000ac] flex justify-center items-center flex-col absolute bottom-20">
                                                     <h3 className="text-[18px] text-xl text-[white]">{item?.name}</h3>
                                                     <h3 className="text-[18px] text-sm text-[white]">{item?.details?.info?.address}</h3>
                                                 </div>
-                                                {/* <div className="max-w-[1366px] mx-auto h-[80px] space-x-10 px-[50px] flex items-center">
-                    <button className={`text-lg ${type === "all" && 'text-[#A20E27]'}`} onClick={() => setType('all')}>All</button>
-                    <button className={`text-lg ${type === "Residential" && 'text-[#A20E27]'}`} onClick={() => setType('Residential')}>Residential</button>
-                    <button className={`text-lg ${type === "Commercial" && 'text-[#A20E27]'}`} onClick={() => setType('Commercial')}>Commercial</button>
-                </div> */}
+
                                                 {item?.status && <div className="absolute top-0 right-0">
                                                     <div className="w-32 h-8 absolute top-4 -right-8">
                                                         <div

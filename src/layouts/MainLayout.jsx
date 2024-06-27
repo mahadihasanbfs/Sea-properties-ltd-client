@@ -46,14 +46,7 @@ const MainLayout = () => {
             <Outlet />
             {/* <ShowCase /> */}
             <Footer />
-            {!zIndex &&
-                <div>
-                    {showScrollButton && <button
-                        className="fixed bg-[#8a2424ee] shadow-xl text-[#fdfdfd] w-[40px] flex justify-center items-center rounded text-2xl z-[900]    h-[40px] bottom-8 right-8"
-                        onClick={scrollToTop}>
-                        <FaAngleUp />
-                    </button>}
-                </div>}
+
 
             <div className="fixed right-[24px] bottom-[80px] z-[400]">
                 {/* <a href='#' className="bg-[#a82a2a] text-[white] w-[60px] h-[60px] flex items-center justify-center text-3xl cursor-pointer p-2 rounded-full text-white mb-2">
@@ -62,12 +55,18 @@ const MainLayout = () => {
                 <a href='https://api.whatsapp.com/send?phone=8801894440111' className="bg-[#25D366] shadow-xl text-[white] w-[60px] h-[60px] flex items-center justify-center text-3xl cursor-pointer p-2 rounded-full text-white mb-2">
                     <FaWhatsapp />
                 </a>
-
-                {/* <a href={`#root`} className="bg-[#22228f] w-[50px] h-[50px] flex items-center justify-center text-3xl cursor-pointer p-2 rounded-full text-white mb-2">
+                {!zIndex &&
+                    <div>
+                        {showScrollButton && <button
+                            className="bg-[#a82a2a] shadow-xl text-[white] w-[60px] h-[60px] flex items-center justify-center text-3xl cursor-pointer p-2 rounded-full text-white mb-2" onClick={scrollToTop}>
+                            <FaAngleUp />
+                        </button>}
+                    </div>}
+                {/* <a href={`#root`}>
                 <TfiAngleUp className="text-xl font-bold" />
             </a> */}
             </div>
-        </div>
+        </div >
     );
 };
 
