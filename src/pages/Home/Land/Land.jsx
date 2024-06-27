@@ -30,7 +30,7 @@ const Land = () => {
 
     useEffect(() => {
         if (responseData) {
-            const filteredData = responseData.filter(project => {
+            const filteredData = responseData?.filter(project => {
                 const projectStatusLowerCase = project?.project_status?.toLowerCase();
                 const projectTypeLowerCase = project?.project_type?.toLowerCase();
 

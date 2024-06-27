@@ -84,13 +84,31 @@ const OnGoingProject = () => {
                             <div className="grid gap-10 md:grid-cols-3">
                                 {projectData.map(item => (
                                     <Link key={item?._id} to={`/project-details/${item?.sku}`}>
-                                        <div className={`${item?.status ? ' border-[3px] border-[#f34444]' : 'border-[green]'} relative xl:w-[423px] rounded-lg duration-200 hover:shadow-lg   xl:h-[423px] justify-self-center overflow-hidden hover:cursor-pointer`}>
+                                        {/* <div className={`${item?.status ? ' border-[3px] border-[#f34444]' : 'border-[green]'} relative xl:w-[423px] rounded-lg duration-200 hover:shadow-lg   xl:h-[423px] justify-self-center overflow-hidden hover:cursor-pointer`}>
                                             {item?.status && <span className="bg-[red] absolute text-xs text-[white] w-[100px] h-[30px] flex items-center justify-center rounded-br-2xl z-[100]">Out of Sold</span>}
                                             <img className="w-full h-full hover:scale-110 transition-transform duration-1000 ease-in-out object-cover" src={item?.banner_img} alt="" />
                                             <div className="w-full h-[70px]  px-6 bg-[#00000080] flex justify-center items-center flex-col absolute bottom-20">
                                                 <h3 className="text-[18px] text-[white]">{item?.name}</h3>
                                                 <p className="text-[#C7C3C3]">{item?.details?.info?.address}</p>
                                             </div>
+                                        </div> */}
+                                        <div className="mx-auto overflow-hidden bg-white rounded-lg shadow-md">
+                                            <div className="relative">
+                                                <img className="w-full h-full hover:scale-110 transition-transform duration-1000 ease-in-out object-cover" src={item?.banner_img} alt="" />
+                                                <div className="w-full h-[70px]  px-6 bg-[#000000ac] flex justify-center items-center flex-col absolute bottom-20">
+                                                    <h3 className="text-[18px] text-xl text-[white]">{item?.name}</h3>
+                                                    <h3 className="text-[18px] text-sm text-[white]">{item?.details?.info?.address}</h3>
+                                                </div>
+
+                                                {item?.status && <div className="absolute top-0 right-0">
+                                                    <div className="w-32 h-8 absolute top-4 -right-8">
+                                                        <div
+                                                            className="h-full w-full bg-[red] text-[white] text-xs text-center leading-8 font-semibold transform rotate-45">
+                                                            SOLD OUT</div>
+                                                    </div>
+                                                </div>}
+                                            </div>
+
                                         </div>
                                     </Link>
                                 ))}
