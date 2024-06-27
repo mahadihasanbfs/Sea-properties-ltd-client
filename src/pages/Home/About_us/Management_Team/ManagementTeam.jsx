@@ -118,17 +118,17 @@ const ManagementTeam = () => {
                 title="Management Team"
                 subTitle="About us"
             />
-            <div class=" bg-gray-100">
-                <div class="container px-6 py-10 mx-auto">
-                    <h1 class="text-2xl font-semibold text-center text-[gray] capitalize lg:text-3xl dark:text-white">Meet Our Management Team</h1>
+            <div className=" bg-gray-100">
+                <div className="container px-6 py-10 mx-auto">
+                    <h1 className="text-2xl font-semibold text-center text-[gray] capitalize lg:text-3xl dark:text-white">Meet Our Management Team</h1>
 
-                    <div class="flex justify-center mx-auto mt-6">
-                        <span class="inline-block w-40 h-1 bg-[#C91835] rounded-full"></span>
-                        <span class="inline-block w-3 h-1 mx-1 bg-[#C91835] rounded-full"></span>
-                        <span class="inline-block w-1 h-1 bg-[#C91835] rounded-full"></span>
+                    <div className="flex justify-center mx-auto mt-6">
+                        <span className="inline-block w-40 h-1 bg-[#C91835] rounded-full"></span>
+                        <span className="inline-block w-3 h-1 mx-1 bg-[#C91835] rounded-full"></span>
+                        <span className="inline-block w-1 h-1 bg-[#C91835] rounded-full"></span>
                     </div>
 
-                    <p class="max-w-5xl mx-auto mt-6 text-center text-gray-500 dark:text-gray-300">
+                    <p className="max-w-5xl mx-auto mt-6 text-center text-gray-500 dark:text-gray-300">
                         Our team is dedicated to excellence and innovation. With a wealth of experience and a passion for success, they lead our organization with integrity and vision. Each member brings unique skills and perspectives, ensuring we remain at the forefront of our industry.
                     </p>
                 </div>
@@ -148,12 +148,12 @@ const ManagementTeam = () => {
 
 const ProfileCard = ({ href, image, alt, name, position, designation }) => (
     <div className="h-[32rem]  ">
-        <div class="flex flex-col items-center p-4  sm:p-6 rounded-xl bg-[#B0BEC5]  ">
-            <img class="object-cover w-full shadow-2xl  rounded-xl aspect-square" src={image} alt="" />
+        <div className="flex flex-col items-center p-4  sm:p-6 rounded-xl bg-[#B0BEC5]  ">
+            <img className="object-cover w-full shadow-2xl  rounded-xl aspect-square" src={image} alt="" />
 
-            <h1 class="mt-4 text-2xl font-semibold text-[#C91835] capitalize ">{name}</h1>
+            <h1 className="mt-4 text-2xl font-semibold text-[#C91835] capitalize ">{name}</h1>
 
-            <p class="mt-2 text-gray-500  text-xl capitalize dark:text-gray-300">{position}</p>
+            <p className="mt-2 text-gray-500  text-xl capitalize dark:text-gray-300">{position}</p>
 
             <p className="text-[17px] capitalize">{designation}</p>
         </div>
