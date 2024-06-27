@@ -47,14 +47,14 @@ const Land = () => {
     return (
         <div className="">
             <Helmet>
-                <title>Land | SEA Properties Ltd.</title>
+                <title>Our Land | SEA Properties Ltd.</title>
             </Helmet>
 
             {/* banner */}
-            <div style={{ backgroundImage: `linear-gradient(30deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)), url('${bg}')`, backgroundAttachment: '' }} className=" mx-auto flex flex-col md:flex-row justify-between items-center gap-10 md:gap-0 pt-[200px] pb-[100px] xl:pb-[150px] px-[60px] bg-cover object-cover bg-white">
+            <div style={{ backgroundImage: `linear-gradient(30deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)), url('${bg}')`, backgroundAttachment: '' }} className=" mx-auto flex flex-col h-[100vh] md:flex-row justify-between items-center gap-10 md:gap-0 pt-[200px] pb-[100px] xl:pb-[150px] px-[60px] bg-cover object-cover bg-white">
                 <div className="flex justify-between max-w-[1366px] m-auto  w-full">
                     <div className="text-[#fff] ">
-                        <h3 className="text-[37px] uppercase">{filterPath?.hash?.slice(1)} Our Land </h3>
+                        <h3 className="text-[37px] ml-4 uppercase">{filterPath?.hash?.slice(1)} Our Land </h3>
                     </div>
                     <div>
                         {/* <img src="https://i.ibb.co/jzV8h9n/Rectangle-46.png" alt="" /> */}
