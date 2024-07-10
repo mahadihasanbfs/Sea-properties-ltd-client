@@ -249,8 +249,8 @@ const Navbar = () => {
           {open && <div className="w-full z-[8000] h-screen bg-[#00000068] absolute top-0 left-0 right-0 bottom-0" />}
 
           <div
-            className={`absolute z-[9000] bg-white bg-[#000000] top-0 duration-200 ${!open ? "right-[-120%]" : "right-0"
-              }  w-[80%] h-screen   md:hidden   `}
+            className={`absolute z-[9000] bg-white bg-[#000000] -top-1 duration-200 ${!open ? "right-[-120%]" : "right-0"
+              }  w-[100%] h-screen   md:hidden   `}
           >
             <div className="flex container items-center mt-3 bg justify-between w-full">
               <Link to="/" className="text-2xl font-bold ml-5">
@@ -263,7 +263,7 @@ const Navbar = () => {
                 <MdClose />
               </button>
             </div>
-            <ul className="text-black mt-3">
+            <ul className="text-black mt-3 ml-5">
               {links?.map((itm) => (
                 <li key={itm?.id}>
                   {itm?.isDropdown ? (
