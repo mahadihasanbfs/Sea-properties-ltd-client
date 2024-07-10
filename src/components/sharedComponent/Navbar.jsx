@@ -140,7 +140,7 @@ const Navbar = () => {
 
   console.log(user, "user");
   return (
-    <nav className="bg-[#000000e4] text-[white] fixed  flex items-center justify-between w-full top-0 text-white md:h-[80px] h-[60px] z-[500]">
+    <nav className="bg-[#000000e4] text-[white] fixed  flex items-center justify-between w-full top-0 text-white md:h-[70px] h-[60px] z-[500]">
       <div className="relative  w-full ">
         <div className="max-w-[1366px] mx-auto pl-5  pr-2 md:px-10">
           <div className="flex items-center justify-between">
@@ -150,7 +150,7 @@ const Navbar = () => {
             <div className="flex items-center gap-4">
               <ul className="md:flex hidden items-center gap-4 lg:gap-10">
                 {links.map((itm) => (
-                  <li key={itm.id} className=" flex text-xl capitalize items-center">
+                  <li key={itm.id} className=" flex text-lg capitalize items-center">
                     {!itm?.isDropdown ? (
                       <NavLink
                         exact
@@ -171,7 +171,7 @@ const Navbar = () => {
                             <li key={item.id}>
                               <NavLink
                                 to={item?.path}
-                                className="block py-2 px-3  text-xl  hover:bg-gray-800"
+                                className="block py-2 px-3  text-lg  hover:bg-gray-800"
                               >
                                 {item?.name}
                               </NavLink>
@@ -226,7 +226,7 @@ const Navbar = () => {
                 </div>
               ) : (
                 <Link to={"/sign-in"}>
-                  <button className="bg-red-600 text-white md:px-8 px-4 py-1 md:text-xl text-sm md:py-2 rounded">
+                  <button className="bg-red-600 text-white md:px-8 px-4 py-1 md:text-lg text-sm md:py-2 rounded">
                     Login
                   </button>
                 </Link>
