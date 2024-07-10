@@ -99,7 +99,9 @@ const Land = () => {
                                                 {item?.status && <div className="top-0 right-0 absolute">
                                                     <div className="top-4 -right-8 absolute w-32 h-8">
                                                         <div
-                                                            className="bg-[red] w-full h-full font-semibold text-[white] text-center text-xs leading-8 transform rotate-45">
+
+                                                            className="h-full w-full bg-[#A20E27] text-[white] text-xs text-center leading-8 font-semibold transform rotate-45">
+
                                                             SOLD OUT</div>
                                                     </div>
                                                 </div>}

@@ -13,7 +13,7 @@ const BannerCart = ({ itm }) => {
                     {itm?.status && <div className="absolute top-0 right-0">
                         <div className="w-32 h-8 absolute top-4 -right-8">
                             <div
-                                className="h-full w-full bg-[red] text-[white] text-xs text-center leading-8 font-semibold transform rotate-45">
+                                className="h-full w-full bg-[#A20E27] text-[white] text-xs text-center leading-8 font-semibold transform rotate-45">
                                 SOLD OUT</div>
                         </div>
                     </div>}
