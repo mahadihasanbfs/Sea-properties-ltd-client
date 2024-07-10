@@ -7,9 +7,11 @@ import Swal from "sweetalert2";
 import { DB_URL } from "../../../const";
 import InstallmentModal from "./InstallmentModal";
 import { useQuery } from "@tanstack/react-query";
+import Modal from "./Modal";
 
 const ManageInstallment = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [menu, setMenu] = useState(false)
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10); // Number of items per page
   const [searchQuery, setSearchQuery] = useState("");
@@ -92,6 +94,9 @@ const ManageInstallment = () => {
     currentItems = filteredInstallments;
   }
 
+  console.log(currentItems);
+
+
   return (
     <div className="pt-3">
       <div className="flex items-center justify-between">
@@ -118,21 +123,22 @@ const ManageInstallment = () => {
               <th className="py-3 px-6">Check Number</th>
               <th className="py-3 px-6">MR No</th>
               <th className="py-3 px-6">Receive Amount</th>
-              <th className="py-3 px-6">Due</th>
+              <th className="py-3 px-6">Project Name</th>
+
               <th className="py-3 px-6">Receive Date</th>
               <th className="py-3 px-6">Action</th>
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
             {isLoading && <h1 className="text-lg py-2 text-center">Loading data.......</h1>}
-            {currentItems?.length && currentItems.map((item, idx) => (
+            {currentItems?.length && currentItems.filter((item) => item?.email && item.isFirstPayment && item.project).map((item, idx) => (
               <tr key={idx}>
-                <td className="px-6 py-4">{item?.email}</td>
+                <td className="px-6 py-4" onClick={() => setMenu(item)}>{item?.email}</td>
                 <td className="px-6 py-4">{item?.particular}</td>
                 <td className="px-6 py-4">{item?.checkNumber ?? 'N/A'}</td>
                 <td className="px-6 py-4">{item?.mrNo ?? 'N/A'}</td>
                 <td className="px-6 py-4">{item?.receiveAmount ?? 'N/A'}</td>
-                <td className="px-6 py-4">{item?.due ?? 'N/A'}</td>
+                <td className="px-6 py-4">{item?.project ?? 'N/A'}</td>
                 <td className="px-6 py-4">{item?.receiveDate ? new Date(item?.receiveDate).toLocaleString() : 'N/A'}</td>
                 <td className="px-6 py-4">
                   <ul className="flex items-center gap-2">
@@ -148,6 +154,9 @@ const ManageInstallment = () => {
                     </li>
                   </ul>
                 </td>
+                {
+                  menu && <Modal setOpenModal={setOpenModal} deleteInstallment={deleteInstallment} setItem={setMenu} item={menu} all_data={allInstallment} />
+                }
               </tr>
             ))}
           </tbody>

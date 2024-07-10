@@ -34,7 +34,7 @@ const ManageBlog = () => {
   // edit blog
   const handleEdit = async (e) => {
     e.preventDefault();
-    console.log('hit');
+
     setLoading(true)
     const form = e.target;
     const img = form.img.files[0];

@@ -6,14 +6,46 @@ import useFetchData from "../../../hooks/useFetchData";
 import { DB_URL } from "../../../const";
 import { useNavigate } from "react-router-dom";
 import Select from "react-select";
+import { useQuery } from "@tanstack/react-query";
 
 const AddInstallment = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const [data] = useFetchData(`${DB_URL}/users`);
-  console.log("data", data);
-  const userData = data?.data;
+  // const [data] = useFetchData(`${DB_URL}`);
+
+  const { data: users = [] } = useQuery({
+    queryKey: ["user"],
+    queryFn: async () => {
+      const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/users`);
+      const data = await res.json();
+      return data.data;
+    },
+  });
+
+  console.log(users);
+
+
+  
   const [selectedInstallmentUser, setSelectedInstallmentUser] = useState("");
+
+  const [project, setProject] = useState("");
+  const [isFirstPayment, setIsFirstPayment] = useState(false);
+
+  const handleCheckboxChange = (e) => {
+    setIsFirstPayment(e.target.checked);
+  };
+
+
+  const { data: allProject = [], refetch, isLoading } = useQuery({
+    queryKey: ["project"],
+    queryFn: async () => {
+      const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/project/projects`);
+      const data = await res.json();
+      return data.data;
+    },
+  });
+
+
 
   // Event handler for when an option is selected
   const handleInstallmentChange = (e) => {
@@ -21,6 +53,10 @@ const AddInstallment = () => {
     setSelectedInstallmentUser(e);
   };
 
+  const handleProject = (e) => {
+    console.log("e", e);
+    setProject(e);
+  };
   console.log(selectedInstallmentUser);
 
   // submit handler
@@ -29,7 +65,7 @@ const AddInstallment = () => {
     setLoading(true);
 
     const formValue = Object.fromEntries(new FormData(e.target));
-    console.log("Form Values:", formValue);
+
 
     const {
       name,
@@ -40,19 +76,9 @@ const AddInstallment = () => {
       receiveDate,
       checkNumber,
       receiveAmount,
-      due
     } = formValue;
 
-    // Log each input value
-    console.log('Name:', name);
-    console.log('Contact:', contact);
-    console.log('Installment:', installment);
-    console.log('Particular:', particular);
-    console.log('MR No:', mrNo);
-    console.log('Receive Date:', receiveDate);
-    console.log('Check Number:', checkNumber);
-    console.log('Receive Amount:', receiveAmount);
-    console.log('Due:', due);
+    const total = isFirstPayment ? e.target.total.value : 0;
 
     const data = {
       email: selectedInstallmentUser?.value,
@@ -64,10 +90,13 @@ const AddInstallment = () => {
       receiveDate,
       checkNumber,
       receiveAmount,
-      due
+      isFirstPayment,
+      total,
+      project: project?.value,
     };
 
-    console.log('Data to be submitted:', data);
+
+
 
     fetch(
       "https://backend.seapropertiesltd.com.bd/api/v1/admin/Installment/add",
@@ -105,7 +134,7 @@ const AddInstallment = () => {
             onChange={handleInstallmentChange}
             required
             className="rounded-lg w-full border border-[#336cb6]  bg-[white] text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
-            options={userData
+            options={users
               ?.filter((item) => item?.role !== "admin")
               ?.map((user) => ({
                 label: user.email,
@@ -113,6 +142,48 @@ const AddInstallment = () => {
               }))}
           />
         </div>
+
+        <div className="mt-4">
+          <label htmlFor="Installment">Select Project:</label>
+          <br />
+          <Select
+            id="Installment"
+            value={project}
+            onChange={handleProject}
+            required
+            className="rounded-lg w-full border border-[#336cb6]  bg-[white] text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
+            options={allProject?.map((user) => ({
+              label: user.name,
+              value: user.name,
+            }))}
+          />
+        </div>
+
+        <div>
+          <div className="mt-4">
+            <input
+              type="checkbox"
+              name="first_payment"
+              id="first_payment"
+              onChange={handleCheckboxChange}
+            />
+            <label className="ml-2" htmlFor="first_payment">First Payment</label>
+          </div>
+
+          {isFirstPayment && (
+            <div className="mb-4 mt-2">
+              <label htmlFor="particular">Total Price </label>
+              <input
+                name="total"
+                required
+                placeholder="Enter Total Price"
+                className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
+                type="text"
+              />
+            </div>
+          )}
+        </div>
+
         <div className="mb-4 mt-2">
           <label htmlFor="particular">Particular </label>
           <input
@@ -165,7 +236,7 @@ const AddInstallment = () => {
             className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
           />
         </div>
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label htmlFor="due">Dues</label>
           <input
             name="due"
@@ -174,7 +245,7 @@ const AddInstallment = () => {
             placeholder="Enter Dues"
             className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
           />
-        </div>
+        </div> */}
 
         {loading ? (
           <button

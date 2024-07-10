@@ -2,6 +2,8 @@ import Swal from "sweetalert2";
 import { DB_URL } from "../../../const";
 import useFetchData from "../../../hooks/useFetchData";
 import Select from "react-select";
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 
 export default function InstallmentModal({
   item,
@@ -10,8 +12,17 @@ export default function InstallmentModal({
   refetch,
 }) {
   const [data] = useFetchData(`${DB_URL}/users`);
-  console.log("data", data);
-  
+  const [project, setProject] = useState({ value: item.project, label: item.project });
+
+  const { data: allProject = [], isLoading } = useQuery({
+    queryKey: ["project"],
+    queryFn: async () => {
+      const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/project/projects`);
+      const data = await res.json();
+      return data.data;
+    },
+  });
+
   const userData = data?.data;
 
   const updateModalHandler = (e) => {
@@ -24,6 +35,7 @@ export default function InstallmentModal({
     // Add receiveDate to the data object
     const updatedData = {
       ...restData,
+      project: project?.value,
       receiveDate: new Date().toISOString(), // Adjust the date format as needed
     };
 
@@ -46,38 +58,33 @@ export default function InstallmentModal({
         return res.json();
       })
       .then((data) => {
-        console.log("API Response:", data);
-
         Swal.fire("Updated Installment successfully", "", "success");
         setOpenModal(false);
         refetch();
       })
       .catch((error) => {
-        console.error("Error updating Installment:", error);
         Swal.fire("Error", "Failed to update Installment", "error");
       });
   };
 
+  const handleProject = (e) => {
+    console.log("e", e);
+    setProject(e);
+  };
 
-  // <th className="py-3 px-6">Email</th>
-  // <th className="py-3 px-6">Particular</th>
-  // <th className="py-3 px-6">Check Number</th>
-  // <th className="py-3 px-6">MR No</th>
-  // <th className="py-3 px-6">Receive Amount</th>
-  // <th className="py-3 px-6">Due</th>
-  // <th className="py-3 px-6">Receive Date</th>
-  // <th className="py-3 px-6">Action</th>
+
+
 
 
   return (
     <div>
       <div
         onClick={() => setOpenModal(false)}
-        className={`fixed z-[100] flex items-center justify-center ${openModal?._id === item._id ? "visible opacity-100" : "invisible opacity-0"} inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}
+        className={`fixed z-[900] flex items-center justify-center ${openModal?._id === item._id ? "visible opacity-100" : "invisible opacity-0"} inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}
       >
         <div
           onClick={(e_) => e_.stopPropagation()}
-          className={`rounded-sm bg-[white] p-6 drop-shadow-lg dark:bg-black dark:text-white ${openModal?._id === item._id ? "scale-1 opacity-1 duration-300" : "scale-0 opacity-0 duration-150"} z-[100]`}
+          className={`rounded-sm bg-[white] p-6 w-[80%] h-[80%] overflow-y-auto drop-shadow-lg dark:bg-black dark:text-white ${openModal?._id === item._id ? "scale-1 opacity-1 duration-300" : "scale-0 opacity-0 duration-150"} z-[100]`}
         >
           <div className="">
             <h2 className="text-xl text-[black] font-bold mb-4">Edit Installment</h2>
@@ -100,7 +107,21 @@ export default function InstallmentModal({
                     }))}
                 />
               </div>
-
+              <div className="mt-4">
+                <label htmlFor="Installment">Select Project:</label>
+                <br />
+                <Select
+                  id="Installment"
+                  value={project}
+                  onChange={handleProject}
+                  required
+                  className="rounded-lg w-full border border-[#336cb6]  bg-[white] text-[#336cb6] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
+                  options={allProject?.map((user) => ({
+                    label: user.name,
+                    value: user.name,
+                  }))}
+                />
+              </div>
               <div className="mb-4 space-y-1 mt-3">
                 <label htmlFor="particular">Particular</label>
                 <input
@@ -112,7 +133,7 @@ export default function InstallmentModal({
                   className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#000] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
                 />
               </div>
-          
+
               <div className="mb-4 space-y-1 mt-3">
                 <label htmlFor="checkNumber">Check Number</label>
                 <input
@@ -131,7 +152,7 @@ export default function InstallmentModal({
                   name="mrNo"
                   required
                   defaultValue={item?.mrNo}
-                  type="number"
+
                   placeholder="Enter Installment Name"
                   className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#000] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
                 />
@@ -149,25 +170,15 @@ export default function InstallmentModal({
                 />
               </div>
 
-              <div className="mb-4 space-y-1 mt-3">
-                <label htmlFor="due">Due</label>
-                <input
-                  name="due"
-                  defaultValue={item?.due}
-                  required
-                  placeholder="Enter Due"
-                  className="rounded-lg w-full border border-[#336cb6] px-4 py-2 text-[#000] ring-offset-2 duration-300 focus:outline-none focus:ring-2"
-                  type="text"
-                />
-              </div>
-        
-             
-         
-             
-            
-           
-          
-             
+
+
+
+
+
+
+
+
+
               <div className="flex items-center justify-between">
                 <button
                   onClick={() => setOpenModal(false)}
@@ -183,7 +194,7 @@ export default function InstallmentModal({
                   Update
                 </button>
               </div>
-          
+
             </form>
           </div>
         </div>

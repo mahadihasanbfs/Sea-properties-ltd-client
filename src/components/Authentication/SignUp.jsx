@@ -39,7 +39,6 @@ const SignUp = () => {
 
 
       await sendData(`${DB_URL}/users/sign-up`, "POST", googleUserData);
-
       localStorage.setItem("role", "user");
       navigate("/user");
       //   if (success) {
@@ -165,7 +164,7 @@ const SignUp = () => {
               />
             </div>
             <div>
-              <p className="mb-2 font-semibold text-black ">email</p>
+              <p className="mb-2 font-semibold text-black ">Email</p>
               <input
                 placeholder="Type your email"
                 type="text"
@@ -231,7 +230,7 @@ const SignUp = () => {
                 to={"/sign-in"}
                 className="mb-2 font-semibold  text-[#0B64B4] hover:text-[#0B64B4]"
               >
-                Sign in
+                Sign In
               </Link>
             </p>
 
@@ -244,17 +243,10 @@ const SignUp = () => {
           </form>
 
           <div className="  justify-center text-light gap-4 mt-4">
-            {/* <div
-              onClick={handleFacebookSignIn}
-              className="w-[220px] h-[50px] rounded-lg text-white bg-[#A20E27] flex justify-center items-center gap-3 hover:cursor-pointer"
-            >
-              <FaFacebook className="w-6 text-light h-6" />
-              <p className="text-lg">Facebook</p>
-            </div> */}
 
             <div
               onClick={handleGoogleSignIn}
-              className="w-full h-[50px] rounded-lg text-white bg-[#A20E27] flex justify-center items-center gap-3 hover:cursor-pointer"
+              className="w-full  rounded-lg text-white text-lg font-semibold bg-[#A20E27] flex justify-center items-center gap-3 py-4 hover:cursor-pointer"
             >
               <AiFillGoogleCircle className="w-6 h-6" />
               <p className="text-lg">Google</p>

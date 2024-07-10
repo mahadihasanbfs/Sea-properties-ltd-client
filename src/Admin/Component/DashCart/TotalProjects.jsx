@@ -4,9 +4,8 @@ import { DB_URL } from "../../../const";
 
 export default function TotalProjects() {
   const [data] = useFetchData(`${DB_URL}/admin/project/projects`);
-  //   console.log("data", data);
+
   const projectData = data?.data;
-  console.log("totalUserData", projectData);
 
   return (
     <div className="w-full rounded-lg bg-[white] p-2  ">

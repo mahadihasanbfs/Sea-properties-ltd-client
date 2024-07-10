@@ -11,11 +11,10 @@ import { useQuery } from "@tanstack/react-query";
 import { DB_URL } from "../../../const";
 
 const ManageProject = () => {
-    //   const [openModal, setOpenModal] = useState(false);
-    //   const [on, setOn] = useState(false);
+  
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(10); // Number of items per page
-    // const [allProject, setAllProjects] = useState([])
+  
     const { data: allProject = [], refetch, isLoading } = useQuery({
         queryKey: ["project"],
         queryFn: async () => {
@@ -24,7 +23,7 @@ const ManageProject = () => {
             return data.data;
         },
     });
-    console.log(allProject, "allProject");
+
 
     // Logic to calculate pagination
     const indexOfLastItem = currentPage * itemsPerPage;
