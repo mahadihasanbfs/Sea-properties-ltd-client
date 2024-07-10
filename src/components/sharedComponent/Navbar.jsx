@@ -145,10 +145,10 @@ const Navbar = () => {
         <div className="max-w-[1366px] mx-auto pl-5  pr-2 md:px-10">
           <div className="flex items-center justify-between">
             <Link to="/" className="text-2xl font-bold hid">
-              <img src={logo} alt="" className="w-[80px]  md:w-[120px] " />
+              <img src={logo} alt="" className="w-[80px]  md:w-[110px] " />
             </Link>
             <div className="flex items-center gap-4">
-              <ul className="md:flex hidden items-center gap-4 lg:gap-12">
+              <ul className="md:flex hidden items-center gap-4 lg:gap-10">
                 {links.map((itm) => (
                   <li key={itm.id} className=" flex text-xl capitalize items-center">
                     {!itm?.isDropdown ? (
