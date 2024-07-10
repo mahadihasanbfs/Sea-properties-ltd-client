@@ -73,7 +73,8 @@ const AuthProvider = ({ children }) => {
 
     const googleSignIn = async () => {
         try {
-            await signInWithPopup(auth, googleProvider);
+            const result = await signInWithPopup(auth, googleProvider);
+            return result
         } catch (error) {
             Swal.fire(error.message, '', "error");
         }

@@ -156,27 +156,27 @@ const SignIn = () => {
               </div>
             </div>
 
-          <div className="flex md:text-sm text-xs items-center justify-between">
-          <p className="">
-              Are you have no account?{" "}
-              <Link
-                to={"/sign-up"}
-                className="mb-2 font-semibold  text-[#0B64B4] hover:text-[#0B64B4]"
-              >
-                Sign up
-              </Link>
-            </p>
+            <div className="flex md:text-sm text-xs items-center justify-between">
+              <p className="">
+                Don't have an account?
+                <Link
+                  to={"/sign-up"}
+                  className="mb-2 ml-2 font-semibold  text-[#0B64B4] hover:text-[#0B64B4]"
+                >
+                  Sign Up
+                </Link>
+              </p>
 
 
-<button
-type="button"
-onClick={() => setOpenModal(true)}
-className="text-[blue] text-nowrap">
-  Forget Password
-</button>
-     </div>
+              <button
+                type="button"
+                onClick={() => setOpenModal(true)}
+                className="text-[blue] text-nowrap">
+                Forgot Password
+              </button>
+            </div>
 
-     <ForgotPasswordModal openModal={openModal} setOpenModal={setOpenModal} />
+            <ForgotPasswordModal openModal={openModal} setOpenModal={setOpenModal} />
 
             <button
               disabled={loading}
@@ -197,7 +197,7 @@ className="text-[blue] text-nowrap">
 
             <div
               onClick={handleGoogleSignIn}
-              className="w-full h-[50px] rounded-lg text-white bg-[#A20E27] flex justify-center items-center gap-3  hover:cursor-pointer"
+              className="w-full py-4 text-lg font-semibold rounded-lg text-white bg-[#A20E27] flex justify-center items-center gap-3  hover:cursor-pointer"
             >
               <AiFillGoogleCircle className="w-6 text-light h-6" />
               <p className="text-lg text-light">Google</p>

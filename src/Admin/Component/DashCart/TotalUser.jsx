@@ -4,10 +4,9 @@ import useFetchData from "../../../hooks/useFetchData";
 
 export default function TotalUser() {
   const [data] = useFetchData(`${DB_URL}/users`);
-  //   console.log("data", data);
-  const totalUserData = data?.data;
-  console.log("totalUserData", totalUserData);
 
+  const totalUserData = data?.data;
+ 
   return (
     <div className="w-full rounded-lg bg-[white] p-2  ">
       <div className="flex flex-col">

@@ -65,14 +65,11 @@ const BannerManagement = () => {
       .then((response) => response.json())
       .then((result) => {
         refetch();
-        // Handle success response
-        console.log("Edit successful:", result);
         setOpenModal(false); // Close modal after successful submission
       });
 
     setOpenModal(false);
 
-    console.log("Form data:", data);
   };
 
   // delete data using custom hook

@@ -48,7 +48,7 @@ const AddBlog = () => {
         // navigate('/admin/project-management');
       });
 
-    console.log(data);
+
   };
   return (
     <div className="my-4">

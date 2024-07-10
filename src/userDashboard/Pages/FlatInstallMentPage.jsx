@@ -8,19 +8,17 @@ import useAuth from "../../hooks/useAuth";
 import Title from "../../components/sharedComponent/Title";
 import AdminTitle from "../../hooks/useAdminTitle";
 import { useQuery } from "@tanstack/react-query";
+import Modal from "./Modal";
 
 const FlatInstallMentPage = () => {
   const { user } = useAuth();
-  console.log(user?.reloadUserInfo);
   const [openModal, setOpenModal] = useState(false);
   const [on, setOn] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10); // Number of items per page
-  // const [allInstallment, setAllInstallments] = useState([]);
 
   const {
     data: allInstallment = [],
-    refetch,
     isLoading,
   } = useQuery({
     queryKey: ["users"],
@@ -34,21 +32,15 @@ const FlatInstallMentPage = () => {
     },
   });
 
-  //    const { user } = useAuth();
-  //    console.log(user);
 
-  console.log(allInstallment, "^^^^^^^");
-
-  // Logic to calculate pagination
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems =
     allInstallment && allInstallment?.slice(indexOfFirstItem, indexOfLastItem);
 
-  // Function to handle page change
+
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  // Function to handle next page
   const nextPage = () => {
     if (
       currentPage <
@@ -58,14 +50,13 @@ const FlatInstallMentPage = () => {
     }
   };
 
-  // Function to handle previous page
+
   const prevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
   };
 
-  // Generate pagination numbers
   const paginationNumbers = Array.from(
     {
       length: Math.ceil(
@@ -75,35 +66,9 @@ const FlatInstallMentPage = () => {
     (_, i) => i + 1
   );
 
-  //get Installment
-  // useEffect(() => {
-  //   fetch(
-  //     `${DB_URL}/admin/installment/get-installment-email?email=${user?.reloadUserInfo?.email}`
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => setAllInstallments(data?.data));
-  // }, [user?.reloadUserInfo?.email]);
+  console.log(currentItems);
 
-  // delete Installment
-  const deleteInstallment = (id) => {
-    console.log(id);
-    fetch(`${DB_URL}/api/v1/admin/installment/delete?installment_id=${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        Swal.fire("Delete Installment successful", "", "success");
-        // reload()
-      })
-      .catch((error) => {
-        console.error("Error deleting Installment:", error);
-      });
-  };
-  console.log(currentItems, user, '===========>>', `${DB_URL}/admin/installment/get-installment-email?email=${user?.reloadUserInfo?.email}`);
+
   return (
     <div className="pt-3">
       <AdminTitle size={"20px"} title="Your Installment" />
@@ -111,14 +76,12 @@ const FlatInstallMentPage = () => {
         <table className="w-full table-auto text-sm text-left">
           <thead className="bg-[#e4e4e4] text-[#0d1113] font-medium border-[#bab9b9] border-b">
             <tr>
-              {/* <th className="py-3 px-6">Installment Name</th> */}
-              <th className="py-3 text-nowrap px-6">Email</th>
               <th className="py-3 text-nowrap px-6">Particular</th>
               <th className="py-3 text-nowrap px-6">Check Number</th>
               <th className="py-3 text-nowrap px-6">MR No</th>
-              <th className="py-3 text-nowrap px-6">Receive Amount</th>
-              <th className="py-3 text-nowrap px-6">Due</th>
-              <th className="py-3 text-nowrap px-6">Receive Date</th>
+              <th className="py-3 text-nowrap px-6">First Installment</th>
+              <th className="py-3 text-nowrap px-6">Payment Date</th>
+              <th className="py-3 text-nowrap px-6">Total</th>
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
@@ -126,17 +89,13 @@ const FlatInstallMentPage = () => {
               <h1 className="text-lg py-2 text-center">Loading data.......</h1>
             )}
             {currentItems?.length &&
-              currentItems?.map((item, idx) => (
+              currentItems.filter((item) => item.isFirstPayment && item.project)?.map((item, idx) => (
                 <tr key={idx}>
-                  {/* <td className="px-6 py-4 whitespace-nowrap">{item?.name}</td> */}
-                  <td className="px-6 py-4 whitespace-nowrap">{item?.email}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{item?.particular}</td>
+                  <td onClick={() => setOn(item)} className="px-6 py-4 whitespace-nowrap">{item?.particular}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     {item?.checkNumber ?? 'N/A'}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    {item?.checkNumber ?? 'N/A'}
-                  </td>
+
                   <td className="px-6 py-4 whitespace-nowrap">
                     {item?.mrNo ?? 'N/A'}
                   </td>
@@ -146,7 +105,10 @@ const FlatInstallMentPage = () => {
                   <td className="px-6 py-4 whitespace-nowrap">
                     {item?.receiveDate ?? 'N/A'}
                   </td>
-
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {item?.total ?? 'N/A'}
+                  </td>
+                  <Modal setItem={setOn} item={on} all_data={currentItems} />
                 </tr>
               ))}
           </tbody>
@@ -155,7 +117,7 @@ const FlatInstallMentPage = () => {
         </table>
       </div>
 
-      {/* Pagination */}
+
 
       {allInstallment?.length > 9 && (
         <div className="flex justify-center mt-4">
