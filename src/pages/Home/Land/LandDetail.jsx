@@ -128,44 +128,44 @@ const LandDetails = () => {
 
             {/* project features */}
             <div className="bg-black">
-                <div className="max-w-[1366px] mx-auto py-12 px-4 md:px-8 xl:px-20 grid md:grid-cols-2 gap-6 md:gap-0">
+                <div className="gap-6 md:gap-0 grid md:grid-cols-2 mx-auto px-4 md:px-8 xl:px-20 py-12 max-w-[1366px]">
                     <div className="">
                         <SecondaryTitle
                             text='Land Features'
                             position="text-left"
                         />
-                        <figure className="justify-self-end md:mt-0 mt-4 md:hidden flex items-center">
+                        <figure className="flex justify-self-end items-center md:hidden mt-4 md:mt-0">
                             <img className="w-[465px] h-[490px] object-cover" src={featureInfo?.features_img} alt="" />
                         </figure>
 
-                        <div className="space-y-5 md:mt-[60px] mt-4 text-white">
+                        <div className="space-y-5 mt-4 md:mt-[60px] text-white">
                             {
                                 featureInfo?.features && featureInfo?.features?.map((feature, index) => <p key={index}>{feature?.label}</p>)
                             }
                         </div>
-                        {/* <button className="py-[9px] px-[32px] text-white border-[3px] border-white  mt-6">
+                        {/* <button className="border-[3px] border-white mt-6 px-[32px] py-[9px] text-white">
                             Explore
                         </button> */}
                     </div>
-                    <figure className="justify-self-end md:flex hidden items-center">
+                    <figure className="md:flex justify-self-end items-center hidden">
                         <img className="w-[465px] h-[490px] object-cover" src={featureInfo?.features_img} alt="" />
                     </figure>
                 </div>
             </div>
 
             {/* gallery section */}
-            <div className="max-w-[1366px] mx-auto px-6 lg:px-10 xl:px-20 py-6 md:py-[55px]">
+            <div className="mx-auto px-6 lg:px-10 xl:px-20 py-6 md:py-[55px] max-w-[1366px]">
                 <SecondaryTitle
                     text='Gallery'
                     position="text-left"
                 />
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-8 xl:gap-[60px] mt-7">
+                <div className="gap-4 lg:gap-8 xl:gap-[60px] grid grid-cols-2 md:grid-cols-3 mt-7">
                     {
                         gallery_img?.map((image, index) => <img
                             key={index}
                             src={image}
                             onClick={() => openSlider(index)}
-                            className="md:w-[300px] md:h-[310px] lg:w-[365px] lg:h-[375px] object-cover hover:cursor-pointer hover:contrast-125 transition-all duration-500" />)
+                            className="md:w-[300px] lg:w-[365px] md:h-[310px] lg:h-[375px] transition-all duration-500 hover:cursor-pointer object-cover hover:contrast-125" />)
                     }
                 </div>
             </div>
@@ -184,15 +184,15 @@ const LandDetails = () => {
 
             {/* Contact form */}
             <div className="bg-[#B0BEC5] py-16 lg:py-[85px]">
-                <div className="max-w-[1366px] mx-auto px-6 md:px-10 xl:px-[60px] text-white gap-10 grid md:grid-cols-2">
-                    <div className="space-y-10 md:block hidden relative">
-                        <img className=" object-cover shadow-lg shadow-dark rounded w-full h-full  " src={projectData?.banner_img} alt="" />
+                <div className="gap-10 grid md:grid-cols-2 mx-auto px-6 md:px-10 xl:px-[60px] max-w-[1366px] text-white">
+                    <div className="md:block relative space-y-10 hidden">
+                        <img className="shadow-dark shadow-lg rounded w-full h-full object-cover" src={projectData?.banner_img} alt="" />
                     </div>
                     <div className="flex items-center">
-                        <form onSubmit={handleSubmit} className="md:space-y-4 space-y-2 w-full">
+                        <form onSubmit={handleSubmit} className="space-y-2 md:space-y-4 w-full">
                             <h2 className="text-[20px] md:text-[37px] uppercase">Book Now</h2>
-                            <div className="space-y-16 py-4 md:hidden block">
-                                <img className="object-fill shadow-lg shadow-dark rounded" src={projectData?.banner_img} alt="" />
+                            <div className="block space-y-16 md:hidden py-4">
+                                <img className="shadow-dark shadow-lg rounded object-fill" src={projectData?.banner_img} alt="" />
 
                             </div>
                             <div>
@@ -201,7 +201,7 @@ const LandDetails = () => {
                                     type="text" name="name"
                                     required
                                     // autoComplete="off"
-                                    className="w-full px-2 bg-transparent focus:outline-none mt-1 rounded py-2 p-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                                    className="border-[#FFFFFF40] bg-transparent mt-1 px-2 py-2 border-b-[1px] w-full focus:outline-none p-1 rounded font-light font-roboto text-white"
                                 />
                             </div>
                             <div>
@@ -209,7 +209,7 @@ const LandDetails = () => {
                                 <input
                                     type="text" name="email"
                                     autoComplete="off"
-                                    className="w-full px-2 bg-transparent focus:outline-none mt-1 rounded py-2 p-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                                    className="border-[#FFFFFF40] bg-transparent mt-1 px-2 py-2 border-b-[1px] w-full focus:outline-none p-1 rounded font-light font-roboto text-white"
                                 />
                             </div>
                             <div>
@@ -218,7 +218,7 @@ const LandDetails = () => {
                                     type="text" name="phone"
                                     required
                                     autoComplete="off"
-                                    className="w-full px-2 bg-transparent focus:outline-none mt-1 rounded py-2 p-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                                    className="border-[#FFFFFF40] bg-transparent mt-1 px-2 py-2 border-b-[1px] w-full focus:outline-none p-1 rounded font-light font-roboto text-white"
                                 />
                             </div>
                             <div>
@@ -228,15 +228,23 @@ const LandDetails = () => {
                                     type="text" name="message"
                                     required
                                     // autoComplete="off"
-                                    className="w-full px-2 bg-transparent focus:outline-none mt-1 rounded py-2 p-1 border-b-[1px] border-[#FFFFFF40] text-white font-roboto font-light"
+                                    className="border-[#FFFFFF40] bg-transparent mt-1 px-2 py-2 border-b-[1px] w-full focus:outline-none p-1 rounded font-light font-roboto text-white"
                                 />
                             </div>
 
                             <div className="pt-3">
-                                <input type="submit" value="Book Now" className="py-[9px] px-[28px] rounded hover:bg-[#a20e0e] hover:text-light border-[3px] border-white hover:cursor-pointer" />
+                                <input type="submit" value="Book Now" className="border-[3px] border-white hover:bg-[#a20e0e] px-[28px] py-[9px] rounded hover:text-light hover:cursor-pointer" />
                             </div>
                         </form>
                     </div>
+                </div>
+            </div>
+            <div className="md:gap-0 bg-white mx-auto px-4 md:px-8 xl:px-20 py-10 max-w-[1366px]">
+                <div className="flex justify-between items-center">
+                    <h3 className="text-white text-xl md:text-[35px] uppercase">Video Tour</h3>
+                </div> <br />
+                <div className="w-full h-[200px] md:h-[600px]">
+                    <VideoPlayer thum={videoThumbnailImgUpload} url={youtube_url} />
                 </div>
             </div>
 
@@ -247,7 +255,7 @@ const LandDetails = () => {
             />
             {map_link && (
                 <iframe
-                    className="lg:h-[400px] mt-6 md:h-[240px] h-[200px] rounded-lg"
+                    className="mt-6 rounded-lg h-[200px] md:h-[240px] lg:h-[400px]"
                     src={extractSrcFromIframe(map_link)}
                     width="100%"
                     style={{ border: 0 }}
