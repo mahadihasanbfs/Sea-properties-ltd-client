@@ -52,7 +52,7 @@ const Land = () => {
             </Helmet>
 
             {/* banner */}
-            <div style={{ backgroundImage: `linear-gradient(30deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)), url('${bg}')`, backgroundAttachment: '' }} className="flex md:flex-row flex-col justify-between items-center gap-10 md:gap-0 bg-white bg-cover mx-auto px-[60px] pt-[200px] pb-[100px] xl:pb-[150px] h-[100vh] object-cover">
+            <div style={{ backgroundImage: `linear-gradient(30deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)), url('${bg}')`, backgroundAttachment: '' }} className="flex md:flex-row flex-col justify-between items-center gap-10 md:gap-0 bg-white bg-cover mx-auto px-[60px] pt-[200px] pb-[100px] xl:pb-[150px] h-full object-cover">
                 <div className="flex justify-between m-auto w-full max-w-[1366px]">
                     <div className="text-[#fff]">
                         <h3 className="ml-4 text-[37px] uppercase">{filterPath?.hash?.slice(1)} Our Land </h3>
@@ -64,7 +64,7 @@ const Land = () => {
             </div>
 
             {/* filter nav */}
-            <div className="bg-[#F9F9F9] pt-12 h-screen">
+            <div className="bg-[#F9F9F9] pt-12 h-full">
 
 
                 {isLoading ? (
