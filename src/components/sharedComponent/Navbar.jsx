@@ -166,7 +166,7 @@ const Navbar = () => {
                       <button className="flex items-center  capitalize  gap-2 h-[80px] relative group">
                         {itm?.name}
                         {/* <FaAngleDown className="mt-2" /> */}
-                        <ul className="absolute z-[1000] top-[80px] text-[15px] left-0 bg-[#000000e4] w-56 text-white text-left rounded-b-md shadow-lg fade-in hidden group-hover:block transition-opacity duration-300">
+                        <ul className="absolute z-[1000] top-[75px] text-[15px] left-0 bg-[#000000e4] w-56 text-white text-left rounded-b-md shadow-lg fade-in hidden group-hover:block transition-opacity duration-300">
                           {itm?.dropdownItems.map((item) => (
                             <li key={item.id}>
                               <NavLink
