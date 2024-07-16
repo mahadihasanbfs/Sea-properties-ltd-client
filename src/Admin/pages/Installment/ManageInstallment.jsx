@@ -94,7 +94,7 @@ const ManageInstallment = () => {
     currentItems = filteredInstallments;
   }
 
-  const totalPages = Math.ceil(allInstallment.length / itemsPerPage);
+  const totalPages = Math.ceil(allInstallment?.filter((item) => item?.email && item.isFirstPayment && item.project).length / itemsPerPage);
 
 
   return (
@@ -290,7 +290,7 @@ const ManageInstallment = () => {
         <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
           <div className="flex flex-col items-center lg:flex-row lg:justify-between">
             <p className="text-sm font-medium text-gray-500">
-              Showing {itemsPerPage * (currentPage - 1) + 1} to {Math.min(itemsPerPage * currentPage, allInstallment.length)} of {allInstallment.length} results
+              Showing {itemsPerPage * (currentPage - 1) + 1} to {Math.min(itemsPerPage * currentPage, allInstallment?.filter((item) => item?.email && item.isFirstPayment && item.project).length)} of {allInstallment?.filter((item) => item?.email && item.isFirstPayment && item.project)?.length} results
             </p>
 
             <nav className="relative mt-6 lg:mt-0 flex justify-end space-x-1.5">
