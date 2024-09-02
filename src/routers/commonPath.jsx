@@ -19,135 +19,135 @@ import NewsEvent from "../pages/Home/News_Event/NewsEvent";
 import NewsEventReadMore from "../pages/Home/News_Event/NewsEventReadMore";
 import ProjectDetails from "../pages/Home/ProjectDetails/ProjectDetails";
 import OnGoing from "../pages/Home/Projects/OnGoingPage/OnGoing";
-import PrivacyPolicy from "../pages/PrivacyPolicy";
-import TermsCondition from "../pages/TermsCondition";
+// import PrivacyPolicy from "../pages/PrivacyPolicy";
+// import TermsCondition from "../pages/TermsCondition";
 
 
 const commonPath = [
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "our-story",
-    element: <OurStory />,
-  },
-  {
-    path: "vision-mision-values",
-    element: <VisionMision />,
-  },
-  {
-    path: "board-of-directors",
-    element: <BoardOfDirector />,
-  },
-  {
-    path: "management-team",
-    element: <ManagementTeam />,
-  },
-  {
-    path: "companies",
-    element: <Companies />,
-  },
-  {
-    path: "our-clients",
-    element: <OurClient />,
-  },
-  {
-    path: "contact",
-    element: <Contact />,
-  },
-  {
-    path: "csr",
-    element: <CSR />,
-  },
-  {
-    path: "news-and-events",
-    element: <NewsEvent />,
-  },
-  {
-    path: "news_events/:id",
-    loader: async ({ params }) => {
-      const id = params.id;
-      const response = await fetch(
-        `https://backend.seapropertiesltd.com.bd/api/v1/admin/get-news-events-by-id?id=${id}`
-      );
-      const data = await response.json();
-      return data.data;
-    },
-    element: <NewsEventReadMore />,
-  },
-  {
-    path: "blogs",
-    element: <MyBlogs />,
-  },
-  {
-    path: "blogs/blogs-details/:id",
-    element: <BlogDetails />,
-    loader: ({ params }) => {
-      return fetch(
-        `https://backend.seapropertiesltd.com.bd/api/v1/admin/blog/get-blog?blog_id=${encodeURIComponent(params?.id)}`
-      )
-        .then((res) => {
-          if (!res.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return res.json();
-        })
-        .then((data) => {
-          return data;
-        })
-        .catch((error) => {
-          console.error("Error fetching blog details:", error);
-          // Handle error gracefully, such as displaying a friendly message to the user
-          return null; // Return null or any default value as needed
-        });
-    },
-  },
-  {
-    path: "project-details/:id",
-    element: <ProjectDetails />,
-  },
-  {
-    path: "project",
-    element: <OnGoing />,
-  },
-  {
-    path: "land",
-    element: <Land />,
-  },
-  {
-    path: "land_detail/:id",
-    element: <LandDetails />,
-  },
-  {
-    path: "land-registration-form",
-    element: <LandRegistrationForm />,
-  },
-  {
-    path: "sign-up",
-    element: <SignUp />,
-  },
-  {
-    path: "sign-in",
-    element: <SignIn />,
-  },
-  {
-    path: "why-sea-properties",
-    element: <Explore />,
-  },
+      {
+            path: "/",
+            element: <Home />,
+      },
+      {
+            path: "our-story",
+            element: <OurStory />,
+      },
+      {
+            path: "vision-mision-values",
+            element: <VisionMision />,
+      },
+      {
+            path: "board-of-directors",
+            element: <BoardOfDirector />,
+      },
+      {
+            path: "management-team",
+            element: <ManagementTeam />,
+      },
+      {
+            path: "companies",
+            element: <Companies />,
+      },
+      {
+            path: "our-clients",
+            element: <OurClient />,
+      },
+      {
+            path: "contact",
+            element: <Contact />,
+      },
+      {
+            path: "csr",
+            element: <CSR />,
+      },
+      {
+            path: "news-and-events",
+            element: <NewsEvent />,
+      },
+      {
+            path: "news_events/:id",
+            loader: async ({ params }) => {
+                  const id = params.id;
+                  const response = await fetch(
+                        `https://backend.seapropertiesltd.com.bd/api/v1/admin/get-news-events-by-id?id=${id}`
+                  );
+                  const data = await response.json();
+                  return data.data;
+            },
+            element: <NewsEventReadMore />,
+      },
+      {
+            path: "blogs",
+            element: <MyBlogs />,
+      },
+      {
+            path: "blogs/blogs-details/:id",
+            element: <BlogDetails />,
+            loader: ({ params }) => {
+                  return fetch(
+                        `https://backend.seapropertiesltd.com.bd/api/v1/admin/blog/get-blog?blog_id=${encodeURIComponent(params?.id)}`
+                  )
+                        .then((res) => {
+                              if (!res.ok) {
+                                    throw new Error("Network response was not ok");
+                              }
+                              return res.json();
+                        })
+                        .then((data) => {
+                              return data;
+                        })
+                        .catch((error) => {
+                              console.error("Error fetching blog details:", error);
+                              // Handle error gracefully, such as displaying a friendly message to the user
+                              return null; // Return null or any default value as needed
+                        });
+            },
+      },
+      {
+            path: "project-details/:id",
+            element: <ProjectDetails />,
+      },
+      {
+            path: "project",
+            element: <OnGoing />,
+      },
+      {
+            path: "land",
+            element: <Land />,
+      },
+      {
+            path: "land_detail/:id",
+            element: <LandDetails />,
+      },
+      {
+            path: "land-registration-form",
+            element: <LandRegistrationForm />,
+      },
+      {
+            path: "sign-up",
+            element: <SignUp />,
+      },
+      {
+            path: "sign-in",
+            element: <SignIn />,
+      },
+      {
+            path: "why-sea-properties",
+            element: <Explore />,
+      },
 
-  {
-    path: 'privacy-policy',
-    element: <PrivacyPolicy />
-  },
-  {
-    path: 'terms-condition',
-    element: <TermsCondition />
-  },
-  {
-    path: "*",
-    element: <Home />,
-  },
+      //   {
+      //     path: 'privacy-policy',
+      //     element: <PrivacyPolicy />
+      //   },
+      //   {
+      //     path: 'terms-condition',
+      //     element: <TermsCondition />
+      //   },
+      {
+            path: "*",
+            element: <Home />,
+      },
 ];
 
 export default commonPath;
