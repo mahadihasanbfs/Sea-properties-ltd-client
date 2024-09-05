@@ -26,7 +26,7 @@ const NewsEventReadMore = () => {
 
       return (
             <div>
-                  <div className="my-[120px] px-10 max-w-7xl mx-auto ">
+                  <div className="my-[120px]  max-w-7xl mx-auto ">
                         <section class="">
                               <div class=" px-4 md:px-0  mx-auto">
                                     <div class="">
@@ -45,13 +45,13 @@ const NewsEventReadMore = () => {
                         </div>
 
                         {/* news and event gallery section  */}
-                        <div className=" grid grid-cols-2 md:grid-cols-3">
+                        <div className="px-4 grid grid-cols-2 md:grid-cols-3 gap-4">
                               {
                                     galleryImg?.map((img, index) => <img
                                           key={index}
                                           src={img}
                                           onClick={() => openSlider(index)}
-                                          className="w-full h-[170px] md:h-[215px] lg:w-[415px] mt-4 border rounded lg:h-[415px] object-cover hover:cursor-pointer hover:contrast-125 transition-all duration-500" />)
+                                          className="w-full h-[170px] md:h-[215px] lg:w-[415px]  border rounded lg:h-[415px] object-cover hover:cursor-pointer hover:contrast-125 transition-all duration-500" />)
                               }
                         </div>
 
