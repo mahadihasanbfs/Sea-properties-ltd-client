@@ -45,7 +45,7 @@ const NewsEventReadMore = () => {
                         </div>
 
                         {/* news and event gallery section  */}
-                        <div className="px-4 grid grid-cols-2 md:grid-cols-3 gap-4">
+                        {galleryImg?.length ? <div className="px-4 grid grid-cols-2 md:grid-cols-3 gap-4">
                               {
                                     galleryImg?.map((img, index) => <img
                                           key={index}
@@ -54,19 +54,21 @@ const NewsEventReadMore = () => {
                                           className="w-full h-[170px] md:h-[215px] lg:w-[415px]  border rounded lg:h-[415px] object-cover hover:cursor-pointer hover:contrast-125 transition-all duration-500" />)
                               }
                         </div>
-
+                              : ''}
                         {/* gallery images slider view */}
 
                   </div>
-                  {selectedImageIndex !== null && (
-                        <Slider
-                              images={galleryImg}
-                              selectedIndex={selectedImageIndex}
-                              setSelectedImageIndex={setSelectedImageIndex}
-                              onClose={closeSlider}
-                        />
-                  )}
-            </div>
+                  {
+                        selectedImageIndex !== null && (
+                              <Slider
+                                    images={galleryImg}
+                                    selectedIndex={selectedImageIndex}
+                                    setSelectedImageIndex={setSelectedImageIndex}
+                                    onClose={closeSlider}
+                              />
+                        )
+                  }
+            </div >
 
       );
 };
