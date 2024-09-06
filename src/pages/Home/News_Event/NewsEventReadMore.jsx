@@ -4,6 +4,7 @@ import PrimaryBanner from "../../../components/common/PrimaryBanner";
 import { useEffect, useState } from "react";
 
 import Slider from "../../../components/common/Slider";
+import { Helmet } from "react-helmet";
 
 
 const NewsEventReadMore = () => {
@@ -25,27 +26,20 @@ const NewsEventReadMore = () => {
 
 
       return (
-            <div>
-                  <div className="my-[120px]  max-w-7xl mx-auto ">
-                        <section class="">
-                              <div class=" px-4 md:px-0  mx-auto">
-                                    <div class="">
-                                          <div class="">
-                                                <h1 class="text-4xl font-bold text-gray-900 sm:text-5xl">7 Best Growth Hacking Tips for Startups & SaaS</h1>
-                                                <p class="mt-6 text-base font-medium text-gray-500">{new Date(date).toDateString()} </p>
-                                          </div>
-                                    </div>
-                              </div>
-                        </section>
+            <div className='mt-[90px]'>
+                  <Helmet>
+                        <title>
+                              {title}-News Event | SEA Properties Ltd.
+                        </title>
+                  </Helmet>
+                  <div className="max-w-[1366px] mx-auto px-4 md:px-[40px] ">
+                        <img src={featureImg} className='w-full rounded h-[330px] md:h-[500px] object-cover' alt="" />
+                        <h3 className="font-bold text-3xl capitalize mt-3">{title}</h3>
+                        <p className="text-gray-500">{new Date(date).toDateString()}</p>
 
-                        <div className="  px-4 md:px-0 mx-auto">
-                              <div dangerouslySetInnerHTML={{ __html: description }} className=" mx-auto pt-[60px] space-y-6"></div>
+                        <div className='mt-5 text-[#535353]' dangerouslySetInnerHTML={{ __html: description }} />
 
-
-                        </div>
-
-                        {/* news and event gallery section  */}
-                        {galleryImg?.length ? <div className="px-4 grid grid-cols-2 md:grid-cols-3 gap-4">
+                        {galleryImg?.length ? <div className=" grid grid-cols-2 md:grid-cols-3 gap-4">
                               {
                                     galleryImg?.map((img, index) => <img
                                           key={index}
@@ -55,9 +49,8 @@ const NewsEventReadMore = () => {
                               }
                         </div>
                               : ''}
-                        {/* gallery images slider view */}
-
                   </div>
+
                   {
                         selectedImageIndex !== null && (
                               <Slider
