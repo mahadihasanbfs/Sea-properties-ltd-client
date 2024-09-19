@@ -99,7 +99,7 @@ const ManageBlog = () => {
       });
   };
 
-  console.log(blogData, "======");
+ 
   return (
     <div className="pt-3">
       <div className="flex item-center pb-3 justify-between">

@@ -1,16 +1,16 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const IsAdmin = ({ children }) => {
-  const navigate = useNavigate();
+      const navigate = useNavigate();
 
-  useEffect(() => {
-    const isAdmin = localStorage.getItem("role");
-    console.log(isAdmin);
-    if (!isAdmin || !isAdmin == "admin") {
-      navigate("/sign-in");
-    }
-  }, [navigate]);
-  return <div>{children}</div>;
+      useEffect(() => {
+            const isAdmin = localStorage.getItem("role");
+
+            if (!isAdmin || !isAdmin == "admin") {
+                  navigate("/sign-in");
+            }
+      }, [navigate]);
+      return <div>{children}</div>;
 };
 
 export default IsAdmin;

@@ -35,13 +35,13 @@ const AddProject = () => {
             alert('Please select a valid image file.');
         }
     };
-    // end banner img 
+    // end banner img
 
     // multiple selector
     const [selectedOption, setSelectedOption] = useState(null);
     const options = [];
 
-    // upload image 
+    // upload image
     const { uploadImage } = useImageUpload();
 
     // dynamic inputs
@@ -56,7 +56,7 @@ const AddProject = () => {
     const handleValueChange = (index, e) => {
         const { name, value } = e.target;
 
-        console.log('check', name, value);
+
         const newInputFields = [...inputFields];
         newInputFields[index][name] = value;
         setInputFields(newInputFields);
@@ -87,8 +87,7 @@ const AddProject = () => {
     const [selectedOptions, setSelectedOptions] = useState([]);
     const navigate = useNavigate();
     const handleChange = (newValue, actionMeta) => {
-        console.log('Selected Options:', newValue);
-        console.log('Action Meta:', actionMeta);
+
         setSelectedOptions(newValue); // Optionally, you can set the selected options to state
     };
 
@@ -100,7 +99,7 @@ const AddProject = () => {
         setLoading(true);
         const form = e.target;
         //
-        console.log('hit')
+     
         // Get values from the form fields
         const name = form.project_name.value;
         const project_type = form.project_type.value;
@@ -192,7 +191,7 @@ const AddProject = () => {
             // navigate('/admin/manage-project');
         })
 
-        console.log(data, 'testing......', uploadedBannerImg, banner_img);
+
     };
 
 

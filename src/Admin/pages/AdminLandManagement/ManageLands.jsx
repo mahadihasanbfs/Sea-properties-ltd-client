@@ -24,7 +24,7 @@ const ManageLand = () => {
             return data.data;
         },
     });
-    console.log(allLand, "allLand");
+
 
     // Logic to calculate pagination
     const indexOfLastItem = currentPage * itemsPerPage;

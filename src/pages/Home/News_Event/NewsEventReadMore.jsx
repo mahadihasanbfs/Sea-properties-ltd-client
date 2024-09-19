@@ -37,9 +37,9 @@ const NewsEventReadMore = () => {
                         <h3 className="font-bold text-3xl capitalize mt-3">{title}</h3>
                         <p className="text-gray-500">{new Date(date).toDateString()}</p>
 
-                        <div className='mt-5 text-[#535353]' dangerouslySetInnerHTML={{ __html: description }} />
+                        <div className='my-5 text-[#535353]' dangerouslySetInnerHTML={{ __html: description }} />
 
-                        {galleryImg?.length ? <div className=" grid grid-cols-2 md:grid-cols-3 gap-4">
+                        {galleryImg?.length ? <div className=" grid grid-cols-2 md:grid-cols-3 gap-4 ">
                               {
                                     galleryImg?.map((img, index) => <img
                                           key={index}

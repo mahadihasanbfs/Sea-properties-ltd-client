@@ -25,12 +25,11 @@ const SignUp = () => {
       } = useSendData();
       const navigate = useNavigate();
 
-      console.log(error, dataLoading);
+
 
       const handleGoogleSignIn = () => {
             googleSignIn().then(async (result) => {
-                  console.log("result", result);
-                  console.log(result?.user?.reloadUserInfo);
+                 
 
                   const googleUserData = {
                         name: result?.user?.reloadUserInfo?.displayName,
