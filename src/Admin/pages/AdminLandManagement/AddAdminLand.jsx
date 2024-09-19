@@ -36,7 +36,7 @@ const AddAdminLand = () => {
     // multiple selector
     const [selectedOption, setSelectedOption] = useState(null);
 
-    // upload image 
+    // upload image
     const { uploadImage } = useImageUpload();
 
     // dynamic inputs
@@ -130,11 +130,10 @@ const AddAdminLand = () => {
             navigate('/admin/manage-land');
         });
 
-        console.log(data, 'testing......', data);
+
         setLoading(false);
     };
 
-    console.log('===>', toggle);
     // form submit
     // const handleSubmit = async (e) => {
     //     e.preventDefault();
@@ -203,7 +202,7 @@ const AddAdminLand = () => {
     //     };
 
     //     // Log all form values
-    //     console.log("Form Values:", {
+
     //         name,
     //         project_type,
     //         project_status,
@@ -228,7 +227,7 @@ const AddAdminLand = () => {
     //         features_img
     //     });
 
-    //     console.log(data, 'testing22......', data);
+   
     //     setLoading(false);
     // };
 

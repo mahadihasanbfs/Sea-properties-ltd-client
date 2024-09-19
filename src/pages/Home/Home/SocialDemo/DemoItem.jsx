@@ -13,48 +13,48 @@ import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 const DemoItem = () => {
 
 
-    const { data: sData = [], isLoading } = useQuery({
-        queryKey: ["slData"],
-        queryFn: async () => {
-            const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/banner/banners`);
-            const data = await res.json();
-            return data;
-        },
-    });
+      const { data: sData = [], isLoading } = useQuery({
+            queryKey: ["slData"],
+            queryFn: async () => {
+                  const res = await fetch(`https://backend.seapropertiesltd.com.bd/api/v1/admin/banner/banners`);
+                  const data = await res.json();
+                  return data;
+            },
+      });
 
-    const sliderData = sData?.data?.filter(itm => itm?.position === 'footer_slider')
-
-    console.log(sliderData, '***');
+      const sliderData = sData?.data?.filter(itm => itm?.position === 'footer_slider')
 
 
-    return (
-        <div className="mt-8 f-slider">
-            {
 
-                <Swiper
-                    // pagination={{
-                    //     type: 'fraction',
-                    // }}
-                    navigation={true}
 
-                    autoplay={{
-                        delay: 2500,
-                    }}
-                    modules={[Pagination, Navigation, Autoplay]}
-                    className="mySwiper"
-                >
-                    {sliderData?.map(itm => <SwiperSlide className="" key={itm?._id}>
-                        <a href={itm?.url} className="px-[5%]">
-                            <div
-                                style={{ backgroundImage: `url(${itm?.photo})` }}
-                                className="bg-[#f5f5f5] object-cover bg-cover md:h-[320px] h-[200px] rounded-lg" />
-                        </a>
+      return (
+            <div className="mt-8 f-slider">
+                  {
 
-                    </SwiperSlide>)}
+                        <Swiper
+                              // pagination={{
+                              //     type: 'fraction',
+                              // }}
+                              navigation={true}
 
-                </Swiper>}
-        </div >
-    );
+                              autoplay={{
+                                    delay: 2500,
+                              }}
+                              modules={[Pagination, Navigation, Autoplay]}
+                              className="mySwiper"
+                        >
+                              {sliderData?.map(itm => <SwiperSlide className="" key={itm?._id}>
+                                    <a href={itm?.url} className="px-[5%]">
+                                          <div
+                                                style={{ backgroundImage: `url(${itm?.photo})` }}
+                                                className="bg-[#f5f5f5] object-cover bg-cover md:h-[320px] h-[200px] rounded-lg" />
+                                    </a>
+
+                              </SwiperSlide>)}
+
+                        </Swiper>}
+            </div >
+      );
 };
 
 export default DemoItem;

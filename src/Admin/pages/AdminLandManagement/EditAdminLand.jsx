@@ -41,7 +41,7 @@ const EditAdminLand = () => {
     // multiple selector
     const [selectedOption, setSelectedOption] = useState(null);
 
-    // upload image 
+    // upload image
     const { uploadImage } = useImageUpload();
 
     // dynamic inputs
@@ -66,7 +66,7 @@ const EditAdminLand = () => {
         setSelectedOptions(newValue);
     };
 
-    console.log(landData, 'landData');
+
 
 
     // form submit
@@ -140,19 +140,19 @@ const EditAdminLand = () => {
         )
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
+
                 Swal.fire("Project Updated", "", "success");
                 navigate("/admin/manage-land");
                 setLoading(false);
             });
 
 
-        console.log('updated......', data);
+
         setLoading(false);
     };
 
 
-    // console.log('land..', landData);
+ 
 
     return (
         <div>

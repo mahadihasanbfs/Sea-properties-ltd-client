@@ -43,7 +43,7 @@ const Contact = () => {
                   message,
                   date: new Date(),
             };
-            console.log(data);
+
 
             fetch(`${DB_URL}/user/contact/add`, {
                   method: "POST",
@@ -56,7 +56,7 @@ const Contact = () => {
                   .then((data) => {
                         setLoading(false);
                         form.reset();
-                        console.log(data);
+
                         Swal.fire("Thanks for contacting us. We will get back to you shortly", "", "success");
                   });
       };
