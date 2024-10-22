@@ -57,7 +57,7 @@ const OnGoingProject = () => {
                     <h3 className="text-[37px] uppercase">{filterPath?.hash?.slice(1)} Projects </h3>
                 </div>
                 <div>
-                    <img src="https://i.ibb.co/jzV8h9n/Rectangle-46.png" alt="" />
+                    <img src="https://i.ibb.co.com/wW3d9fX/Rectangle-46-2x.png" alt="" />
                 </div>
             </div>
 
