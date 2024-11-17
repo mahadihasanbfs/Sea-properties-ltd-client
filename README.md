@@ -1,4 +1,4 @@
-s## Sea Properties Real Estate Website
+## Sea Properties Real Estate Website
 
 **Description:**
 
